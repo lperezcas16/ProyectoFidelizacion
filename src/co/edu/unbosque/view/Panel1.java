@@ -50,9 +50,9 @@ public class Panel1 extends JPanel {
 		boton_entrar.setBounds(620, 55, 100, 50);
 		add(boton_entrar);
 		imagen_entrar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_entrada.png"));
-		icono_entrar = new ImageIcon(imagen_entrar.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH));
-		boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		boton_entrar.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+		icono_entrar = new ImageIcon(imagen_entrar.getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH));
+		boton_entrar.setHorizontalAlignment(SwingConstants.CENTER);
+		boton_entrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_entrar.setContentAreaFilled(false);
 		boton_entrar.setBorderPainted(false);
 		boton_entrar.setIcon(icono_entrar);
@@ -68,12 +68,13 @@ public class Panel1 extends JPanel {
 		Color colorA = new Color(36, 67, 87);
 		grupo = new ButtonGroup();
 		c1 = new JRadioButton("Mujer");
-		c1.setFont(new Font("Bernard MT Condensed", Font.TRUETYPE_FONT, 16));
+		c1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		c1.setBackground(colorA);
 		c1.setForeground(Color.white);
+//		c2.setBackground(colorA);
+//		c2.setForeground(Color.white);
 		c2 = new JRadioButton("Hombre");
-		c2.setFont(new Font("Bernard MT Condensed", Font.TRUETYPE_FONT, 16));
-
+		c2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		c1.setBounds(36, 350, 100, 20);
 		c2.setBounds(220, 350, 100, 20);
 		grupo.add(c1);
@@ -102,9 +103,9 @@ public class Panel1 extends JPanel {
 		boton_registrar.setBounds(370, 480, 100, 50);
 		add(boton_registrar);
 		imagen_registar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_registrar.png"));
-		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(130, 90, Image.SCALE_SMOOTH));
-		boton_registrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		boton_registrar.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+		boton_registrar.setHorizontalAlignment(SwingConstants.CENTER);
+		boton_registrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_registrar.setContentAreaFilled(false);
 		boton_registrar.setBorderPainted(false);
 		boton_registrar.setIcon(icono_registrar);
