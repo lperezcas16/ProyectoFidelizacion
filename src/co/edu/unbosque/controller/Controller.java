@@ -1,26 +1,39 @@
 package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import co.edu.unbosque.view.View;
+import co.edu.unbosque.view.Ventana;
 
-public class Controller {
+public class Controller implements ActionListener {
 
-	private View view;
+	private Ventana view;
 	
 	
 	public Controller() {
 		super();
-		view=new View();
-		setActionListener();
+		
+		view = new Ventana();
+		actionListener(this);
 	}
 	//METODO QUE SE ENCARGA DE AGREGAR LISTENERS A LA VISTA
-	public void setActionListener() {
+
+	
+	private void actionListener(ActionListener controller) {
+		view.getPanel1().getBoton_entrar().addActionListener(controller);
+		view.getPanel1().getBoton_registrar().addActionListener(controller);
 		
 	}
-	
+
 	public void actionPerformed(ActionEvent event) {
 		
+		if(view.getPanel1().getBoton_entrar()==event.getSource()) {
+			
+		}
+		
+		if (view.getPanel1().getBoton_registrar()==event.getSource()) {
+			
+		}
 	}
 	
 }
