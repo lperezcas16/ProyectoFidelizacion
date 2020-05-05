@@ -3,53 +3,51 @@ package co.edu.unbosque.view;
 import java.awt.*;
 
 import javax.swing.*;
-public class Panel1 extends JPanel{
 
-	/**
-	 * 
-	 */
+public class Panel1 extends JPanel {
+
 	private static final long serialVersionUID = 1L;
-	
-	private JTextField campo_usuario, campo_apellido, campo_nombre, campo_numCedula, campo_correo ;
-	private JPasswordField campo_contrasena; 
+
+	private JTextField campo_usuario, campo_apellido, campo_nombre, campo_numCedula, campo_correo;
+	private JPasswordField campo_contrasena;
 	private JButton boton_entrar, boton_registrar;
 	private ButtonGroup grupo;
 	private JRadioButton c1, c2;
 	private ImageIcon imagen, imagen_entrar, imagen_registar;
 	private Icon icono_entrar, icono_registrar;
 	private String nombre;
-	
+
 	public Panel1(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
 		setVisible(true);
 		inicializarComponentes();
-		setBounds(0,0,790,590);
-		
+		setBounds(0, 0, 790, 590);
+
 	}
-	
+
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
-		g.drawImage(imagen.getImage(),0,0, tamano.width , tamano.height , null);
+		g.drawImage(imagen.getImage(), 0, 0, tamano.width, tamano.height, null);
 		setOpaque(false);
 		super.paint(g);
-		
-		
+
 	}
+
 	public void inicializarComponentes() {
-		
+
 		campo_usuario = new JTextField();
-		campo_usuario.setBounds(340,35,250,25);
+		campo_usuario.setBounds(340, 35, 250, 25);
 		add(campo_usuario);
-		
+
 		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(340,100,250,25);
+		campo_contrasena.setBounds(340, 100, 250, 25);
 		campo_contrasena.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 16));
 		add(campo_contrasena);
-		
+
 		boton_entrar = new JButton();
-		boton_entrar.setBounds(620,55,100,50);
+		boton_entrar.setBounds(620, 55, 100, 50);
 		add(boton_entrar);
 		imagen_entrar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_entrada.png"));
 		icono_entrar = new ImageIcon(imagen_entrar.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH));
@@ -58,47 +56,50 @@ public class Panel1 extends JPanel{
 		boton_entrar.setContentAreaFilled(false);
 		boton_entrar.setBorderPainted(false);
 		boton_entrar.setIcon(icono_entrar);
-		
+
 		campo_apellido = new JTextField();
-		campo_apellido.setBounds(36,200,250,25);
+		campo_apellido.setBounds(36, 200, 250, 25);
 		add(campo_apellido);
 
 		campo_nombre = new JTextField();
-		campo_nombre.setBounds(36,270,250,25);
+		campo_nombre.setBounds(36, 270, 250, 25);
 		add(campo_nombre);
-		
+
+		Color colorA = new Color(36, 67, 87);
 		grupo = new ButtonGroup();
 		c1 = new JRadioButton("Mujer");
 		c1.setFont(new Font("Bernard MT Condensed", Font.TRUETYPE_FONT, 16));
+		c1.setBackground(colorA);
+		c1.setForeground(Color.white);
 		c2 = new JRadioButton("Hombre");
 		c2.setFont(new Font("Bernard MT Condensed", Font.TRUETYPE_FONT, 16));
-		
+
 		c1.setBounds(36, 350, 100, 20);
 		c2.setBounds(220, 350, 100, 20);
 		grupo.add(c1);
 		grupo.add(c2);
 		add(c1);
 		add(c2);
-		
+
 		campo_numCedula = new JTextField();
-		campo_numCedula.setBounds(40,450,250,25);
+		campo_numCedula.setBounds(40, 450, 250, 25);
 		add(campo_numCedula);
-		
+
 		campo_correo = new JTextField();
-		campo_correo.setBounds(450,200,250,25);
+		campo_correo.setBounds(450, 200, 250, 25);
 		add(campo_correo);
-		
+
 		campo_usuario = new JTextField();
-		campo_usuario.setBounds(450,280,250,25);
+		campo_usuario.setBounds(450, 280, 250, 25);
 		add(campo_usuario);
-		
+
 		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(450,350,250,25);
+		campo_contrasena.setBounds(450, 350, 250, 25);
 		campo_contrasena.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 16));
 		add(campo_contrasena);
-		
+
 		boton_registrar = new JButton();
-		boton_registrar.setBounds(370,480,100,50);
+		boton_registrar.setBounds(370, 480, 100, 50);
 		add(boton_registrar);
 		imagen_registar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_registrar.png"));
 		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(130, 90, Image.SCALE_SMOOTH));
@@ -108,16 +109,17 @@ public class Panel1 extends JPanel{
 		boton_registrar.setBorderPainted(false);
 		boton_registrar.setIcon(icono_registrar);
 	}
-	 public void limpiarCampos() {
-		 campo_apellido.setText(null);
-		 campo_contrasena.setText(null);
-		 campo_correo.setText(null);
-		 campo_nombre.setText(null);
-		 campo_numCedula.setText(null);
-		 campo_usuario.setText(null);
-		 grupo.setSelected(null, isOpaque());
-	 }
-	 
+
+	public void limpiarCampos() {
+		campo_apellido.setText(null);
+		campo_contrasena.setText(null);
+		campo_correo.setText(null);
+		campo_nombre.setText(null);
+		campo_numCedula.setText(null);
+		campo_usuario.setText(null);
+		grupo.setSelected(null, isOpaque());
+	}
+
 	public JTextField getCampo_usuario() {
 		return campo_usuario;
 	}
@@ -253,6 +255,5 @@ public class Panel1 extends JPanel{
 	public void setBoton_entrar(JButton boton_entrar) {
 		this.boton_entrar = boton_entrar;
 	}
-	
 
 }

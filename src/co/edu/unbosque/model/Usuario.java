@@ -16,9 +16,8 @@ public class Usuario implements Serializable {
 	private String contraseña;
 	private String tipo;
 
-	public Usuario(String numerocedula, String nombre, String genero,
-			String correo, String numeroTarjeta, long cupoTarjeta,
-			ArrayList<String> parejas, String usuario, String contraseña) {
+	public Usuario(String numerocedula, String nombre, String genero, String correo, String numeroTarjeta,
+			long cupoTarjeta, ArrayList<String> parejas, String usuario, String contraseña) {
 		this.numeroCedula = numerocedula;
 		this.nombre = nombre;
 		this.genero = genero;
@@ -31,8 +30,7 @@ public class Usuario implements Serializable {
 		this.parejas = parejas;
 	}
 
-	public Usuario(String nombre, String correo, String usuario,
-			String contraseña) {
+	public Usuario(String nombre, String correo, String usuario, String contraseña) {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.usuario = usuario;
