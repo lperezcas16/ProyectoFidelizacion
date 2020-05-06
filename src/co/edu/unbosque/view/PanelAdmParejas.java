@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 public class PanelAdmParejas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
+	//holajkfajdlfkjalkdsfje
 
 	private String nombre;
 	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info;

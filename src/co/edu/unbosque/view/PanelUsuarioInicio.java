@@ -10,7 +10,7 @@ public class PanelUsuarioInicio extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	//hola
+	//hola 2
 	private JTabbedPane pestañas;
 	private PanelAdmParejas pnl_adm_parejas;
 	private PanelAsignarHorario pnl_asignar_horarios;

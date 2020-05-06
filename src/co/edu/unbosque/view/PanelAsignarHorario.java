@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 
 public class PanelAsignarHorario extends JPanel {
+	
+	//fkadjflkajdfk
 
 	private static final long serialVersionUID = 1L;
 	private JComboBox<Object> combobox_tiendas, combobox_parejas;

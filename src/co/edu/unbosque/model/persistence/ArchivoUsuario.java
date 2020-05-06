@@ -12,13 +12,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Usuario;
+
 //Hola
 public class ArchivoUsuario {
 	private ObjectInputStream entrada;
 	private ObjectOutputStream salida;
 	private File archivo_Usuarios;
-
-
 
 	/**
 	 * Este es el constructor de la clase ArchivoUsuario el cual tiene la funcion de
@@ -44,8 +43,8 @@ public class ArchivoUsuario {
 	 * Este metodo tiene la funcion de escribir el archivo mediante los parametros
 	 * de la clase usuario.
 	 * 
-	 * @param lista_Usuarios el atributo que tendrán el sistema para ingresar el arraylist
-	 *                de la clase usuario != null, usuario != “ “
+	 * @param lista_Usuarios el atributo que tendrán el sistema para ingresar el
+	 *                       arraylist de la clase usuario != null, usuario != “ “
 	 * 
 	 */
 	public void escribirEnArchivo(ArrayList<Usuario> lista_Usuarios) {
@@ -116,5 +115,4 @@ public class ArchivoUsuario {
 		this.archivo_Usuarios = archivo_Usuarios;
 	}
 
-	
 }
