@@ -17,7 +17,7 @@ public class ArchivoTienda {
 	private File archivo_Tienda;
 
 	public ArchivoTienda() {
-		archivo_Tienda = new File(".\\data\\Base de Datos Tienda.dat");
+		archivo_Tienda = new File(".\\Base de Datos Tienda.dat");
 	}
 
 	/**

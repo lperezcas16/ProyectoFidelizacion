@@ -1,11 +1,9 @@
 package co.edu.unbosque.model.persistence;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,11 +15,9 @@ public class ArchivoUsuario {
 	private ObjectInputStream entrada;
 	private ObjectOutputStream salida;
 	private File archivo_Usuarios;
-	private FileReader fr;
-	private BufferedReader br;
 
 	public ArchivoUsuario() {
-		archivo_Usuarios = new File(".\\data\\Base de Datos Usuarios.dat");
+		archivo_Usuarios = new File(".\\Base de Datos Usuarios.dat");
 	}
 
 	/**
@@ -49,6 +45,7 @@ public class ArchivoUsuario {
 	/**
 	 * Método que lee el archivo * @return Lista de usuarios
 	 */
+	@SuppressWarnings("unchecked")
 	public ArrayList<Usuario> leerArchivo() {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		if (archivo_Usuarios.length() != 0) {
