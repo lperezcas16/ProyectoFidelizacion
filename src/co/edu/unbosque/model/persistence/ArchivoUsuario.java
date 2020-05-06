@@ -9,6 +9,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import co.edu.unbosque.model.Usuario;
 //Hola
 public class ArchivoUsuario {
@@ -16,61 +18,78 @@ public class ArchivoUsuario {
 	private ObjectOutputStream salida;
 	private File archivo_Usuarios;
 
+
+
+	/**
+	 * Este es el constructor de la clase ArchivoUsuario el cual tiene la funcion de
+	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la validación
+	 * de que el archivo existe o no existe.<br>
+	 */
 	public ArchivoUsuario() {
 		archivo_Usuarios = new File(".\\Base de Datos Usuarios.dat");
-	}
-
-	/**
-	 * Método que escribe los datos del usuario en el archivo
-	 * 
-	 * @param Lista
-	 *            de usuarios
-	 */
-	public void escribirEnArchivo(ArrayList<Usuario> usuarios) {
-		try {
-			salida = new ObjectOutputStream(new FileOutputStream(
-					archivo_Usuarios));
-			salida.writeObject(usuarios);
-			salida.close();
-		} catch (FileNotFoundException e) {
-			System.out
-					.println("Error en la escritura del archivo, no se encontro: "
-							+ e.getMessage());
-		} catch (IOException e) {
-			System.out.println("Error en la escritura del archivo: "
-					+ e.getMessage());
+		if (archivo_Usuarios.exists()) {
+			System.out.println("El archivo ya existe");
+		} else {
+			try {
+				archivo_Usuarios.createNewFile();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+			}
 		}
+
 	}
 
 	/**
-	 * Método que lee el archivo * @return Lista de usuarios
+	 * Este metodo tiene la funcion de escribir el archivo mediante los parametros
+	 * de la clase usuario.
+	 * 
+	 * @param lista_Usuarios el atributo que tendrán el sistema para ingresar el arraylist
+	 *                de la clase usuario != null, usuario != “ “
+	 * 
+	 */
+	public void escribirEnArchivo(ArrayList<Usuario> lista_Usuarios) {
+
+		try {
+			salida = new ObjectOutputStream(new FileOutputStream(archivo_Usuarios));
+			salida.writeObject(lista_Usuarios);
+			salida.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Este metodo tiene la funcion de leer el archivo mediante el arraylist de
+	 * usuarios
+	 * 
+	 * @return El valor de retorno seria el arraylist que contiene los atributos de
+	 *         la clase Usuario
+	 *
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<Usuario> leerArchivo() {
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+
+		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		if (archivo_Usuarios.length() != 0) {
 			try {
-				entrada = new ObjectInputStream(new FileInputStream(
-						archivo_Usuarios));
-				usuarios = (ArrayList<Usuario>) entrada.readObject();
+
+				entrada = new ObjectInputStream(new FileInputStream(archivo_Usuarios));
+				listaUsuarios = (ArrayList<Usuario>) entrada.readObject();
+
 			} catch (FileNotFoundException e) {
-				System.out
-						.println("Error en la lectura del archivo, no se encontró: "
-								+ e.getMessage());
+				e.printStackTrace();
 			} catch (IOException e) {
-				System.out.println("Error en la lectura del archivo: "
-						+ e.getMessage());
+				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				System.out
-						.println("Error en la lectura del archivo, clase no encontrada: "
-								+ e.getMessage());
+				e.printStackTrace();
 			}
 		}
-		return usuarios;
-	}
-
-	public void cargarArchivo(ArrayList<Usuario> usuarios) {
-
+		return listaUsuarios;
 	}
 
 	public ObjectInputStream getEntrada() {
@@ -97,4 +116,5 @@ public class ArchivoUsuario {
 		this.archivo_Usuarios = archivo_Usuarios;
 	}
 
+	
 }
