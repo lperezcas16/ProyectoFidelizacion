@@ -30,9 +30,9 @@ public class PanelUsuarioInicio extends JPanel {
 
 		pnl_adm_parejas = new PanelAdmParejas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
 		pnl_adm_parejas.setBounds(0, 0, 790, 590);
-		pnl_asignar_horarios = new PanelAsignarHorario();
+		pnl_asignar_horarios = new PanelAsignarHorario("/co/edu/unbosque/imagenes/fondo_horario.png");
 		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
-		pnl_ver_horarios = new PanelVerHorarios();
+		pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
 		pnl_ver_horarios.setBounds(0, 0, 790, 590);
 
 		pestañas.addTab("Administrar Cuenta", pnl_adm_parejas);
@@ -41,6 +41,7 @@ public class PanelUsuarioInicio extends JPanel {
 		pnl_adm_parejas.getBoton_ojo_oculto().setIcon(pnl_adm_parejas.getIcono_ojo_oculto());
 		pnl_adm_parejas.getBoton_agregar().setIcon(pnl_adm_parejas.getIcono_boton_agregar());
 		pnl_adm_parejas.getBoton_info().setIcon(pnl_adm_parejas.getIcono_boton_info());
+		pnl_asignar_horarios.getBoton_agregar().setIcon(pnl_asignar_horarios.getIcon_boton());
 		
 		add(pestañas);
 		

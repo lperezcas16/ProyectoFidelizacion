@@ -29,7 +29,7 @@ public class PanelAdmParejas extends JPanel {
 		this.nombre = nombre;
 		setLayout(null);
 		inicialzarComponentes();
-		setVisible(true);
+		setVisible(false);
 
 	}
 
