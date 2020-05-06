@@ -1,10 +1,12 @@
 package co.edu.unbosque.model.persistence;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Usuario;
-//Hola
+
 public class UsuarioDAO {
+	
 	private ArchivoUsuario archivo_Usuario;
 
 	public UsuarioDAO(ArchivoUsuario archivo_Usuario) {
@@ -18,13 +20,20 @@ public class UsuarioDAO {
 	 * @param Usuario
 	 * @param Listado
 	 *            de usuarios
+	 * @return 
 	 */
-	public void eliminarUsuario(String usuario, ArrayList<Usuario> usuarios) {
-		for (int i = 0; i < usuarios.size(); i++) {
-			if (usuarios.get(i).getUsuario().equals(usuario)) {
-				usuarios.remove(i);
-				archivo_Usuario.escribirEnArchivo(usuarios);
-			}
+	public boolean eliminarUsuario(String usuario, ArrayList<Usuario> lista_Usuarios) {
+		
+		try {
+			Usuario e = buscarUsuario(usuario, lista_Usuarios);
+			lista_Usuarios.remove(e);
+			archivo_Usuario.getArchivo_Usuarios().delete();
+			archivo_Usuario.getArchivo_Usuarios().createNewFile();
+			archivo_Usuario.escribirEnArchivo(lista_Usuarios);
+			return true;
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return false;
 		}
 	}
 
@@ -49,20 +58,37 @@ public class UsuarioDAO {
 	 * @param Contraseña
 	 * @param Lista
 	 *            de usuarios
+	 * @return 
 	 */
-	public void agregarUsuario(String numerocedula, String nombre,
+	public boolean agregarUsuario(String numerocedula, String nombre,
 			String genero, String correo, String numeroTarjeta,
 			long cupoTarjeta, ArrayList<String> parejas, String usuario,
-			String contraseña, ArrayList<Usuario> usuarios) {
+			String contraseña, ArrayList<Usuario> lista_usuarios) {
 		Usuario nuevo = new Usuario(numerocedula, nombre, genero, correo,
 				numeroTarjeta, cupoTarjeta, parejas, usuario, contraseña);
-
-		usuarios.add(nuevo);
-		archivo_Usuario.escribirEnArchivo(usuarios);
+		if (buscarUsuario(usuario, lista_usuarios) == null) {
+			lista_usuarios.add(nuevo);
+			archivo_Usuario.escribirEnArchivo(lista_usuarios);
+			return true;
+		} else {
+			return false;
+		}
+		
 
 	}
 
-	public void buscarUsuario(String usuario, ArrayList<Usuario> usuarios) {
+	public Usuario  buscarUsuario(String usuario, ArrayList<Usuario> usuarios) {
+		Usuario encontrado = null;
+
+		if (usuarios.isEmpty()) {
+			for (int i = 0; i < usuarios.size(); i++) {
+				if (usuarios.get(i).getUsuario().equals(usuario)) {
+					encontrado = usuarios.get(i);
+				}
+			}
+		}
+
+		return encontrado;
 
 	}
 
