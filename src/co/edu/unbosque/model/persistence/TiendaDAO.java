@@ -3,7 +3,7 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Usuario;
-
+//Hola
 public class TiendaDAO {
 	private ArchivoTienda archivo_Tienda;
 

@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Usuario;
-
+//Hola
 public class ArchivoUsuario {
 	private ObjectInputStream entrada;
 	private ObjectOutputStream salida;
