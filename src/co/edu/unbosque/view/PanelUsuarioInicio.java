@@ -37,8 +37,9 @@ public class PanelUsuarioInicio extends JPanel {
 		pestañas.addTab("Administrar Cuenta", pnl_adm_parejas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
 		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
-		
-		pestañas.setIconAt(0, pnl_adm_parejas.getIcono_ojo_oculto());
+		pnl_adm_parejas.getBoton_ojo_oculto().setIcon(pnl_adm_parejas.getIcono_ojo_oculto());
+		pnl_adm_parejas.getBoton_agregar().setIcon(pnl_adm_parejas.getIcono_boton_agregar());
+		pnl_adm_parejas.getBoton_info().setIcon(pnl_adm_parejas.getIcono_boton_info());
 		
 		add(pestañas);
 		

@@ -17,10 +17,10 @@ public class PanelAdmParejas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo;
+	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info;
 	private JButton boton_agregar, boton_info;
 	private JLabel label_tarjeta, label_cupo;
-	private Icon icono_ojo_oculto, icono_ojo;
+	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info;
 	private JButton boton_ojo_oculto, boton_ojo;
 
 	public PanelAdmParejas(String nombre) {
@@ -61,15 +61,25 @@ public class PanelAdmParejas extends JPanel {
 
 		boton_ojo_oculto = new JButton();
 		boton_ojo_oculto.setBounds(370, 165, 40, 40);
+		boton_ojo_oculto.setBorderPainted(false);
 		add(boton_ojo_oculto);
 
 		imagen_ojo_oculto = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/ojo oculto.png"));
-		icono_ojo_oculto = new ImageIcon(imagen_ojo_oculto.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-		boton_ojo_oculto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		boton_ojo_oculto.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
-		boton_ojo_oculto.setContentAreaFilled(false);
-		boton_ojo_oculto.setBorderPainted(false);
-		boton_ojo_oculto.setIcon(icono_ojo_oculto);
+		icono_ojo_oculto = new ImageIcon(imagen_ojo_oculto.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+
+		boton_agregar = new JButton();
+		boton_agregar.setBounds(60, 440, 300, 30);
+		add(boton_agregar);
+
+		boton_info = new JButton();
+		boton_info.setBounds(420, 440, 300, 30);
+		add(boton_info);
+		
+		imagen_boton_agregar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
+		icono_boton_agregar = new ImageIcon(imagen_boton_agregar.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+		
+		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
+		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
 	}
 
@@ -171,6 +181,38 @@ public class PanelAdmParejas extends JPanel {
 
 	public void setBoton_ojo(JButton boton_ojo) {
 		this.boton_ojo = boton_ojo;
+	}
+
+	public ImageIcon getImagen_boton_agregar() {
+		return imagen_boton_agregar;
+	}
+
+	public void setImagen_boton_agregar(ImageIcon imagen_boton_agregar) {
+		this.imagen_boton_agregar = imagen_boton_agregar;
+	}
+
+	public ImageIcon getImagen_boton_info() {
+		return imagen_boton_info;
+	}
+
+	public void setImagen_boton_info(ImageIcon imagen_boton_info) {
+		this.imagen_boton_info = imagen_boton_info;
+	}
+
+	public Icon getIcono_boton_agregar() {
+		return icono_boton_agregar;
+	}
+
+	public void setIcono_boton_agregar(Icon icono_boton_agregar) {
+		this.icono_boton_agregar = icono_boton_agregar;
+	}
+
+	public Icon getIcono_boton_info() {
+		return icono_boton_info;
+	}
+
+	public void setIcono_boton_info(Icon icono_boton_info) {
+		this.icono_boton_info = icono_boton_info;
 	}
 
 }
