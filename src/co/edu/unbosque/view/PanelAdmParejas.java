@@ -78,7 +78,7 @@ public class PanelAdmParejas extends JPanel {
 		imagen_boton_agregar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
 		icono_boton_agregar = new ImageIcon(imagen_boton_agregar.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 		
-		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
+		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_ver_info.png"));
 		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
 	}
