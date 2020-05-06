@@ -15,8 +15,9 @@ public class UsuarioDAO {
 	 * Método para eliminar a un usuario del array de usuarios, a partir del
 	 * usuario,
 	 * 
-	 * @param usuario
-	 * @param usuarios
+	 * @param Usuario
+	 * @param Listado
+	 *            de usuarios
 	 */
 	public void eliminarUsuario(String usuario, ArrayList<Usuario> usuarios) {
 		for (int i = 0; i < usuarios.size(); i++) {
@@ -28,18 +29,26 @@ public class UsuarioDAO {
 	}
 
 	/**
-	 * Método para agregar usuarios e el array de usuarios
+	 * Método para agregar usuarios e el array de usuarios.
 	 * 
-	 * @param numerocedula
-	 * @param nombre
-	 * @param genero
-	 * @param correo
-	 * @param numeroTarjeta
-	 * @param cupoTarjeta
-	 * @param parejas
-	 * @param usuario
-	 * @param contraseña
-	 * @param usuarios
+	 * @param Número
+	 *            de cedula unico en el sistema
+	 * @param Nombre
+	 *            completo
+	 * @param Genero
+	 * @param Correo
+	 *            electronico
+	 * @param Numero
+	 *            de tarjeta
+	 * @param Cupo
+	 *            en tarjeta
+	 * @param Listado
+	 *            de parejas asociadas
+	 * @param Usuario
+	 *            unico en el sistema
+	 * @param Contraseña
+	 * @param Lista
+	 *            de usuarios
 	 */
 	public void agregarUsuario(String numerocedula, String nombre,
 			String genero, String correo, String numeroTarjeta,
