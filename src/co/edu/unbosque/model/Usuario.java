@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Usuario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String numeroCedula;
 	private String nombre;
 	private String genero;

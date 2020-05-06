@@ -7,11 +7,12 @@ import javax.swing.JFrame;
 public class Ventana extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
-	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
+	private PanelUsuarioInicio panel_us_inicio;
 
 	public Ventana() {
+		
 		setLayout(null);
 		setVisible(true);
 		setSize(800, 600);
@@ -23,10 +24,9 @@ public class Ventana extends JFrame {
 		setDefaultLookAndFeelDecorated(true);
 		
 		add(panel1);
+		panel_us_inicio = new PanelUsuarioInicio();
 		add(panel_us_inicio);
-		
-		
-		
+
 	}
 
 	public Panel1 getPanel1() {

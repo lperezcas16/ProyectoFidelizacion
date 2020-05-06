@@ -21,26 +21,30 @@ public class PanelUsuarioInicio extends JPanel {
 	public PanelUsuarioInicio() {
 
 		setLayout(new BorderLayout());
+		setBounds(0, 0, 795, 572);
 
 		pestañas = new JTabbedPane();
 
 		Color colorNaranja = new Color(255, 145, 77);
 
-		pnl_adm_parejas = new PanelAdmParejas();
+		pnl_adm_parejas = new PanelAdmParejas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
 		pnl_adm_parejas.setBounds(0, 0, 790, 590);
 		pnl_asignar_horarios = new PanelAsignarHorario();
 		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
 		pnl_ver_horarios = new PanelVerHorarios();
 		pnl_ver_horarios.setBounds(0, 0, 790, 590);
 
-		pestañas.addTab("Administrar Parejas", pnl_adm_parejas);
+		pestañas.addTab("Administrar Cuenta", pnl_adm_parejas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
 		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
+		
+		pestañas.setIconAt(0, pnl_adm_parejas.getIcono_ojo_oculto());
+		
 		add(pestañas);
 		
 		pestañas.setBackground(colorNaranja);
 
-		setVisible(false);
+		setVisible(true);
 
 	}
 

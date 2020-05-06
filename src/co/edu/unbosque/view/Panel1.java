@@ -20,7 +20,7 @@ public class Panel1 extends JPanel {
 	public Panel1(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
-		setVisible(true);
+		setVisible(false);
 		inicializarComponentes();
 		setBounds(0, 0, 790, 590);
 
@@ -70,11 +70,14 @@ public class Panel1 extends JPanel {
 		c1 = new JRadioButton("Mujer");
 		c1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		c1.setBackground(colorA);
+
 		c1.setForeground(Color.white);
-//		c2.setBackground(colorA);
-//		c2.setForeground(Color.white);
+
 		c2 = new JRadioButton("Hombre");
+		c2.setBackground(colorA);
+		c2.setForeground(Color.white);
 		c2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+
 		c1.setBounds(36, 350, 100, 20);
 		c2.setBounds(220, 350, 100, 20);
 		grupo.add(c1);
