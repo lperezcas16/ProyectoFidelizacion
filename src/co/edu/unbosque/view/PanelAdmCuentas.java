@@ -15,15 +15,15 @@ import javax.swing.JPanel;
 public class PanelAdmCuentas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
-	//holajkfajdlfkjalkdsfje
+
+	// holajkfajdlfkjalkdsfje
 
 	private String nombre;
 	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info;
-	private JButton boton_agregar, boton_info;
+	private JButton boton_agregar_pareja, boton_info_pareja;
 	private JLabel label_tarjeta, label_cupo;
 	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info;
-	private JButton boton_ojo_oculto, boton_ojo;
+	private JButton boton_ojo_oculto;
 
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
@@ -69,17 +69,22 @@ public class PanelAdmCuentas extends JPanel {
 		imagen_ojo_oculto = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/ojo oculto.png"));
 		icono_ojo_oculto = new ImageIcon(imagen_ojo_oculto.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 
-		boton_agregar = new JButton();
-		boton_agregar.setBounds(60, 440, 300, 30);
-		add(boton_agregar);
+		imagen_ojo = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/ojo.png"));
+		icono_ojo = new ImageIcon(imagen_ojo.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 
-		boton_info = new JButton();
-		boton_info.setBounds(420, 440, 300, 30);
-		add(boton_info);
-		
-		imagen_boton_agregar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
-		icono_boton_agregar = new ImageIcon(imagen_boton_agregar.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
-		
+		boton_agregar_pareja = new JButton();
+		boton_agregar_pareja.setBounds(60, 440, 300, 30);
+		add(boton_agregar_pareja);
+
+		boton_info_pareja = new JButton();
+		boton_info_pareja.setBounds(420, 440, 300, 30);
+		add(boton_info_pareja);
+
+		imagen_boton_agregar = new ImageIcon(
+				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
+		icono_boton_agregar = new ImageIcon(
+				imagen_boton_agregar.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+
 		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_ver_info.png"));
 		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
@@ -101,20 +106,20 @@ public class PanelAdmCuentas extends JPanel {
 		this.imagen = imagen;
 	}
 
-	public JButton getBoton_agregar() {
-		return boton_agregar;
+	public JButton getBoton_agregar_pareja() {
+		return boton_agregar_pareja;
 	}
 
-	public void setBoton_agregar(JButton boton_agregar) {
-		this.boton_agregar = boton_agregar;
+	public void setBoton_agregar_pareja(JButton boton_agregar_pareja) {
+		this.boton_agregar_pareja = boton_agregar_pareja;
 	}
 
-	public JButton getBoton_info() {
-		return boton_info;
+	public JButton getBoton_info_pareja() {
+		return boton_info_pareja;
 	}
 
-	public void setBoton_info(JButton boton_info) {
-		this.boton_info = boton_info;
+	public void setBoton_info_pareja(JButton boton_info_pareja) {
+		this.boton_info_pareja = boton_info_pareja;
 	}
 
 	public static long getSerialversionuid() {
@@ -175,14 +180,6 @@ public class PanelAdmCuentas extends JPanel {
 
 	public void setBoton_ojo_oculto(JButton boton_ojo_oculto) {
 		this.boton_ojo_oculto = boton_ojo_oculto;
-	}
-
-	public JButton getBoton_ojo() {
-		return boton_ojo;
-	}
-
-	public void setBoton_ojo(JButton boton_ojo) {
-		this.boton_ojo = boton_ojo;
 	}
 
 	public ImageIcon getImagen_boton_agregar() {

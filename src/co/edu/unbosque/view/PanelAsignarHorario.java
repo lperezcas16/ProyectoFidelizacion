@@ -10,20 +10,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 
 import com.toedter.calendar.JDateChooser;
 
 public class PanelAsignarHorario extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JComboBox<Object> combobox_tiendas, combobox_parejas;
+	private JComboBox<Object> combobox_parejas;
 	private JDateChooser calendario;
-	private JButton boton_agregar;
+	private JButton boton_agregar_horario, boton_seleccionar_tienda;
 	private String nombre;
-	private ImageIcon imagen, imagen_boton;
-	private Icon icon_boton;
+	private ImageIcon imagen, imagen_boton, imagen_boton_tienda;
+	private Icon icon_boton, icon_boton_tienda;
 	private Color color_azul = new Color(36, 67, 87);
 	private Color color_naranja = new Color(255, 145, 77);
+	private JSpinner spinner;
 
 	public PanelAsignarHorario(String nombre) {
 		this.nombre = nombre;
@@ -45,33 +48,42 @@ public class PanelAsignarHorario extends JPanel {
 
 	public void inicializarComponentes() {
 
-		combobox_tiendas = new JComboBox<Object>();
-		combobox_tiendas.setBounds(110, 190, 200, 30);
-		combobox_tiendas.setBackground(Color.white);
-		combobox_tiendas.setForeground(color_naranja);
-		add(combobox_tiendas);
-
 		combobox_parejas = new JComboBox<Object>();
-		combobox_parejas.setBounds(110, 285, 200, 30);
+		combobox_parejas.setBounds(100, 210, 200, 30);
 		combobox_parejas.setBackground(Color.white);
 		combobox_parejas.setForeground(color_naranja);
 		add(combobox_parejas);
 
-		boton_agregar = new JButton();
-		boton_agregar.setBounds(130, 380, 150, 30);
-		add(boton_agregar);
+		boton_agregar_horario = new JButton();
+		boton_agregar_horario.setBounds(490, 400, 175, 30);
+		add(boton_agregar_horario);
 
 		imagen_boton = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_horario.png"));
-		icon_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(180, 30, Image.SCALE_SMOOTH));
+		icon_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
 
-	}
+		boton_seleccionar_tienda = new JButton("Seleccionar Tienda");
+		boton_seleccionar_tienda.setBounds(490, 330, 175, 30);
+		add(boton_seleccionar_tienda);
 
-	public JComboBox<Object> getCombobox_tiendas() {
-		return combobox_tiendas;
-	}
+		imagen_boton_tienda = new ImageIcon(
+				getClass().getResource("/co/edu/unbosque/imagenes/boton_seleccionar_tienda.png"));
+		icon_boton_tienda = new ImageIcon(
+				imagen_boton_tienda.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
 
-	public void setCombobox_tiendas(JComboBox<Object> combobox_tiendas) {
-		this.combobox_tiendas = combobox_tiendas;
+		calendario = new JDateChooser("dd-MM-yyyy", "####-##-##", '_');
+		calendario.setBounds(100, 360, 200, 30);
+		calendario.setForeground(color_naranja);
+		calendario.setOpaque(true);
+		calendario.setBackground(Color.WHITE);
+		calendario.setDateFormatString("dd-MM-yyyy");
+		add(calendario);
+
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerDateModel());
+		spinner.setEditor(new JSpinner.DateEditor(spinner, "HH:mm"));
+		spinner.setBounds(480, 210, 200, 30);
+		add(spinner);
+
 	}
 
 	public JComboBox<Object> getCombobox_parejas() {
@@ -94,12 +106,12 @@ public class PanelAsignarHorario extends JPanel {
 		return serialVersionUID;
 	}
 
-	public JButton getBoton_agregar() {
-		return boton_agregar;
+	public JButton getBoton_agregar_horario() {
+		return boton_agregar_horario;
 	}
 
-	public void setBoton_agregar(JButton boton_agregar) {
-		this.boton_agregar = boton_agregar;
+	public void setBoton_agregar_horario(JButton boton_agregar) {
+		this.boton_agregar_horario = boton_agregar;
 	}
 
 	public String getNombre() {
@@ -148,6 +160,30 @@ public class PanelAsignarHorario extends JPanel {
 
 	public void setIcon_boton(Icon icon_boton) {
 		this.icon_boton = icon_boton;
+	}
+
+	public JButton getBoton_seleccionar_tienda() {
+		return boton_seleccionar_tienda;
+	}
+
+	public void setBoton_seleccionar_tienda(JButton boton_seleccionar_tienda) {
+		this.boton_seleccionar_tienda = boton_seleccionar_tienda;
+	}
+
+	public ImageIcon getImagen_boton_tienda() {
+		return imagen_boton_tienda;
+	}
+
+	public void setImagen_boton_tienda(ImageIcon imagen_boton_tienda) {
+		this.imagen_boton_tienda = imagen_boton_tienda;
+	}
+
+	public Icon getIcon_boton_tienda() {
+		return icon_boton_tienda;
+	}
+
+	public void setIcon_boton_tienda(Icon icon_boton_tienda) {
+		this.icon_boton_tienda = icon_boton_tienda;
 	}
 
 }

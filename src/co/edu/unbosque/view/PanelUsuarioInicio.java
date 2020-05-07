@@ -10,9 +10,9 @@ public class PanelUsuarioInicio extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	//hola 2
+	// hola 2
 	private JTabbedPane pestañas;
-	private PanelAdmCuentas pnl_adm_parejas;
+	private PanelAdmCuentas pnl_adm_cuentas;
 	private PanelAsignarHorario pnl_asignar_horarios;
 	private PanelVerHorarios pnl_ver_horarios;
 
@@ -28,23 +28,23 @@ public class PanelUsuarioInicio extends JPanel {
 
 		Color colorNaranja = new Color(255, 145, 77);
 
-		pnl_adm_parejas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
-		pnl_adm_parejas.setBounds(0, 0, 790, 590);
+		pnl_adm_cuentas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
+		pnl_adm_cuentas.setBounds(0, 0, 790, 590);
 		pnl_asignar_horarios = new PanelAsignarHorario("/co/edu/unbosque/imagenes/fondo_horario.png");
 		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
 		pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
 		pnl_ver_horarios.setBounds(0, 0, 790, 590);
 
-		pestañas.addTab("Administrar Cuenta", pnl_adm_parejas);
+		pestañas.addTab("Administrar Cuenta", pnl_adm_cuentas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
 		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
-		pnl_adm_parejas.getBoton_ojo_oculto().setIcon(pnl_adm_parejas.getIcono_ojo_oculto());
-		pnl_adm_parejas.getBoton_agregar().setIcon(pnl_adm_parejas.getIcono_boton_agregar());
-		pnl_adm_parejas.getBoton_info().setIcon(pnl_adm_parejas.getIcono_boton_info());
-		pnl_asignar_horarios.getBoton_agregar().setIcon(pnl_asignar_horarios.getIcon_boton());
-		
+		pnl_adm_cuentas.getBoton_ojo_oculto().setIcon(pnl_adm_cuentas.getIcono_ojo_oculto());
+		pnl_adm_cuentas.getBoton_agregar_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_agregar());
+		pnl_adm_cuentas.getBoton_info_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_info());
+		pnl_asignar_horarios.getBoton_agregar_horario().setIcon(pnl_asignar_horarios.getIcon_boton());
+
 		add(pestañas);
-		
+
 		pestañas.setBackground(colorNaranja);
 
 		setVisible(true);
@@ -55,12 +55,12 @@ public class PanelUsuarioInicio extends JPanel {
 		return pestañas;
 	}
 
-	public PanelAdmCuentas getPnl_adm_parejas() {
-		return pnl_adm_parejas;
+	public PanelAdmCuentas getPnl_adm_cuentas() {
+		return pnl_adm_cuentas;
 	}
 
-	public void setPnl_adm_parejas(PanelAdmCuentas pnl_adm_parejas) {
-		this.pnl_adm_parejas = pnl_adm_parejas;
+	public void setPnl_adm_cuentas(PanelAdmCuentas pnl_adm_cuentas) {
+		this.pnl_adm_cuentas = pnl_adm_cuentas;
 	}
 
 	public PanelAsignarHorario getPnl_asignar_horarios() {

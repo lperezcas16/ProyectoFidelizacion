@@ -24,17 +24,62 @@ public class Controller implements ActionListener {
 	private void actionListener(ActionListener controller) {
 		view.getPanel1().getBoton_entrar().addActionListener(controller);
 		view.getPanel1().getBoton_registrar().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().addActionListener(controller);
 
 	}
 
 	public void actionPerformed(ActionEvent event) {
 
+		// Panel 1
 		if (view.getPanel1().getBoton_entrar() == event.getSource()) {
 
 		}
 
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
 
+		}
+
+		// Panel Administrar Cuenta
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+
+		}
+
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
+
+		}
+
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
+
+			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
+
+			} else if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo())) {
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto());
+			}
+
+		}
+
+		// Panel Asignar Horario
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event.getSource()) {
+
+		}
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event.getSource()) {
+
+		}
+
+		// Panel Agregar Pareja
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+//			view.getPanel_us_inicio().getPestañas().setTabComponentAt(0,
+//					view.getPanel_us_inicio().getPnl_agrega());
 		}
 	}
 

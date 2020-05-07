@@ -25,11 +25,11 @@ public class Ventana extends JFrame {
 		
 //		add(panel1);
 		
-//		panel_us_inicio = new PanelUsuarioInicio();
-//		add(panel_us_inicio);
+		panel_us_inicio = new PanelUsuarioInicio();
+		add(panel_us_inicio);
 		
-		panel_admin = new PanelAdminInicio();
-		add(panel_admin);
+//		panel_admin = new PanelAdminInicio();
+//		add(panel_admin);
 //	
 
 	}
