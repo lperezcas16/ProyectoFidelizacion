@@ -36,7 +36,7 @@ public class PanelAgregarPareja extends JPanel {
 	public void inicializarComponentes() {
 
 		campo_texto_nombre = new JTextField();
-		campo_texto_nombre.setBounds(100, 360, 200, 30);
+		campo_texto_nombre.setBounds(130, 300, 200, 30);
 		add(campo_texto_nombre);
 	}
 
