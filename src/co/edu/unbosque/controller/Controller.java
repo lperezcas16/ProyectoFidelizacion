@@ -193,15 +193,17 @@ public class Controller implements ActionListener {
 		String tipoUsuario = "Usuario";
 		ArrayList<String> parejas = new ArrayList<String>();
 		try {
-			nombres(nombre);
-			comprobarContraseña(contraseña);
+			
 			if (!nombre.isEmpty() && !correo.isEmpty() && !usuario.isEmpty()
 					&& !contraseña.isEmpty() && !genero.isEmpty()) {
+				nombres(nombre);
+				comprobarContraseña(contraseña);
 				if (comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
 
 					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario,
 							contraseña, numeroTarjeta, cupoTarjeta, parejas,
 							tipoUsuario, lista_usuarios);
+					view.getPanel1().limpiarCampos();
 				} else {
 					JOptionPane.showMessageDialog(null,
 							"Los datos ingresados ya pertenecen a un usuario");
