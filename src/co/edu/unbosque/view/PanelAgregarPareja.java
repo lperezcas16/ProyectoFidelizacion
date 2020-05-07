@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class PanelAgregarPareja extends JPanel {
 
@@ -12,6 +14,8 @@ public class PanelAgregarPareja extends JPanel {
 
 	private String nombre;
 	private ImageIcon imagen;
+	private JTextField campo_texto_nombre, campo_texto_cupo;
+	private JButton boton_agregar_nueva_pareja;
 
 	public PanelAgregarPareja(String nombre) {
 		this.nombre = nombre;
@@ -31,6 +35,9 @@ public class PanelAgregarPareja extends JPanel {
 
 	public void inicializarComponentes() {
 
+		campo_texto_nombre = new JTextField();
+		campo_texto_nombre.setBounds(100, 360, 200, 30);
+		add(campo_texto_nombre);
 	}
 
 	public String getNombre() {
@@ -51,6 +58,30 @@ public class PanelAgregarPareja extends JPanel {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public JTextField getCampo_texto_nombre() {
+		return campo_texto_nombre;
+	}
+
+	public void setCampo_texto_nombre(JTextField campo_texto_nombre) {
+		this.campo_texto_nombre = campo_texto_nombre;
+	}
+
+	public JTextField getCampo_texto_cupo() {
+		return campo_texto_cupo;
+	}
+
+	public void setCampo_texto_cupo(JTextField campo_texto_cupo) {
+		this.campo_texto_cupo = campo_texto_cupo;
+	}
+
+	public JButton getBoton_agregar_nueva_pareja() {
+		return boton_agregar_nueva_pareja;
+	}
+
+	public void setBoton_agregar_nueva_pareja(JButton boton_agregar_nueva_pareja) {
+		this.boton_agregar_nueva_pareja = boton_agregar_nueva_pareja;
 	}
 
 }

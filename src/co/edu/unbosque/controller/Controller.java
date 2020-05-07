@@ -78,8 +78,14 @@ public class Controller implements ActionListener {
 
 		// Panel Agregar Pareja
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-//			view.getPanel_us_inicio().getPestañas().setTabComponentAt(0,
-//					view.getPanel_us_inicio().getPnl_agrega());
+
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 		}
 	}
 
@@ -102,28 +108,6 @@ public class Controller implements ActionListener {
 			throw new NumberFormatException("El formato del nombre o apellido es incorrecto");
 		} else {
 			return n;
-		}
-	}
-
-	/**
-	 * Este metodo corresponde a la especificacion de la excepcion creada, junto con
-	 * las restricciones y el mensaje que se lanza si se llega a efectuar la
-	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
-	 * CedulaExcepcion en el paquete co.edu.unbosque.model<br>
-	 * 
-	 * @param c Este parametro representa al numero de la cedula ingresado por el
-	 *          usuario que debe de evaluarse para ver si tiene la excepcion. n !=
-	 *          null, n != " ".
-	 * @return Si no se lanza la excepcion se devolveria la cedula ingresado
-	 * @throws CedulaExcepcion Esta excepcion corresponde a las limitaciones
-	 *                         impuestas a la cedula
-	 */
-	public String comprobarCedula(String c) throws CedulaExcepcion {
-
-		if (c.matches(numeros) && (c.length() >= 5 && c.length() <= 10)) {
-			return c;
-		} else {
-			throw new CedulaExcepcion("El formato de la cédula es incorrecto");
 		}
 	}
 
