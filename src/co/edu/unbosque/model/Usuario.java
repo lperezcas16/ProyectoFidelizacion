@@ -6,45 +6,39 @@ import java.util.ArrayList;
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private String numeroCedula;
+
 	private String nombre;
 	private String genero;
 	private String correo;
-	private String numeroTarjeta;
-	private long cupoTargeta;
-	private ArrayList<String> parejas;
 	private String usuario;
 	private String contraseña;
-	private String tipo;
+	private String numeroTarjeta;
+	private long cupoTarjeta;
+	private ArrayList<String> parejas;
+	private String tipoUsuario;
 
-	public Usuario(String numerocedula, String nombre, String genero, String correo, String numeroTarjeta,
-			long cupoTarjeta, ArrayList<String> parejas, String usuario, String contraseña) {
-		this.numeroCedula = numerocedula;
+	public Usuario(String nombre, String genero, String correo, String usuario,
+			String contraseña, String numeroTarjeta, long cupoTarjeta,
+			ArrayList<String> parejas, String tipoUsuario) {
+		super();
 		this.nombre = nombre;
 		this.genero = genero;
 		this.correo = correo;
-		this.numeroTarjeta = numeroTarjeta;
-		this.cupoTargeta = cupoTarjeta;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
-		parejas = new ArrayList<String>();
+		this.numeroTarjeta = numeroTarjeta;
+		this.cupoTarjeta = cupoTarjeta;
+		this.parejas = new ArrayList<String>();
 		this.parejas = parejas;
+		this.tipoUsuario = tipoUsuario;
 	}
 
-	public Usuario(String nombre, String correo, String usuario, String contraseña) {
+	public Usuario(String nombre, String correo, String usuario,
+			String contraseña) {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
-	}
-
-	public String getNumeroCedula() {
-		return numeroCedula;
-	}
-
-	public void setNumeroCedula(String numeroCedula) {
-		this.numeroCedula = numeroCedula;
 	}
 
 	public String getNombre() {
@@ -71,30 +65,6 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 	}
 
-	public String getNumeroTarjeta() {
-		return numeroTarjeta;
-	}
-
-	public void setNumeroTarjeta(String numeroTarjeta) {
-		this.numeroTarjeta = numeroTarjeta;
-	}
-
-	public long getCupoTargeta() {
-		return cupoTargeta;
-	}
-
-	public void setCupoTargeta(long cupoTargeta) {
-		this.cupoTargeta = cupoTargeta;
-	}
-
-	public ArrayList<String> getParejas() {
-		return parejas;
-	}
-
-	public void setParejas(ArrayList<String> parejas) {
-		this.parejas = parejas;
-	}
-
 	public String getUsuario() {
 		return usuario;
 	}
@@ -111,12 +81,44 @@ public class Usuario implements Serializable {
 		this.contraseña = contraseña;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
 	}
 
+	public long getCupoTarjeta() {
+		return cupoTarjeta;
+	}
+
+	public void setCupoTarjeta(long cupoTarjeta) {
+		this.cupoTarjeta = cupoTarjeta;
+	}
+
+	public ArrayList<String> getParejas() {
+		return parejas;
+	}
+
+	public void setParejas(ArrayList<String> parejas) {
+		this.parejas = parejas;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	@Override
+	public String toString() {
+		return " Nombre = " + nombre + " Genero = " + genero + " Correo = "
+				+ correo + " Usuario = " + usuario + " Contraseña = "
+				+ contraseña + " NumeroTarjeta = " + numeroTarjeta
+				+ " CupoTarjeta = " + cupoTarjeta + " Parejas = " + parejas
+				+ " TipoUsuario = " + tipoUsuario + "\n";
+	}
 }
