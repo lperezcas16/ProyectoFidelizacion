@@ -2,23 +2,32 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import co.edu.unbosque.model.CedulaExcepcion;
+import javax.swing.JOptionPane;
+
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.NombresExcepcion;
+import co.edu.unbosque.model.Usuario;
+import co.edu.unbosque.model.persistence.ArchivoUsuario;
+import co.edu.unbosque.model.persistence.UsuarioDAO;
 import co.edu.unbosque.view.Ventana;
 
 public class Controller implements ActionListener {
 
 	private Ventana view;
-	String numeros = "[0-9]+";
+	private String numeros = "[0-9]+";
+	private ArchivoUsuario archivo_Usuario;
+	private UsuarioDAO usuarioDAO;
 
 	public Controller() {
 		super();
-
+		archivo_Usuario = new ArchivoUsuario();
+		usuarioDAO = new UsuarioDAO(archivo_Usuario);
 		view = new Ventana();
 		actionListener(this);
 	}
+
 	// METODO QUE SE ENCARGA DE AGREGAR LISTENERS A LA VISTA
 
 	private void actionListener(ActionListener controller) {
@@ -40,7 +49,7 @@ public class Controller implements ActionListener {
 		}
 
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
-
+			inscribirUsuario();
 		}
 
 		// Panel Administrar Cuenta
@@ -78,14 +87,13 @@ public class Controller implements ActionListener {
 
 		// Panel Agregar Pareja
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 		}
 	}
 
@@ -105,7 +113,7 @@ public class Controller implements ActionListener {
 	public String nombres(String n) throws NombresExcepcion {
 
 		if (n.matches(numeros)) {
-			throw new NumberFormatException("El formato del nombre o apellido es incorrecto");
+			throw new NumberFormatException("El formato del nombre  es incorrecto");
 		} else {
 			return n;
 		}
@@ -131,6 +139,82 @@ public class Controller implements ActionListener {
 		} else {
 			throw new ContraseñaExcepcion("La contraseña debe de tener por lo menos 8 caracteres");
 		}
+	}
+
+	public void inscribirUsuario() {
+		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
+		lista_usuarios = archivo_Usuario.leerArchivo();
+		String nombre = view.getPanel1().getCampo_nombre().getText();
+		nombre = nombre.replace(" ", "");
+		String correo = view.getPanel1().getCampo_correo().getText();
+		correo = correo.replace(" ", "");
+		String usuario = view.getPanel1().getCampo_usuario().getText();
+		usuario = usuario.replace(" ", "");
+		String contraseña = view.getPanel1().getCampo_contrasena().getText();
+		contraseña = contraseña.replace(" ", "");
+		String genero = "";
+		if (view.getPanel1().getC1().isSelected()) {
+			genero = "Mujer";
+		} else if (view.getPanel1().getC2().isSelected()) {
+			genero = "Hombre";
+		}
+		String numeroTarjeta = generarNumeroCuenta(lista_usuarios);
+		long cupoTarjeta = 0;
+		String tipoUsuario = "Usuario";
+		ArrayList<String> parejas = new ArrayList<String>();
+		try {
+
+			if (!nombre.isEmpty() && !correo.isEmpty() && !usuario.isEmpty() && !contraseña.isEmpty()
+					&& !genero.isEmpty()) {
+				nombres(nombre);
+				comprobarContraseña(contraseña);
+				if (comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
+
+					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta,
+							parejas, tipoUsuario, lista_usuarios);
+					view.getPanel1().limpiarCampos();
+				} else {
+					JOptionPane.showMessageDialog(null, "Los datos ingresados ya pertenecen a un usuario");
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Digite todos los datos solicitados");
+			}
+		} catch (ContraseñaExcepcion e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		} catch (NombresExcepcion e2) {
+			JOptionPane.showMessageDialog(null, e2.getMessage());
+		}
+
+	}
+
+	public String generarNumeroCuenta(ArrayList<Usuario> lista_usuarios) {
+
+		int M = 10000000;
+		int N = 99999999;
+		int valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
+		int valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
+		String numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getNumeroTarjeta().equals(numeroTargeta)) {
+				valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
+				valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
+				numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
+			}
+		}
+		return numeroTargeta;
+	}
+
+	public boolean comprobarExistenciaUsuario(String correo, String usuario, ArrayList<Usuario> lista_usuarios) {
+		boolean comprobar = true;
+
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getCorreo().equals(correo)
+					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
+				comprobar = false;
+			}
+		}
+
+		return comprobar;
 	}
 
 }

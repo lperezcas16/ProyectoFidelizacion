@@ -93,6 +93,8 @@ public class PanelAdmCuentas extends JPanel {
 		pnl_agregar_pareja = new PanelAgregarPareja("/co/edu/unbosque/imagenes/fondo_agregar_pareja.png");
 		pnl_agregar_pareja.setBounds(0, 0, 795, 572);
 		add(pnl_agregar_pareja);
+		
+		pnl_agregar_pareja.getBoton_agregar_nueva_pareja().setIcon(pnl_agregar_pareja.getIcono_boton());
 
 	}
 
