@@ -20,7 +20,7 @@ public class Panel1 extends JPanel {
 	public Panel1(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
-		setVisible(false);
+		setVisible(true);
 		inicializarComponentes();
 		setBounds(0, 0, 790, 590);
 
@@ -39,11 +39,12 @@ public class Panel1 extends JPanel {
 
 		campo_usuario = new JTextField();
 		campo_usuario.setBounds(340, 35, 250, 25);
+		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(campo_usuario);
 
 		campo_contrasena = new JPasswordField();
 		campo_contrasena.setBounds(340, 100, 250, 25);
-		campo_contrasena.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 16));
+		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(campo_contrasena);
 
 		boton_entrar = new JButton();
@@ -57,13 +58,12 @@ public class Panel1 extends JPanel {
 		boton_entrar.setBorderPainted(false);
 		boton_entrar.setIcon(icono_entrar);
 
-		campo_apellido = new JTextField();
-		campo_apellido.setBounds(36, 200, 250, 25);
-		add(campo_apellido);
-
 		campo_nombre = new JTextField();
-		campo_nombre.setBounds(36, 270, 250, 25);
+		campo_nombre.setBounds(36, 220, 250, 25);
+		campo_nombre.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_nombre.setBorder(null);
 		add(campo_nombre);
+
 
 		Color colorA = new Color(36, 67, 87);
 		grupo = new ButtonGroup();
@@ -77,33 +77,36 @@ public class Panel1 extends JPanel {
 		c2.setBackground(colorA);
 		c2.setForeground(Color.white);
 		c2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-
-		c1.setBounds(36, 350, 100, 20);
-		c2.setBounds(220, 350, 100, 20);
+	
+		c1.setBounds(66, 320, 100, 20);
+		c2.setBounds(180, 320, 100, 20);
 		grupo.add(c1);
 		grupo.add(c2);
 		add(c1);
 		add(c2);
 
-		campo_numCedula = new JTextField();
-		campo_numCedula.setBounds(40, 450, 250, 25);
-		add(campo_numCedula);
-
 		campo_correo = new JTextField();
-		campo_correo.setBounds(450, 200, 250, 25);
+		campo_correo.setBounds(40, 430, 250, 25);
+		campo_correo.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_correo.setBorder(null);
 		add(campo_correo);
 
 		campo_usuario = new JTextField();
-		campo_usuario.setBounds(450, 280, 250, 25);
+		campo_usuario.setBounds(420, 220, 250, 25);
+		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_usuario.setBorder(null);
 		add(campo_usuario);
 
+		
+
 		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(450, 350, 250, 25);
-		campo_contrasena.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 16));
+		campo_contrasena.setBounds(420, 330, 250, 25);
+		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_contrasena.setBorder(null);
 		add(campo_contrasena);
 
 		boton_registrar = new JButton();
-		boton_registrar.setBounds(370, 480, 100, 50);
+		boton_registrar.setBounds(320, 490, 150, 50);
 		add(boton_registrar);
 		imagen_registar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_registrar.png"));
 		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
@@ -121,7 +124,7 @@ public class Panel1 extends JPanel {
 		campo_nombre.setText(null);
 		campo_numCedula.setText(null);
 		campo_usuario.setText(null);
-		grupo.setSelected(null, isOpaque());
+//		grupo.setSelected(null, isOpaque());
 	}
 
 	public JTextField getCampo_usuario() {

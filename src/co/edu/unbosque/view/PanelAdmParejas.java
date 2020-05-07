@@ -50,14 +50,14 @@ public class PanelAdmParejas extends JPanel {
 		label_cupo = new JLabel("$0");
 		label_cupo.setBackground(color_azul);
 		label_cupo.setForeground(color_naranja);
-		label_cupo.setFont(new Font("Bernard MT Condensed", Font.BOLD, 60));
+		label_cupo.setFont(new Font("Accidental Presidency", Font.BOLD, 60));
 		label_cupo.setBounds(150, 320, 500, 50);
 		add(label_cupo);
 
 		label_tarjeta = new JLabel("fkadjfkladfadf");
 		label_tarjeta.setBackground(color_azul);
 		label_tarjeta.setForeground(color_naranja);
-		label_tarjeta.setFont(new Font("Bernard MT Condensed", Font.BOLD, 30));
+		label_tarjeta.setFont(new Font("Accidental Presidency", Font.BOLD, 30));
 		label_tarjeta.setBounds(150, 170, 200, 30);
 		add(label_tarjeta);
 

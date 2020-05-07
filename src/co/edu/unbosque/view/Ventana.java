@@ -10,22 +10,27 @@ public class Ventana extends JFrame {
 
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
 	private PanelUsuarioInicio panel_us_inicio;
+	private PanelAdminInicio panel_admin;
 
 	public Ventana() {
 		
 		setLayout(null);
 		setVisible(true);
 		setSize(800, 600);
-		setLocationRelativeTo(null);// CENTRAR LA VENTANA EN LA PANTALLA
-		setResizable(false);// IMPIDE QUE EL USUARIO MODIFIQUE EL TAMAÑO DE LA
-							// VENTANA
+		setLocationRelativeTo(null);
+		setResizable(false);
 		getContentPane().setBackground(Color.white);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setDefaultLookAndFeelDecorated(true);
 		
-		add(panel1);
-		panel_us_inicio = new PanelUsuarioInicio();
-		add(panel_us_inicio);
+//		add(panel1);
+		
+//		panel_us_inicio = new PanelUsuarioInicio();
+//		add(panel_us_inicio);
+		
+		panel_admin = new PanelAdminInicio();
+		add(panel_admin);
+//	
 
 	}
 
