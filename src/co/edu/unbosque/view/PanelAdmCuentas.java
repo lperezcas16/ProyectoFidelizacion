@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelAdmParejas extends JPanel {
+public class PanelAdmCuentas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +25,7 @@ public class PanelAdmParejas extends JPanel {
 	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info;
 	private JButton boton_ojo_oculto, boton_ojo;
 
-	public PanelAdmParejas(String nombre) {
+	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
 		inicialzarComponentes();

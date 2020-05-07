@@ -12,7 +12,7 @@ public class PanelUsuarioInicio extends JPanel {
 
 	//hola 2
 	private JTabbedPane pestañas;
-	private PanelAdmParejas pnl_adm_parejas;
+	private PanelAdmCuentas pnl_adm_parejas;
 	private PanelAsignarHorario pnl_asignar_horarios;
 	private PanelVerHorarios pnl_ver_horarios;
 
@@ -28,7 +28,7 @@ public class PanelUsuarioInicio extends JPanel {
 
 		Color colorNaranja = new Color(255, 145, 77);
 
-		pnl_adm_parejas = new PanelAdmParejas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
+		pnl_adm_parejas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
 		pnl_adm_parejas.setBounds(0, 0, 790, 590);
 		pnl_asignar_horarios = new PanelAsignarHorario("/co/edu/unbosque/imagenes/fondo_horario.png");
 		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
@@ -55,11 +55,11 @@ public class PanelUsuarioInicio extends JPanel {
 		return pestañas;
 	}
 
-	public PanelAdmParejas getPnl_adm_parejas() {
+	public PanelAdmCuentas getPnl_adm_parejas() {
 		return pnl_adm_parejas;
 	}
 
-	public void setPnl_adm_parejas(PanelAdmParejas pnl_adm_parejas) {
+	public void setPnl_adm_parejas(PanelAdmCuentas pnl_adm_parejas) {
 		this.pnl_adm_parejas = pnl_adm_parejas;
 	}
 
