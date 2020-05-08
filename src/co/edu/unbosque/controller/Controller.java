@@ -3,9 +3,10 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
-
 
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.NombresExcepcion;
@@ -62,51 +63,65 @@ public class Controller implements ActionListener {
 		// ACCION REGISTRAR USUARIO
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
 
-			
-				String nombre, correo, usuario, contraseña, genero = "", numeroTarjeta, tipoUsuario;
-				long cupoTarjeta;
-				nombre = view.getPanel1().getCampo_nombre().getText();
-				correo = view.getPanel1().getCampo_correo().getText();
-				usuario = view.getPanel1().getCampo_usuario().getText();
-				numeroTarjeta = solusoft.generarNumeroCuenta(lista_usuarios);
-				cupoTarjeta = 0;
-				tipoUsuario = "Usuario";
-				contraseña  = new String(view.getPanel1().getCampo_contrasena().getPassword());
-				
-				
-				if (view.getPanel1().getC1().isSelected()==true) {
-					genero = "Mujer";
-				} else if (view.getPanel1().getC2().isSelected()==true) {
-					genero = "Hombre";
+			String nombre, correo, usuario, contraseña, genero = "", numeroTarjeta, tipoUsuario;
+			long cupoTarjeta;
+			String numeros = "[0-9]+";
+			boolean comprobacion = true;
+			nombre = view.getPanel1().getCampo_nombre().getText();
+			correo = view.getPanel1().getCampo_correo().getText();
+			usuario = view.getPanel1().getCampo_usuario().getText();
+			numeroTarjeta = solusoft.generarNumeroCuenta(lista_usuarios);
+			cupoTarjeta = 0;
+			tipoUsuario = "Usuario";
+			contraseña = new String(view.getPanel1().getCampo_contrasena2().getPassword());
+			Pattern pattern = Pattern.compile(
+					"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+			// Se valida el email
+			Matcher mather = pattern.matcher(correo);
+
+			if (view.getPanel1().getC1().isSelected() == true) {
+				genero = "Mujer";
+			}
+			if (view.getPanel1().getC2().isSelected() == true) {
+				genero = "Hombre";
+			}
+
+			if (nombre.isEmpty() || correo.isEmpty() || usuario.isEmpty() || contraseña.isEmpty() || genero.isEmpty()) {
+				view.mostrarMensajes("CAMPOS_FALSE");
+				comprobacion = false;
+			} else {
+				if (nombre.matches(numeros)) {
+					comprobacion = false;
+					view.mostrarMensajes("NOMBRE_FALSE");
+				} else if (contraseña.length() < 8) {
+					comprobacion = false;
+					view.mostrarMensajes("CONTRASEÑA_FALSE");
+				} else if (mather.find() == false) {
+					comprobacion = false;
+					view.mostrarMensajes("CORREO_FALSE");
 				}
 
-				if (nombre.isEmpty() || correo.isEmpty() || usuario.isEmpty() || contraseña.isEmpty()
-						|| genero.isEmpty()) {
-					view.mostrarMensajes("CAMPOS_FALSE");					
-					
+			}
+			if (comprobacion == true) {
+				if (solusoft.comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
+					Usuario nuevo = new Usuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta, parejas,
+							tipoUsuario);
+
+					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta,
+							parejas, tipoUsuario, lista_usuarios);
+					solusoft.enviarCorreo(nuevo);
+					view.mostrarMensajes("USUARIO_TRUE");
 				} else {
-					String numeros = "[0-9]+";
-					if (nombre.matches(numeros)) {
-						view.mostrarMensajes("NOMBRE_FALSE");
-					} else if (contraseña.length() >= 8) {
-						view.mostrarMensajes("CONTRASEÑA_FALSE");
-					}
-	
-					if (solusoft.comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
-
-						usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta,
-								cupoTarjeta, parejas, tipoUsuario, lista_usuarios);
-
-					} else {
-						view.mostrarMensajes("USUARIO_FALSE");
-					}
+					view.mostrarMensajes("USUARIO_FALSE");
 				}
-				
-			
+			}
+
 		}
 
 		// ACCION AGREGAR PAREJA
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource())
+
+		{
 
 		}
 
@@ -145,8 +160,5 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
-	
 
-	
 }

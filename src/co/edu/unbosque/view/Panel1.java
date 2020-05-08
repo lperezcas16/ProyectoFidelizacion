@@ -9,7 +9,7 @@ public class Panel1 extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField campo_usuario,  campo_nombre, campo_numCedula, campo_correo;
-	private JPasswordField campo_contrasena;
+	private JPasswordField campo_contrasena1,campo_contrasena2;
 	private JButton boton_entrar, boton_registrar;
 	private ButtonGroup grupo;
 	private JRadioButton c1, c2;
@@ -42,10 +42,10 @@ public class Panel1 extends JPanel {
 		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(campo_usuario);
 
-		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(340, 100, 250, 25);
-		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(campo_contrasena);
+		campo_contrasena1 = new JPasswordField();
+		campo_contrasena1.setBounds(340, 100, 250, 25);
+		campo_contrasena1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(campo_contrasena1);
 
 		boton_entrar = new JButton();
 		boton_entrar.setBounds(620, 55, 100, 50);
@@ -99,11 +99,11 @@ public class Panel1 extends JPanel {
 
 		
 
-		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(420, 330, 250, 25);
-		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		campo_contrasena.setBorder(null);
-		add(campo_contrasena);
+		campo_contrasena2 = new JPasswordField();
+		campo_contrasena2.setBounds(420, 330, 250, 25);
+		campo_contrasena2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_contrasena2.setBorder(null);
+		add(campo_contrasena2);
 
 		boton_registrar = new JButton();
 		boton_registrar.setBounds(320, 490, 150, 50);
@@ -122,7 +122,7 @@ public class Panel1 extends JPanel {
 
 	public void limpiarCampos() {
 		
-		campo_contrasena.setText("");
+		campo_contrasena2.setText("");
 		campo_correo.setText("");
 		campo_nombre.setText("");
 		campo_numCedula.setText("");
@@ -164,12 +164,19 @@ public class Panel1 extends JPanel {
 		this.campo_correo = campo_correo;
 	}
 
-	public JPasswordField getCampo_contrasena() {
-		return campo_contrasena;
+	public JPasswordField getCampo_contrasena1() {
+		return campo_contrasena1;
 	}
 
-	public void setCampo_contrasena(JPasswordField campo_contrasena) {
-		this.campo_contrasena = campo_contrasena;
+	public void setCampo_contrasena1(JPasswordField campo_contrasena1) {
+		this.campo_contrasena1 = campo_contrasena1;
+	}
+	public JPasswordField getCampo_contrasena2() {
+		return campo_contrasena2;
+	}
+
+	public void setCampo_contrasena2(JPasswordField campo_contrasena2) {
+		this.campo_contrasena2 = campo_contrasena2;
 	}
 
 	public JButton getBoton_registrar() {
