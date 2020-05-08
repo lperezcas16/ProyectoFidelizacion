@@ -26,7 +26,7 @@ public class ArchivoUsuario {
 	public ArchivoUsuario() {
 		archivo_Usuarios = new File(".\\data\\Base de Datos Usuarios.dat");
 		if (archivo_Usuarios.exists()) {
-			System.out.println("El archivo ya existe");
+			
 		} else {
 			try {
 				archivo_Usuarios.createNewFile();

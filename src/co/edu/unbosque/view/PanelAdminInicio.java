@@ -45,7 +45,7 @@ public class PanelAdminInicio extends JPanel{
 		
 		pestanas.setBackground(colorNaranja);
 		
-		setVisible(true);
+		setVisible(false);
 		
 		
 	}

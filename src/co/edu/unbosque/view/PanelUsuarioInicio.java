@@ -48,7 +48,7 @@ public class PanelUsuarioInicio extends JPanel {
 
 		pestañas.setBackground(colorNaranja);
 
-		setVisible(true);
+		setVisible(false);
 
 	}
 

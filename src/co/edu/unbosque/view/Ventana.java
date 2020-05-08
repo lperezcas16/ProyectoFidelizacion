@@ -3,6 +3,7 @@ package co.edu.unbosque.view;
 import java.awt.Color;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Ventana extends JFrame {
 
@@ -23,7 +24,7 @@ public class Ventana extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setDefaultLookAndFeelDecorated(true);
 		
-//		add(panel1);
+		add(panel1);
 		
 		panel_us_inicio = new PanelUsuarioInicio();
 		add(panel_us_inicio);
@@ -32,6 +33,25 @@ public class Ventana extends JFrame {
 //		add(panel_admin);
 //	
 
+	}
+	
+	public void  mostrarMensajes(String mensaje)
+	{
+		if(mensaje.equalsIgnoreCase("USUARIO_FALSE"))
+		{
+			JOptionPane.showMessageDialog(null, "EL USUARIO YA EXISTE EN EL SISTEMA");
+		}
+		else if(mensaje.equalsIgnoreCase("CAMPOS_FALSE"))
+		{
+			JOptionPane.showMessageDialog(null, "DEBE DIGITAR TODOS LOS CAMPOS");
+		}
+		else if(mensaje.equalsIgnoreCase("NOMBRE_FALSE"))
+		{
+			JOptionPane.showMessageDialog(null, "DEBE DIGITAR TODOS LOS CAMPOS");
+		}else if(mensaje.equalsIgnoreCase("CONTRASEÑA_FALSE"))
+		{
+			JOptionPane.showMessageDialog(null, "LA CONTRASEÑA DEBE TENER MAS DE 8 DIGITOS");
+		}
 	}
 
 	public Panel1 getPanel1() {

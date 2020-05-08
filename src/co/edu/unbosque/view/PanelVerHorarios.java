@@ -17,7 +17,7 @@ public class PanelVerHorarios extends JPanel {
 		this.nombre = nombre;
 		setLayout(null);
 		inicializarComponentes();
-		setVisible(true);
+		setVisible(false);
 	}
 
 	public void paint(Graphics g) {
