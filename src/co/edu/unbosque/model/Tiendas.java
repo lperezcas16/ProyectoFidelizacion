@@ -15,6 +15,7 @@ public class Tiendas {
 
 	public Tiendas(String nombre, String direccion, String horario_apertura, String horario_cierre,
 			ArrayList<Usuario> usuarios) {
+		
 		this.nombre = nombre;
 		this.direccion = direccion;
 		usuarios = new ArrayList<Usuario>();

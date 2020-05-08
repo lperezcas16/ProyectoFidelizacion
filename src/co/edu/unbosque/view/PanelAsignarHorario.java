@@ -35,7 +35,7 @@ public class PanelAsignarHorario extends JPanel {
 		setLayout(null);
 		inicializarComponentes();
 		setBackground(color_azul);
-		setVisible(true);
+		setVisible(false);
 
 	}
 
