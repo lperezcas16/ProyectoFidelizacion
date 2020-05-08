@@ -9,16 +9,18 @@ public class Tiendas {
 
 	private String nombre;
 	private String direccion;
-	private String horario;
+	private String horario_apertura;
+	private String horario_cierre;
 	private ArrayList<Usuario> usuarios;
 
-	public Tiendas(String nombre, String direccion, String horario,
+	public Tiendas(String nombre, String direccion, String horario_apertura, String horario_cierre,
 			ArrayList<Usuario> usuarios) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.horario = horario;
 		usuarios = new ArrayList<Usuario>();
 		this.usuarios = usuarios;
+		this.horario_apertura = horario_apertura;
+		this.horario_cierre = horario_cierre;
 
 	}
 
@@ -38,20 +40,28 @@ public class Tiendas {
 		this.direccion = direccion;
 	}
 
-	public String getHorario() {
-		return horario;
-	}
-
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
-
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public String getHorario_apertura() {
+		return horario_apertura;
+	}
+
+	public void setHorario_apertura(String horario_apertura) {
+		this.horario_apertura = horario_apertura;
+	}
+
+	public String getHorario_cierre() {
+		return horario_cierre;
+	}
+
+	public void setHorario_cierre(String horario_cierre) {
+		this.horario_cierre = horario_cierre;
 	}
 
 }

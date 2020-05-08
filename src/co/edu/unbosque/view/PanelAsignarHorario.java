@@ -28,6 +28,8 @@ public class PanelAsignarHorario extends JPanel {
 	private Color color_naranja = new Color(255, 145, 77);
 	private JSpinner spinner;
 
+	private PanelSeleccionarTienda pnl_seleccionar_tienda;
+
 	public PanelAsignarHorario(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
@@ -83,6 +85,13 @@ public class PanelAsignarHorario extends JPanel {
 		spinner.setEditor(new JSpinner.DateEditor(spinner, "HH:mm"));
 		spinner.setBounds(480, 210, 200, 30);
 		add(spinner);
+
+		pnl_seleccionar_tienda = new PanelSeleccionarTienda("/co/edu/unbosque/imagenes/fondo_seleccionar_tienda.png");
+		pnl_seleccionar_tienda.setBounds(0, 0, 795, 572);
+		add(pnl_seleccionar_tienda);
+
+		pnl_seleccionar_tienda.getBoton_agregar_nueva_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_nueva());
+		pnl_seleccionar_tienda.getBoton_agregar_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_tienda());
 
 	}
 
@@ -184,6 +193,22 @@ public class PanelAsignarHorario extends JPanel {
 
 	public void setIcon_boton_tienda(Icon icon_boton_tienda) {
 		this.icon_boton_tienda = icon_boton_tienda;
+	}
+
+	public JSpinner getSpinner() {
+		return spinner;
+	}
+
+	public void setSpinner(JSpinner spinner) {
+		this.spinner = spinner;
+	}
+
+	public PanelSeleccionarTienda getPnl_seleccionar_tienda() {
+		return pnl_seleccionar_tienda;
+	}
+
+	public void setPnl_seleccionar_tienda(PanelSeleccionarTienda pnl_seleccionar_tienda) {
+		this.pnl_seleccionar_tienda = pnl_seleccionar_tienda;
 	}
 
 }

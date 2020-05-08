@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import co.edu.unbosque.model.Tiendas;
 import co.edu.unbosque.model.Usuario;
 //Hola
 public class TiendaDAO {
@@ -9,6 +10,14 @@ public class TiendaDAO {
 
 	public TiendaDAO(ArchivoTienda archivo_Tienda) {
 		this.archivo_Tienda = archivo_Tienda;
+	}
+	
+	public String verTienda(ArrayList<Tiendas> tiendas) {
+		String texto = "";
+		for (int i = 0; i < tiendas.size(); i++) {
+			texto = tiendas.toString();
+		}
+		return texto;
 	}
 
 	public void buscarUsuario(String cedula, ArrayList<Usuario> clientes) {

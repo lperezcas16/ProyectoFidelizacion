@@ -2,14 +2,18 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.NombresExcepcion;
+import co.edu.unbosque.model.Tiendas;
 import co.edu.unbosque.model.Usuario;
+import co.edu.unbosque.model.persistence.ArchivoTienda;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
+import co.edu.unbosque.model.persistence.TiendaDAO;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
 import co.edu.unbosque.view.Ventana;
 
@@ -19,13 +23,26 @@ public class Controller implements ActionListener {
 	private String numeros = "[0-9]+";
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
+	private TiendaDAO tiendaDAO;
+	private ArchivoTienda archivo_tienda;
+
+	private ArrayList<Tiendas> lista_tiendas = new ArrayList<Tiendas>();
 
 	public Controller() {
 		super();
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
+
+		archivo_tienda = new ArchivoTienda();
+		tiendaDAO = new TiendaDAO(archivo_tienda);
+//		lista_tiendas = archivo_tienda.leerArchivo();
+
 		view = new Ventana();
 		actionListener(this);
+//		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().crearTabla(tiendaDAO.verTienda(tiendas));
+
+//		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().
+
 	}
 
 	// METODO QUE SE ENCARGA DE AGREGAR LISTENERS A LA VISTA
@@ -38,6 +55,10 @@ public class Controller implements ActionListener {
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_nueva_tienda()
+				.addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
+				.addActionListener(controller);
 
 	}
 
@@ -83,6 +104,33 @@ public class Controller implements ActionListener {
 
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event.getSource()) {
 
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
+
+			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
+			System.out.println(dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
+
+			String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
+			System.out.println(t);
+
+			// Filas de la Tabla
+			for (int i = 0; i < lista_tiendas.size(); i++) {
+
+//				String nombre = arreglo_tiendas.get(i).getNombre();
+//				String direccion = arreglo_tiendas.get(i).getDireccion();
+//				String hora_apertura = arreglo_tiendas.get(i).getHorario_apertura();
+//				String hora_cierre = arreglo_tiendas.get(i).getHorario_cierre();
+
+//				Object[] datos_filas = { nombre, direccion, hora_apertura, hora_cierre };
+//				view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
+//						.addRow(datos_filas);
+
+			}
+
 		}
 
 		// Panel Agregar Pareja
@@ -94,6 +142,29 @@ public class Controller implements ActionListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+		}
+
+		// Panel Seleccionar Tienda
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+				.getBoton_agregar_nueva_tienda() == event.getSource()) {
+
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+					.setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
+					.setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getBoton_agregar_nueva_tienda().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
+					.setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
+					.setVisible(false);
+
+		}
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+				.getBoton_agregar_tienda() == event.getSource()) {
+
 		}
 	}
 
