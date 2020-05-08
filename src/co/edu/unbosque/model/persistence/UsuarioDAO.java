@@ -120,7 +120,6 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
-	
 
 	/**
 	 * Metodo EliminarUsuario , elimina al usuario mediante el usuario registrado y

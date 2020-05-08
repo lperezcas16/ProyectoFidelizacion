@@ -16,8 +16,6 @@ public class PanelAdmCuentas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// holajkfajdlfkjalkdsfje
-
 	private String nombre;
 	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info;
 	private JButton boton_agregar_pareja, boton_info_pareja;
@@ -28,8 +26,8 @@ public class PanelAdmCuentas extends JPanel {
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
-		inicialzarComponentes();
-		setVisible(false);
+		inicializarComponentes();
+		setVisible(true);
 
 	}
 
@@ -42,7 +40,7 @@ public class PanelAdmCuentas extends JPanel {
 
 	}
 
-	public void inicialzarComponentes() {
+	public void inicializarComponentes() {
 
 		Color color_azul = new Color(36, 67, 87);
 		Color color_naranja = new Color(255, 145, 77);
@@ -88,14 +86,6 @@ public class PanelAdmCuentas extends JPanel {
 		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_ver_info.png"));
 		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public ImageIcon getImagen() {

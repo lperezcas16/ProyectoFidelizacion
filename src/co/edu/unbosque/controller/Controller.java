@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.ContraseñaExcepcion;
-import co.edu.unbosque.model.NombresExcepcion;
 import co.edu.unbosque.model.Solusoft;
 import co.edu.unbosque.model.Usuario;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;

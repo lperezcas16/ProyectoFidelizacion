@@ -10,8 +10,8 @@ public class Ventana extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
-	private PanelUsuarioInicio panel_us_inicio;
-	private PanelAdminInicio panel_admin;
+	private PanelUsuarioInicio panel_us_inicio=new PanelUsuarioInicio();
+	private PanelAdminInicio panel_admin = new PanelAdminInicio();
 
 	public Ventana() {
 
@@ -25,13 +25,8 @@ public class Ventana extends JFrame {
 		setDefaultLookAndFeelDecorated(true);
 
 		add(panel1);
-
-		panel_us_inicio = new PanelUsuarioInicio();
-		add(panel_us_inicio);
-
-//		panel_admin = new PanelAdminInicio();
-//		add(panel_admin);
-//	
+		//add(panel_us_inicio);
+		//add(panel_admin);	
 
 	}
 

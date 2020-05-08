@@ -10,11 +10,11 @@ public class PanelUsuarioInicio extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// hola 2
 	private JTabbedPane pestañas;
-	private PanelAdmCuentas pnl_adm_cuentas;
-	private PanelAsignarHorario pnl_asignar_horarios;
-	private PanelVerHorarios pnl_ver_horarios;
+	private PanelAdmCuentas pnl_adm_cuentas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
+	private PanelAsignarHorario pnl_asignar_horarios = new PanelAsignarHorario(
+			"/co/edu/unbosque/imagenes/fondo_horario.png");
+	private PanelVerHorarios pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
 
 	// https://www.discoduroderoer.es/como-crear-pestanas-con-la-clase-jtabbedpane-en-java/
 	// https://www.adictosaltrabajo.com/2008/12/01/javamail/
@@ -23,33 +23,29 @@ public class PanelUsuarioInicio extends JPanel {
 
 		setLayout(new BorderLayout());
 		setBounds(0, 0, 795, 572);
+		setVisible(false);
+		inicializarComponentes();
 
+	}
+
+	public void inicializarComponentes() {
 		pestañas = new JTabbedPane();
-
-		Color colorNaranja = new Color(255, 145, 77);
-
-		pnl_adm_cuentas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
-		pnl_adm_cuentas.setBounds(0, 0, 790, 590);
-		pnl_asignar_horarios = new PanelAsignarHorario("/co/edu/unbosque/imagenes/fondo_horario.png");
-		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
-		pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
-		pnl_ver_horarios.setBounds(0, 0, 790, 590);
-
 		pestañas.addTab("Administrar Cuenta", pnl_adm_cuentas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
 		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
+		add(pestañas);
+		Color colorNaranja = new Color(255, 145, 77);
+		pestañas.setBackground(colorNaranja);
+
+		pnl_adm_cuentas.setBounds(0, 0, 790, 590);
+		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
+		pnl_ver_horarios.setBounds(0, 0, 790, 590);
+
 		pnl_adm_cuentas.getBoton_ojo_oculto().setIcon(pnl_adm_cuentas.getIcono_ojo_oculto());
 		pnl_adm_cuentas.getBoton_agregar_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_agregar());
 		pnl_adm_cuentas.getBoton_info_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_info());
 		pnl_asignar_horarios.getBoton_agregar_horario().setIcon(pnl_asignar_horarios.getIcon_boton());
 		pnl_asignar_horarios.getBoton_seleccionar_tienda().setIcon(pnl_asignar_horarios.getIcon_boton_tienda());
-
-		add(pestañas);
-
-		pestañas.setBackground(colorNaranja);
-
-		setVisible(false);
-
 	}
 
 	public JTabbedPane getPestañas() {

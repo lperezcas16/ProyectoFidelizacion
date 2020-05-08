@@ -49,7 +49,7 @@ public class Solusoft {
 	}
 
 	public void enviarCorreo(Usuario nuevo) {
-		// Patrón para validar el email
+		
 
 		try {
 
