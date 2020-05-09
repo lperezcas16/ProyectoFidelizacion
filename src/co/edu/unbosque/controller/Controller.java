@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import co.edu.unbosque.model.ContraseñaExcepcion;
-import co.edu.unbosque.model.NombresExcepcion;
 import co.edu.unbosque.model.Tiendas;
 import co.edu.unbosque.model.Solusoft;
 import co.edu.unbosque.model.Usuario;
@@ -24,12 +22,9 @@ public class Controller implements ActionListener {
 	private Solusoft solusoft;
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
-
 	private TiendaDAO tiendaDAO;
 	private ArchivoTienda archivo_tienda;
-
 	private ArrayList<Tiendas> lista_tiendas = new ArrayList<Tiendas>();
-
 	private ArrayList<Usuario> lista_usuarios;
 	ArrayList<String> parejas;
 
@@ -140,7 +135,7 @@ public class Controller implements ActionListener {
 
 		// Panel Administrar Cuenta
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-			
+
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
