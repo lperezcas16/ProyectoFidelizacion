@@ -24,6 +24,7 @@ public class PanelAdmCuentas extends JPanel {
 	private JButton boton_ojo_oculto;
 
 	private PanelAgregarPareja pnl_agregar_pareja;
+	private PanelVerInfoPareja pnl_ver_info_pareja;
 
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
@@ -87,12 +88,18 @@ public class PanelAdmCuentas extends JPanel {
 
 		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_ver_info.png"));
 		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
-		
+
 		pnl_agregar_pareja = new PanelAgregarPareja("/co/edu/unbosque/imagenes/fondo_agregar_pareja.png");
 		pnl_agregar_pareja.setBounds(0, 0, 795, 572);
 		add(pnl_agregar_pareja);
-		
+
 		pnl_agregar_pareja.getBoton_agregar_nueva_pareja().setIcon(pnl_agregar_pareja.getIcono_boton());
+
+		pnl_ver_info_pareja = new PanelVerInfoPareja("/co/edu/unbosque/imagenes/fondo_ver_info_parejas.png");
+		pnl_ver_info_pareja.setBounds(0, 0, 795, 572);
+		add(pnl_ver_info_pareja);
+
+		pnl_ver_info_pareja.getBoton_regresar().setIcon(pnl_ver_info_pareja.getIcono_boton_regresar());
 
 	}
 
@@ -218,6 +225,22 @@ public class PanelAdmCuentas extends JPanel {
 
 	public void setPnl_agregar_pareja(PanelAgregarPareja pnl_agregar_pareja) {
 		this.pnl_agregar_pareja = pnl_agregar_pareja;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public PanelVerInfoPareja getPnl_ver_info_pareja() {
+		return pnl_ver_info_pareja;
+	}
+
+	public void setPnl_ver_info_pareja(PanelVerInfoPareja pnl_ver_info_pareja) {
+		this.pnl_ver_info_pareja = pnl_ver_info_pareja;
 	}
 
 }

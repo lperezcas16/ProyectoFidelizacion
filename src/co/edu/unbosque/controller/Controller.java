@@ -66,6 +66,14 @@ public class Controller implements ActionListener {
 		// LISTENERS ASIGNAR HORARIOS
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
+		// LISTENERS PANEL SELECCIONAR TIENDA
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_nueva_tienda()
+				.addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
+				.addActionListener(controller);
+		// LISTENERS PANEL VER INFO PAREJA
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar()
+				.addActionListener(controller);
 
 	}
 
@@ -135,67 +143,80 @@ public class Controller implements ActionListener {
 		// Panel Administrar Cuenta
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
 
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
-		}
-		// ACCION AGREGAR PAREJA
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource())
 
-		{
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
 
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
-			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
 
-				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-						.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-							.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
+			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
 
-				}
+			} else if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo())) {
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto());
+			}
 
-				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
+		}
 
-					if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-							.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
-						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-								.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
+		// Panel Ver Info Pareja
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar() == event
+				.getSource()) {
 
-					} else if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-							.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo())) {
-						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-								.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto());
-					}
+			// Falta la tabla
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
 
-				}
+		}
 
-				// Panel Asignar Horario
-				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event
-						.getSource()) {
+		// Panel Asignar Horario
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event.getSource()) {
 
-				}
+		}
 
-				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event
-						.getSource()) {
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event.getSource()) {
 
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
 
-					SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
-					System.out.println(
-							dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
+			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
+			System.out.println(dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
 
-					String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
-					System.out.println(t);
+			String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
+			System.out.println(t);
 
-					// Filas de la Tabla
-					for (int i = 0; i < lista_tiendas.size(); i++) {
+			// Filas de la Tabla
+			for (int i = 0; i < lista_tiendas.size(); i++) {
 
 //				String nombre = arreglo_tiendas.get(i).getNombre();
 //				String direccion = arreglo_tiendas.get(i).getDireccion();
@@ -206,41 +227,28 @@ public class Controller implements ActionListener {
 //				view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
 //						.addRow(datos_filas);
 
-					}
-
-				}
-
-				// Panel Agregar Pareja
-				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
-				}
-
-				// Panel Seleccionar Tienda
-
-				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-						.getBoton_agregar_nueva_tienda() == event.getSource()) {
-
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-							.getPnl_nueva_tienda().setVisible(true);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
-							.setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-							.getBoton_agregar_nueva_tienda().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-							.getBoton_agregar_tienda().setVisible(false);
-					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
-							.setVisible(false);
-
-				}
-
 			}
 
 		}
+
+		// Panel Seleccionar Tienda
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+				.getBoton_agregar_nueva_tienda() == event.getSource()) {
+
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+					.setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
+					.setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getBoton_agregar_nueva_tienda().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
+					.setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
+					.setVisible(false);
+
+		}
+
 	}
+
 }

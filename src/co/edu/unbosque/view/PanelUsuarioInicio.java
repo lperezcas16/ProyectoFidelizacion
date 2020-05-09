@@ -23,7 +23,7 @@ public class PanelUsuarioInicio extends JPanel {
 
 		setLayout(new BorderLayout());
 		setBounds(0, 0, 795, 572);
-		setVisible(false);
+		setVisible(true);
 		inicializarComponentes();
 
 	}
