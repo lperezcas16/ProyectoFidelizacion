@@ -7,14 +7,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-<<<<<<< HEAD
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.NombresExcepcion;
 import co.edu.unbosque.model.Tiendas;
-=======
 import co.edu.unbosque.model.Solusoft;
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
 import co.edu.unbosque.model.Usuario;
 import co.edu.unbosque.model.persistence.ArchivoTienda;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
@@ -28,15 +24,14 @@ public class Controller implements ActionListener {
 	private Solusoft solusoft;
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
-<<<<<<< HEAD
+
 	private TiendaDAO tiendaDAO;
 	private ArchivoTienda archivo_tienda;
 
 	private ArrayList<Tiendas> lista_tiendas = new ArrayList<Tiendas>();
-=======
+
 	private ArrayList<Usuario> lista_usuarios;
 	ArrayList<String> parejas;
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
 
 	public Controller() {
 		super();
@@ -46,20 +41,11 @@ public class Controller implements ActionListener {
 		parejas = new ArrayList<String>();
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
-
-<<<<<<< HEAD
 		archivo_tienda = new ArchivoTienda();
 		tiendaDAO = new TiendaDAO(archivo_tienda);
-//		lista_tiendas = archivo_tienda.leerArchivo();
-
 		view = new Ventana();
-=======
 		lista_usuarios = archivo_Usuario.leerArchivo();
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
 		actionListener(this);
-//		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().crearTabla(tiendaDAO.verTienda(tiendas));
-
-//		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().
 
 	}
 
@@ -69,7 +55,7 @@ public class Controller implements ActionListener {
 		// LISTENER PANEL PRINCIPAL
 		view.getPanel1().getBoton_entrar().addActionListener(controller);
 		view.getPanel1().getBoton_registrar().addActionListener(controller);
-<<<<<<< HEAD
+		// LISTENERS PANEL USUARIO
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
@@ -79,7 +65,6 @@ public class Controller implements ActionListener {
 				.addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 				.addActionListener(controller);
-=======
 		// LISTENERS PANEL ADMINISTRADOR
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
@@ -87,7 +72,6 @@ public class Controller implements ActionListener {
 		// LISTENERS ASIGNAR HORARIOS
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
 
 	}
 
@@ -99,11 +83,6 @@ public class Controller implements ActionListener {
 		}
 		// ACCION REGISTRAR USUARIO
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
-
-<<<<<<< HEAD
-		// Panel Administrar Cuenta
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-=======
 			String nombre, correo, usuario, contraseña, genero = "", numeroTarjeta, tipoUsuario;
 			long cupoTarjeta;
 			String numeros = "[0-9]+";
@@ -143,10 +122,11 @@ public class Controller implements ActionListener {
 				}
 
 			}
+
 			if (comprobacion == true) {
 				if (solusoft.comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
-					Usuario nuevo = new Usuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta, parejas,
-							tipoUsuario);
+					Usuario nuevo = new Usuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta,
+							parejas, tipoUsuario);
 
 					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta,
 							parejas, tipoUsuario, lista_usuarios);
@@ -156,77 +136,72 @@ public class Controller implements ActionListener {
 					view.mostrarMensajes("USUARIO_FALSE");
 				}
 			}
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
-
 		}
 
-<<<<<<< HEAD
+		// Panel Administrar Cuenta
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+			
+		}
+
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
-=======
+		}
 		// ACCION AGREGAR PAREJA
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource())
 
 		{
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
 
 		}
 
-<<<<<<< HEAD
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
-=======
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
+			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja() == event.getSource()) {
 
-<<<<<<< HEAD
-			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
-				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
-=======
-		}
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+						.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+							.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
 
-<<<<<<< HEAD
-=======
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
+				}
 
-			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
-				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
 
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
-			} else if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
-					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo())) {
-				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
-						.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto());
-			}
+					if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+							.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+								.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo());
 
-		}
+					} else if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
+							.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo())) {
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
+								.setIcon(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto());
+					}
 
-		// Panel Asignar Horario
-		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event.getSource()) {
+				}
 
-		}
+				// Panel Asignar Horario
+				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event
+						.getSource()) {
 
-		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event.getSource()) {
-<<<<<<< HEAD
+				}
 
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
+				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event
+						.getSource()) {
 
-			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
-			System.out.println(dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
 
-			String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
-			System.out.println(t);
+					SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
+					System.out.println(
+							dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
 
-			// Filas de la Tabla
-			for (int i = 0; i < lista_tiendas.size(); i++) {
+					String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
+					System.out.println(t);
+
+					// Filas de la Tabla
+					for (int i = 0; i < lista_tiendas.size(); i++) {
 
 //				String nombre = arreglo_tiendas.get(i).getNombre();
 //				String direccion = arreglo_tiendas.get(i).getDireccion();
@@ -237,172 +212,41 @@ public class Controller implements ActionListener {
 //				view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
 //						.addRow(datos_filas);
 
-			}
-=======
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
+					}
 
-		}
-
-		// Panel Agregar Pareja
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
-<<<<<<< HEAD
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
-		}
-
-		// Panel Seleccionar Tienda
-
-		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-				.getBoton_agregar_nueva_tienda() == event.getSource()) {
-
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
-					.setVisible(true);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
-					.setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-					.getBoton_agregar_nueva_tienda().setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
-					.setVisible(false);
-			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
-					.setVisible(false);
-
-		}
-
-		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-				.getBoton_agregar_tienda() == event.getSource()) {
-
-=======
-			// view.getPanel_us_inicio().getPestañas().setTabComponentAt(0,
-			// view.getPanel_us_inicio().getPnl_agrega());
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
-		}
-
-<<<<<<< HEAD
-	/**
-	 * Este metodo corresponde a la especificacion de la excepcion creada, junto con
-	 * las restricciones y el mensaje que se lanza si se llega a efectuar la
-	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
-	 * NombresExcepcion en el paquete co.edu.unbosque.model<br>
-	 * 
-	 * @param n Este parametro representa al nombre y apellido ingresado por el
-	 *          usuario que debe de evaluarse para ver si tiene la excepcion
-	 * @return Si no se lanza la excepcion se devolveria el nombre o apellido
-	 *         ingresado
-	 * @throws NombresExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas al nombre y apellido
-	 */
-	public String nombres(String n) throws NombresExcepcion {
-
-		if (n.matches(numeros)) {
-			throw new NumberFormatException("El formato del nombre  es incorrecto");
-		} else {
-			return n;
-		}
-	}
-
-	/**
-	 * Este metodo corresponde a la especificacion de la excepcion creada, junto con
-	 * las restricciones y el mensaje que se lanza si se llega a efectuar la
-	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
-	 * ContraseñaExcepcion en el paquete co.edu.unbosque.model<br>
-	 * 
-	 * @param c Este parametro representa a la contraseña ingresado por el usuario
-	 *          que debe de evaluarse para ver si tiene la excepcion. n != null, n
-	 *          != " ".
-	 * @return Si no se lanza la excepcion se devolveria la contraseña ingresado
-	 * @throws CedulaExcepcion Esta excepcion corresponde a las limitaciones
-	 *                         impuestas a la contraseña
-	 */
-	public String comprobarContraseña(String c) throws ContraseñaExcepcion {
-
-		if (c.length() >= 8) {
-			return c;
-		} else {
-			throw new ContraseñaExcepcion("La contraseña debe de tener por lo menos 8 caracteres");
-		}
-	}
-
-	public void inscribirUsuario() {
-		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
-		lista_usuarios = archivo_Usuario.leerArchivo();
-		String nombre = view.getPanel1().getCampo_nombre().getText();
-		nombre = nombre.replace(" ", "");
-		String correo = view.getPanel1().getCampo_correo().getText();
-		correo = correo.replace(" ", "");
-		String usuario = view.getPanel1().getCampo_usuario().getText();
-		usuario = usuario.replace(" ", "");
-		String contraseña = view.getPanel1().getCampo_contrasena().getText();
-		contraseña = contraseña.replace(" ", "");
-		String genero = "";
-		if (view.getPanel1().getC1().isSelected()) {
-			genero = "Mujer";
-		} else if (view.getPanel1().getC2().isSelected()) {
-			genero = "Hombre";
-		}
-		String numeroTarjeta = generarNumeroCuenta(lista_usuarios);
-		long cupoTarjeta = 0;
-		String tipoUsuario = "Usuario";
-		ArrayList<String> parejas = new ArrayList<String>();
-		try {
-
-			if (!nombre.isEmpty() && !correo.isEmpty() && !usuario.isEmpty() && !contraseña.isEmpty()
-					&& !genero.isEmpty()) {
-				nombres(nombre);
-				comprobarContraseña(contraseña);
-				if (comprobarExistenciaUsuario(correo, usuario, lista_usuarios)) {
-
-					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, cupoTarjeta,
-							parejas, tipoUsuario, lista_usuarios);
-					view.getPanel1().limpiarCampos();
-				} else {
-					JOptionPane.showMessageDialog(null, "Los datos ingresados ya pertenecen a un usuario");
 				}
-			} else {
-				JOptionPane.showMessageDialog(null, "Digite todos los datos solicitados");
+
+				// Panel Agregar Pareja
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+				}
+
+				// Panel Seleccionar Tienda
+
+				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+						.getBoton_agregar_nueva_tienda() == event.getSource()) {
+
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+							.getPnl_nueva_tienda().setVisible(true);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
+							.setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+							.getBoton_agregar_nueva_tienda().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+							.getBoton_agregar_tienda().setVisible(false);
+					view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
+							.setVisible(false);
+
+				}
+
 			}
-		} catch (ContraseñaExcepcion e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-		} catch (NombresExcepcion e2) {
-			JOptionPane.showMessageDialog(null, e2.getMessage());
+
 		}
-
 	}
-
-	public String generarNumeroCuenta(ArrayList<Usuario> lista_usuarios) {
-
-		int M = 10000000;
-		int N = 99999999;
-		int valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-		int valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-		String numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
-		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.get(i).getNumeroTarjeta().equals(numeroTargeta)) {
-				valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-				valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-				numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
-			}
-		}
-		return numeroTargeta;
-	}
-
-	public boolean comprobarExistenciaUsuario(String correo, String usuario, ArrayList<Usuario> lista_usuarios) {
-		boolean comprobar = true;
-
-		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.get(i).getCorreo().equals(correo)
-					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
-				comprobar = false;
-			}
-		}
-
-		return comprobar;
-=======
->>>>>>> branch 'master' of https://github.com/yeisonj/ProyectoCorte3.git
-	}
-
 }
