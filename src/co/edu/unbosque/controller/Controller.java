@@ -38,7 +38,6 @@ public class Controller implements ActionListener {
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
 		archivo_tienda = new ArchivoTienda();
 		tiendaDAO = new TiendaDAO(archivo_tienda);
-		view = new Ventana();
 		lista_usuarios = archivo_Usuario.leerArchivo();
 		actionListener(this);
 
