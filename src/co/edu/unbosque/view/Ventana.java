@@ -24,7 +24,7 @@ public class Ventana extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setDefaultLookAndFeelDecorated(true);
 
-//		add(panel1);
+		// add(panel1);
 		add(panel_us_inicio);
 		// add(panel_admin);
 
@@ -32,18 +32,31 @@ public class Ventana extends JFrame {
 
 	public void mostrarMensajes(String mensaje) {
 		if (mensaje.equalsIgnoreCase("USUARIO_TRUE")) {
-			JOptionPane.showMessageDialog(null, "REGISTRO EXITOSO! REVISE SU CORREO");
-		}
-		if (mensaje.equalsIgnoreCase("USUARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null, "EL USUARIO O CORREO INGRESADO YA EXISTE");
+			JOptionPane.showMessageDialog(null,
+					"REGISTRO EXITOSO! REVISE SU CORREO");
+		} else if (mensaje.equalsIgnoreCase("USUARIO_FALSE")) {
+			JOptionPane.showMessageDialog(null,
+					"EL USUARIO O CORREO INGRESADO YA EXISTE");
+		} else if (mensaje.equalsIgnoreCase("TIENDA_TRUE")) {
+			JOptionPane.showMessageDialog(null,
+					"LA TIENDA SE AGREGO CORRECTAMENTE");
+		} else if (mensaje.equalsIgnoreCase("TIENDA_FALSE")) {
+			JOptionPane.showMessageDialog(null,
+					"EL NOMBRE Y LA DIRECCION DE LA TIENDA YA SE ENCUENTRA REGISTRADA");
 		} else if (mensaje.equalsIgnoreCase("CAMPOS_FALSE")) {
 			JOptionPane.showMessageDialog(null, "DEBE LLENAR TODOS LOS CAMPOS");
 		} else if (mensaje.equalsIgnoreCase("NOMBRE_FALSE")) {
-			JOptionPane.showMessageDialog(null, "EL NOMBRE NO DEBE CONTENER NUMEROS");
+			JOptionPane.showMessageDialog(null,
+					"EL NOMBRE NO DEBE CONTENER NUMEROS");
 		} else if (mensaje.equalsIgnoreCase("CONTRASEÑA_FALSE")) {
-			JOptionPane.showMessageDialog(null, "LA CONTRASEÑA DEBE TENER MAS DE 8 CARACTERES");
+			JOptionPane.showMessageDialog(null,
+					"LA CONTRASEÑA DEBE TENER MAS DE 8 CARACTERES");
 		} else if (mensaje.equalsIgnoreCase("CORREO_FALSE")) {
-			JOptionPane.showMessageDialog(null, "EL CORREO INGRESADO NO ES VALIDO");
+			JOptionPane.showMessageDialog(null,
+					"EL CORREO INGRESADO NO ES VALIDO");
+		} else if (mensaje.equalsIgnoreCase("HORARIO_FALSE")) {
+			JOptionPane.showMessageDialog(null,
+					"LOS HORARIOS DEFINIDOS NO SON VALIDOS");
 		}
 	}
 

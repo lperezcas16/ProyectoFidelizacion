@@ -11,7 +11,6 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
 public class Solusoft {
 
 	public Solusoft() {
@@ -19,23 +18,25 @@ public class Solusoft {
 	}
 
 	public String generarNumeroCuenta(ArrayList<Usuario> lista_usuarios) {
-
 		int M = 10000000;
 		int N = 99999999;
 		int valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
 		int valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-		String numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
+		String numeroTargeta = Integer.toString(valor1)
+				+ Integer.toString(valor2);
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if (lista_usuarios.get(i).getNumeroTarjeta().equals(numeroTargeta)) {
 				valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
 				valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-				numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
+				numeroTargeta = Integer.toString(valor1)
+						+ Integer.toString(valor2);
 			}
 		}
 		return numeroTargeta;
 	}
 
-	public boolean comprobarExistenciaUsuario(String correo, String usuario, ArrayList<Usuario> lista_usuarios) {
+	public boolean comprobarExistenciaUsuario(String correo, String usuario,
+			ArrayList<Usuario> lista_usuarios) {
 		boolean comprobar = true;
 
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -47,9 +48,20 @@ public class Solusoft {
 
 		return comprobar;
 	}
+	public boolean comprobarExistenciaTienda(String nombre, String direccion,
+			ArrayList<Tiendas> lista_tiendas) {
+		boolean comprobar = true;
 
+		for (int i = 0; i < lista_tiendas.size(); i++) {
+			if (lista_tiendas.get(i).getNombre().equals(nombre)
+					&& lista_tiendas.get(i).getDireccion().equals(direccion)) {
+				comprobar = false;
+			}
+		}
+
+		return comprobar;
+	}
 	public void enviarCorreo(Usuario nuevo) {
-		
 
 		try {
 
@@ -65,21 +77,26 @@ public class Solusoft {
 			String pasremitente = "proyectocorte3";
 
 			String asunto = "Bienvenido a SOLUSOFT!";
-			String mensaje = "Gracias por registrarse " + nuevo.getNombre() + "\n" + "usuario: " + nuevo.getUsuario()
-					+ "\nContraseña: " + nuevo.getContraseña() + "\nNumero de tarjeta: " + nuevo.getNumeroTarjeta()
-					+ "\nCupo actual de su tarjeta credito: " + nuevo.getCupoTarjeta();
+			String mensaje = "Gracias por registrarse " + nuevo.getNombre()
+					+ "\n" + "usuario: " + nuevo.getUsuario()
+					+ "\nContraseña: " + nuevo.getContraseña()
+					+ "\nNumero de tarjeta: " + nuevo.getNumeroTarjeta()
+					+ "\nCupo actual de su tarjeta credito: "
+					+ nuevo.getCupoTarjeta();
 
 			MimeMessage mensajesesion = new MimeMessage(sesion);
 
 			mensajesesion.setFrom(new InternetAddress(correoremitente));
 
-			mensajesesion.addRecipient(Message.RecipientType.TO, new InternetAddress(nuevo.getCorreo()));
+			mensajesesion.addRecipient(Message.RecipientType.TO,
+					new InternetAddress(nuevo.getCorreo()));
 			mensajesesion.setSubject(asunto);
 			mensajesesion.setText(mensaje);
 
 			Transport t = sesion.getTransport("smtp");
 			t.connect(correoremitente, pasremitente);
-			t.sendMessage(mensajesesion, mensajesesion.getRecipients(Message.RecipientType.TO));
+			t.sendMessage(mensajesesion,
+					mensajesesion.getRecipients(Message.RecipientType.TO));
 			t.close();
 
 		} catch (AddressException e) {
