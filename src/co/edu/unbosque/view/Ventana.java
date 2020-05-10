@@ -10,7 +10,7 @@ public class Ventana extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
-	private PanelUsuarioInicio panel_us_inicio=new PanelUsuarioInicio();
+	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
 	private PanelAdminInicio panel_admin = new PanelAdminInicio();
 
 	public Ventana() {
@@ -26,7 +26,7 @@ public class Ventana extends JFrame {
 
 //		add(panel1);
 		add(panel_us_inicio);
-		//add(panel_admin);	
+		// add(panel_admin);
 
 	}
 
@@ -61,6 +61,18 @@ public class Ventana extends JFrame {
 
 	public void setPanel_us_inicio(PanelUsuarioInicio panel_us_inicio) {
 		this.panel_us_inicio = panel_us_inicio;
+	}
+
+	public PanelAdminInicio getPanel_admin() {
+		return panel_admin;
+	}
+
+	public void setPanel_admin(PanelAdminInicio panel_admin) {
+		this.panel_admin = panel_admin;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

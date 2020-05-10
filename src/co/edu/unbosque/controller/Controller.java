@@ -27,6 +27,8 @@ public class Controller implements ActionListener {
 	private ArrayList<Tiendas> lista_tiendas = new ArrayList<Tiendas>();
 	private ArrayList<Usuario> lista_usuarios;
 	ArrayList<String> parejas;
+	private Usuario usuario;
+	String numeros = "[0-9]+";
 
 	public Controller() {
 		super();
@@ -62,7 +64,6 @@ public class Controller implements ActionListener {
 		// LISTENERS PANEL ADMINISTRADOR
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().addActionListener(controller);
 		// LISTENERS ASIGNAR HORARIOS
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
@@ -87,7 +88,6 @@ public class Controller implements ActionListener {
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
 			String nombre, correo, usuario, contraseña, genero = "", numeroTarjeta, tipoUsuario;
 			long cupoTarjeta;
-			String numeros = "[0-9]+";
 			boolean comprobacion = true;
 			nombre = view.getPanel1().getCampo_nombre().getText();
 			correo = view.getPanel1().getCampo_correo().getText();
@@ -184,7 +184,6 @@ public class Controller implements ActionListener {
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar() == event
 				.getSource()) {
 
-			// Falta la tabla
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
@@ -192,6 +191,17 @@ public class Controller implements ActionListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+
+			// Filas de la Tabla
+			for (int i = 0; i < usuario.getParejas().size(); i++) {
+
+				String nombre = usuario.getParejas().get(i);
+				// Falta el cupo
+
+				Object[] datos_filas = { nombre };
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
+
+			}
 
 		}
 
@@ -210,13 +220,11 @@ public class Controller implements ActionListener {
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(false);
 
 			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
-			System.out.println(dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue()));
 
 			String t = dp.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
-			System.out.println(t);
 
 			// Filas de la Tabla
-			for (int i = 0; i < lista_tiendas.size(); i++) {
+//			for (int i = 0; i < lista_tiendas.size(); i++) {
 
 //				String nombre = arreglo_tiendas.get(i).getNombre();
 //				String direccion = arreglo_tiendas.get(i).getDireccion();
@@ -227,7 +235,7 @@ public class Controller implements ActionListener {
 //				view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
 //						.addRow(datos_filas);
 
-			}
+//			}
 
 		}
 
@@ -246,6 +254,35 @@ public class Controller implements ActionListener {
 					.setVisible(false);
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
 					.setVisible(false);
+
+		}
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+				.getBoton_validar_nueva_tienda() == event.getSource()) {
+			
+			String nombre_tienda = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getPnl_nueva_tienda().getCampo_texto_nombre().getText();
+			String direccion_tienda = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getPnl_nueva_tienda().getCampo_texto_direccion().getText();
+
+			SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
+			String hora_apertura = sdf.format(view.getPanel_us_inicio().getPnl_asignar_horarios()
+					.getPnl_seleccionar_tienda().getPnl_nueva_tienda().getSpinner_hora_apertura().getValue());
+			String hora_cierre = sdf.format(view.getPanel_us_inicio().getPnl_asignar_horarios()
+					.getPnl_seleccionar_tienda().getPnl_nueva_tienda().getSpinner_hora_cierre().getValue());
+
+//			try {
+//
+//				if (!nombre_tienda.isEmpty() && !direccion_tienda.isEmpty()) {
+//					nombres(nombre_tienda);
+//					comprobarHorarioTienda(hora_apertura, hora_cierre);
+//				}
+//
+//			} catch (NombresExcepcion e) {
+//				view.mostrarMensajes("NOMBRE_FALSE");
+//			} catch (HorariosExcepcion e) {
+//				JOptionPane.showMessageDialog(view, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//			}
 
 		}
 
