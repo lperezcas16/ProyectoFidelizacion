@@ -1,25 +1,22 @@
 package co.edu.unbosque.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  */
-public class Tiendas {
+public class Tiendas implements Serializable {
 
 	private String nombre;
 	private String direccion;
 	private String horario_apertura;
 	private String horario_cierre;
-	private ArrayList<Usuario> usuarios;
 
-	public Tiendas(String nombre, String direccion, String horario_apertura, String horario_cierre,
-			ArrayList<Usuario> usuarios) {
-		
+	public Tiendas(String nombre, String direccion, String horario_apertura,
+			String horario_cierre) {
+
 		this.nombre = nombre;
 		this.direccion = direccion;
-		usuarios = new ArrayList<Usuario>();
-		this.usuarios = usuarios;
 		this.horario_apertura = horario_apertura;
 		this.horario_cierre = horario_cierre;
 
@@ -39,14 +36,6 @@ public class Tiendas {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	public ArrayList<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 	public String getHorario_apertura() {
