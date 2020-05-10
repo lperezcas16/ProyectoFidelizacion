@@ -24,7 +24,7 @@ public class ArchivoTienda {
 	 * validación de que el archivo existe o no existe.<br>
 	 */
 	public ArchivoTienda() {
-		archivo_Tienda = new File(".\\data\\Base de Datos Tienda.dat");
+		archivo_Tienda = new File(".\\data\\Base de Datos Tiendas.dat");
 		if (!archivo_Tienda.exists()) {
 			try {
 				archivo_Tienda.createNewFile();
