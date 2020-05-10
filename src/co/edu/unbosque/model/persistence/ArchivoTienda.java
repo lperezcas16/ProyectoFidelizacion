@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Tiendas;
 
-//Hola
 public class ArchivoTienda {
 	private ObjectInputStream entrada;
 	private ObjectOutputStream salida;
@@ -25,7 +24,7 @@ public class ArchivoTienda {
 	 * validación de que el archivo existe o no existe.<br>
 	 */
 	public ArchivoTienda() {
-		archivo_Tienda = new File(".\\Base de Datos T.dat");
+		archivo_Tienda = new File(".\\data\\Base de Datos Tienda.dat");
 		if (!archivo_Tienda.exists()) {
 			try {
 				archivo_Tienda.createNewFile();
