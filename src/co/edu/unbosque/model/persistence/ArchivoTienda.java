@@ -19,9 +19,9 @@ public class ArchivoTienda {
 	private File archivo_Tienda;
 
 	/**
-	 * Este es el constructor de la clase ArchivoTienda el cual tiene la funcion
-	 * de verificar la existencia del archivo. <b>post</b> Se debe hacer la
-	 * validación de que el archivo existe o no existe.<br>
+	 * Este es el constructor de la clase ArchivoTienda el cual tiene la funcion de
+	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la validación
+	 * de que el archivo existe o no existe.<br>
 	 */
 	public ArchivoTienda() {
 		archivo_Tienda = new File(".\\data\\Base de Datos Tiendas.dat");
@@ -29,8 +29,7 @@ public class ArchivoTienda {
 			try {
 				archivo_Tienda.createNewFile();
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage(),
-						"Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
 				e.printStackTrace();
 			}
 		}
@@ -38,19 +37,17 @@ public class ArchivoTienda {
 	}
 
 	/**
-	 * Este metodo tiene la funcion de escribir el archivo mediante los
-	 * parametros de la clase tiendas
+	 * Este metodo tiene la funcion de escribir el archivo mediante los parametros
+	 * de la clase tiendas
 	 * 
-	 * @param lista_Tiendas
-	 *            el atributo que tendrán el sistema para ingresar el arraylist
-	 *            de la clase tiendas != null, usuario != “ “
+	 * @param lista_Tiendas el atributo que tendrán el sistema para ingresar el
+	 *                      arraylist de la clase tiendas != null, usuario != “ “
 	 * 
 	 */
 	public void escribirEnArchivo(ArrayList<Tiendas> lista_Tiendas) {
 
 		try {
-			salida = new ObjectOutputStream(
-					new FileOutputStream(archivo_Tienda));
+			salida = new ObjectOutputStream(new FileOutputStream(archivo_Tienda));
 			salida.writeObject(lista_Tiendas);
 			salida.close();
 
@@ -66,8 +63,8 @@ public class ArchivoTienda {
 	 * Este metodo tiene la funcion de leer el archivo mediante el arraylist de
 	 * tiendas
 	 * 
-	 * @return El valor de retorno seria el arraylist que contiene los atributos
-	 *         de la clase Tiendas
+	 * @return El valor de retorno seria el arraylist que contiene los atributos de
+	 *         la clase Tiendas
 	 *
 	 */
 	@SuppressWarnings("unchecked")
@@ -77,8 +74,7 @@ public class ArchivoTienda {
 		if (archivo_Tienda.length() != 0) {
 			try {
 
-				entrada = new ObjectInputStream(new FileInputStream(
-						archivo_Tienda));
+				entrada = new ObjectInputStream(new FileInputStream(archivo_Tienda));
 				listaTiendas = (ArrayList<Tiendas>) entrada.readObject();
 
 			} catch (FileNotFoundException e) {

@@ -23,8 +23,8 @@ public class NombresExcepcion extends Exception {
 	 * proceso del nombre del usuario. <b>post</b> Se debe hacer la validación del
 	 * nombres para que sea de tipo String <br>
 	 * 
-	 * @param mensaje es el atributo que tendrán el sistema para validar los nombres
-	 *                mensaje != null, mensaje != “ “
+	 * @param mensaje Este atributo corresponde al mensaje proporcionado si se
+	 *                cumple la excepcion. mensaje != null, mensaje != “ “
 	 * 
 	 */
 	public NombresExcepcion(String mensaje) {

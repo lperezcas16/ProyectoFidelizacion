@@ -24,8 +24,8 @@ public class ContraseñaExcepcion extends Exception {
 	 * Se debe hacer la validación de la contraseña para que tenga una cantidad
 	 * minima de caracteres. <br>
 	 * 
-	 * @param s es el atributo que tendrán el sistema para validar la cédula s !=
-	 *          null, s != “ “
+	 * @param mensaje Este atributo corresponde al mensaje proporcionado si se
+	 *                cumple la excepcion. mensaje != null, mensaje != “ “
 	 * 
 	 */
 	public ContraseñaExcepcion(String mensaje) {
