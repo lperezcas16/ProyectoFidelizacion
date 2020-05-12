@@ -48,7 +48,9 @@ public class Controller implements ActionListener {
 		lista_tiendas = new ArrayList<Tiendas>();
 		parejas = new ArrayList<String>();
 		lista_usuarios = archivo_Usuario.leerArchivo();
+		lista_tiendas = archivo_tienda.leerArchivo();
 		actionListener(this);
+		asignarTablaTiendas();
 
 	}
 
@@ -82,7 +84,8 @@ public class Controller implements ActionListener {
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 				.addActionListener(controller);
 		// LISTENERS PANEL VER INFO PAREJA
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar();
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar()
+				.addActionListener(controller);
 		// LISTENERS PANEL INFORME
 		view.getPanel_admin().getPanel_informe().getCombo_eleccion().addActionListener(controller);
 		view.getPanel_admin().getPanel_informe().getCombo_Fecha().addActionListener(controller);
@@ -100,6 +103,14 @@ public class Controller implements ActionListener {
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
+
+		// PANEL SELECCIONAR TIENDA
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_regresar()
+				.addActionListener(controller);
+
+		// PANEL NUEVA TIENDA
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+				.getBoton_regresar().addActionListener(controller);
 
 	}
 
@@ -300,6 +311,7 @@ public class Controller implements ActionListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
 
 		}
 
@@ -312,6 +324,7 @@ public class Controller implements ActionListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
 
 		}
 
@@ -352,23 +365,27 @@ public class Controller implements ActionListener {
 				.getSource()) {
 
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().setVisible(false);
+//			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getTable().setVisible(false);
+//			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getScroll().setVisible(false);
+
 			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
 
 			// Filas de la Tabla
-			for (int i = 0; i < usuario.getParejas().size(); i++) {
-
-				String nombre = usuario.getParejas().get(i);
-				// Falta el cupo
-
-				Object[] datos_filas = { nombre };
-				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
-
-			}
+//			for (int i = 0; i < usuario.getParejas().size(); i++) {
+//
+//				String nombre = usuario.getParejas().get(i);
+//				// Falta el cupo
+//
+//				Object[] datos_filas = { nombre };
+//				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
+//
+//			}
 
 		}
 
@@ -393,6 +410,19 @@ public class Controller implements ActionListener {
 		}
 
 		// Panel Seleccionar Tienda
+
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_regresar() == event
+				.getSource()) {
+
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().setVisible(true);
+
+		}
 
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
 				.getBoton_agregar_nueva_tienda() == event.getSource()) {
@@ -481,6 +511,23 @@ public class Controller implements ActionListener {
 				}
 
 			}
+
+		}
+
+		// Panel Nueva Tienda
+		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+				.getBoton_regresar() == event.getSource()) {
+
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+					.setVisible(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getBoton_agregar_nueva_tienda().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
+					.setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
+					.setVisible(true);
+
 		}
 
 	}
@@ -527,6 +574,27 @@ public class Controller implements ActionListener {
 
 	public ArrayList<Tiendas> getTiendas() {
 		return lista_tiendas;
+	}
+
+	public void asignarTablaTiendas() {
+
+		for (int i = 0; i < getTiendas().size(); i++) {
+
+			String nombre = lista_tiendas.get(i).getNombre();
+			String direccion = lista_tiendas.get(i).getDireccion();
+			String hora_ap = lista_tiendas.get(i).getHorario_apertura();
+			String hora_ci = lista_tiendas.get(i).getHorario_cierre();
+
+			Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
+					.addRow(datos_filas);
+
+		}
+
+	}
+
+	public void asignarTablaParejas() {
+
 	}
 
 }
