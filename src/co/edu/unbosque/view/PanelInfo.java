@@ -65,12 +65,12 @@ public class PanelInfo extends JPanel {
 		label_usuario.setBounds(260,345,500,50);
 		add(label_usuario);
 		
-		label_correo = new JLabel ("Correo");
-		label_correo.setBackground(color_azul);
-		label_correo.setForeground(color_naranja);
-		label_correo.setFont(new Font("Accidental Presidency", Font.BOLD, 25));
-		label_correo.setBounds(280,420,500,50);
-		add(label_correo);
+		label_tipo = new JLabel ("Administrador");
+		label_tipo.setBackground(color_azul);
+		label_tipo.setForeground(color_naranja);
+		label_tipo.setFont(new Font("Accidental Presidency", Font.BOLD, 25));
+		label_tipo.setBounds(280,420,500,50);
+		add(label_tipo);
 		
 		
 	}

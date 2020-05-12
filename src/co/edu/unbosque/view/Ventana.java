@@ -25,8 +25,8 @@ public class Ventana extends JFrame {
 		setDefaultLookAndFeelDecorated(true);
 
 		// add(panel1);
-		add(panel_us_inicio);
-//		 add(panel_admin);
+//		add(panel_us_inicio);
+		 add(panel_admin);
 
 	}
 
@@ -49,6 +49,18 @@ public class Ventana extends JFrame {
 			JOptionPane.showMessageDialog(null, "EL CORREO INGRESADO NO ES VALIDO");
 		} else if (mensaje.equalsIgnoreCase("HORARIO_FALSE")) {
 			JOptionPane.showMessageDialog(null, "LOS HORARIOS DEFINIDOS NO SON VALIDOS");
+		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_FALSE")) {
+			JOptionPane.showMessageDialog(null, "NO SE PUEDE ELIMINAR LA TIENDA");
+		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_TRUE")) {
+			JOptionPane.showMessageDialog(null, "SE ELIMINÓ CORRECTAMEMTE");
+		}else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_VACIO")) {
+			JOptionPane.showMessageDialog(null, "INTRODUZCA INFORMACI{ON PARA INICIAR LA BUSQUEDA");
+		}else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_VACIO")) {
+			JOptionPane.showMessageDialog(null, "CAMPO VACIO");
+		}else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_FALSE")) {
+			JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR USUARIO");
+		}else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_TRUE")) {
+			JOptionPane.showMessageDialog(null, "SE PUDO ELIMINAR USUARIO CORRECTAMENTE");
 		}
 	}
 

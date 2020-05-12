@@ -1,11 +1,10 @@
 package co.edu.unbosque.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.table.*;
+
 
 public class PanelTiendas extends JPanel {
 	/**
@@ -13,19 +12,22 @@ public class PanelTiendas extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_tiendas;
-	private String [][] datos= new String[1][3];
-	private String[] cabecera =  {"Nombre","Horario apertura", "Horario cierre"};
 	private JTextField campo_buscar, campo_nombre, campo_direccion;
 	private ImageIcon imagen;
 	private String nombre;
-	private JButton boton_eliminar, boton_agregar_tienda;
+	private JButton boton_eliminar, boton_agregar_tienda, boton_buscar, boton_ver_tiendas;
 	private JSpinner spinner, spinner_apertura, spinner_cierre;
 	private JScrollPane scroll1;
+	
+	private String[] cabecera =  {"Nombre","Dirección","Horario apertura", "Horario cierre"};
+	private DefaultTableModel model;
+	private JTable tabla;
 	
 	public PanelTiendas(String nombre) {
 		this.nombre=nombre;
 		setLayout(null);
 		inicializarComponentes();
+		crearTabla();
 		setVisible(true);
 		
 		
@@ -50,15 +52,25 @@ public class PanelTiendas extends JPanel {
 		add(combo_tiendas);
 		
 		campo_buscar = new JTextField();
-		campo_buscar.setBounds(350,200,180,25);
+		campo_buscar.setBounds(330,200,180,25);
 		campo_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_buscar.setVisible(false);
 		add(campo_buscar);
 		
+		boton_ver_tiendas = new JButton("Ver tiendas");
+		boton_ver_tiendas.setBounds(570,150,200,30);
+		boton_ver_tiendas.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_ver_tiendas);
+		
 		boton_eliminar = new JButton("Eliminar");
 		boton_eliminar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		boton_eliminar.setBounds(550,200,100,25);
+		boton_eliminar.setBounds(570,200,200,25);
 		add(boton_eliminar);
+		
+//		boton_buscar = new JButton("Buscar");
+//		boton_buscar.setBounds(670,200,90,25);
+//		boton_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+//		add(boton_buscar);
 		
 		spinner = new JSpinner();
 		spinner.setModel(new SpinnerDateModel());
@@ -66,22 +78,6 @@ public class PanelTiendas extends JPanel {
 		spinner.setBounds(350, 200, 150, 30);
 		add(spinner);
 		spinner.setVisible(false);
-		
-		JTable tabla = new JTable(datos,cabecera);
-//		tabla.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		tabla = new JTable(datos,cabecera);
-		tabla.setBackground(Color.LIGHT_GRAY);
-		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tabla.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(1).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(2).setPreferredWidth(50);
-	
-		tabla.setPreferredSize(new Dimension(700,120));
-		scroll1 = new JScrollPane(tabla);
-		scroll1.setViewportView(tabla);
-		scroll1.setBounds(36,250,700,110);
-		add(scroll1);
-		
 		
 		campo_nombre =  new JTextField();
 		campo_nombre.setBounds(36,450,200,25);
@@ -112,6 +108,33 @@ public class PanelTiendas extends JPanel {
 		boton_agregar_tienda.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_agregar_tienda);
 		
+		
+		
+	}
+	public void crearTabla() {
+
+		tabla = new JTable();
+		model = new DefaultTableModel(cabecera, 0);
+		tabla = new JTable(model);
+		tabla.setModel(model);
+	
+
+		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
+		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
+		tabla.setPreferredSize(new Dimension(700, 700));
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+		for (int i = 0; i < cabecera.length; i++) {
+			tabla.getColumnModel().getColumn(i).setCellRenderer(Alinear);
+			TableColumnModel columnModel = tabla.getColumnModel();
+			columnModel.getColumn(i).setPreferredWidth(200);
+
+		}
+		
+		scroll1 = new JScrollPane(tabla);
+		scroll1.setViewportView(tabla);
+		scroll1.setBounds(43, 240, 700, 130);
+		add(scroll1);
 	}
 	public JComboBox<String> getCombo_tiendas() {
 		return combo_tiendas;
@@ -119,12 +142,7 @@ public class PanelTiendas extends JPanel {
 	public void setCombo_tiendas(JComboBox<String> combo_tiendas) {
 		this.combo_tiendas = combo_tiendas;
 	}
-	public String[][] getDatos() {
-		return datos;
-	}
-	public void setDatos(String[][] datos) {
-		this.datos = datos;
-	}
+	
 	public JTextField getCampo_buscar() {
 		return campo_buscar;
 	}
@@ -172,6 +190,30 @@ public class PanelTiendas extends JPanel {
 	}
 	public void setBoton_agregar_tienda(JButton boton_agregar_tienda) {
 		this.boton_agregar_tienda = boton_agregar_tienda;
+	}
+	public DefaultTableModel getModel() {
+		return model;
+	}
+	public void setModel(DefaultTableModel model) {
+		this.model = model;
+	}
+	public JButton getBoton_buscar() {
+		return boton_buscar;
+	}
+	public void setBoton_buscar(JButton boton_buscar) {
+		this.boton_buscar = boton_buscar;
+	}
+	public JButton getBoton_ver_tiendas() {
+		return boton_ver_tiendas;
+	}
+	public void setBoton_ver_tiendas(JButton boton_ver_tiendas) {
+		this.boton_ver_tiendas = boton_ver_tiendas;
+	}
+	public JTable getTabla() {
+		return tabla;
+	}
+	public void setTabla(JTable tabla) {
+		this.tabla = tabla;
 	}
 	
 	

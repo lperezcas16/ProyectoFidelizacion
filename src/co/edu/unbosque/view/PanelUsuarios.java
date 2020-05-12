@@ -3,6 +3,9 @@ package co.edu.unbosque.view;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 public class PanelUsuarios extends JPanel{
 	
 	/**
@@ -10,14 +13,17 @@ public class PanelUsuarios extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
-	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2, boton_eliminar;
+	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2, boton_eliminar, boton_ver_usuarios;
 	private JTextField campo_buscar;
 	private String nombre;
 	private ImageIcon imagen;
 	private JScrollPane scroll1,scroll2 ;
-	private String[][] datos = new String[1][5];
-	private String[][] datos2 = new String[1][2];
-	private String [] cabecera= {"Nombre","Alias", "Correo","Genero", "Numero de Tarjeta"};
+	
+	
+	private DefaultTableModel model1, model2;
+	private JTable tabla1, tabla2;
+	
+	private String [] cabecera1= {"Nombre","Alias", "Correo","Genero", "Numero de Tarjeta"};
 	private String [] cabecera2= {"Nombre", "Porcentaje de cupo"};
 	
 	public PanelUsuarios(String nombre) {
@@ -25,6 +31,7 @@ public class PanelUsuarios extends JPanel{
 		setLayout(null);
 		inicializarComponentes();
 		setVisible(true);
+		crearTablas();
 		
 		
 	}
@@ -59,34 +66,10 @@ public class PanelUsuarios extends JPanel{
 		boton_eliminar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_eliminar);
 		
-		JTable tabla = new JTable(datos,cabecera);
-//		tabla.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		tabla = new JTable(datos,cabecera);
-		tabla.setBackground(Color.LIGHT_GRAY);
-		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tabla.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(1).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(2).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(3).setPreferredWidth(50);
-		tabla.getColumnModel().getColumn(4).setPreferredWidth(50);
-		tabla.setPreferredSize(new Dimension(700,50));
-		scroll1 = new JScrollPane(tabla);
-		scroll1.setViewportView(tabla);
-		scroll1.setBounds(36,200,700,70);
-		add(scroll1);
-		
-		JTable tabla2 = new JTable(datos2,cabecera2);
-		tabla2 = new JTable(datos2,cabecera2);
-		tabla2.setBackground(Color.LIGHT_GRAY);
-		tabla2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tabla2.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tabla2.getColumnModel().getColumn(1).setPreferredWidth(50);
-		
-		tabla2.setPreferredSize(new Dimension(700,50));
-		scroll2 = new JScrollPane(tabla2);
-		scroll2.setViewportView(tabla2);
-		scroll2.setBounds(36,320,700,100);
-		add(scroll2);
+		boton_ver_usuarios = new JButton("Ver usuarios");
+		boton_ver_usuarios.setBounds(500,100,250,25);
+		boton_ver_usuarios.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_ver_usuarios);
 		
 		boton_as_op1 = new JButton("Ordenar ascendente Opción 1");
 		boton_as_op1.setBounds(76,440,300,25);
@@ -111,6 +94,54 @@ public class PanelUsuarios extends JPanel{
 		
 	}
 
+	public void crearTablas() {
+		tabla1 = new JTable();
+		model1 = new DefaultTableModel(cabecera1, 0);
+		tabla1 = new JTable(model1);
+		tabla1.setModel(model1);
+	
+
+		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
+		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
+		tabla1.setPreferredSize(new Dimension(700, 700));
+		tabla1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+		for (int i = 0; i < cabecera1.length; i++) {
+			tabla1.getColumnModel().getColumn(i).setCellRenderer(Alinear);
+			TableColumnModel columnModel = tabla1.getColumnModel();
+			columnModel.getColumn(i).setPreferredWidth(200);
+			
+			///////////////////////////////////////////////////////////////
+			tabla2 = new JTable();
+			model2 = new DefaultTableModel(cabecera2, 0);
+			tabla2 = new JTable(model2);
+			tabla2.setModel(model2);
+		
+
+			DefaultTableCellRenderer Alinear2 = new DefaultTableCellRenderer();
+			Alinear2.setHorizontalAlignment(SwingConstants.CENTER);
+			tabla2.setPreferredSize(new Dimension(700, 700));
+			tabla2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+			for (int j = 0; j < cabecera2.length; j++) {
+				tabla2.getColumnModel().getColumn(j).setCellRenderer(Alinear2);
+				TableColumnModel columnModel2 = tabla2.getColumnModel();
+				columnModel2.getColumn(j).setPreferredWidth(200);
+			}
+				
+		}
+		
+		scroll2 = new JScrollPane(tabla2);
+		scroll2.setViewportView(tabla2);
+		scroll2.setBounds(36,320,700,100);
+		add(scroll2);
+		
+		scroll1 = new JScrollPane(tabla1);
+		scroll1.setViewportView(tabla1);
+		scroll1.setBounds(36,200,700,70);
+		add(scroll1);
+	}
+	
 	public JComboBox<String> getCombo_buscar() {
 		return combo_buscar;
 	}
@@ -183,21 +214,47 @@ public class PanelUsuarios extends JPanel{
 		this.imagen = imagen;
 	}
 
-	public String[][] getDatos() {
-		return datos;
+	public DefaultTableModel getModel1() {
+		return model1;
 	}
 
-	public void setDatos(String[][] datos) {
-		this.datos = datos;
+	public void setModel1(DefaultTableModel model1) {
+		this.model1 = model1;
 	}
 
-	public String[][] getDatos2() {
-		return datos2;
+	public DefaultTableModel getModel2() {
+		return model2;
 	}
 
-	public void setDatos2(String[][] datos2) {
-		this.datos2 = datos2;
+	public void setModel2(DefaultTableModel model2) {
+		this.model2 = model2;
 	}
+
+	public JTable getTabla1() {
+		return tabla1;
+	}
+
+	public void setTabla1(JTable tabla1) {
+		this.tabla1 = tabla1;
+	}
+
+	public JTable getTabla2() {
+		return tabla2;
+	}
+
+	public void setTabla2(JTable tabla2) {
+		this.tabla2 = tabla2;
+	}
+
+	public JButton getBoton_ver_usuarios() {
+		return boton_ver_usuarios;
+	}
+
+	public void setBoton_ver_usuarios(JButton boton_ver_usuarios) {
+		this.boton_ver_usuarios = boton_ver_usuarios;
+	}
+
+
 	
 	
 

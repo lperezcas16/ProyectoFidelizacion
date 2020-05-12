@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="Librerias/mail.jar"/>
 	<classpathentry kind="lib" path="Librerias/jcommon-1.0.17.jar"/>
 	<classpathentry kind="lib" path="Librerias/jfreechart-1.0.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AlvaroErnesto/git/ProyectoCorte3/Librerias/itext5-itextpdf-5.5.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
