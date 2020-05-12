@@ -48,7 +48,7 @@ public class PanelVerInfoPareja extends JPanel {
 	public void inicializarComponentes() {
 
 		boton_regresar = new JButton();
-		boton_regresar.setBounds(600, 480, 150, 30);
+		boton_regresar.setBounds(596, 480, 150, 30);
 		add(boton_regresar);
 
 		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));

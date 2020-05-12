@@ -17,10 +17,10 @@ public class PanelAdmCuentas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info;
-	private JButton boton_agregar_pareja, boton_info_pareja;
+	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info, imagen_sesion;
+	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion;
 	private JLabel label_tarjeta, label_cupo;
-	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info;
+	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion;
 	private JButton boton_ojo_oculto;
 
 	private PanelAgregarPareja pnl_agregar_pareja;
@@ -94,12 +94,20 @@ public class PanelAdmCuentas extends JPanel {
 		add(pnl_agregar_pareja);
 
 		pnl_agregar_pareja.getBoton_agregar_nueva_pareja().setIcon(pnl_agregar_pareja.getIcono_boton());
+		pnl_agregar_pareja.getBoton_regresar().setIcon(pnl_agregar_pareja.getIcono_boton_regresar());
 
 		pnl_ver_info_pareja = new PanelVerInfoPareja("/co/edu/unbosque/imagenes/fondo_ver_info_parejas.png");
 		pnl_ver_info_pareja.setBounds(0, 0, 795, 572);
 		add(pnl_ver_info_pareja);
 
 		pnl_ver_info_pareja.getBoton_regresar().setIcon(pnl_ver_info_pareja.getIcono_boton_regresar());
+
+		boton_cerrar_sesion = new JButton();
+		boton_cerrar_sesion.setBounds(596, 120, 150, 30);
+		add(boton_cerrar_sesion);
+
+		imagen_sesion = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_cerrar_sesion.png"));
+		icono_sesion = new ImageIcon(imagen_sesion.getImage().getScaledInstance(210, 30, Image.SCALE_SMOOTH));
 
 	}
 
@@ -241,6 +249,30 @@ public class PanelAdmCuentas extends JPanel {
 
 	public void setPnl_ver_info_pareja(PanelVerInfoPareja pnl_ver_info_pareja) {
 		this.pnl_ver_info_pareja = pnl_ver_info_pareja;
+	}
+
+	public JButton getBoton_cerrar_sesion() {
+		return boton_cerrar_sesion;
+	}
+
+	public void setBoton_cerrar_sesion(JButton boton_cerrar_sesion) {
+		this.boton_cerrar_sesion = boton_cerrar_sesion;
+	}
+
+	public ImageIcon getImagen_sesion() {
+		return imagen_sesion;
+	}
+
+	public void setImagen_sesion(ImageIcon imagen_sesion) {
+		this.imagen_sesion = imagen_sesion;
+	}
+
+	public Icon getIcono_sesion() {
+		return icono_sesion;
+	}
+
+	public void setIcono_sesion(Icon icono_sesion) {
+		this.icono_sesion = icono_sesion;
 	}
 
 }

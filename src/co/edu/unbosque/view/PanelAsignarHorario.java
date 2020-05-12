@@ -92,6 +92,7 @@ public class PanelAsignarHorario extends JPanel {
 
 		pnl_seleccionar_tienda.getBoton_agregar_nueva_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_nueva());
 		pnl_seleccionar_tienda.getBoton_agregar_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_tienda());
+		pnl_seleccionar_tienda.getBoton_regresar().setIcon(pnl_seleccionar_tienda.getIcon_boton_regresar());
 
 	}
 

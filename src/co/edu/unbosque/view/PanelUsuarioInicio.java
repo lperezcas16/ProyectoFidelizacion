@@ -46,6 +46,7 @@ public class PanelUsuarioInicio extends JPanel {
 		pnl_adm_cuentas.getBoton_info_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_info());
 		pnl_asignar_horarios.getBoton_agregar_horario().setIcon(pnl_asignar_horarios.getIcon_boton());
 		pnl_asignar_horarios.getBoton_seleccionar_tienda().setIcon(pnl_asignar_horarios.getIcon_boton_tienda());
+		pnl_adm_cuentas.getBoton_cerrar_sesion().setIcon(pnl_adm_cuentas.getIcono_sesion());
 	}
 
 	public JTabbedPane getPestañas() {

@@ -19,10 +19,10 @@ public class PanelSeleccionarTienda extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JButton boton_agregar_tienda, boton_agregar_nueva_tienda;
+	private JButton boton_agregar_tienda, boton_agregar_nueva_tienda, boton_regresar;
 	private String nombre;
-	private ImageIcon imagen, imagen_boton_tienda, imagen_boton_nueva;
-	private Icon icon_boton_tienda, icon_boton_nueva;
+	private ImageIcon imagen, imagen_boton_tienda, imagen_boton_nueva, imagen_boton_regresar;
+	private Icon icon_boton_tienda, icon_boton_nueva, icon_boton_regresar;
 	private JTable table;
 	private String[] nombre_columnas = { "Nombre", "Direccion", "Horario de Apertura", "Horario de Cierre" };
 	private JScrollPane scroll;
@@ -72,6 +72,15 @@ public class PanelSeleccionarTienda extends JPanel {
 		add(pnl_nueva_tienda);
 
 		pnl_nueva_tienda.getBoton_validar_nueva_tienda().setIcon(pnl_nueva_tienda.getIcono_boton_añadir());
+		pnl_nueva_tienda.getBoton_regresar().setIcon(pnl_nueva_tienda.getIcono_boton_regresar());
+
+		boton_regresar = new JButton();
+		boton_regresar.setBounds(596, 480, 150, 30);
+		add(boton_regresar);
+
+		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icon_boton_regresar = new ImageIcon(
+				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 	}
 
 	public void crearTabla() {
@@ -207,6 +216,30 @@ public class PanelSeleccionarTienda extends JPanel {
 
 	public void setPnl_nueva_tienda(PanelNuevaTienda pnl_nueva_tienda) {
 		this.pnl_nueva_tienda = pnl_nueva_tienda;
+	}
+
+	public JButton getBoton_regresar() {
+		return boton_regresar;
+	}
+
+	public void setBoton_regresar(JButton boton_regresar) {
+		this.boton_regresar = boton_regresar;
+	}
+
+	public ImageIcon getImagen_boton_regresar() {
+		return imagen_boton_regresar;
+	}
+
+	public void setImagen_boton_regresar(ImageIcon imagen_boton_regresar) {
+		this.imagen_boton_regresar = imagen_boton_regresar;
+	}
+
+	public Icon getIcon_boton_regresar() {
+		return icon_boton_regresar;
+	}
+
+	public void setIcon_boton_regresar(Icon icon_boton_regresar) {
+		this.icon_boton_regresar = icon_boton_regresar;
 	}
 
 }

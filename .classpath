@@ -8,7 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="Librerias/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="Librerias/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/AlvaroErnesto/Downloads/jfreechart-1.0.14.jar"/>
-	<classpathentry kind="lib" path="C:/Users/AlvaroErnesto/Downloads/jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="Librerias/jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="Librerias/jfreechart-1.0.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

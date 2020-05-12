@@ -18,9 +18,9 @@ public class PanelNuevaTienda extends JPanel {
 
 	private JTextField campo_texto_nombre, campo_texto_direccion;
 	private JSpinner spinner_hora_apertura, spinner_hora_cierre;
-	private JButton boton_validar_nueva_tienda;
-	private ImageIcon imagen, imagen_boton_añadir;
-	private Icon icono_boton_añadir;
+	private JButton boton_validar_nueva_tienda, boton_regresar;
+	private ImageIcon imagen, imagen_boton_añadir, imagen_boton_regresar;
+	private Icon icono_boton_añadir, icono_boton_regresar;
 	private String nombre;
 
 	public PanelNuevaTienda(String nombre) {
@@ -70,6 +70,14 @@ public class PanelNuevaTienda extends JPanel {
 				getClass().getResource("/co/edu/unbosque/imagenes/boton_confirmar_seleccion.png"));
 		icono_boton_añadir = new ImageIcon(
 				imagen_boton_añadir.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+
+		boton_regresar = new JButton();
+		boton_regresar.setBounds(35, 480, 150, 30);
+		add(boton_regresar);
+
+		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(
+				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 
 	}
 
@@ -147,6 +155,30 @@ public class PanelNuevaTienda extends JPanel {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public JButton getBoton_regresar() {
+		return boton_regresar;
+	}
+
+	public void setBoton_regresar(JButton boton_regresar) {
+		this.boton_regresar = boton_regresar;
+	}
+
+	public ImageIcon getImagen_boton_regresar() {
+		return imagen_boton_regresar;
+	}
+
+	public void setImagen_boton_regresar(ImageIcon imagen_boton_regresar) {
+		this.imagen_boton_regresar = imagen_boton_regresar;
+	}
+
+	public Icon getIcono_boton_regresar() {
+		return icono_boton_regresar;
+	}
+
+	public void setIcono_boton_regresar(Icon icono_boton_regresar) {
+		this.icono_boton_regresar = icono_boton_regresar;
 	}
 
 }

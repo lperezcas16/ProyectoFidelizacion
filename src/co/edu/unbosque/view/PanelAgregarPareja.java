@@ -15,10 +15,10 @@ public class PanelAgregarPareja extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	private ImageIcon imagen, imagen_boton;
+	private ImageIcon imagen, imagen_boton, imagen_boton_regresar;
 	private JTextField campo_texto_nombre, campo_texto_cupo;
-	private JButton boton_agregar_nueva_pareja;
-	private Icon icono_boton;
+	private JButton boton_agregar_nueva_pareja, boton_regresar;
+	private Icon icono_boton, icono_boton_regresar;
 
 	public PanelAgregarPareja(String nombre) {
 		this.nombre = nombre;
@@ -53,6 +53,14 @@ public class PanelAgregarPareja extends JPanel {
 		imagen_boton = new ImageIcon(
 				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_nueva_pareja.png"));
 		icono_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
+
+		boton_regresar = new JButton();
+		boton_regresar.setBounds(35, 480, 150, 30);
+		add(boton_regresar);
+
+		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(
+				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 	}
 
 	public String getNombre() {
@@ -113,6 +121,30 @@ public class PanelAgregarPareja extends JPanel {
 
 	public void setIcono_boton(Icon icono_boton) {
 		this.icono_boton = icono_boton;
+	}
+
+	public ImageIcon getImagen_boton_regresar() {
+		return imagen_boton_regresar;
+	}
+
+	public void setImagen_boton_regresar(ImageIcon imagen_boton_regresar) {
+		this.imagen_boton_regresar = imagen_boton_regresar;
+	}
+
+	public JButton getBoton_regresar() {
+		return boton_regresar;
+	}
+
+	public void setBoton_regresar(JButton boton_regresar) {
+		this.boton_regresar = boton_regresar;
+	}
+
+	public Icon getIcono_boton_regresar() {
+		return icono_boton_regresar;
+	}
+
+	public void setIcono_boton_regresar(Icon icono_boton_regresar) {
+		this.icono_boton_regresar = icono_boton_regresar;
 	}
 
 }

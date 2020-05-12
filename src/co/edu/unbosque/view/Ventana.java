@@ -25,8 +25,8 @@ public class Ventana extends JFrame {
 		setDefaultLookAndFeelDecorated(true);
 
 		// add(panel1);
-//		add(panel_us_inicio);
-		 add(panel_admin);
+		add(panel_us_inicio);
+//		 add(panel_admin);
 
 	}
 
