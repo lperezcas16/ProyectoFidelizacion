@@ -3,9 +3,12 @@ package co.edu.unbosque.view;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 public class PanelUsuarios extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
 	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2, boton_eliminar;
 	private JTextField campo_buscar;
@@ -85,10 +88,115 @@ public class PanelUsuarios extends JPanel{
 		scroll2.setBounds(36,320,700,100);
 		add(scroll2);
 		
+		boton_as_op1 = new JButton("Ordenar ascendente Opción 1");
+		boton_as_op1.setBounds(76,440,300,25);
+		boton_as_op1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_as_op1);
+		
+		boton_des_op2 = new JButton("Ordenar descendente Opción 1");
+		boton_des_op2.setBounds(76,470,300,25);
+		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_des_op2);
 		
 		
+		boton_as_op2 = new JButton("Ordenar ascendente Opción 2");
+		boton_as_op2.setBounds(400,440,300,25);
+		boton_as_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_as_op2);
 		
+		boton_des_op2 = new JButton("Ordenar descendente Opción 2");
+		boton_des_op2.setBounds(400,470,300,25);
+		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_des_op2);
 		
+	}
+
+	public JComboBox<String> getCombo_buscar() {
+		return combo_buscar;
+	}
+
+	public void setCombo_buscar(JComboBox<String> combo_buscar) {
+		this.combo_buscar = combo_buscar;
+	}
+
+	public JButton getBoton_as_op1() {
+		return boton_as_op1;
+	}
+
+	public void setBoton_as_op1(JButton boton_as_op1) {
+		this.boton_as_op1 = boton_as_op1;
+	}
+
+	public JButton getBoton_des_op1() {
+		return boton_des_op1;
+	}
+
+	public void setBoton_des_op1(JButton boton_des_op1) {
+		this.boton_des_op1 = boton_des_op1;
+	}
+
+	public JButton getBoton_as_op2() {
+		return boton_as_op2;
+	}
+
+	public void setBoton_as_op2(JButton boton_as_op2) {
+		this.boton_as_op2 = boton_as_op2;
+	}
+
+	public JButton getBoton_des_op2() {
+		return boton_des_op2;
+	}
+
+	public void setBoton_des_op2(JButton boton_des_op2) {
+		this.boton_des_op2 = boton_des_op2;
+	}
+
+	public JButton getBoton_eliminar() {
+		return boton_eliminar;
+	}
+
+	public void setBoton_eliminar(JButton boton_eliminar) {
+		this.boton_eliminar = boton_eliminar;
+	}
+
+	public JTextField getCampo_buscar() {
+		return campo_buscar;
+	}
+
+	public void setCampo_buscar(JTextField campo_buscar) {
+		this.campo_buscar = campo_buscar;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public ImageIcon getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(ImageIcon imagen) {
+		this.imagen = imagen;
+	}
+
+	public String[][] getDatos() {
+		return datos;
+	}
+
+	public void setDatos(String[][] datos) {
+		this.datos = datos;
+	}
+
+	public String[][] getDatos2() {
+		return datos2;
+	}
+
+	public void setDatos2(String[][] datos2) {
+		this.datos2 = datos2;
 	}
 	
 	

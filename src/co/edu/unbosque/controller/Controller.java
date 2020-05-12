@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -17,10 +18,12 @@ import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.TiendaDAO;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
 import co.edu.unbosque.view.Ventana;
+import co.edu.unbosque.view.VentanaGraficas;
 
 public class Controller implements ActionListener {
 
 	private Ventana view;
+	private VentanaGraficas view2;
 	private Solusoft solusoft;
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
@@ -32,10 +35,11 @@ public class Controller implements ActionListener {
 	private Usuario usuario;
 	private String numeros = "[0-9]+";
 
-	public Controller() {
+	public Controller() throws IOException {
 		super();
 		solusoft = new Solusoft();
 		view = new Ventana();
+		view2 = new VentanaGraficas();
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
 		lista_usuarios = new ArrayList<Usuario>();
@@ -92,13 +96,119 @@ public class Controller implements ActionListener {
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 				.addActionListener(controller);
 		// LISTENERS PANEL VER INFO PAREJA
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar()
-				.addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar();
+		//LISTENERS PANEL INFORME
+				view.getPanel_admin().getPanel_informe().getCombo_eleccion().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getCombo_Fecha().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getCombo_hora().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getCombo_tienda().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getCampo_usuario().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getBoton().addActionListener(controller);
+				view.getPanel_admin().getPanel_informe().getBoton_vista_previa().addActionListener(controller);
+				
+				//LISTENERS PANEL TIENDA
+				view.getPanel_admin().getPanel_tiendas().getBoton_eliminar().addActionListener(controller);
+				view.getPanel_admin().getPanel_tiendas().getBoton_agregar_tienda().addActionListener(controller);
+				view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().addActionListener(controller);
+				
 
-	}
+			}
 
-	public void actionPerformed(ActionEvent event) {
+			public void actionPerformed(ActionEvent event) {
+				
+				// PANEL VISTA TIENDAS EN ADMINISTRADOR
+				if(view.getPanel_admin().getPanel_tiendas().getCombo_tiendas() == event.getSource()) {
+					try {
+						
+						switch ( view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().getSelectedIndex()) {
+						case 0:
+							view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
+							view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(false);
+							break;
+						case 1:
+							view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
+							view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(true);
+							break;
+						case 2:
+							view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
+							view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(true);
+							break;
+						case 3: 
+							view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(true);
+							view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(false);
+							break;
+						}
+					}catch( Exception e) {
+						System.out.println("Error al cargar  todo ");
+					}
+				}
+				
+				//	PANEL VISTA PREVIA DE LAS GRÁFICAS
+				
+				if(view.getPanel_admin().getPanel_informe().getBoton_vista_previa() == event.getSource()) {
 
+//					view.getPanel_admin().getPanel_informe().setVisible(false);
+					view2.setVisible(true);
+
+				}
+				// PANEL DE ADMINISTRADOR GENERADOR DEL INFORME 
+				
+				if(view.getPanel_admin().getPanel_informe().getCombo_eleccion() == event.getSource()){	
+					String aux,aux2;
+					try {
+				
+					
+					switch(view.getPanel_admin().getPanel_informe()
+							.getCombo_eleccion().getSelectedIndex()){
+					
+					case 0: 
+						view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(false);
+						
+						break;
+						// leer la lista de fechas registradas 
+					case 1:
+						
+						view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+						
+						// leer la lista de horarios según la fecha
+						switch ( view.getPanel_admin().getPanel_informe().getCombo_Fecha().getSelectedIndex()){
+							
+						}
+						break;
+					case 2:
+						
+						view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+						break;
+					case 3 :
+						view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(false);
+						view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+						view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+						break;
+					}
+					
+				}catch( Exception e) {
+				System.out.println("Error al cargar  todo ");
+				}
+//					
+				}
 		// ACCION INGRESAR AL SISTEMA
 		if (view.getPanel1().getBoton_entrar() == event.getSource()) {
 
