@@ -17,7 +17,7 @@ public class PanelAdminInicio extends JPanel {
 	private PanelInformes panel_informe = new PanelInformes("/co/edu/unbosque/imagenes/fondo-informe.png");
 	private PanelUsuarios panel_usuarios = new PanelUsuarios("/co/edu/unbosque/imagenes/fondo_usuario.png");
 	private PanelTiendas panel_tiendas = new PanelTiendas("/co/edu/unbosque/imagenes/fondo_tiendas.png");
-
+	
 	public PanelAdminInicio() {
 
 		setLayout(new BorderLayout());
