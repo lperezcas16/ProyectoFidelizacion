@@ -32,7 +32,7 @@ private  JPanel panel;
         setTitle("Grafica 3D");
         setSize(800,600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(false);
         init();
     }

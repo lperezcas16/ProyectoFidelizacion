@@ -62,19 +62,8 @@ public class Controller implements ActionListener {
 		// LISTENER PANEL PRINCIPAL
 		view.getPanel1().getBoton_entrar().addActionListener(controller);
 		view.getPanel1().getBoton_registrar().addActionListener(controller);
-		// LISTENERS PANEL USUARIO
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
+		// LISTENERS PANEL USUARIOS		
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_nueva_tienda()
-				.addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
-				.addActionListener(controller);
-		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
-				.getBoton_validar_nueva_tienda().addActionListener(controller);
-		// LISTENERS PANEL USUARIOS
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
 		// LISTENERS ASIGNAR HORARIOS
@@ -85,6 +74,8 @@ public class Controller implements ActionListener {
 				.addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 				.addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
+		.getBoton_validar_nueva_tienda().addActionListener(controller);
 		// LISTENERS PANEL VER INFO PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -104,7 +95,7 @@ public class Controller implements ActionListener {
 		view.getPanel_admin().getPanel_tiendas().getBoton_ver_tiendas().addActionListener(controller);
 	// PANEL ADMINISTRACION USUARIOS 
 		view.getPanel_admin().getPanel_usuarios().getBoton_eliminar().addActionListener(controller);
-		
+		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -120,6 +111,28 @@ public class Controller implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent event) {
+		//ADMINISTRADOR MOSTRAR USUARIOS
+		if ( view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios()== event.getSource()) {
+			//primero borra la tabla
+			view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+			/*
+			for ( int i = view.getPanel_admin().getPanel_usuarios().getModel1().getRowCount() - 1; i > 0; i--) {
+				view.getPanel_admin().getPanel_usuarios().getModel1().removeRow(i);
+			}*/
+			//mostrar todos los usuarios
+			for (int i = 0; i < lista_usuarios.size(); i++) {
+
+				String nombre = lista_usuarios.get(i).getNombre();
+				String correo = lista_usuarios.get(i).getCorreo();
+				String alias = lista_usuarios.get(i).getUsuario();
+				String genero = lista_usuarios.get(i).getGenero();
+				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+
+				Object[] datos_filas = { nombre, alias,correo,genero, numerotarjeta };
+				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);		
+			}
+			
+		}
 
 	// ADMINISTRADOR ELIMINAR USUARIOS 
 

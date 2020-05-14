@@ -8,7 +8,7 @@ public class Panel1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextField campo_usuario, campo_nombre, campo_numCedula, campo_correo;
+	private JTextField campo_usuario, campo_nombre,  campo_correo;
 	private JPasswordField campo_contrasena1, campo_contrasena2;
 	private JButton boton_entrar, boton_registrar;
 	private ButtonGroup grupo;
@@ -123,7 +123,7 @@ public class Panel1 extends JPanel {
 		campo_contrasena2.setText("");
 		campo_correo.setText("");
 		campo_nombre.setText("");
-		campo_numCedula.setText("");
+		
 		campo_usuario.setText("");
 
 	}
@@ -144,13 +144,7 @@ public class Panel1 extends JPanel {
 		this.campo_nombre = campo_nombre;
 	}
 
-	public JTextField getCampo_numCedula() {
-		return campo_numCedula;
-	}
-
-	public void setCampo_numCedula(JTextField campo_numCedula) {
-		this.campo_numCedula = campo_numCedula;
-	}
+	
 
 	public JTextField getCampo_correo() {
 		return campo_correo;
