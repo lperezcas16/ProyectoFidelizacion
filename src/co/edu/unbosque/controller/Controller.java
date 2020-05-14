@@ -115,10 +115,7 @@ public class Controller implements ActionListener {
 		if ( view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios()== event.getSource()) {
 			//primero borra la tabla
 			view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
-			/*
-			for ( int i = view.getPanel_admin().getPanel_usuarios().getModel1().getRowCount() - 1; i > 0; i--) {
-				view.getPanel_admin().getPanel_usuarios().getModel1().removeRow(i);
-			}*/
+			
 			//mostrar todos los usuarios
 			for (int i = 0; i < lista_usuarios.size(); i++) {
 
@@ -184,17 +181,12 @@ public class Controller implements ActionListener {
 		}
 		
 		
-		//BOTON VER USUARIOS
-////		if ( view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios() == event.getSource()) {
-//	
-//	}
+	
 		// BOTON VER TIENDAS
 		if(view.getPanel_admin().getPanel_tiendas().getBoton_ver_tiendas()== event.getSource()) {
-			//mostrar todas las tiendas en la tabla
-			for ( int i = view.getPanel_admin().getPanel_tiendas().getModel().getRowCount() - 1; i > 0; i--) {
-				view.getPanel_admin().getPanel_tiendas().getModel().removeRow(i);
-			}
-			
+			//primero borra la tabla
+			view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
+			//luego muestra las tiendas de nuevo
 			for (int i = 0; i < getTiendas().size(); i++) {
 
 				String nombre = lista_tiendas.get(i).getNombre();
@@ -234,13 +226,10 @@ public class Controller implements ActionListener {
 					if (tiendaDAO.agregarTienda(nombre_tienda, direccion_tienda, hora_a, hora_c, lista_tiendas)) {
 
 						view.mostrarMensajes("TIENDA_TRUE");
-
-
-						for (int i = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-								.getModel().getRowCount() - 1; i > 0; i--) {
-							view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
-									.removeRow(i);
-						}
+						//primero borra la info
+						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+						.getModel().setRowCount(0);
+						//luego la muestra de nuevo
 
 						for (int i = 0; i < getTiendas().size(); i++) {
 
@@ -413,6 +402,7 @@ public class Controller implements ActionListener {
 //								.setText(usuarioDAO.buscarUsuario(view.getPanel1().getCampo_usuario().getText(), lista_usuarios)
 //										.getNumeroTarjeta());
 
+				view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel().setRowCount(0);
 				// Tabla tiendas
 				for (int i = 0; i < getTiendas().size(); i++) {
 
@@ -678,12 +668,9 @@ public class Controller implements ActionListener {
 						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
 								.setVisible(true);
 
-						for (int i = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-								.getModel().getRowCount() - 1; i > 0; i--) {
-							view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
-									.removeRow(i);
-						}
-
+						//primero borrra
+						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel().setRowCount(0);
+						//luego carga
 						for (int i = 0; i < getTiendas().size(); i++) {
 
 							String nombre = lista_tiendas.get(i).getNombre();
@@ -773,7 +760,7 @@ public class Controller implements ActionListener {
 	
 
 	public void asignarTablaTiendas() {
-
+		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel().setRowCount(0);
 		for (int i = 0; i < getTiendas().size(); i++) {
 
 			String nombre = lista_tiendas.get(i).getNombre();

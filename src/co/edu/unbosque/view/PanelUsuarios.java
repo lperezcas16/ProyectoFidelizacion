@@ -56,7 +56,7 @@ public class PanelUsuarios extends JPanel{
 		combo_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(combo_buscar);
 		
-		campo_buscar = new JTextField();
+		campo_buscar = new JTextField("");
 		campo_buscar.setBounds(200,150,250,25);
 		campo_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(campo_buscar);
