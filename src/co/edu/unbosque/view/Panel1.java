@@ -1,15 +1,28 @@
 package co.edu.unbosque.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Panel1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextField campo_usuario, campo_nombre,  campo_correo;
-	private JPasswordField campo_contrasena1, campo_contrasena2;
+	private JTextField c_usuario_inicio, campo_usuario, campo_nombre,
+			campo_numCedula, campo_correo;
+	private JPasswordField c_contrasena_inicio, campo_contrasena;
 	private JButton boton_entrar, boton_registrar;
 	private ButtonGroup grupo;
 	private JRadioButton c1, c2;
@@ -38,22 +51,26 @@ public class Panel1 extends JPanel {
 	public void inicializarComponentes() {
 
 		// 1
-		campo_usuario = new JTextField();
-		campo_usuario.setBounds(340, 35, 250, 25);
-		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(campo_usuario);
+		c_usuario_inicio = new JTextField();
+		c_usuario_inicio.setBounds(340, 35, 250, 25);
+		c_usuario_inicio.setFont(new Font("Accidental Presidency", Font.BOLD,
+				16));
+		add(c_usuario_inicio);
 
-		campo_contrasena1 = new JPasswordField();
-		campo_contrasena1.setBounds(340, 100, 250, 25);
-		campo_contrasena1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(campo_contrasena1);
+		c_contrasena_inicio = new JPasswordField();
+		c_contrasena_inicio.setBounds(340, 100, 250, 25);
+		c_contrasena_inicio.setFont(new Font("Accidental Presidency",
+				Font.BOLD, 16));
+		add(c_contrasena_inicio);
 
 		boton_entrar = new JButton();
 		boton_entrar.setBounds(620, 55, 100, 50);
 		add(boton_entrar);
 
-		imagen_entrar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_entrada.png"));
-		icono_entrar = new ImageIcon(imagen_entrar.getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH));
+		imagen_entrar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_entrada.png"));
+		icono_entrar = new ImageIcon(imagen_entrar.getImage()
+				.getScaledInstance(90, 90, Image.SCALE_SMOOTH));
 		boton_entrar.setHorizontalAlignment(SwingConstants.CENTER);
 		boton_entrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_entrar.setContentAreaFilled(false);
@@ -99,18 +116,21 @@ public class Panel1 extends JPanel {
 		campo_usuario.setBorder(null);
 		add(campo_usuario);
 
-		campo_contrasena2 = new JPasswordField();
-		campo_contrasena2.setBounds(420, 330, 250, 25);
-		campo_contrasena2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		campo_contrasena2.setBorder(null);
-		add(campo_contrasena2);
+		campo_contrasena = new JPasswordField();
+		campo_contrasena.setBounds(420, 330, 250, 25);
+		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD,
+				16));
+		campo_contrasena.setBorder(null);
+		add(campo_contrasena);
 
 		boton_registrar = new JButton();
 		boton_registrar.setBounds(320, 490, 150, 50);
 		add(boton_registrar);
 
-		imagen_registar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_registrar.png"));
-		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+		imagen_registar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_registrar.png"));
+		icono_registrar = new ImageIcon(imagen_registar.getImage()
+				.getScaledInstance(100, 90, Image.SCALE_SMOOTH));
 		boton_registrar.setHorizontalAlignment(SwingConstants.CENTER);
 		boton_registrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_registrar.setContentAreaFilled(false);
@@ -119,13 +139,23 @@ public class Panel1 extends JPanel {
 	}
 
 	public void limpiarCampos() {
-
-		campo_contrasena2.setText("");
+		campo_usuario.setText("");
+		campo_contrasena.setText("");
 		campo_correo.setText("");
 		campo_nombre.setText("");
-		
-		campo_usuario.setText("");
+		c_usuario_inicio.setText("");
+		c_contrasena_inicio.setText("");
+		c1.setSelected(false);
+		c2.setSelected(false);
 
+	}
+
+	public JTextField getC_usuario_inicio() {
+		return c_usuario_inicio;
+	}
+
+	public void setC_usuario_inicio(JTextField c_usuario_inicio) {
+		this.c_usuario_inicio = c_usuario_inicio;
 	}
 
 	public JTextField getCampo_usuario() {
@@ -144,7 +174,13 @@ public class Panel1 extends JPanel {
 		this.campo_nombre = campo_nombre;
 	}
 
-	
+	public JTextField getCampo_numCedula() {
+		return campo_numCedula;
+	}
+
+	public void setCampo_numCedula(JTextField campo_numCedula) {
+		this.campo_numCedula = campo_numCedula;
+	}
 
 	public JTextField getCampo_correo() {
 		return campo_correo;
@@ -154,20 +190,28 @@ public class Panel1 extends JPanel {
 		this.campo_correo = campo_correo;
 	}
 
-	public JPasswordField getCampo_contrasena1() {
-		return campo_contrasena1;
+	public JPasswordField getC_contrasena_inicio() {
+		return c_contrasena_inicio;
 	}
 
-	public void setCampo_contrasena1(JPasswordField campo_contrasena1) {
-		this.campo_contrasena1 = campo_contrasena1;
+	public void setC_contrasena_inicio(JPasswordField c_contrasena_inicio) {
+		this.c_contrasena_inicio = c_contrasena_inicio;
 	}
 
-	public JPasswordField getCampo_contrasena2() {
-		return campo_contrasena2;
+	public JPasswordField getCampo_contrasena() {
+		return campo_contrasena;
 	}
 
-	public void setCampo_contrasena2(JPasswordField campo_contrasena2) {
-		this.campo_contrasena2 = campo_contrasena2;
+	public void setCampo_contrasena(JPasswordField campo_contrasena) {
+		this.campo_contrasena = campo_contrasena;
+	}
+
+	public JButton getBoton_entrar() {
+		return boton_entrar;
+	}
+
+	public void setBoton_entrar(JButton boton_entrar) {
+		this.boton_entrar = boton_entrar;
 	}
 
 	public JButton getBoton_registrar() {
@@ -250,12 +294,8 @@ public class Panel1 extends JPanel {
 		this.nombre = nombre;
 	}
 
-	public JButton getBoton_entrar() {
-		return boton_entrar;
-	}
-
-	public void setBoton_entrar(JButton boton_entrar) {
-		this.boton_entrar = boton_entrar;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

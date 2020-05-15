@@ -14,12 +14,12 @@ public class Usuario implements Serializable {
 	private String contraseña;
 	private String numeroTarjeta;
 	private long cupoTarjeta;
-	private ArrayList<String> parejas;
+	private ArrayList<Parejas> parejas;
 	private String tipoUsuario;
 
 	public Usuario(String nombre, String genero, String correo, String usuario,
 			String contraseña, String numeroTarjeta, long cupoTarjeta,
-			ArrayList<String> parejas, String tipoUsuario) {
+			ArrayList<Parejas> parejas, String tipoUsuario) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
 		this.contraseña = contraseña;
 		this.numeroTarjeta = numeroTarjeta;
 		this.cupoTarjeta = cupoTarjeta;
-		this.parejas = new ArrayList<String>();
+		this.parejas = new ArrayList<Parejas>();
 		this.parejas = parejas;
 		this.tipoUsuario = tipoUsuario;
 	}
@@ -97,14 +97,6 @@ public class Usuario implements Serializable {
 		this.cupoTarjeta = cupoTarjeta;
 	}
 
-	public ArrayList<String> getParejas() {
-		return parejas;
-	}
-
-	public void setParejas(ArrayList<String> parejas) {
-		this.parejas = parejas;
-	}
-
 	public String getTipoUsuario() {
 		return tipoUsuario;
 	}
@@ -120,5 +112,17 @@ public class Usuario implements Serializable {
 				+ contraseña + " NumeroTarjeta = " + numeroTarjeta
 				+ " CupoTarjeta = " + cupoTarjeta + " Parejas = " + parejas
 				+ " TipoUsuario = " + tipoUsuario + "\n";
+	}
+
+	public ArrayList<Parejas> getParejas() {
+		return parejas;
+	}
+
+	public void setParejas(ArrayList<Parejas> parejas) {
+		this.parejas = parejas;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

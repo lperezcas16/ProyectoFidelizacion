@@ -3,6 +3,10 @@ package co.edu.unbosque.model.persistence;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import co.edu.unbosque.model.Compras;
+import co.edu.unbosque.model.Parejas;
 import co.edu.unbosque.model.Usuario;
 
 public class UsuarioDAO {
@@ -58,7 +62,7 @@ public class UsuarioDAO {
 	 */
 	public boolean agregarUsuario(String nombre, String genero, String correo,
 			String usuario, String contraseña, String numeroTarjeta,
-			long cupoTarjeta, ArrayList<String> parejas, String tipoUsuario,
+			long cupoTarjeta, ArrayList<Parejas> parejas, String tipoUsuario,
 			ArrayList<Usuario> lista_usuarios) {
 
 		Usuario nuevo = new Usuario(nombre, genero, correo, usuario,
@@ -84,7 +88,8 @@ public class UsuarioDAO {
 	 * @return si es puedo realizar la eliminación true o no se pudo realizar
 	 *         false
 	 */
-	public boolean eliminarUsuario(String usuario,ArrayList<Usuario> lista_usuario) {
+	public boolean eliminarUsuario(String usuario,
+			ArrayList<Usuario> lista_usuario) {
 		try {
 			Usuario e = buscarUsuario(usuario, lista_usuario);
 			lista_usuario.remove(e);
@@ -97,6 +102,7 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
+
 	/**
 	 * Metodo EliminarUsuarioPorCorreo , elimina al usuario mediante el usuario
 	 * registrado y el arraylist de la clase usuario
@@ -108,7 +114,8 @@ public class UsuarioDAO {
 	 * @return si es puedo realizar la eliminación true o no se pudo realizar
 	 *         false
 	 */
-	public boolean eliminarCorreo(String correo,ArrayList<Usuario> lista_usuario) {
+	public boolean eliminarCorreo(String correo,
+			ArrayList<Usuario> lista_usuario) {
 		try {
 			Usuario e = buscarCorreo(correo, lista_usuario);
 			lista_usuario.remove(e);
@@ -121,30 +128,7 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
-	/**
-	 * Metodo EliminarUsuarioPorCorreo , elimina al usuario mediante el usuario
-	 * registrado y el arraylist de la clase usuario
-	 * 
-	 * @param nombre
-	 *            el atributo que tendrá el sistema para validar el usuario
-	 * @param lista_usuario
-	 *            el atributo que tendrá el sistema para llamar el arraylist
-	 * @return si es puedo realizar la eliminación true o no se pudo realizar
-	 *         false
-	 */
-	public boolean eliminarNombre(String nombre,ArrayList<Usuario> lista_usuario) {
-		try {
-			Usuario e = buscarNombre(nombre, lista_usuario);
-			lista_usuario.remove(e);
-			archivo_Usuario.getArchivo_Usuarios().delete();
-			archivo_Usuario.getArchivo_Usuarios().createNewFile();
-			archivo_Usuario.escribirEnArchivo(lista_usuario);
-			return true;
-		} catch (IOException e1) {
-			e1.printStackTrace();
-			return false;
-		}
-	}
+
 	/**
 	 * Metodo buscarUsuario, busca una persona mediante el usuario en el
 	 * arraylist.
@@ -170,30 +154,7 @@ public class UsuarioDAO {
 
 		return encontrado;
 	}
-	/**
-	 * Metodo buscarUsuario, busca una persona mediante el usuario en el
-	 * arraylist.
-	 * 
-	 * @param nombre
-	 *            el atributo que tendrán el sistema para validar el usuario
-	 * @param lista_usuarios
-	 *            el atributo que tendrán el sistema para llamar el arraylist de
-	 *            usuarios
-	 * @return si es encontrado o no encontrado en el sistema
-	 */
-	public Usuario buscarNombre(String nombre,ArrayList<Usuario> lista_usuarios) {
-		Usuario encontrado = null;
 
-		if (!lista_usuarios.isEmpty()) {
-			for (int i = 0; i < lista_usuarios.size(); i++) {
-				if (lista_usuarios.get(i).getNombre().equals(nombre)) {
-					encontrado = lista_usuarios.get(i);
-				}
-			}
-		}
-
-		return encontrado;
-	}
 	/**
 	 * Metodo buscarUsuarioCorreo, busca una persona mediante el usuario en el
 	 * arraylist.
@@ -205,8 +166,7 @@ public class UsuarioDAO {
 	 *            usuarios
 	 * @return si es encontrado o no encontrado en el sistema
 	 */
-	public Usuario buscarCorreo(String correo,
-			ArrayList<Usuario> lista_usuarios) {
+	public Usuario buscarCorreo(String correo, ArrayList<Usuario> lista_usuarios) {
 		Usuario encontrado = null;
 
 		if (!lista_usuarios.isEmpty()) {
@@ -250,5 +210,72 @@ public class UsuarioDAO {
 		String texto = "";
 		texto = texto.concat(buscarUsuario(usuario, lista_usuarios).toString());
 		return texto;
+	}
+
+	public boolean comprobarUsuario(String usuario, String contraseña,
+			ArrayList<Usuario> lista_usuarios) {
+		boolean esta = false;
+		if (!lista_usuarios.isEmpty()) {
+			for (int i = 0; i < lista_usuarios.size(); i++) {
+				if ((lista_usuarios.get(i).getUsuario().equals(usuario) || lista_usuarios
+						.get(i).getCorreo().equals(usuario))
+						&& lista_usuarios.get(i).getContraseña()
+								.equals(contraseña)) {
+					esta = true;
+				}
+			}
+		}
+		return esta;
+	}
+
+	public void agregarParejas(String usuario, String nombre, int cupo,
+			ArrayList<Usuario> lista_usuarios) {
+		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+		ArrayList<Compras> lista_compras = new ArrayList<Compras>();
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if ((lista_usuarios.get(i).getUsuario().equals(usuario) || lista_usuarios
+					.get(i).getCorreo().equals(usuario))) {
+				lista_parejas = lista_usuarios.get(i).getParejas();
+
+			}
+		}
+		Parejas nuevo = new Parejas(nombre, cupo, lista_compras);
+
+		lista_parejas.add(nuevo);
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if ((lista_usuarios.get(i).getUsuario().equals(usuario) || lista_usuarios
+					.get(i).getCorreo().equals(usuario))) {
+				lista_usuarios.get(i).setParejas(lista_parejas);
+
+			}
+		}
+		archivo_Usuario.escribirEnArchivo(lista_usuarios);
+		JOptionPane.showMessageDialog(null,
+				verUnUsuario(usuario, lista_usuarios));
+	}
+	public void agregarCompras(String usuario, String nombre, int cupo,
+			ArrayList<Usuario> lista_usuarios) {
+		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+		ArrayList<Compras> lista_compras = new ArrayList<Compras>();
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if ((lista_usuarios.get(i).getUsuario().equals(usuario) || lista_usuarios
+					.get(i).getCorreo().equals(usuario))) {
+				lista_parejas = lista_usuarios.get(i).getParejas();
+
+			}
+		}
+		Parejas nuevo = new Parejas(nombre, cupo, lista_compras);
+
+		lista_parejas.add(nuevo);
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if ((lista_usuarios.get(i).getUsuario().equals(usuario) || lista_usuarios
+					.get(i).getCorreo().equals(usuario))) {
+				lista_usuarios.get(i).setParejas(lista_parejas);
+
+			}
+		}
+		archivo_Usuario.escribirEnArchivo(lista_usuarios);
+		JOptionPane.showMessageDialog(null,
+				verUnUsuario(usuario, lista_usuarios));
 	}
 }
