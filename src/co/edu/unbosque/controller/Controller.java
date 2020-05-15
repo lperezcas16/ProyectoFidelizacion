@@ -24,11 +24,11 @@ import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.TiendaDAO;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
 import co.edu.unbosque.view.VentanaGraficas;
-import co.edu.unbosque.view.View;
+import co.edu.unbosque.view.Ventana;
 
 public class Controller implements ActionListener {
 
-	private View view;
+	private Ventana view;
 	private VentanaGraficas view2;
 	private Solusoft solusoft;
 	private ArchivoUsuario archivo_Usuario;
@@ -43,7 +43,7 @@ public class Controller implements ActionListener {
 	public Controller() throws IOException {
 		super();
 		solusoft = new Solusoft();
-		view = new View();
+		view = new Ventana();
 		view2 = new VentanaGraficas();
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);

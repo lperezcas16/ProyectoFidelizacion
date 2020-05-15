@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class View extends JFrame {
+public class Ventana extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -13,7 +13,7 @@ public class View extends JFrame {
 	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
 	private PanelAdminInicio panel_admin = new PanelAdminInicio();
 
-	public View() {
+	public Ventana() {
 
 		setLayout(null);
 		setSize(800, 600);
