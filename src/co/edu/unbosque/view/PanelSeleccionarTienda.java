@@ -19,12 +19,15 @@ public class PanelSeleccionarTienda extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JButton boton_agregar_tienda, boton_agregar_nueva_tienda, boton_regresar;
+	private JButton boton_agregar_tienda, boton_agregar_nueva_tienda,
+			boton_regresar;
 	private String nombre;
-	private ImageIcon imagen, imagen_boton_tienda, imagen_boton_nueva, imagen_boton_regresar;
+	private ImageIcon imagen, imagen_boton_tienda, imagen_boton_nueva,
+			imagen_boton_regresar;
 	private Icon icon_boton_tienda, icon_boton_nueva, icon_boton_regresar;
 	private JTable table;
-	private String[] nombre_columnas = { "Nombre", "Direccion", "Horario de Apertura", "Horario de Cierre" };
+	private String[] nombre_columnas = { "Nombre", "Direccion",
+			"Horario de Apertura", "Horario de Cierre" };
 	private JScrollPane scroll;
 	private DefaultTableModel model;
 
@@ -54,33 +57,38 @@ public class PanelSeleccionarTienda extends JPanel {
 		boton_agregar_tienda.setBounds(105, 390, 250, 30);
 		add(boton_agregar_tienda);
 
-		imagen_boton_tienda = new ImageIcon(
-				getClass().getResource("/co/edu/unbosque/imagenes/boton_confirmar_seleccion.png"));
-		icon_boton_tienda = new ImageIcon(
-				imagen_boton_tienda.getImage().getScaledInstance(250, 30, Image.SCALE_SMOOTH));
+		imagen_boton_tienda = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_confirmar_seleccion.png"));
+		icon_boton_tienda = new ImageIcon(imagen_boton_tienda.getImage()
+				.getScaledInstance(250, 30, Image.SCALE_SMOOTH));
 
 		boton_agregar_nueva_tienda = new JButton();
 		boton_agregar_nueva_tienda.setBounds(450, 390, 250, 30);
 		add(boton_agregar_nueva_tienda);
 
-		imagen_boton_nueva = new ImageIcon(
-				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_nueva_tienda.png"));
-		icon_boton_nueva = new ImageIcon(imagen_boton_nueva.getImage().getScaledInstance(250, 30, Image.SCALE_SMOOTH));
+		imagen_boton_nueva = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_agregar_nueva_tienda.png"));
+		icon_boton_nueva = new ImageIcon(imagen_boton_nueva.getImage()
+				.getScaledInstance(250, 30, Image.SCALE_SMOOTH));
 
-		pnl_nueva_tienda = new PanelNuevaTienda("/co/edu/unbosque/imagenes/fondo_nueva_tienda.png");
+		pnl_nueva_tienda = new PanelNuevaTienda(
+				"/co/edu/unbosque/imagenes/fondo_nueva_tienda.png");
 		pnl_nueva_tienda.setBounds(0, 0, 795, 572);
 		add(pnl_nueva_tienda);
 
-		pnl_nueva_tienda.getBoton_validar_nueva_tienda().setIcon(pnl_nueva_tienda.getIcono_boton_añadir());
-		pnl_nueva_tienda.getBoton_regresar().setIcon(pnl_nueva_tienda.getIcono_boton_regresar());
+		pnl_nueva_tienda.getBoton_validar_nueva_tienda().setIcon(
+				pnl_nueva_tienda.getIcono_boton_añadir());
+		pnl_nueva_tienda.getBoton_regresar().setIcon(
+				pnl_nueva_tienda.getIcono_boton_regresar());
 
 		boton_regresar = new JButton();
 		boton_regresar.setBounds(596, 480, 150, 30);
 		add(boton_regresar);
 
-		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
-		icon_boton_regresar = new ImageIcon(
-				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_regresar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icon_boton_regresar = new ImageIcon(imagen_boton_regresar.getImage()
+				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 	}
 
 	public void crearTabla() {
@@ -102,7 +110,7 @@ public class PanelSeleccionarTienda extends JPanel {
 
 		}
 
-//		table.setFont(new Font("Accidental Presidency", Font.BOLD, 12));
+		// table.setFont(new Font("Accidental Presidency", Font.BOLD, 12));
 
 		scroll = new JScrollPane(table);
 		scroll.setViewportView(table);

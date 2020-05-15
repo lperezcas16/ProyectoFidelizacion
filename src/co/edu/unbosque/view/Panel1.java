@@ -33,10 +33,9 @@ public class Panel1 extends JPanel {
 	public Panel1(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
-		setVisible(true);
-		inicializarComponentes();
 		setBounds(0, 0, 790, 590);
-
+		inicializarComponentes();
+		setVisible(true);
 	}
 
 	public void paint(Graphics g) {

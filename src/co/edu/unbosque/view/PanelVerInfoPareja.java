@@ -26,7 +26,8 @@ public class PanelVerInfoPareja extends JPanel {
 	private JTable table;
 	private JScrollPane scroll;
 	private DefaultTableModel model;
-	private String[] nombre_columnas = { "Nombre o Alias", "Porcentaje del Cupo" };
+	private String[] nombre_columnas = { "Nombre o Alias",
+			"Porcentaje del Cupo" };
 
 	public PanelVerInfoPareja(String nombre) {
 		this.nombre = nombre;
@@ -51,9 +52,10 @@ public class PanelVerInfoPareja extends JPanel {
 		boton_regresar.setBounds(596, 480, 150, 30);
 		add(boton_regresar);
 
-		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
-		icono_boton_regresar = new ImageIcon(
-				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_regresar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(imagen_boton_regresar.getImage()
+				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 	}
 
 	public void crearTabla() {

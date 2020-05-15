@@ -44,13 +44,15 @@ public class PanelNuevaTienda extends JPanel {
 
 		spinner_hora_apertura = new JSpinner();
 		spinner_hora_apertura.setModel(new SpinnerDateModel());
-		spinner_hora_apertura.setEditor(new JSpinner.DateEditor(spinner_hora_apertura, "HH:mm"));
+		spinner_hora_apertura.setEditor(new JSpinner.DateEditor(
+				spinner_hora_apertura, "HH:mm"));
 		spinner_hora_apertura.setBounds(480, 230, 200, 30);
 		add(spinner_hora_apertura);
 
 		spinner_hora_cierre = new JSpinner();
 		spinner_hora_cierre.setModel(new SpinnerDateModel());
-		spinner_hora_cierre.setEditor(new JSpinner.DateEditor(spinner_hora_cierre, "HH:mm"));
+		spinner_hora_cierre.setEditor(new JSpinner.DateEditor(
+				spinner_hora_cierre, "HH:mm"));
 		spinner_hora_cierre.setBounds(480, 400, 200, 30);
 		add(spinner_hora_cierre);
 
@@ -66,18 +68,19 @@ public class PanelNuevaTienda extends JPanel {
 		boton_validar_nueva_tienda.setBounds(600, 480, 150, 30);
 		add(boton_validar_nueva_tienda);
 
-		imagen_boton_añadir = new ImageIcon(
-				getClass().getResource("/co/edu/unbosque/imagenes/boton_confirmar_seleccion.png"));
-		icono_boton_añadir = new ImageIcon(
-				imagen_boton_añadir.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_añadir = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_confirmar_seleccion.png"));
+		icono_boton_añadir = new ImageIcon(imagen_boton_añadir.getImage()
+				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 
 		boton_regresar = new JButton();
 		boton_regresar.setBounds(35, 480, 150, 30);
 		add(boton_regresar);
 
-		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
-		icono_boton_regresar = new ImageIcon(
-				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_regresar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(imagen_boton_regresar.getImage()
+				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 
 	}
 

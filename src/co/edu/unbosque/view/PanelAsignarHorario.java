@@ -60,17 +60,19 @@ public class PanelAsignarHorario extends JPanel {
 		boton_agregar_horario.setBounds(490, 400, 175, 30);
 		add(boton_agregar_horario);
 
-		imagen_boton = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_horario.png"));
-		icon_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
+		imagen_boton = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_agregar_horario.png"));
+		icon_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(
+				185, 30, Image.SCALE_SMOOTH));
 
 		boton_seleccionar_tienda = new JButton("Seleccionar Tienda");
 		boton_seleccionar_tienda.setBounds(490, 330, 175, 30);
 		add(boton_seleccionar_tienda);
 
-		imagen_boton_tienda = new ImageIcon(
-				getClass().getResource("/co/edu/unbosque/imagenes/boton_seleccionar_tienda.png"));
-		icon_boton_tienda = new ImageIcon(
-				imagen_boton_tienda.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
+		imagen_boton_tienda = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_seleccionar_tienda.png"));
+		icon_boton_tienda = new ImageIcon(imagen_boton_tienda.getImage()
+				.getScaledInstance(185, 30, Image.SCALE_SMOOTH));
 
 		calendario = new JDateChooser("dd-MM-yyyy", "####-##-##", '_');
 		calendario.setBounds(100, 360, 200, 30);
@@ -86,13 +88,17 @@ public class PanelAsignarHorario extends JPanel {
 		spinner.setBounds(480, 210, 200, 30);
 		add(spinner);
 
-		pnl_seleccionar_tienda = new PanelSeleccionarTienda("/co/edu/unbosque/imagenes/fondo_seleccionar_tienda.png");
+		pnl_seleccionar_tienda = new PanelSeleccionarTienda(
+				"/co/edu/unbosque/imagenes/fondo_seleccionar_tienda.png");
 		pnl_seleccionar_tienda.setBounds(0, 0, 795, 572);
 		add(pnl_seleccionar_tienda);
 
-		pnl_seleccionar_tienda.getBoton_agregar_nueva_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_nueva());
-		pnl_seleccionar_tienda.getBoton_agregar_tienda().setIcon(pnl_seleccionar_tienda.getIcon_boton_tienda());
-		pnl_seleccionar_tienda.getBoton_regresar().setIcon(pnl_seleccionar_tienda.getIcon_boton_regresar());
+		pnl_seleccionar_tienda.getBoton_agregar_nueva_tienda().setIcon(
+				pnl_seleccionar_tienda.getIcon_boton_nueva());
+		pnl_seleccionar_tienda.getBoton_agregar_tienda().setIcon(
+				pnl_seleccionar_tienda.getIcon_boton_tienda());
+		pnl_seleccionar_tienda.getBoton_regresar().setIcon(
+				pnl_seleccionar_tienda.getIcon_boton_regresar());
 
 	}
 
@@ -208,7 +214,8 @@ public class PanelAsignarHorario extends JPanel {
 		return pnl_seleccionar_tienda;
 	}
 
-	public void setPnl_seleccionar_tienda(PanelSeleccionarTienda pnl_seleccionar_tienda) {
+	public void setPnl_seleccionar_tienda(
+			PanelSeleccionarTienda pnl_seleccionar_tienda) {
 		this.pnl_seleccionar_tienda = pnl_seleccionar_tienda;
 	}
 

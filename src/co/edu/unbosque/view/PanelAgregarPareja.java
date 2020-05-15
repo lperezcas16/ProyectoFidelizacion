@@ -50,17 +50,19 @@ public class PanelAgregarPareja extends JPanel {
 		boton_agregar_nueva_pareja.setBounds(320, 420, 150, 30);
 		add(boton_agregar_nueva_pareja);
 
-		imagen_boton = new ImageIcon(
-				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_nueva_pareja.png"));
-		icono_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
+		imagen_boton = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_agregar_nueva_pareja.png"));
+		icono_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(
+				185, 30, Image.SCALE_SMOOTH));
 
 		boton_regresar = new JButton();
 		boton_regresar.setBounds(35, 480, 150, 30);
 		add(boton_regresar);
 
-		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
-		icono_boton_regresar = new ImageIcon(
-				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_regresar = new ImageIcon(getClass().getResource(
+				"/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(imagen_boton_regresar.getImage()
+				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
 	}
 
 	public String getNombre() {
