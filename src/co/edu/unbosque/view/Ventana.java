@@ -53,7 +53,7 @@ public class Ventana extends JFrame {
 					"LA CONTRASEÑA DEBE TENER MAS DE 8 CARACTERES");
 		} else if (mensaje.equalsIgnoreCase("CORREO_FALSE")) {
 			JOptionPane.showMessageDialog(null,
-					"EL CORREO INGRESADO NO ES VALIDO");
+					"EL CORREO INGRESADO NO ES VALIDO,  INGRESELO NUEVAMENTE");
 		} else if (mensaje.equalsIgnoreCase("HORARIO_FALSE")) {
 			JOptionPane.showMessageDialog(null,
 					"LOS HORARIOS DEFINIDOS NO SON VALIDOS");
@@ -64,7 +64,7 @@ public class Ventana extends JFrame {
 			JOptionPane.showMessageDialog(null, "SE ELIMINÓ CORRECTAMEMTE");
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_VACIO")) {
 			JOptionPane.showMessageDialog(null,
-					"INTRODUZCA INFORMACI{ON PARA INICIAR LA BUSQUEDA");
+					"INTRODUZCA INFORMACION PARA INICIAR LA BUSQUEDA");
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_VACIO")) {
 			JOptionPane.showMessageDialog(null, "CAMPO VACIO");
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_FALSE")) {
@@ -72,7 +72,11 @@ public class Ventana extends JFrame {
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_TRUE")) {
 			JOptionPane.showMessageDialog(null,
 					"SE PUDO ELIMINAR USUARIO CORRECTAMENTE");
+		} else if (mensaje.equalsIgnoreCase("GENERO_FALSE")) {
+			JOptionPane.showMessageDialog(null,
+					"SELECCIONE SU GENERO");
 		}
+		
 	}
 
 	public Panel1 getPanel1() {

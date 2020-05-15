@@ -39,7 +39,6 @@ public class Controller implements ActionListener {
 	private ArrayList<Usuario> lista_usuarios;
 	private String numeros = "[0-9]+";
 	String nombreInicio = "";
-	String contraseñaInicio = "";
 
 	public Controller() throws IOException {
 		super();
@@ -217,7 +216,8 @@ public class Controller implements ActionListener {
 			// primero borra la tabla
 			view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 			// luego muestra las tiendas de nuevo
-			for (int i = 0; i < getTiendas().size(); i++) {
+			lista_tiendas = archivo_tienda.leerArchivo();
+			for (int i = 0; i < lista_tiendas.size(); i++) {
 
 				String nombre = lista_tiendas.get(i).getNombre();
 				String direccion = lista_tiendas.get(i).getDireccion();
@@ -270,8 +270,8 @@ public class Controller implements ActionListener {
 								.getPnl_seleccionar_tienda().getModel()
 								.setRowCount(0);
 						// luego la muestra de nuevo
-
-						for (int i = 0; i < getTiendas().size(); i++) {
+						lista_tiendas = archivo_tienda.leerArchivo();
+						for (int i = 0; i < lista_tiendas.size(); i++) {
 
 							String nombre = lista_tiendas.get(i).getNombre();
 							String direccion = lista_tiendas.get(i)
@@ -485,110 +485,15 @@ public class Controller implements ActionListener {
 		}
 		// ACCION INGRESAR AL SISTEMA
 		if (view.getPanel1().getBoton_entrar() == event.getSource()) {
-			nombreInicio = view.getPanel1().getC_usuario_inicio().getText();
-			contraseñaInicio = view.getPanel1().getC_contrasena_inicio()
-					.getText();
-			if (nombreInicio.isEmpty() || contraseñaInicio.isEmpty()) {
-				view.mostrarMensajes("CAMPOS_FALSE");
-			} else {
-				if (usuarioDAO.comprobarUsuario(nombreInicio, contraseñaInicio,
-						lista_usuarios)) {
-					view.getPanel1().limpiarCampos();
-					view.getPanel1().setVisible(false);
-					view.getPanel_us_inicio().setVisible(true);
-					for (int i = 0; i < lista_usuarios.size(); i++) {
-						if (lista_usuarios.get(i).getUsuario()
-								.equals(nombreInicio)
-								|| lista_usuarios.get(i).getCorreo()
-										.equals(nombreInicio)) {
-							ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-							lista_parejas = lista_usuarios.get(i).getParejas();
-							for (int k = 0; k < lista_parejas.size(); k++) {
-								view.getPanel_us_inicio()
-										.getPnl_asignar_horarios()
-										.getCombobox_parejas()
-										.addItem(
-												lista_usuarios.get(i)
-														.getParejas().get(k)
-														.getNombre());
-							}
-						}
-					}
-				} else {
-					view.mostrarMensajes("INICIO_FALSE");
-					nombreInicio = "";
-					contraseñaInicio = "";
-					view.getPanel1().getC_contrasena_inicio().setText("");
-				}
-			}
+			ingresoSistema();
 
 		}
 
 		// ACCION REGISTRAR USUARIO
 
 		if (view.getPanel1().getBoton_registrar() == event.getSource()) {
+			registrarUsuario();
 
-			ArrayList<Parejas> parejas = new ArrayList<Parejas>();
-			String nombre, correo, usuario, contraseña, genero = "", numeroTarjeta, tipoUsuario;
-			long cupoTarjeta;
-			nombre = view.getPanel1().getCampo_nombre().getText();
-			correo = view.getPanel1().getCampo_correo().getText();
-			usuario = view.getPanel1().getCampo_usuario().getText();
-			numeroTarjeta = solusoft.generarNumeroCuenta(lista_usuarios);
-			cupoTarjeta = 0;
-			tipoUsuario = "Usuario";
-			contraseña = new String(view.getPanel1().getCampo_contrasena()
-					.getPassword());
-
-			Pattern pattern = Pattern
-					.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-							+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-			// Se valida el email
-			Matcher mather = pattern.matcher(correo);
-			if (view.getPanel1().getC1().isSelected()) {
-				genero = "Mujer";
-			} else if (view.getPanel1().getC1().isSelected()) {
-				genero = "Hombre";
-			}
-			if (!nombre.isEmpty() && !correo.isEmpty() && !usuario.isEmpty()
-					&& !contraseña.isEmpty() && !genero.isEmpty()) {
-
-				try {
-					comprobarNombre(nombre);
-					comprobarContraseña(contraseña);
-					comprobarCorreo(mather);
-
-					if (solusoft.comprobarExistenciaUsuario(correo, usuario,
-							lista_usuarios)) {
-						Usuario nuevo = new Usuario(nombre, comprobarGenero(),
-								correo, usuario, contraseña, numeroTarjeta,
-								cupoTarjeta, parejas, tipoUsuario);
-
-						usuarioDAO.agregarUsuario(nombre, genero, correo,
-								usuario, contraseña, numeroTarjeta,
-								cupoTarjeta, parejas, tipoUsuario,
-								lista_usuarios);
-						solusoft.enviarCorreo(nuevo);
-						view.mostrarMensajes("USUARIO_TRUE");
-						view.getPanel1().limpiarCampos();
-
-					} else {
-						view.mostrarMensajes("USUARIO_FALSE");
-					}
-
-				} catch (NombresExcepcion e) {
-					view.mostrarMensajes(e.getMessage());
-				} catch (ContraseñaExcepcion e) {
-					view.mostrarMensajes(e.getMessage());
-				} catch (MailExcepcion e) {
-					view.mostrarMensajes(e.getMessage());
-				} catch (GeneroExcepcion e) {
-					view.mostrarMensajes(e.getMessage());
-				}
-
-			} else {
-				view.mostrarMensajes("CAMPOS_FALSE");
-			}
 		}
 
 		// Panel Administrar Cuenta
@@ -690,28 +595,7 @@ public class Controller implements ActionListener {
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas()
 				.getPnl_agregar_pareja().getBoton_agregar_nueva_pareja() == event
 				.getSource()) {
-			String nombrePareja = view.getPanel_us_inicio()
-					.getPnl_adm_cuentas().getPnl_agregar_pareja()
-					.getCampo_texto_nombre().getText();
-			String cupo = view.getPanel_us_inicio().getPnl_adm_cuentas()
-					.getPnl_agregar_pareja().getCampo_texto_cupo().getText();
-			if (!nombrePareja.isEmpty() && !cupo.isEmpty()) {
-				if (cupo.matches("[0-9]+")
-						&& (Integer.parseInt(cupo) > 0 && Integer
-								.parseInt(cupo) <= 100)) {
-					int cupoI = Integer.parseInt(cupo);
-
-					usuarioDAO.agregarParejas(nombreInicio, nombrePareja,
-							cupoI, lista_usuarios);
-
-				} else {
-					JOptionPane
-							.showMessageDialog(null,
-									"El cupo debe ser un valor entero mayor a cero y menor a 100");
-				}
-			} else {
-				view.mostrarMensajes("CAMPOS_FALSE");
-			}
+			agregarPareja();
 
 		}
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas()
@@ -922,7 +806,8 @@ public class Controller implements ActionListener {
 								.getPnl_seleccionar_tienda().getModel()
 								.setRowCount(0);
 						// luego carga
-						for (int i = 0; i < getTiendas().size(); i++) {
+						lista_tiendas = archivo_tienda.leerArchivo();
+						for (int i = 0; i < lista_tiendas.size(); i++) {
 
 							String nombre = lista_tiendas.get(i).getNombre();
 							String direccion = lista_tiendas.get(i)
@@ -1059,7 +944,7 @@ public class Controller implements ActionListener {
 	 *             enviaria un correo de validación y de registro exitoso.
 	 */
 	public void comprobarCorreo(Matcher m) throws MailExcepcion {
-		if (m.find() == false) {
+		if (!m.find()) {
 			view.mostrarMensajes("CORREO_FALSE");
 		}
 	}
@@ -1081,26 +966,22 @@ public class Controller implements ActionListener {
 	public String comprobarGenero() throws GeneroExcepcion {
 
 		String g = "";
-		if (view.getPanel1().getC1().isSelected() == true) {
+		if (view.getPanel1().getC1().isSelected()) {
 			g = "Mujer";
-		} else if (view.getPanel1().getC2().isSelected() == true) {
+		} else if (view.getPanel1().getC2().isSelected()) {
 			g = "Hombre";
 		} else {
 			throw new GeneroExcepcion("GENERO_FALSE");
 		}
-
 		return g;
 
-	}
-
-	public ArrayList<Tiendas> getTiendas() {
-		return lista_tiendas;
 	}
 
 	public void asignarTablaTiendas() {
 		view.getPanel_us_inicio().getPnl_asignar_horarios()
 				.getPnl_seleccionar_tienda().getModel().setRowCount(0);
-		for (int i = 0; i < getTiendas().size(); i++) {
+		lista_tiendas = archivo_tienda.leerArchivo();
+		for (int i = 0; i < lista_tiendas.size(); i++) {
 
 			String nombre = lista_tiendas.get(i).getNombre();
 			String direccion = lista_tiendas.get(i).getDireccion();
@@ -1117,6 +998,125 @@ public class Controller implements ActionListener {
 
 	public void asignarTablaParejas() {
 
+	}
+
+	public void registrarUsuario() {
+		ArrayList<Parejas> parejas = new ArrayList<Parejas>();
+		String nombre, correo, usuario, contraseña, genero, numeroTarjeta, tipoUsuario;
+		nombre = correo = usuario = contraseña = genero = numeroTarjeta = tipoUsuario = "";
+		long cupoTarjeta;
+		nombre = view.getPanel1().getCampo_nombre().getText();
+		correo = view.getPanel1().getCampo_correo().getText();
+		usuario = view.getPanel1().getCampo_usuario().getText();
+		numeroTarjeta = solusoft.generarNumeroCuenta(lista_usuarios);
+		cupoTarjeta = 0;
+		tipoUsuario = "Usuario";
+		contraseña = new String(view.getPanel1().getCampo_contrasena()
+				.getPassword());
+
+		Pattern pattern = Pattern
+				.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+						+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		// Se valida el email
+		Matcher mather = pattern.matcher(correo);
+
+		if (!nombre.isEmpty() && !correo.isEmpty() && !usuario.isEmpty()
+				&& !contraseña.isEmpty()) {
+
+			try {
+				genero = comprobarGenero();
+				comprobarNombre(nombre);
+				comprobarContraseña(contraseña);
+				comprobarCorreo(mather);
+				if (solusoft.comprobarExistenciaUsuario(correo, usuario,
+						lista_usuarios)) {
+					Usuario nuevo = new Usuario(nombre, comprobarGenero(),
+							correo, usuario, contraseña, numeroTarjeta,
+							cupoTarjeta, parejas, tipoUsuario);
+
+					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario,
+							contraseña, numeroTarjeta, cupoTarjeta, parejas,
+							tipoUsuario, lista_usuarios);
+					solusoft.enviarCorreo(nuevo);
+					view.mostrarMensajes("USUARIO_TRUE");
+					view.getPanel1().limpiarCampos();
+
+				} else {
+					view.mostrarMensajes("USUARIO_FALSE");
+				}
+
+			} catch (NombresExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			} catch (ContraseñaExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			} catch (MailExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			} catch (GeneroExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			}
+
+		} else {
+			view.mostrarMensajes("CAMPOS_FALSE");
+		}
+	}
+
+	public void agregarPareja() {
+		String nombrePareja = view.getPanel_us_inicio().getPnl_adm_cuentas()
+				.getPnl_agregar_pareja().getCampo_texto_nombre().getText();
+		String cupo = view.getPanel_us_inicio().getPnl_adm_cuentas()
+				.getPnl_agregar_pareja().getCampo_texto_cupo().getText();
+		if (!nombrePareja.isEmpty() && !cupo.isEmpty()) {
+			if (cupo.matches("[0-9]+")
+					&& (Integer.parseInt(cupo) > 0 && Integer.parseInt(cupo) <= 100)) {
+
+				int cupoI = Integer.parseInt(cupo);
+
+				usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI,
+						lista_usuarios);
+
+			} else {
+				JOptionPane
+						.showMessageDialog(null,
+								"El cupo debe ser un valor entero mayor a cero y menor a 100");
+			}
+		} else {
+			view.mostrarMensajes("CAMPOS_FALSE");
+		}
+	}
+
+	public void ingresoSistema() {
+		nombreInicio = view.getPanel1().getC_usuario_inicio().getText();
+		String contraseñaInicio = view.getPanel1().getC_contrasena_inicio().getText();
+		if (nombreInicio.isEmpty() || contraseñaInicio.isEmpty()) {
+			view.mostrarMensajes("CAMPOS_FALSE");
+		} else {
+			if (usuarioDAO.comprobarUsuario(nombreInicio, contraseñaInicio,
+					lista_usuarios)) {
+				view.getPanel1().limpiarCampos();
+				view.getPanel1().setVisible(false);
+				view.getPanel_us_inicio().setVisible(true);
+				for (int i = 0; i < lista_usuarios.size(); i++) {
+					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+							|| lista_usuarios.get(i).getCorreo()
+									.equals(nombreInicio)) {
+						ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+						lista_parejas = lista_usuarios.get(i).getParejas();
+						for (int k = 0; k < lista_parejas.size(); k++) {
+							view.getPanel_us_inicio()
+									.getPnl_asignar_horarios()
+									.getCombobox_parejas()
+									.addItem(
+											lista_usuarios.get(i).getParejas()
+													.get(k).getNombre());
+						}
+					}
+				}
+			} else {
+				view.mostrarMensajes("INICIO_FALSE");
+				nombreInicio = "";
+				view.getPanel1().getC_contrasena_inicio().setText("");
+			}
+		}
 	}
 
 }

@@ -144,8 +144,7 @@ public class Panel1 extends JPanel {
 		campo_nombre.setText("");
 		c_usuario_inicio.setText("");
 		c_contrasena_inicio.setText("");
-		c1.setSelected(false);
-		c2.setSelected(false);
+	grupo.clearSelection();
 
 	}
 
