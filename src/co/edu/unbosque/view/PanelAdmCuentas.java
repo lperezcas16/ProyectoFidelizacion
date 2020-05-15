@@ -11,19 +11,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class PanelAdmCuentas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo,
-			imagen_boton_agregar, imagen_boton_info, imagen_sesion;
-	private JButton boton_agregar_pareja, boton_info_pareja,
-			boton_cerrar_sesion;
+	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info, imagen_sesion;
+	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion;
 	private JLabel label_tarjeta, label_cupo;
-	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar,
-			icono_boton_info, icono_sesion;
+	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion;
 	private JButton boton_ojo_oculto;
 
 	private PanelAgregarPareja pnl_agregar_pareja;
@@ -58,27 +56,24 @@ public class PanelAdmCuentas extends JPanel {
 		label_cupo.setBounds(150, 320, 500, 50);
 		add(label_cupo);
 
-		label_tarjeta = new JLabel("fkadjfkladfadf");
+		label_tarjeta = new JLabel("", SwingConstants.RIGHT);
+		label_tarjeta.setText("");
 		label_tarjeta.setBackground(color_azul);
 		label_tarjeta.setForeground(color_naranja);
 		label_tarjeta.setFont(new Font("Accidental Presidency", Font.BOLD, 30));
-		label_tarjeta.setBounds(150, 170, 200, 30);
+		label_tarjeta.setBounds(120, 170, 290, 30);
 		add(label_tarjeta);
 
 		boton_ojo_oculto = new JButton();
-		boton_ojo_oculto.setBounds(370, 165, 40, 40);
+		boton_ojo_oculto.setBounds(430, 165, 40, 40);
 		boton_ojo_oculto.setBorderPainted(false);
 		add(boton_ojo_oculto);
 
-		imagen_ojo_oculto = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/ojo oculto.png"));
-		icono_ojo_oculto = new ImageIcon(imagen_ojo_oculto.getImage()
-				.getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+		imagen_ojo_oculto = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/ojo oculto.png"));
+		icono_ojo_oculto = new ImageIcon(imagen_ojo_oculto.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 
-		imagen_ojo = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/ojo.png"));
-		icono_ojo = new ImageIcon(imagen_ojo.getImage().getScaledInstance(50,
-				50, Image.SCALE_SMOOTH));
+		imagen_ojo = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/ojo.png"));
+		icono_ojo = new ImageIcon(imagen_ojo.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 
 		boton_agregar_pareja = new JButton();
 		boton_agregar_pareja.setBounds(60, 440, 300, 30);
@@ -88,42 +83,33 @@ public class PanelAdmCuentas extends JPanel {
 		boton_info_pareja.setBounds(420, 440, 300, 30);
 		add(boton_info_pareja);
 
-		imagen_boton_agregar = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
-		icono_boton_agregar = new ImageIcon(imagen_boton_agregar.getImage()
-				.getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+		imagen_boton_agregar = new ImageIcon(
+				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_pareja.png"));
+		icono_boton_agregar = new ImageIcon(
+				imagen_boton_agregar.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
-		imagen_boton_info = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_ver_info.png"));
-		icono_boton_info = new ImageIcon(imagen_boton_info.getImage()
-				.getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+		imagen_boton_info = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_ver_info.png"));
+		icono_boton_info = new ImageIcon(imagen_boton_info.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
 
-		pnl_agregar_pareja = new PanelAgregarPareja(
-				"/co/edu/unbosque/imagenes/fondo_agregar_pareja.png");
+		pnl_agregar_pareja = new PanelAgregarPareja("/co/edu/unbosque/imagenes/fondo_agregar_pareja.png");
 		pnl_agregar_pareja.setBounds(0, 0, 795, 572);
 		add(pnl_agregar_pareja);
 
-		pnl_agregar_pareja.getBoton_agregar_nueva_pareja().setIcon(
-				pnl_agregar_pareja.getIcono_boton());
-		pnl_agregar_pareja.getBoton_regresar().setIcon(
-				pnl_agregar_pareja.getIcono_boton_regresar());
+		pnl_agregar_pareja.getBoton_agregar_nueva_pareja().setIcon(pnl_agregar_pareja.getIcono_boton());
+		pnl_agregar_pareja.getBoton_regresar().setIcon(pnl_agregar_pareja.getIcono_boton_regresar());
 
-		pnl_ver_info_pareja = new PanelVerInfoPareja(
-				"/co/edu/unbosque/imagenes/fondo_ver_info_parejas.png");
+		pnl_ver_info_pareja = new PanelVerInfoPareja("/co/edu/unbosque/imagenes/fondo_ver_info_parejas.png");
 		pnl_ver_info_pareja.setBounds(0, 0, 795, 572);
 		add(pnl_ver_info_pareja);
 
-		pnl_ver_info_pareja.getBoton_regresar().setIcon(
-				pnl_ver_info_pareja.getIcono_boton_regresar());
+		pnl_ver_info_pareja.getBoton_regresar().setIcon(pnl_ver_info_pareja.getIcono_boton_regresar());
 
 		boton_cerrar_sesion = new JButton();
 		boton_cerrar_sesion.setBounds(596, 120, 150, 30);
 		add(boton_cerrar_sesion);
 
-		imagen_sesion = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_cerrar_sesion.png"));
-		icono_sesion = new ImageIcon(imagen_sesion.getImage()
-				.getScaledInstance(210, 30, Image.SCALE_SMOOTH));
+		imagen_sesion = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_cerrar_sesion.png"));
+		icono_sesion = new ImageIcon(imagen_sesion.getImage().getScaledInstance(210, 30, Image.SCALE_SMOOTH));
 
 	}
 
