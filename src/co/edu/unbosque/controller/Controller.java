@@ -23,12 +23,12 @@ import co.edu.unbosque.model.persistence.ArchivoTienda;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.TiendaDAO;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
-import co.edu.unbosque.view.Ventana;
 import co.edu.unbosque.view.VentanaGraficas;
+import co.edu.unbosque.view.View;
 
 public class Controller implements ActionListener {
 
-	private Ventana view;
+	private View view;
 	private VentanaGraficas view2;
 	private Solusoft solusoft;
 	private ArchivoUsuario archivo_Usuario;
@@ -43,7 +43,7 @@ public class Controller implements ActionListener {
 	public Controller() throws IOException {
 		super();
 		solusoft = new Solusoft();
-		view = new Ventana();
+		view = new View();
 		view2 = new VentanaGraficas();
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
@@ -1086,7 +1086,7 @@ public class Controller implements ActionListener {
 
 	public void ingresoSistema() {
 		nombreInicio = view.getPanel1().getC_usuario_inicio().getText();
-		String contraseñaInicio = view.getPanel1().getC_contrasena_inicio().getText();
+		String contraseñaInicio = new String (view.getPanel1().getC_contrasena_inicio().getPassword());
 		if (nombreInicio.isEmpty() || contraseñaInicio.isEmpty()) {
 			view.mostrarMensajes("CAMPOS_FALSE");
 		} else {

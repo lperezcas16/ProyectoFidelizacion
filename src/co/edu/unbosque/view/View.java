@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class Ventana extends JFrame {
+public class View extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -13,7 +13,7 @@ public class Ventana extends JFrame {
 	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
 	private PanelAdminInicio panel_admin = new PanelAdminInicio();
 
-	public Ventana() {
+	public View() {
 
 		setLayout(null);
 		setSize(800, 600);
@@ -73,10 +73,10 @@ public class Ventana extends JFrame {
 			JOptionPane.showMessageDialog(null,
 					"SE PUDO ELIMINAR USUARIO CORRECTAMENTE");
 		} else if (mensaje.equalsIgnoreCase("GENERO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"SELECCIONE SU GENERO");
-		}
-		
+			JOptionPane.showMessageDialog(null, "SELECCIONE SU GENERO");
+		} else if (mensaje.equalsIgnoreCase("INICIO_FALSE")) {
+			JOptionPane.showMessageDialog(null, "SU USUARIO Y SU CONTRASEÑA NO COINCIDEN");
+		} 
 	}
 
 	public Panel1 getPanel1() {
