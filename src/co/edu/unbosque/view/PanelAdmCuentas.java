@@ -18,14 +18,15 @@ public class PanelAdmCuentas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info, imagen_sesion;
-	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion;
+	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info, imagen_sesion,
+			imagen_adm_cupo;
+	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion, boton_ojo_oculto, boton_adm_cuota;
 	private JLabel label_tarjeta, label_cupo;
-	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion;
-	private JButton boton_ojo_oculto;
+	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion, icono_adm_cupo;
 
 	private PanelAgregarPareja pnl_agregar_pareja;
 	private PanelVerInfoPareja pnl_ver_info_pareja;
+	private PanelAdmCupo pnl_adm_cupo;
 
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
@@ -61,11 +62,11 @@ public class PanelAdmCuentas extends JPanel {
 		label_tarjeta.setBackground(color_azul);
 		label_tarjeta.setForeground(color_naranja);
 		label_tarjeta.setFont(new Font("Accidental Presidency", Font.BOLD, 30));
-		label_tarjeta.setBounds(120, 170, 290, 30);
+		label_tarjeta.setBounds(120, 190, 290, 30);
 		add(label_tarjeta);
 
 		boton_ojo_oculto = new JButton();
-		boton_ojo_oculto.setBounds(430, 165, 40, 40);
+		boton_ojo_oculto.setBounds(430, 185, 40, 40);
 		boton_ojo_oculto.setBorderPainted(false);
 		add(boton_ojo_oculto);
 
@@ -76,11 +77,11 @@ public class PanelAdmCuentas extends JPanel {
 		icono_ojo = new ImageIcon(imagen_ojo.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 
 		boton_agregar_pareja = new JButton();
-		boton_agregar_pareja.setBounds(60, 440, 300, 30);
+		boton_agregar_pareja.setBounds(60, 400, 300, 30);
 		add(boton_agregar_pareja);
 
 		boton_info_pareja = new JButton();
-		boton_info_pareja.setBounds(420, 440, 300, 30);
+		boton_info_pareja.setBounds(420, 400, 300, 30);
 		add(boton_info_pareja);
 
 		imagen_boton_agregar = new ImageIcon(
@@ -110,6 +111,20 @@ public class PanelAdmCuentas extends JPanel {
 
 		imagen_sesion = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_cerrar_sesion.png"));
 		icono_sesion = new ImageIcon(imagen_sesion.getImage().getScaledInstance(210, 30, Image.SCALE_SMOOTH));
+
+		boton_adm_cuota = new JButton();
+		boton_adm_cuota.setBounds(60, 460, 300, 30);
+		add(boton_adm_cuota);
+
+		imagen_adm_cupo = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_administrar_cupo.png"));
+		icono_adm_cupo = new ImageIcon(imagen_adm_cupo.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+
+		pnl_adm_cupo = new PanelAdmCupo("/co/edu/unbosque/imagenes/fondo_adm_cupo.png");
+		pnl_adm_cupo.setBounds(0, 0, 795, 572);
+		add(pnl_adm_cupo);
+
+		pnl_adm_cupo.getBoton_regresar().setIcon(pnl_adm_cupo.getIcono_boton_regresar());
+		pnl_adm_cupo.getBoton_validar_cupo().setIcon(pnl_adm_cupo.getIcono_validar_cupo());
 
 	}
 
@@ -275,6 +290,38 @@ public class PanelAdmCuentas extends JPanel {
 
 	public void setIcono_sesion(Icon icono_sesion) {
 		this.icono_sesion = icono_sesion;
+	}
+
+	public JButton getBoton_adm_cuota() {
+		return boton_adm_cuota;
+	}
+
+	public void setBoton_adm_cuota(JButton boton_adm_cuota) {
+		this.boton_adm_cuota = boton_adm_cuota;
+	}
+
+	public ImageIcon getImagen_adm_cupo() {
+		return imagen_adm_cupo;
+	}
+
+	public void setImagen_adm_cupo(ImageIcon imagen_adm_cupo) {
+		this.imagen_adm_cupo = imagen_adm_cupo;
+	}
+
+	public Icon getIcono_adm_cupo() {
+		return icono_adm_cupo;
+	}
+
+	public void setIcono_adm_cupo(Icon icono_adm_cupo) {
+		this.icono_adm_cupo = icono_adm_cupo;
+	}
+
+	public PanelAdmCupo getPnl_adm_cupo() {
+		return pnl_adm_cupo;
+	}
+
+	public void setPnl_adm_cupo(PanelAdmCupo pnl_adm_cupo) {
+		this.pnl_adm_cupo = pnl_adm_cupo;
 	}
 
 }

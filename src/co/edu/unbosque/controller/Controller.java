@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.ContraseñaExcepcion;
+import co.edu.unbosque.model.CupoExcepcion;
 import co.edu.unbosque.model.GeneroExcepcion;
 import co.edu.unbosque.model.HorarioExcepcion;
 import co.edu.unbosque.model.MailExcepcion;
@@ -21,6 +24,7 @@ import co.edu.unbosque.model.Parejas;
 import co.edu.unbosque.model.Solusoft;
 import co.edu.unbosque.model.Tiendas;
 import co.edu.unbosque.model.Usuario;
+import co.edu.unbosque.model.ValorCupoExcepcion;
 import co.edu.unbosque.model.persistence.ArchivoTienda;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.TiendaDAO;
@@ -41,7 +45,6 @@ public class Controller implements ActionListener, MouseListener {
 	private ArrayList<Usuario> lista_usuarios;
 	private String numeros = "[0-9]+";
 	String nombreInicio = "";
-	String usuario = "";
 
 	public Controller() throws IOException {
 		super();
@@ -74,6 +77,7 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().addActionListener(controller);
 		// LISTENERS ASIGNAR HORARIOS
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda().addActionListener(controller);
@@ -116,6 +120,12 @@ public class Controller implements ActionListener, MouseListener {
 		// PANEL NUEVA TIENDA
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
 				.getBoton_regresar().addActionListener(controller);
+
+		// PANEL ADM CUPO
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getBoton_regresar()
+				.addActionListener(controller);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getBoton_validar_cupo()
+				.addActionListener(controller);
 
 	}
 
@@ -420,6 +430,7 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
 
 		}
 
@@ -433,6 +444,7 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
 
 		}
 
@@ -446,7 +458,8 @@ public class Controller implements ActionListener, MouseListener {
 
 				String numero_tarjeta = "";
 				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getUsuario().equals(usuario)) {
+					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+							|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
 						numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					}
 				}
@@ -464,7 +477,8 @@ public class Controller implements ActionListener, MouseListener {
 
 				String numero_tarjeta = "";
 				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getUsuario().equals(usuario)) {
+					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+							|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
 						numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					}
 				}
@@ -477,7 +491,34 @@ public class Controller implements ActionListener, MouseListener {
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion() == event.getSource()) {
 			view.getPanel_us_inicio().setVisible(false);
 			view.getPanel1().setVisible(true);
-			usuario = null;
+			nombreInicio = null;
+		}
+
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota() == event.getSource()) {
+
+			// Si el cupo es 0
+			long cupo = 0;
+			for (int i = 0; i < lista_usuarios.size(); i++) {
+				if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)) {
+					cupo = lista_usuarios.get(i).getCupoTarjeta();
+				}
+			}
+
+			try {
+
+				comprobarCupo(cupo);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().setVisible(true);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
+
+			} catch (CupoExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			}
 		}
 
 		// PANEL AGREGAR PAREJA
@@ -500,6 +541,7 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
 		}
 
 		// Panel Ver Info Pareja
@@ -517,6 +559,7 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
 
 			// Filas de la Tabla
 			// for (int i = 0; i < usuario.getParejas().size(); i++) {
@@ -528,6 +571,73 @@ public class Controller implements ActionListener, MouseListener {
 			// view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
 			//
 			// }
+
+		}
+
+		// Panel Adm Cupo
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getBoton_regresar() == event.getSource()) {
+
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().setVisible(false);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
+			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
+		}
+
+		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getBoton_validar_cupo() == event
+				.getSource()) {
+
+			try {
+
+				String cupo = view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getCampo_texto_cupo()
+						.getText();
+
+				if (!cupo.isEmpty()) {
+
+					comprobarValorCupo(cupo);
+					long cupo_long = Long.parseLong(cupo);
+
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+
+					int resultado = JOptionPane
+							.showConfirmDialog(null,
+									"Por favor confirmar el valor ingresado como cupo" + "\n"
+											+ formatoImporte.format(cupo_long),
+									"Confirmación", JOptionPane.YES_NO_OPTION);
+
+					if (resultado == JOptionPane.YES_OPTION) {
+						for (int i = 0; i < lista_usuarios.size(); i++) {
+							if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)) {
+								lista_usuarios.get(i).setCupoTarjeta(cupo_long);
+							}
+						}
+
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().setVisible(false);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
+
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
+								.setText(formatoImporte.format(cupo_long));
+
+					} else {
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getCampo_texto_cupo()
+								.setText(null);
+					}
+				}
+
+			} catch (ValorCupoExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			}
 
 		}
 
@@ -782,6 +892,43 @@ public class Controller implements ActionListener, MouseListener {
 
 	}
 
+	/**
+	 * Este metodo corresponde a la especificacion de la excepcion creada, junto con
+	 * las restricciones y el mensaje que se lanza si se llega a efectuar la
+	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
+	 * CupoExcepcion en el paquete co.edu.unbosque.model<br>
+	 * 
+	 * @param c Este parametro corresponde a la cantidad que tiene actualmente el
+	 *          usuario ingresado en su cupo.
+	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
+	 *                          impuestas al cupo, el cual debe de ser cero, o
+	 *                          saltaria el error.
+	 */
+	public void comprobarCupo(long c) throws CupoExcepcion {
+
+		if (c != 0) {
+			throw new CupoExcepcion("CUPO_FALSE");
+		}
+	}
+
+	/**
+	 * Este metodo corresponde a la especificacion de la excepcion creada, junto con
+	 * las restricciones y el mensaje que se lanza si se llega a efectuar la
+	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
+	 * ValorCupoExcepcion en el paquete co.edu.unbosque.model<br>
+	 * 
+	 * @param c Este parametro corresponde a la cantidad correspondiente al cupo
+	 *          ingresado por el usuario.
+	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
+	 *                          impuestas al cupo, el cual debe contener unicamente
+	 *                          números.
+	 */
+	public void comprobarValorCupo(String c) throws ValorCupoExcepcion {
+		if (!c.matches(numeros)) {
+			throw new ValorCupoExcepcion("VALOR_CUPO_FALSE");
+		}
+	}
+
 	public void asignarTablaTiendas() {
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel().setRowCount(0);
 		lista_tiendas = archivo_tienda.leerArchivo();
@@ -917,7 +1064,7 @@ public class Controller implements ActionListener, MouseListener {
 			if (lista_usuarios.get(i).getUsuario().equals(nombre_ingresado)
 					|| lista_usuarios.get(i).getCorreo().equals(nombre_ingresado)) {
 				numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
-				usuario = lista_usuarios.get(i).getUsuario();
+				nombreInicio = lista_usuarios.get(i).getUsuario();
 			}
 		}
 
