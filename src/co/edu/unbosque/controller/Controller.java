@@ -446,6 +446,8 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
 
+			asignarTablaParejas();
+
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
@@ -610,11 +612,29 @@ public class Controller implements ActionListener, MouseListener {
 									"Confirmación", JOptionPane.YES_NO_OPTION);
 
 					if (resultado == JOptionPane.YES_OPTION) {
+
+						Usuario nuevo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios);
+
 						for (int i = 0; i < lista_usuarios.size(); i++) {
 							if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)) {
 								lista_usuarios.get(i).setCupoTarjeta(cupo_long);
+								lista_usuarios.get(i).setNombre(lista_usuarios.get(i).getNombre());
+								lista_usuarios.get(i).setContraseña(lista_usuarios.get(i).getContraseña());
+								lista_usuarios.get(i).setCorreo(lista_usuarios.get(i).getCorreo());
+								lista_usuarios.get(i).setGenero(lista_usuarios.get(i).getGenero());
+								lista_usuarios.get(i).setNumeroTarjeta(lista_usuarios.get(i).getNumeroTarjeta());
+								lista_usuarios.get(i).setTipoUsuario(lista_usuarios.get(i).getTipoUsuario());
+								lista_usuarios.get(i).setParejas(lista_usuarios.get(i).getParejas());
+								lista_usuarios.get(i).setUsuario(nombreInicio);
 							}
 						}
+
+						archivo_Usuario.getArchivo_Usuarios().delete();
+						archivo_Usuario.getArchivo_Usuarios().createNewFile();
+						archivo_Usuario.escribirEnArchivo(lista_usuarios);
+						
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
+						.setText(formatoImporte.format(cupo_long));
 
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().setVisible(false);
 						view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
@@ -626,9 +646,6 @@ public class Controller implements ActionListener, MouseListener {
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
 
-						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
-								.setText(formatoImporte.format(cupo_long));
-
 					} else {
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getCampo_texto_cupo()
 								.setText(null);
@@ -636,6 +653,8 @@ public class Controller implements ActionListener, MouseListener {
 				}
 
 			} catch (ValorCupoExcepcion e) {
+				view.mostrarMensajes(e.getMessage());
+			} catch (IOException e) {
 				view.mostrarMensajes(e.getMessage());
 			}
 
@@ -949,6 +968,19 @@ public class Controller implements ActionListener, MouseListener {
 
 	public void asignarTablaParejas() {
 
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().setRowCount(0);
+		lista_usuarios = archivo_Usuario.leerArchivo();
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+
+			if (usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas() != null) {
+				String nombre = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getNombre();
+				int cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getCupo();
+
+				Object[] datos_filas = { nombre, cupo };
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
+			}
+		}
+
 	}
 
 	public void registrarUsuario() {
@@ -1059,16 +1091,21 @@ public class Controller implements ActionListener, MouseListener {
 	public void agregarInfoUsuario(String nombre_ingresado) {
 
 		String numero_tarjeta = "";
+		long numero_cupo = 0;
 
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if (lista_usuarios.get(i).getUsuario().equals(nombre_ingresado)
 					|| lista_usuarios.get(i).getCorreo().equals(nombre_ingresado)) {
 				numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 				nombreInicio = lista_usuarios.get(i).getUsuario();
+				numero_cupo = lista_usuarios.get(i).getCupoTarjeta();
 			}
 		}
 
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setText(numero_tarjeta);
+
+		NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setText(formatoImporte.format(numero_cupo));
 
 	}
 
