@@ -438,7 +438,6 @@ public class Controller implements ActionListener, MouseListener {
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
 
-			// Ver el numero de tarjeta oculto
 			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
 					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
 
@@ -447,10 +446,11 @@ public class Controller implements ActionListener, MouseListener {
 
 				String numero_tarjeta = "";
 				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getNombre().equals(usuario)) {
+					if (lista_usuarios.get(i).getUsuario().equals(usuario)) {
 						numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					}
 				}
+
 				view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta()
 						.setText("*" + numero_tarjeta.charAt(12) + numero_tarjeta.charAt(13) + numero_tarjeta.charAt(14)
 								+ numero_tarjeta.charAt(15));
@@ -464,7 +464,7 @@ public class Controller implements ActionListener, MouseListener {
 
 				String numero_tarjeta = "";
 				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getNombre().equals(usuario)) {
+					if (lista_usuarios.get(i).getUsuario().equals(usuario)) {
 						numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					}
 				}
@@ -910,31 +910,18 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void agregarInfoUsuario(String nombre_ingresado) {
-		if (nombre_ingresado.contains("@")) {
-			if (usuarioDAO.buscarCorreo(nombre_ingresado, lista_usuarios) != null) {
-				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getCorreo().equals(nombre_ingresado)) {
-						usuario = lista_usuarios.get(i).getNombre();
 
-					}
-				}
-			}
+		String numero_tarjeta = "";
 
-		} else {
-			if (usuarioDAO.buscarUsuario(nombre_ingresado, lista_usuarios) != null) {
-				usuario = nombre_ingresado;
-			}
-		}
-
-		// Numero de la Taarjeta de Credito
-		String tarjeta = "";
 		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.get(i).getNombre().equals(usuario)) {
-				tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+			if (lista_usuarios.get(i).getUsuario().equals(nombre_ingresado)
+					|| lista_usuarios.get(i).getCorreo().equals(nombre_ingresado)) {
+				numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+				usuario = lista_usuarios.get(i).getUsuario();
 			}
 		}
 
-		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setText(tarjeta);
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setText(numero_tarjeta);
 
 	}
 
