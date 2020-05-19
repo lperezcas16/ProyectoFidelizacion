@@ -15,6 +15,8 @@ public class PanelUsuarioInicio extends JPanel {
 	private PanelAsignarHorario pnl_asignar_horarios = new PanelAsignarHorario(
 			"/co/edu/unbosque/imagenes/fondo_horario.png");
 	private PanelVerHorarios pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
+	private PanelInfoSolusoft pnl_info_solusoft = new PanelInfoSolusoft(
+			"/co/edu/unbosque/imagenes/fondo_info_solusoft.png");
 
 	// https://www.discoduroderoer.es/como-crear-pestanas-con-la-clase-jtabbedpane-en-java/
 	// https://www.adictosaltrabajo.com/2008/12/01/javamail/
@@ -31,7 +33,8 @@ public class PanelUsuarioInicio extends JPanel {
 		pestañas = new JTabbedPane();
 		pestañas.addTab("Administrar Cuenta", pnl_adm_cuentas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
-		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
+//		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
+		pestañas.addTab("Info. Solusoft", pnl_info_solusoft);
 		add(pestañas);
 		Color colorNaranja = new Color(255, 145, 77);
 		pestañas.setBackground(colorNaranja);
@@ -79,6 +82,18 @@ public class PanelUsuarioInicio extends JPanel {
 
 	public void setPestañas(JTabbedPane pestañas) {
 		this.pestañas = pestañas;
+	}
+
+	public PanelInfoSolusoft getPnl_info_solusoft() {
+		return pnl_info_solusoft;
+	}
+
+	public void setPnl_info_solusoft(PanelInfoSolusoft pnl_info_solusoft) {
+		this.pnl_info_solusoft = pnl_info_solusoft;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

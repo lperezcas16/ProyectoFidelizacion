@@ -45,6 +45,8 @@ public class Controller implements ActionListener, MouseListener {
 	private ArrayList<Usuario> lista_usuarios;
 	private String numeros = "[0-9]+";
 	String nombreInicio = "";
+	private int valorCupo = 0;
+	private double valorVariable = 0.0;
 
 	public Controller() throws IOException {
 		super();
@@ -414,23 +416,29 @@ public class Controller implements ActionListener, MouseListener {
 		// Panel Administrar Cuenta
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
 
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_agregar_nueva_pareja()
-					.setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar().setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
-					.setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_nombre()
-					.setVisible(true);
+			if (usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getCupoTarjeta() != 0) {
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_agregar_nueva_pareja()
+						.setVisible(true);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
+						.setVisible(true);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
+						.setVisible(true);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_nombre()
+						.setVisible(true);
 
-			view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(false);
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(false);
+
+			} else {
+				view.mostrarMensajes("CUPO ES CERO");
+			}
 
 		}
 
@@ -491,9 +499,12 @@ public class Controller implements ActionListener, MouseListener {
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion() == event.getSource()) {
+
 			view.getPanel_us_inicio().setVisible(false);
 			view.getPanel1().setVisible(true);
 			nombreInicio = null;
+			valorCupo = 0;
+			valorVariable = 0.0;
 		}
 
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota() == event.getSource()) {
@@ -563,17 +574,6 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
 
-			// Filas de la Tabla
-			// for (int i = 0; i < usuario.getParejas().size(); i++) {
-			//
-			// String nombre = usuario.getParejas().get(i);
-			// // Falta el cupo
-			//
-			// Object[] datos_filas = { nombre };
-			// view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
-			//
-			// }
-
 		}
 
 		// Panel Adm Cupo
@@ -632,9 +632,11 @@ public class Controller implements ActionListener, MouseListener {
 						archivo_Usuario.getArchivo_Usuarios().delete();
 						archivo_Usuario.getArchivo_Usuarios().createNewFile();
 						archivo_Usuario.escribirEnArchivo(lista_usuarios);
-						
+
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
-						.setText(formatoImporte.format(cupo_long));
+								.setText(formatoImporte.format(cupo_long));
+
+						valorCupo = Integer.parseInt(cupo);
 
 						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().setVisible(false);
 						view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
@@ -970,13 +972,17 @@ public class Controller implements ActionListener, MouseListener {
 
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().setRowCount(0);
 		lista_usuarios = archivo_Usuario.leerArchivo();
-		for (int i = 0; i < lista_usuarios.size(); i++) {
 
-			if (usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas() != null) {
+		if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().isEmpty()) {
+			for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
 				String nombre = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getNombre();
 				int cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getCupo();
+				double cantidad_cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+						.getCantidad_cupo();
 
-				Object[] datos_filas = { nombre, cupo };
+				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+
+				Object[] datos_filas = { nombre, cupo, formatoImporte.format(cantidad_cupo) };
 				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
 			}
 		}
@@ -1038,16 +1044,60 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void agregarPareja() {
+
 		String nombrePareja = view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
 				.getCampo_texto_nombre().getText();
 		String cupo = view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
 				.getText();
+
 		if (!nombrePareja.isEmpty() && !cupo.isEmpty()) {
-			if (cupo.matches("[0-9]+") && (Integer.parseInt(cupo) > 0 && Integer.parseInt(cupo) <= 100)) {
+			if (cupo.matches(numeros) && (Integer.parseInt(cupo) > 0 && Integer.parseInt(cupo) <= 100)) {
 
 				int cupoI = Integer.parseInt(cupo);
 
-				usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, lista_usuarios);
+				// Sacar la cantidad del cupo correspondiente de la persona
+				double cupoD = Double.parseDouble(cupo);
+				int cantidad_cupo = (int) (valorVariable * (cupoD / 100));
+
+				if (cantidad_cupo > 0) {
+
+					usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, cantidad_cupo, lista_usuarios);
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+
+					JOptionPane.showMessageDialog(null,
+							"El monto asignado a " + nombrePareja + " es " + "\n"
+									+ formatoImporte.format(cantidad_cupo),
+							"Información", JOptionPane.INFORMATION_MESSAGE);
+
+					valorVariable = valorVariable - cantidad_cupo;
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
+							.setText(formatoImporte.format(valorVariable));
+
+					JOptionPane.showMessageDialog(null,
+							"El monto disponible es " + formatoImporte.format(valorVariable), "Información",
+							JOptionPane.INFORMATION_MESSAGE);
+
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
+							.setText(null);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_nombre()
+							.setText(null);
+
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
+
+				} else {
+					JOptionPane.showMessageDialog(null, "El porcentaje ingresado es mayor al cupo actual",
+							"Advertencia", JOptionPane.WARNING_MESSAGE);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
+							.setText(null);
+				}
 
 			} else {
 				JOptionPane.showMessageDialog(null, "El cupo debe ser un valor entero mayor a cero y menor a 100");
@@ -1106,6 +1156,24 @@ public class Controller implements ActionListener, MouseListener {
 
 		NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setText(formatoImporte.format(numero_cupo));
+
+		// Asignar un valor a la variable valorCupo
+		valorCupo = (int) usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getCupoTarjeta();
+
+		// Encontrar la cantidad restante del cupo despues de agregar las parejas
+		if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().isEmpty()) {
+			valorVariable = valorCupo;
+			for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
+
+				valorVariable = (valorVariable - usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas()
+						.get(i).getCantidad_cupo());
+			}
+		} else {
+			valorVariable = valorCupo;
+		}
+
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
+				.setText(formatoImporte.format(valorVariable));
 
 	}
 

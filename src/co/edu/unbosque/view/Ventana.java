@@ -68,7 +68,9 @@ public class Ventana extends JFrame {
 			JOptionPane.showMessageDialog(null, "SU CUPO YA FUE ESTABLECIDO");
 		} else if (mensaje.equalsIgnoreCase("VALOR_CUPO_FALSE")) {
 			JOptionPane.showMessageDialog(null, "EL FORMATO INGRESADO PARA EL CUPO NO ES CORRECTO");
-		}
+		} else if(mensaje.equalsIgnoreCase("CUPO ES CERO")) {
+			JOptionPane.showMessageDialog(null, "ES NECESARIO PRIMERO ASINGAR UN VALOR AL CUPO");
+		} 
 
 	}
 

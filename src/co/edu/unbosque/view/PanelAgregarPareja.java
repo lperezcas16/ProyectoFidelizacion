@@ -1,12 +1,15 @@
 package co.edu.unbosque.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,6 +22,7 @@ public class PanelAgregarPareja extends JPanel {
 	private JTextField campo_texto_nombre, campo_texto_cupo;
 	private JButton boton_agregar_nueva_pareja, boton_regresar;
 	private Icon icono_boton, icono_boton_regresar;
+	private JLabel label_cupo_restante;
 
 	public PanelAgregarPareja(String nombre) {
 		this.nombre = nombre;
@@ -50,19 +54,27 @@ public class PanelAgregarPareja extends JPanel {
 		boton_agregar_nueva_pareja.setBounds(320, 420, 150, 30);
 		add(boton_agregar_nueva_pareja);
 
-		imagen_boton = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_agregar_nueva_pareja.png"));
-		icono_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(
-				185, 30, Image.SCALE_SMOOTH));
+		imagen_boton = new ImageIcon(
+				getClass().getResource("/co/edu/unbosque/imagenes/boton_agregar_nueva_pareja.png"));
+		icono_boton = new ImageIcon(imagen_boton.getImage().getScaledInstance(185, 30, Image.SCALE_SMOOTH));
 
 		boton_regresar = new JButton();
 		boton_regresar.setBounds(35, 480, 150, 30);
 		add(boton_regresar);
 
-		imagen_boton_regresar = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_regresar.png"));
-		icono_boton_regresar = new ImageIcon(imagen_boton_regresar.getImage()
-				.getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+		imagen_boton_regresar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_regresar.png"));
+		icono_boton_regresar = new ImageIcon(
+				imagen_boton_regresar.getImage().getScaledInstance(200, 30, Image.SCALE_SMOOTH));
+
+		Color color_azul = new Color(36, 67, 87);
+		Color color_naranja = new Color(255, 145, 77);
+
+		label_cupo_restante = new JLabel("$0");
+		label_cupo_restante.setBackground(color_azul);
+		label_cupo_restante.setForeground(color_naranja);
+		label_cupo_restante.setFont(new Font("Accidental Presidency", Font.BOLD, 50));
+		label_cupo_restante.setBounds(470, 125, 500, 50);
+		add(label_cupo_restante);
 	}
 
 	public String getNombre() {
@@ -147,6 +159,14 @@ public class PanelAgregarPareja extends JPanel {
 
 	public void setIcono_boton_regresar(Icon icono_boton_regresar) {
 		this.icono_boton_regresar = icono_boton_regresar;
+	}
+
+	public JLabel getLabel_cupo_restante() {
+		return label_cupo_restante;
+	}
+
+	public void setLabel_cupo_restante(JLabel label_cupo_restante) {
+		this.label_cupo_restante = label_cupo_restante;
 	}
 
 }
