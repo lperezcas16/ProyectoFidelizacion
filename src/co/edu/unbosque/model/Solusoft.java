@@ -3,13 +3,18 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class Solusoft {
 
@@ -22,21 +27,18 @@ public class Solusoft {
 		int N = 99999999;
 		int valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
 		int valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-		String numeroTargeta = Integer.toString(valor1)
-				+ Integer.toString(valor2);
+		String numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if (lista_usuarios.get(i).getNumeroTarjeta().equals(numeroTargeta)) {
 				valor1 = (int) Math.floor(Math.random() * (N - M + 1) + M);
 				valor2 = (int) Math.floor(Math.random() * (N - M + 1) + M);
-				numeroTargeta = Integer.toString(valor1)
-						+ Integer.toString(valor2);
+				numeroTargeta = Integer.toString(valor1) + Integer.toString(valor2);
 			}
 		}
 		return numeroTargeta;
 	}
 
-	public boolean comprobarExistenciaUsuario(String correo, String usuario,
-			ArrayList<Usuario> lista_usuarios) {
+	public boolean comprobarExistenciaUsuario(String correo, String usuario, ArrayList<Usuario> lista_usuarios) {
 		boolean comprobar = true;
 
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -48,8 +50,8 @@ public class Solusoft {
 
 		return comprobar;
 	}
-	public boolean comprobarExistenciaTienda(String nombre, String direccion,
-			ArrayList<Tiendas> lista_tiendas) {
+
+	public boolean comprobarExistenciaTienda(String nombre, String direccion, ArrayList<Tiendas> lista_tiendas) {
 		boolean comprobar = true;
 
 		for (int i = 0; i < lista_tiendas.size(); i++) {
@@ -61,42 +63,58 @@ public class Solusoft {
 
 		return comprobar;
 	}
+
 	public void enviarCorreo(Usuario nuevo) {
 
 		try {
 
+			// rellenamos la variable propieties
 			Properties prop = new Properties();
-			prop.setProperty("mail.smtp.host", "smtp.gmail.com");
+
+			prop.put("mail.smtp.host", "smtp.gmail.com");
 			prop.setProperty("mail.smtp.starttls.enable", "true");
 			prop.setProperty("mail.smtp.port", "587");
 			prop.setProperty("mail.smtp.auth", "true");
 
+			// creamos una instancia de para abrir la sesion
 			Session sesion = Session.getDefaultInstance(prop);
-			// correo que envia
+			// Datos para enviar
 			String correoremitente = "solusoftunbosque@gmail.com";
 			String pasremitente = "proyectocorte3";
+			String asunto = "SOLUSOFT GRACIAS POR REGISTRARTE";
+			String mensaje = "Gracias por confiar en nosotros " + nuevo.getNombre()
+					+ " ahora puedes empezar a disfrutar de nuestros servicios: " +"\n" + "usuario: "
+					+ nuevo.getUsuario() + "\nContraseña: " + nuevo.getContraseña() + "\nTarjeta de credito numero: "
+					+ nuevo.getNumeroTarjeta();
 
-			String asunto = "Bienvenido a SOLUSOFT!";
-			String mensaje = "Gracias por registrarse " + nuevo.getNombre()
-					+ "\n" + "usuario: " + nuevo.getUsuario()
-					+ "\nContraseña: " + nuevo.getContraseña()
-					+ "\nNumero de tarjeta: " + nuevo.getNumeroTarjeta()
-					+ "\nCupo actual de su tarjeta credito: "
-					+ nuevo.getCupoTarjeta();
+			// CONSTRUIMOS EL CUERPO DEL CORREO
+			BodyPart texto = new MimeBodyPart();
+			texto.setText(mensaje);
+			// CONSTRUIMOS EL ADJUNTO
+			BodyPart adjunto = new MimeBodyPart();
+			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
+			adjunto.setFileName("CONTACTO");
+			// Una MultiParte para agrupar texto e imagen.
+			MimeMultipart multiParte = new MimeMultipart();
+			multiParte.addBodyPart(texto);
+			multiParte.addBodyPart(adjunto);
 
+			// CONSTRUIMOS EL CORREO
 			MimeMessage mensajesesion = new MimeMessage(sesion);
-
+			// INDICAMOS EL CORREO DESDE DONDE SE ENVIA
 			mensajesesion.setFrom(new InternetAddress(correoremitente));
-
-			mensajesesion.addRecipient(Message.RecipientType.TO,
-					new InternetAddress(nuevo.getCorreo()));
+			// INDICAMOS EL CORREO QUE RECIBE
+			mensajesesion.addRecipient(Message.RecipientType.TO, new InternetAddress(nuevo.getCorreo()));
+			// INDICAMOS EL ASUNTO
 			mensajesesion.setSubject(asunto);
-			mensajesesion.setText(mensaje);
-
+			// INDICAMOS EL CUERPO DEL CORREO
+			mensajesesion.setContent(multiParte);
+			// CREAMOS INSTANCIA TRANSPORT ENCARGADA DEL ENVIO DEL CORREO
 			Transport t = sesion.getTransport("smtp");
 			t.connect(correoremitente, pasremitente);
-			t.sendMessage(mensajesesion,
-					mensajesesion.getRecipients(Message.RecipientType.TO));
+			t.sendMessage(mensajesesion, mensajesesion.getAllRecipients());
+			// t.sendMessage(mensajesesion,
+			// mensajesesion.getRecipients(Message.RecipientType.TO));
 			t.close();
 
 		} catch (AddressException e) {
