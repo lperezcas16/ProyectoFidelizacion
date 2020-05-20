@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -33,8 +35,8 @@ public class PanelAsignarHorario extends JPanel {
 	public PanelAsignarHorario(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
-		inicializarComponentes();
 		setBackground(color_azul);
+		inicializarComponentes();
 		setVisible(false);
 
 	}
@@ -58,6 +60,7 @@ public class PanelAsignarHorario extends JPanel {
 
 		boton_agregar_horario = new JButton();
 		boton_agregar_horario.setBounds(490, 400, 175, 30);
+		boton_agregar_horario.setEnabled(false);
 		add(boton_agregar_horario);
 
 		imagen_boton = new ImageIcon(getClass().getResource(
@@ -80,6 +83,8 @@ public class PanelAsignarHorario extends JPanel {
 		calendario.setOpaque(true);
 		calendario.setBackground(Color.WHITE);
 		calendario.setDateFormatString("dd-MM-yyyy");
+		Calendar fecha =new GregorianCalendar();
+		calendario.setCalendar(fecha);
 		add(calendario);
 
 		spinner = new JSpinner();

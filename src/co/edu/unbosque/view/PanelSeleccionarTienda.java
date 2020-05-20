@@ -55,6 +55,7 @@ public class PanelSeleccionarTienda extends JPanel {
 
 		boton_agregar_tienda = new JButton();
 		boton_agregar_tienda.setBounds(105, 390, 250, 30);
+		boton_agregar_tienda.setEnabled(false);
 		add(boton_agregar_tienda);
 
 		imagen_boton_tienda = new ImageIcon(getClass().getResource(

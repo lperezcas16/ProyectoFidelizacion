@@ -42,7 +42,7 @@ public class PanelTiendas extends JPanel {
 		setLayout(null);
 		inicializarComponentes();
 		crearTabla();
-		setVisible(true);
+		setVisible(false);
 
 	}
 
