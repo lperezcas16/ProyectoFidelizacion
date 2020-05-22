@@ -23,7 +23,7 @@ public class Ventana extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setDefaultLookAndFeelDecorated(true);
 		setVisible(true);
-		//add(panel1);
+		add(panel1);
 		add(panel_us_inicio);
 		add(panel_admin);
 

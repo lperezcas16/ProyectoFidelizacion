@@ -119,6 +119,7 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getver_parejas().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getboton_buscar_usuario().addActionListener(controller);
+		view.getPanel_admin().getPanel_usuarios().getboton_orden_aliasu().addActionListener(controller);
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -706,7 +707,29 @@ public class Controller implements ActionListener, MouseListener {
 
 		}
 		
-		//BOTON ORDENAR
+		//BOTON ORDENAR POR ALIAS
+		if (view.getPanel_admin().getPanel_usuarios().getboton_orden_aliasu() == event.getSource()) {
+			if(usuarioDAO.ordenUsuarioAsc(lista_usuarios)) {
+				view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+
+				// BOTON VER USUARIOS
+				for (int i = 0; i < lista_usuarios.size(); i++) {
+
+					String nombre = lista_usuarios.get(i).getNombre();
+					String correo = lista_usuarios.get(i).getCorreo();
+					String alias = lista_usuarios.get(i).getUsuario();
+					String genero = lista_usuarios.get(i).getGenero();
+					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+					long cupo = lista_usuarios.get(i).getCupoTarjeta();
+
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+				}
+			}else {
+				System.out.println("mal");
+			}
+			
+		}
 		
 		//--------------------------------------------------------------------------
 		// BOTON BUSCAR POR NOMBRE DE TIENDA
