@@ -27,7 +27,7 @@ public class PanelTiendas extends JPanel {
 	private JTextField campo_buscar, campo_nombre, campo_direccion;
 	private ImageIcon imagen;
 	private String nombre;
-	private JButton boton_eliminar, boton_agregar_tienda, boton_buscar,
+	private JButton boton_eliminar, boton_agregar_tienda, boton_buscar,boton_buscar_pornombre,
 			boton_ver_tiendas;
 	private JSpinner spinner, spinner_apertura, spinner_cierre;
 	private JScrollPane scroll1;
@@ -74,6 +74,12 @@ public class PanelTiendas extends JPanel {
 		boton_ver_tiendas.setFont(new Font("Accidental Presidency", Font.BOLD,
 				16));
 		add(boton_ver_tiendas);
+		
+		boton_buscar_pornombre = new JButton("Buscar Tienda");
+		boton_buscar_pornombre.setBounds(400, 150, 150, 30);
+		boton_buscar_pornombre.setFont(new Font("Accidental Presidency", Font.BOLD,
+				16));
+		add(boton_buscar_pornombre);
 
 		boton_eliminar = new JButton("Eliminar");
 		boton_eliminar
@@ -161,6 +167,7 @@ public class PanelTiendas extends JPanel {
 		this.combo_tiendas = combo_tiendas;
 	}
 
+	
 	public JTextField getCampo_buscar() {
 		return campo_buscar;
 	}
@@ -185,6 +192,16 @@ public class PanelTiendas extends JPanel {
 		this.campo_direccion = campo_direccion;
 	}
 
+	
+	
+	public JButton getboton_buscar_pornombre() {
+		return boton_buscar_pornombre;
+	}
+
+	public void setboton_buscar_pornombre(JButton boton_buscar_pornombre) {
+		this.boton_buscar_pornombre = boton_buscar_pornombre;
+	}
+	
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
 	}
