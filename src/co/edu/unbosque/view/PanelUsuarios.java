@@ -58,10 +58,10 @@ public class PanelUsuarios extends JPanel {
 	public void inicializarComponentes() {
 
 		combo_buscar = new JComboBox<String>();
+		combo_buscar.addItem("Seleccione");
 		combo_buscar.addItem("Nombre");
 		combo_buscar.addItem("Correo");
 		combo_buscar.addItem("Alias");
-		combo_buscar.addItem("Número de tarjeta");
 		combo_buscar.setBounds(36, 150, 150, 25);
 		combo_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(combo_buscar);

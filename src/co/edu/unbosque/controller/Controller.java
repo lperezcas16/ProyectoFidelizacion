@@ -118,6 +118,7 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_admin().getPanel_usuarios().getBoton_eliminar().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getver_parejas().addActionListener(controller);
+		view.getPanel_admin().getPanel_usuarios().getboton_buscar_usuario().addActionListener(controller);
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -589,6 +590,43 @@ public class Controller implements ActionListener, MouseListener {
 
 				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+			}
+
+		}
+
+		// BOTON ADMINISTRADOR BUSCAR USUARIO
+		if (view.getPanel_admin().getPanel_usuarios().getboton_buscar_usuario() == event.getSource()) {
+			String buscar = view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText();
+			Usuario aux=null;
+			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
+					.equalsIgnoreCase("Seleccione")) {
+				view.mostrarMensajes("CampoBuscarUsuario_False");
+			}
+			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
+					.equalsIgnoreCase("Nombre")) {
+				
+			}
+			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
+					.equalsIgnoreCase("Alias")) {
+				aux=usuarioDAO.buscarUsuario(buscar, lista_usuarios);
+				if(aux==null) {
+					view.mostrarMensajes("BuscarUsuario_False");
+				}else {
+					view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+					String nombre = aux.getNombre();
+					String correo = aux.getCorreo();
+					String alias = aux.getUsuario();
+					String genero = aux.getGenero();
+					String numerotarjeta = aux.getNumeroTarjeta();
+					long cupo = aux.getCupoTarjeta();
+
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+				}
+			}
+			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
+					.equalsIgnoreCase("Correo")) {
+
 			}
 
 		}
