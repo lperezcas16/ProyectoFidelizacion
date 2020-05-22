@@ -342,6 +342,9 @@ public class Controller implements ActionListener, MouseListener {
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
 				.getBoton_agregar_nueva_pareja() == event.getSource()) {
 			agregarPareja();
+//			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//			System.out.println(df.format(
+//					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCalendario().getDate()));
 		}
 
 		// Boton VER INFORMACION PAREJAS del panel administrar cuenta de usuario
@@ -884,13 +887,15 @@ public class Controller implements ActionListener, MouseListener {
 		if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().isEmpty()) {
 			for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
 				String nombre = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getNombre();
+				String fechaN = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+						.getFecha_nacimiento();
 				int cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getCupo();
 				double cantidad_cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
 						.getCantidad_cupo();
 
 				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-				Object[] datos_filas = { nombre, cupo, formatoImporte.format(cantidad_cupo) };
+				Object[] datos_filas = { nombre, fechaN, cupo, formatoImporte.format(cantidad_cupo) };
 				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().addRow(datos_filas);
 			}
 		}
@@ -957,6 +962,7 @@ public class Controller implements ActionListener, MouseListener {
 				.getText();
 
 		if (!nombrePareja.isEmpty() && !cupo.isEmpty()) {
+
 			if (cupo.matches(numeros) && (Integer.parseInt(cupo) > 0 && Integer.parseInt(cupo) <= 100)) {
 
 				int cupoI = Integer.parseInt(cupo);
@@ -967,48 +973,64 @@ public class Controller implements ActionListener, MouseListener {
 
 				if (cantidad_cupo > 0) {
 
-					usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, cantidad_cupo, lista_usuarios);
-					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+					try {
+						DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+						comprobarEdad(view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
+								.getCalendario().getDate());
 
-					JOptionPane.showMessageDialog(null,
-							"El monto asignado a " + nombrePareja + " es " + "\n"
-									+ formatoImporte.format(cantidad_cupo),
-							"Información", JOptionPane.INFORMATION_MESSAGE);
+						String fechaN = df.format(view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
+								.getCalendario().getDate());
 
-					valorVariable = valorVariable - cantidad_cupo;
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
-							.setText(formatoImporte.format(valorVariable));
+						usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, cantidad_cupo, fechaN,
+								lista_usuarios);
 
-					JOptionPane.showMessageDialog(null,
-							"El monto disponible es " + formatoImporte.format(valorVariable), "Información",
-							JOptionPane.INFORMATION_MESSAGE);
+						System.out.println(fechaN);
+						NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
-							.setText(null);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_nombre()
-							.setText(null);
+						JOptionPane.showMessageDialog(null,
+								"El monto asignado a " + nombrePareja + " es " + "\n"
+										+ formatoImporte.format(cantidad_cupo),
+								"Información", JOptionPane.INFORMATION_MESSAGE);
 
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(false);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
-					view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
+						valorVariable = valorVariable - cantidad_cupo;
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
+								.setText(formatoImporte.format(valorVariable));
 
-					for (int i = 0; i < lista_usuarios.size(); i++) {
-						if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
-								|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
-							ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-							lista_parejas = lista_usuarios.get(i).getParejas();
-							view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().removeAllItems();
-							for (int k = 0; k < lista_parejas.size(); k++) {
+						JOptionPane.showMessageDialog(null,
+								"El monto disponible es " + formatoImporte.format(valorVariable), "Información",
+								JOptionPane.INFORMATION_MESSAGE);
+
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_cupo()
+								.setText(null);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCampo_texto_nombre()
+								.setText(null);
+
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(false);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_info_pareja().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_tarjeta().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_cerrar_sesion().setVisible(true);
+						view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota().setVisible(true);
+
+						for (int i = 0; i < lista_usuarios.size(); i++) {
+							if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+									|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
+								ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+								lista_parejas = lista_usuarios.get(i).getParejas();
 								view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
-										.addItem(lista_usuarios.get(i).getParejas().get(k).getNombre());
+										.removeAllItems();
+								for (int k = 0; k < lista_parejas.size(); k++) {
+									view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
+											.addItem(lista_usuarios.get(i).getParejas().get(k).getNombre());
+								}
 							}
 						}
+
+					} catch (EdadExcepcion e) {
+						view.mostrarMensajes(e.getMessage());
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "El porcentaje ingresado es mayor al cupo actual",
@@ -1020,9 +1042,11 @@ public class Controller implements ActionListener, MouseListener {
 			} else {
 				JOptionPane.showMessageDialog(null, "El cupo debe ser un valor entero mayor a cero y menor a 100");
 			}
+
 		} else {
 			view.mostrarMensajes("CAMPOS_FALSE");
 		}
+
 	}
 
 	public void ingresoSistema() {
@@ -1100,6 +1124,11 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
 				.setText(formatoImporte.format(valorVariable));
 
+		for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
+			System.out.println(
+					usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getFecha_nacimiento());
+		}
+
 	}
 
 	public void mouseListener(MouseListener controller) {
@@ -1142,13 +1171,6 @@ public class Controller implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		int index = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
-				.rowAtPoint(arg0.getPoint());
-
-		if (index >= 0 && view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
-				.isEnabled()) {
-
-		}
 
 	}
 
@@ -1322,6 +1344,7 @@ public class Controller implements ActionListener, MouseListener {
 	 *                          igual a 18.
 	 */
 	public void comprobarEdad(Date n) throws EdadExcepcion {
+
 		SimpleDateFormat year = new SimpleDateFormat("yyyy");
 		SimpleDateFormat month = new SimpleDateFormat("MM");
 		SimpleDateFormat day = new SimpleDateFormat("dd");
@@ -1341,7 +1364,7 @@ public class Controller implements ActionListener, MouseListener {
 		int calculoM = now.getMonthValue() - int_m;
 		int calculoD = now.getDayOfMonth() - int_d;
 
-		if (calculoD < 0 && calculoM < 0 && calculoY < 0) {
+		if (calculoD < 0 && calculoM < 0 && calculoY < 18) {
 			throw new EdadExcepcion("EDAD_FALSE");
 		}
 	}

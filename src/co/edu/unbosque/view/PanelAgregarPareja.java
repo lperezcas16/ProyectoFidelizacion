@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -12,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.toedter.calendar.JDateChooser;
 
 public class PanelAgregarPareja extends JPanel {
 
@@ -23,6 +28,7 @@ public class PanelAgregarPareja extends JPanel {
 	private JButton boton_agregar_nueva_pareja, boton_regresar;
 	private Icon icono_boton, icono_boton_regresar;
 	private JLabel label_cupo_restante;
+	private JDateChooser calendario;
 
 	public PanelAgregarPareja(String nombre) {
 		this.nombre = nombre;
@@ -43,15 +49,15 @@ public class PanelAgregarPareja extends JPanel {
 	public void inicializarComponentes() {
 
 		campo_texto_nombre = new JTextField();
-		campo_texto_nombre.setBounds(130, 320, 200, 30);
+		campo_texto_nombre.setBounds(130, 300, 200, 30);
 		add(campo_texto_nombre);
 
 		campo_texto_cupo = new JTextField();
-		campo_texto_cupo.setBounds(460, 320, 200, 30);
+		campo_texto_cupo.setBounds(460, 300, 200, 30);
 		add(campo_texto_cupo);
 
 		boton_agregar_nueva_pareja = new JButton();
-		boton_agregar_nueva_pareja.setBounds(320, 420, 150, 30);
+		boton_agregar_nueva_pareja.setBounds(600, 480, 150, 30);
 		add(boton_agregar_nueva_pareja);
 
 		imagen_boton = new ImageIcon(
@@ -75,6 +81,16 @@ public class PanelAgregarPareja extends JPanel {
 		label_cupo_restante.setFont(new Font("Accidental Presidency", Font.BOLD, 40));
 		label_cupo_restante.setBounds(410, 125, 500, 50);
 		add(label_cupo_restante);
+
+		calendario = new JDateChooser("dd-MM-yyyy", "####-##-##", '_');
+		calendario.setBounds(130, 410, 200, 30);
+		calendario.setOpaque(true);
+		calendario.setBackground(Color.WHITE);
+		calendario.setMaxSelectableDate(new Date());
+		calendario.setDateFormatString("dd-MM-yyyy");
+		Calendar fecha = new GregorianCalendar();
+		calendario.setCalendar(fecha);
+		add(calendario);
 	}
 
 	public String getNombre() {
@@ -167,6 +183,14 @@ public class PanelAgregarPareja extends JPanel {
 
 	public void setLabel_cupo_restante(JLabel label_cupo_restante) {
 		this.label_cupo_restante = label_cupo_restante;
+	}
+
+	public JDateChooser getCalendario() {
+		return calendario;
+	}
+
+	public void setCalendario(JDateChooser calendario) {
+		this.calendario = calendario;
 	}
 
 }
