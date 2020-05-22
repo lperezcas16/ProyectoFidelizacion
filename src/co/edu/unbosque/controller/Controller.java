@@ -705,6 +705,10 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		}
+		
+		//BOTON ORDENAR
+		
+		//--------------------------------------------------------------------------
 		// BOTON BUSCAR POR NOMBRE DE TIENDA
 
 		if (view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre() == event.getSource()) {

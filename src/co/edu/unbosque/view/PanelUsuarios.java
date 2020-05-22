@@ -95,22 +95,22 @@ public class PanelUsuarios extends JPanel {
 				16));
 		add(boton_buscar_usuario);
 
-		boton_as_op1 = new JButton("Ordenar ascendente Opción 1");
+		boton_as_op1 = new JButton("Ordenar Nombres De Usuarios");
 		boton_as_op1.setBounds(76, 440, 300, 25);
 		boton_as_op1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_as_op1);
 
-		boton_des_op2 = new JButton("Ordenar descendente Opción 1");
+		boton_des_op2 = new JButton("Ordenar Alias De Usuarios");
 		boton_des_op2.setBounds(76, 470, 300, 25);
 		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_des_op2);
 
-		boton_as_op2 = new JButton("Ordenar ascendente Opción 2");
+		boton_as_op2 = new JButton("Ordenar Usuarios Por Correo");
 		boton_as_op2.setBounds(400, 440, 300, 25);
 		boton_as_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_as_op2);
 
-		boton_des_op2 = new JButton("Ordenar descendente Opción 2");
+		boton_des_op2 = new JButton("Ordenar Parejas Por Nombres");
 		boton_des_op2.setBounds(400, 470, 300, 25);
 		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_des_op2);
