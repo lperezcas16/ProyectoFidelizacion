@@ -24,7 +24,7 @@ public class PanelUsuarios extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
 	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2,
-			boton_eliminar, boton_ver_usuarios;
+			boton_eliminar, boton_ver_usuarios,ver_parejas;
 	private JTextField campo_buscar;
 	private String nombre;
 	private ImageIcon imagen;
@@ -35,7 +35,7 @@ public class PanelUsuarios extends JPanel {
 
 	private String[] cabecera1 = { "Nombre", "Alias", "Correo", "Genero",
 			"Numero de Tarjeta","Cupo" };
-	private String[] cabecera2 = { "Nombre", "Porcentaje de cupo" };
+	private String[] cabecera2 = { "Nombre", "Valor cupo" };
 
 	public PanelUsuarios(String nombre) {
 		this.nombre = nombre;
@@ -76,6 +76,12 @@ public class PanelUsuarios extends JPanel {
 		boton_eliminar
 				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_eliminar);
+		
+		ver_parejas = new JButton("Ver Parejas");
+		ver_parejas.setBounds(490, 280, 250, 25);
+		ver_parejas
+				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(ver_parejas);
 
 		boton_ver_usuarios = new JButton("Ver usuarios");
 		boton_ver_usuarios.setBounds(500, 100, 250, 25);
@@ -159,6 +165,13 @@ public class PanelUsuarios extends JPanel {
 		this.combo_buscar = combo_buscar;
 	}
 
+	public JButton getver_parejas() {
+		return ver_parejas;
+	}
+
+	public void setver_parejas(JButton ver_parejas) {
+		this.ver_parejas = ver_parejas;
+	}
 	public JButton getBoton_as_op1() {
 		return boton_as_op1;
 	}

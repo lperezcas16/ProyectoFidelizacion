@@ -115,6 +115,7 @@ public class Controller implements ActionListener, MouseListener {
 		// PANEL ADMINISTRACION USUARIOS
 		view.getPanel_admin().getPanel_usuarios().getBoton_eliminar().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
+		view.getPanel_admin().getPanel_usuarios().getver_parejas().addActionListener(controller);
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -586,41 +587,85 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		}
+		
+		//VER PAREJAS
+		if (view.getPanel_admin().getPanel_usuarios().getver_parejas() == event.getSource()) {
+			// primero borra la tabla
+			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
+			Usuario aux = lista_usuarios.get(n);
+			view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+
+			// mostrar todos los usuarios
+			for (int i = 0; i < aux.getParejas().size(); i++) {
+
+				
+				String nombre = aux.getParejas().get(i).getNombre();
+				double cupo = aux.getParejas().get(i).getCantidad_cupo();
+				Object[] datos_filas = { nombre, cupo };
+				view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
+				
+			}
+
+		}
 
 		// ADMINISTRADOR ELIMINAR USUARIOS
 
 		if (view.getPanel_admin().getPanel_usuarios().getBoton_eliminar() == event.getSource()) {
-			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem() == "Correo") {
 
-				if (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals("")) {
+			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
+			//System.out.println(n);
+			Usuario aux = lista_usuarios.get(n);
+			usuarioDAO.eliminarUsuario(aux.getUsuario(), lista_usuarios);
+			view.mostrarMensajes("ELIMINAR_USUARIO_TRUE");
+			// primero borra la tabla
+			view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 
-					view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
+			// mostrar todos los usuarios
+			for (int i = 0; i < lista_usuarios.size(); i++) {
 
-				} else {
-					if (usuarioDAO.eliminarCorreo(view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText(),
-							lista_usuarios)) {
-						view.mostrarMensajes("ELIMINAR_USUARIO_TRUE");
-					} else {
-						view.mostrarMensajes("ELIMINAR_USUARIO_FALSE");
-					}
-				}
-			} else if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem() == "Alias") {
+				String nombre = lista_usuarios.get(i).getNombre();
+				String correo = lista_usuarios.get(i).getCorreo();
+				String alias = lista_usuarios.get(i).getUsuario();
+				String genero = lista_usuarios.get(i).getGenero();
+				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+				long cupo = lista_usuarios.get(i).getCupoTarjeta();
 
-				if (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals("")) {
-
-					view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
-
-				} else {
-					if (usuarioDAO.eliminarUsuario(
-							view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText(), lista_usuarios)) {
-
-						view.mostrarMensajes("ELIMINAR_USUARIO_TRUE");
-					} else {
-						view.mostrarMensajes("ELIMINAR_USUARIO_FALSE");
-					}
-				}
-				view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null);
+				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
+			/*
+			 * if
+			 * (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem(
+			 * ) == "Correo") {
+			 * 
+			 * if
+			 * (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals
+			 * ("")) {
+			 * 
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
+			 * 
+			 * } else { if
+			 * (usuarioDAO.eliminarCorreo(view.getPanel_admin().getPanel_usuarios().
+			 * getCampo_buscar().getText(), lista_usuarios)) {
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_TRUE"); } else {
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_FALSE"); } } } else if
+			 * (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem(
+			 * ) == "Alias") {
+			 * 
+			 * if
+			 * (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals
+			 * ("")) {
+			 * 
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
+			 * 
+			 * } else { if (usuarioDAO.eliminarUsuario(
+			 * view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText(),
+			 * lista_usuarios)) {
+			 * 
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_TRUE"); } else {
+			 * view.mostrarMensajes("ELIMINAR_USUARIO_FALSE"); } }
+			 * view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null); }
+			 */
 		}
 
 		// BOTON VER TIENDAS
@@ -703,34 +748,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		// PANEL VISTA TIENDAS EN ADMINISTRADOR
 
-		if (view.getPanel_admin().getPanel_tiendas().getCombo_tiendas() == event.getSource()) {
-			try {
-
-				switch (view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().getSelectedIndex()) {
-				// Mostrar los campos pertinentes según la selección
-				case 0:
-					view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
-					view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(false);
-
-					break;
-				case 1:
-					view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
-					view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(true);
-					break;
-				case 2:
-					view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(false);
-					view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(true);
-					break;
-				case 3:
-					view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setVisible(true);
-					view.getPanel_admin().getPanel_tiendas().getSpinner().setVisible(false);
-
-					break;
-				}
-			} catch (Exception e) {
-				System.out.println("Error al cargar  todo ");
-			}
-		}
+		
 		// ELIMINAR TIENDA
 
 		if (view.getPanel_admin().getPanel_tiendas().getBoton_eliminar() == event.getSource()) {

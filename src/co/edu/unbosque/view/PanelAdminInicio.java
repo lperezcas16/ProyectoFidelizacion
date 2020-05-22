@@ -28,7 +28,7 @@ public class PanelAdminInicio extends JPanel {
 		setLayout(new BorderLayout());
 		setBounds(0, 0, 795, 572);
 		inicializarComponentes();
-		setVisible(false);
+		setVisible(true);
 	}
 
 	public void inicializarComponentes() {

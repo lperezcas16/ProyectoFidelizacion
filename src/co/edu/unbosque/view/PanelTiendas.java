@@ -58,8 +58,6 @@ public class PanelTiendas extends JPanel {
 	public void inicializarComponentes() {
 		combo_tiendas = new JComboBox<String>();
 		combo_tiendas.addItem("Selecciona");
-		combo_tiendas.addItem("Por horario de apertura");
-		combo_tiendas.addItem("Por horario de cierre");
 		combo_tiendas.addItem("Por nombre");
 		combo_tiendas.setBounds(46, 200, 250, 25);
 		combo_tiendas.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
@@ -68,7 +66,7 @@ public class PanelTiendas extends JPanel {
 		campo_buscar = new JTextField();
 		campo_buscar.setBounds(330, 200, 180, 25);
 		campo_buscar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		campo_buscar.setVisible(false);
+		campo_buscar.setVisible(true);
 		add(campo_buscar);
 
 		boton_ver_tiendas = new JButton("Ver tiendas");
@@ -99,6 +97,7 @@ public class PanelTiendas extends JPanel {
 		campo_nombre = new JTextField();
 		campo_nombre.setBounds(36, 450, 200, 25);
 		campo_nombre.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		
 		add(campo_nombre);
 
 		campo_direccion = new JTextField();
