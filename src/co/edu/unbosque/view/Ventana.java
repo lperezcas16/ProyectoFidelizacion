@@ -73,14 +73,13 @@ public class Ventana extends JFrame {
 		} else if (mensaje.equalsIgnoreCase("EDAD_FALSE")) {
 			JOptionPane.showMessageDialog(null,
 					"DE LA FECHA DE NACIMIENTO INGRESADA MUESTRA QUE SU PAREJA NO ES MAYOR DE EDAD");
-		}else if (mensaje.equalsIgnoreCase("CampoBuscarUsuario_False")) {
-			JOptionPane.showMessageDialog(null,
-					"SELECCIONE UNA OPCION DE BUSQUEDA");
-		}else if (mensaje.equalsIgnoreCase("BuscarUsuario_False")) {
-			JOptionPane.showMessageDialog(null,
-					"EL USUARIO NO EXISTE");
+		} else if (mensaje.equalsIgnoreCase("CampoBuscarUsuario_False")) {
+			JOptionPane.showMessageDialog(null, "SELECCIONE UNA OPCION DE BUSQUEDA");
+		} else if (mensaje.equalsIgnoreCase("BuscarUsuario_False")) {
+			JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
+		} else if (mensaje.equalsIgnoreCase("ORDENAMIENTO_FALSE")) {
+			JOptionPane.showMessageDialog(null, "NO SE LOGRO ORDENAR PROBLEMA CON LA BASE DE DATOS");
 		}
-		
 
 	}
 
