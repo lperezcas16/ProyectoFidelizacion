@@ -611,8 +611,9 @@ public class Controller implements ActionListener, MouseListener {
 				String genero = lista_usuarios.get(i).getGenero();
 				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 				long cupo = lista_usuarios.get(i).getCupoTarjeta();
+				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, formatoImporte.format(cupo) };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
 
@@ -625,6 +626,7 @@ public class Controller implements ActionListener, MouseListener {
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Seleccione")) {
 				view.mostrarMensajes("CampoBuscarUsuario_False");
+				view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null);
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Nombre")) {
@@ -639,9 +641,12 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = aux.getGenero();
 					String numerotarjeta = aux.getNumeroTarjeta();
 					long cupo = aux.getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+					view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null);
 				}
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
@@ -657,9 +662,12 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = aux.getGenero();
 					String numerotarjeta = aux.getNumeroTarjeta();
 					long cupo = aux.getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+					view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null);
 				}
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
@@ -675,9 +683,12 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = aux.getGenero();
 					String numerotarjeta = aux.getNumeroTarjeta();
 					long cupo = aux.getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+					view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null);
 				}
 			}
 
@@ -687,18 +698,23 @@ public class Controller implements ActionListener, MouseListener {
 		if (view.getPanel_admin().getPanel_usuarios().getver_parejas() == event.getSource()) {
 			// primero borra la tabla
 			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
-			Usuario aux = lista_usuarios.get(n);
-			view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+			if (n >= 0) {
+				Usuario aux = lista_usuarios.get(n);
+				view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
 
-			// mostrar todos los usuarios
-			for (int i = 0; i < aux.getParejas().size(); i++) {
+				// mostrar todos los usuarios
+				for (int i = 0; i < aux.getParejas().size(); i++) {
 
-				String nombre = aux.getParejas().get(i).getNombre();
-				double cupo = aux.getParejas().get(i).getCantidad_cupo();
-				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
-				Object[] datos_filas = { nombre, formatoImporte.format(cupo) };
-				view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
+					String nombre = aux.getParejas().get(i).getNombre();
+					double cupo = aux.getParejas().get(i).getCantidad_cupo();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+					Object[] datos_filas = { nombre, formatoImporte.format(cupo) };
+					view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
 
+				}
+			} else if (n == -1) {
+				JOptionPane.showMessageDialog(null, "PORFAVOR SELECCIONAR PRIMERO UN USUARIO", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
@@ -724,8 +740,9 @@ public class Controller implements ActionListener, MouseListener {
 				String genero = lista_usuarios.get(i).getGenero();
 				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 				long cupo = lista_usuarios.get(i).getCupoTarjeta();
+				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, formatoImporte.format(cupo) };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
 
@@ -745,8 +762,10 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = lista_usuarios.get(i).getGenero();
 					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					long cupo = lista_usuarios.get(i).getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 				}
 			} else {
@@ -769,8 +788,10 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = lista_usuarios.get(i).getGenero();
 					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					long cupo = lista_usuarios.get(i).getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 				}
 			} else {
@@ -793,8 +814,10 @@ public class Controller implements ActionListener, MouseListener {
 					String genero = lista_usuarios.get(i).getGenero();
 					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 					long cupo = lista_usuarios.get(i).getCupoTarjeta();
+					NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,
+							formatoImporte.format(cupo) };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 				}
 			} else {
@@ -916,6 +939,7 @@ public class Controller implements ActionListener, MouseListener {
 				} else {
 					if (tiendaDAO.eliminarTienda(view.getPanel_admin().getPanel_tiendas().getCampo_buscar().getText(),
 							lista_tiendas)) {
+						view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
 						view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 						// luego la muestra de nuevo
 						lista_tiendas = archivo_tienda.leerArchivo();
@@ -932,7 +956,6 @@ public class Controller implements ActionListener, MouseListener {
 
 						}
 
-						view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
 					} else {
 						view.mostrarMensajes("ELIMINAR_TIENDA_FALSE");
 					}
@@ -1168,6 +1191,8 @@ public class Controller implements ActionListener, MouseListener {
 							valorVariable = valorVariable - cantidad_cupo;
 							view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
 									.getLabel_cupo_restante().setText(formatoImporte.format(valorVariable));
+							view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
+									.setText(formatoImporte.format(valorVariable));
 
 							JOptionPane.showMessageDialog(null,
 									"El monto disponible es " + formatoImporte.format(valorVariable), "Información",
@@ -1303,6 +1328,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getLabel_cupo_restante()
 				.setText(formatoImporte.format(valorVariable));
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo().setText(formatoImporte.format(valorVariable));
 
 		valorEdad = 0;
 	}
