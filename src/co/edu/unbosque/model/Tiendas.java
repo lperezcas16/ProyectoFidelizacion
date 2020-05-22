@@ -7,6 +7,11 @@ import java.io.Serializable;
  */
 public class Tiendas implements Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1633332112137572466L;
 	private String nombre;
 	private String direccion;
 	private String horario_apertura;
@@ -53,5 +58,14 @@ public class Tiendas implements Serializable {
 	public void setHorario_cierre(String horario_cierre) {
 		this.horario_cierre = horario_cierre;
 	}
+
+	@Override
+	public String toString() {
+		return "Nombre= " + nombre + " Direccion= " + direccion
+				+ " Horario  de apertura= " + horario_apertura
+				+ " Horario de cierre= " + horario_cierre ;
+	}
+
+
 
 }

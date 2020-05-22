@@ -105,15 +105,6 @@ public class Usuario implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	@Override
-	public String toString() {
-		return " Nombre = " + nombre + " Genero = " + genero + " Correo = "
-				+ correo + " Usuario = " + usuario + " Contraseña = "
-				+ contraseña + " NumeroTarjeta = " + numeroTarjeta
-				+ " CupoTarjeta = " + cupoTarjeta + " Parejas = " + parejas
-				+ " TipoUsuario = " + tipoUsuario + "\n";
-	}
-
 	public ArrayList<Parejas> getParejas() {
 		return parejas;
 	}
@@ -124,5 +115,13 @@ public class Usuario implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	@Override
+	public String toString() {
+		return " Nombre = " + nombre + " Genero = " + genero + " Correo = "
+				+ correo + " Usuario = " + usuario + " Contraseña = "
+				+ contraseña + " NumeroTarjeta = " + numeroTarjeta
+				+ " CupoTarjeta = " + cupoTarjeta + " Parejas = " + parejas
+				+ " TipoUsuario = " + tipoUsuario ;
 	}
 }
