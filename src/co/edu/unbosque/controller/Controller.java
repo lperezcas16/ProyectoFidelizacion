@@ -672,6 +672,7 @@ public class Controller implements ActionListener, MouseListener {
 						// primero borra la info
 						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
 								.setRowCount(0);
+						view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 						// luego la muestra de nuevo
 						lista_tiendas = archivo_tienda.leerArchivo();
 						for (int i = 0; i < lista_tiendas.size(); i++) {
