@@ -579,8 +579,9 @@ public class Controller implements ActionListener, MouseListener {
 				String alias = lista_usuarios.get(i).getUsuario();
 				String genero = lista_usuarios.get(i).getGenero();
 				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+				long cupo =lista_usuarios.get(i).getCupoTarjeta();
 
-				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta };
+				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,cupo };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
 

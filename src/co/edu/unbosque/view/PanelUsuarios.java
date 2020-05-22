@@ -34,7 +34,7 @@ public class PanelUsuarios extends JPanel {
 	private JTable tabla1, tabla2;
 
 	private String[] cabecera1 = { "Nombre", "Alias", "Correo", "Genero",
-			"Numero de Tarjeta" };
+			"Numero de Tarjeta","Cupo" };
 	private String[] cabecera2 = { "Nombre", "Porcentaje de cupo" };
 
 	public PanelUsuarios(String nombre) {
