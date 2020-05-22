@@ -24,7 +24,7 @@ public class PanelUsuarios extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
 	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2,
-			boton_eliminar, boton_ver_usuarios,ver_parejas;
+			boton_eliminar, boton_ver_usuarios,ver_parejas,boton_buscar_usuario;
 	private JTextField campo_buscar;
 	private String nombre;
 	private ImageIcon imagen;
@@ -88,6 +88,12 @@ public class PanelUsuarios extends JPanel {
 		boton_ver_usuarios.setFont(new Font("Accidental Presidency", Font.BOLD,
 				16));
 		add(boton_ver_usuarios);
+		
+		boton_buscar_usuario = new JButton("Buscar usuario");
+		boton_buscar_usuario.setBounds(280, 100, 200, 25);
+		boton_buscar_usuario.setFont(new Font("Accidental Presidency", Font.BOLD,
+				16));
+		add(boton_buscar_usuario);
 
 		boton_as_op1 = new JButton("Ordenar ascendente Opción 1");
 		boton_as_op1.setBounds(76, 440, 300, 25);
@@ -203,7 +209,14 @@ public class PanelUsuarios extends JPanel {
 	public void setBoton_des_op2(JButton boton_des_op2) {
 		this.boton_des_op2 = boton_des_op2;
 	}
+	
+	public JButton getboton_buscar_usuario() {
+		return boton_buscar_usuario;
+	}
 
+	public void setboton_buscar_usuario(JButton boton_buscar_usuario) {
+		this.boton_buscar_usuario = boton_buscar_usuario;
+	}
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
 	}
