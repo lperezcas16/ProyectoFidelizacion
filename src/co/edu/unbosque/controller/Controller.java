@@ -113,7 +113,7 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().addActionListener(controller);
 		view.getPanel_admin().getPanel_tiendas().getBoton_ver_tiendas().addActionListener(controller);
 		view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre().addActionListener(controller);
-		
+
 		// PANEL ADMINISTRACION USUARIOS
 		view.getPanel_admin().getPanel_usuarios().getBoton_eliminar().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
@@ -592,8 +592,8 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		}
-		
-		//VER PAREJAS
+
+		// BOTON ADMINISTRADOR VER PAREJAS
 		if (view.getPanel_admin().getPanel_usuarios().getver_parejas() == event.getSource()) {
 			// primero borra la tabla
 			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
@@ -603,29 +603,28 @@ public class Controller implements ActionListener, MouseListener {
 			// mostrar todos los usuarios
 			for (int i = 0; i < aux.getParejas().size(); i++) {
 
-				
 				String nombre = aux.getParejas().get(i).getNombre();
 				double cupo = aux.getParejas().get(i).getCantidad_cupo();
 				Object[] datos_filas = { nombre, cupo };
 				view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
-				
+
 			}
 
 		}
 
-		// ADMINISTRADOR ELIMINAR USUARIOS
+		// BOTON ADMINISTRADOR ELIMINAR USUARIOS
 
 		if (view.getPanel_admin().getPanel_usuarios().getBoton_eliminar() == event.getSource()) {
 
 			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
-			//System.out.println(n);
+
 			Usuario aux = lista_usuarios.get(n);
 			usuarioDAO.eliminarUsuario(aux.getUsuario(), lista_usuarios);
 			view.mostrarMensajes("ELIMINAR_USUARIO_TRUE");
-			// primero borra la tabla
+
 			view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 
-			// mostrar todos los usuarios
+			// BOTON VER USUARIOS
 			for (int i = 0; i < lista_usuarios.size(); i++) {
 
 				String nombre = lista_usuarios.get(i).getNombre();
@@ -638,47 +637,14 @@ public class Controller implements ActionListener, MouseListener {
 				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
-			/*
-			 * if
-			 * (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem(
-			 * ) == "Correo") {
-			 * 
-			 * if
-			 * (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals
-			 * ("")) {
-			 * 
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
-			 * 
-			 * } else { if
-			 * (usuarioDAO.eliminarCorreo(view.getPanel_admin().getPanel_usuarios().
-			 * getCampo_buscar().getText(), lista_usuarios)) {
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_TRUE"); } else {
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_FALSE"); } } } else if
-			 * (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem(
-			 * ) == "Alias") {
-			 * 
-			 * if
-			 * (view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText().equals
-			 * ("")) {
-			 * 
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_VACIO");
-			 * 
-			 * } else { if (usuarioDAO.eliminarUsuario(
-			 * view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText(),
-			 * lista_usuarios)) {
-			 * 
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_TRUE"); } else {
-			 * view.mostrarMensajes("ELIMINAR_USUARIO_FALSE"); } }
-			 * view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null); }
-			 */
+
 		}
-		//BOTON BUSCAR POR NOMBRE DE TIENDA
-		
-		if(view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre() == event.getSource()) {
-			String n =	view.getPanel_admin().getPanel_tiendas().getCampo_buscar().getText();
-			
-			
-			Tiendas aux =tiendaDAO.buscarTienda(n, lista_tiendas);
+		// BOTON BUSCAR POR NOMBRE DE TIENDA
+
+		if (view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre() == event.getSource()) {
+			String n = view.getPanel_admin().getPanel_tiendas().getCampo_buscar().getText();
+
+			Tiendas aux = tiendaDAO.buscarTienda(n, lista_tiendas);
 			view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 			String nombre = aux.getNombre();
 			String direccion = aux.getDireccion();
@@ -687,7 +653,7 @@ public class Controller implements ActionListener, MouseListener {
 
 			Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
 			view.getPanel_admin().getPanel_tiendas().getModel().addRow(datos_filas);
-			
+
 		}
 
 		// BOTON VER TIENDAS
@@ -770,7 +736,6 @@ public class Controller implements ActionListener, MouseListener {
 
 		// PANEL VISTA TIENDAS EN ADMINISTRADOR
 
-		
 		// ELIMINAR TIENDA
 
 		if (view.getPanel_admin().getPanel_tiendas().getBoton_eliminar() == event.getSource()) {
