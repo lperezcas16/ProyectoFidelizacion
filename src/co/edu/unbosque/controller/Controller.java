@@ -121,6 +121,7 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_admin().getPanel_usuarios().getboton_buscar_usuario().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getboton_orden_aliasu().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getboton_orden_nombreu().addActionListener(controller);
+		view.getPanel_admin().getPanel_usuarios().getboton_orden_correou().addActionListener(controller);
 		// PANEL AGREGAR PAREJA
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getBoton_regresar()
 				.addActionListener(controller);
@@ -599,17 +600,17 @@ public class Controller implements ActionListener, MouseListener {
 		// BOTON ADMINISTRADOR BUSCAR USUARIO
 		if (view.getPanel_admin().getPanel_usuarios().getboton_buscar_usuario() == event.getSource()) {
 			String buscar = view.getPanel_admin().getPanel_usuarios().getCampo_buscar().getText();
-			Usuario aux=null;
+			Usuario aux = null;
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Seleccione")) {
 				view.mostrarMensajes("CampoBuscarUsuario_False");
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Nombre")) {
-				aux=usuarioDAO.buscarNombreUsuario(buscar, lista_usuarios);
-				if(aux==null) {
+				aux = usuarioDAO.buscarNombreUsuario(buscar, lista_usuarios);
+				if (aux == null) {
 					view.mostrarMensajes("BuscarUsuario_False");
-				}else {
+				} else {
 					view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 					String nombre = aux.getNombre();
 					String correo = aux.getCorreo();
@@ -624,10 +625,10 @@ public class Controller implements ActionListener, MouseListener {
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Alias")) {
-				aux=usuarioDAO.buscarUsuario(buscar, lista_usuarios);
-				if(aux==null) {
+				aux = usuarioDAO.buscarUsuario(buscar, lista_usuarios);
+				if (aux == null) {
 					view.mostrarMensajes("BuscarUsuario_False");
-				}else {
+				} else {
 					view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 					String nombre = aux.getNombre();
 					String correo = aux.getCorreo();
@@ -642,10 +643,10 @@ public class Controller implements ActionListener, MouseListener {
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Correo")) {
-				aux=usuarioDAO.buscarCorreo(buscar, lista_usuarios);
-				if(aux==null) {
+				aux = usuarioDAO.buscarCorreo(buscar, lista_usuarios);
+				if (aux == null) {
 					view.mostrarMensajes("BuscarUsuario_False");
-				}else {
+				} else {
 					view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 					String nombre = aux.getNombre();
 					String correo = aux.getCorreo();
@@ -707,34 +708,10 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		}
-		
-		//BOTON USUARIOS ORDENAR POR ALIAS
-		if (view.getPanel_admin().getPanel_usuarios().getboton_orden_aliasu() == event.getSource()) {
-			if(usuarioDAO.ordenAliasAsc(lista_usuarios)) {
-				view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 
-				// BOTON VER USUARIOS
-				for (int i = 0; i < lista_usuarios.size(); i++) {
-
-					String nombre = lista_usuarios.get(i).getNombre();
-					String correo = lista_usuarios.get(i).getCorreo();
-					String alias = lista_usuarios.get(i).getUsuario();
-					String genero = lista_usuarios.get(i).getGenero();
-					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
-					long cupo = lista_usuarios.get(i).getCupoTarjeta();
-
-					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
-					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
-				}
-			}else {
-				view.mostrarMensajes("ORDENAMIENTO_FALSE");
-			}
-			
-		}
-		
-		//BOTON ORDENAR USUARIOS POR NOMBRE
+		// BOTON ORDENAR USUARIOS POR NOMBRE
 		if (view.getPanel_admin().getPanel_usuarios().getboton_orden_nombreu() == event.getSource()) {
-			if(usuarioDAO.ordenNombreAsc(lista_usuarios)) {
+			if (usuarioDAO.ordenNombreAsc(lista_usuarios)) {
 				view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
 
 				// BOTON VER USUARIOS
@@ -750,13 +727,61 @@ public class Controller implements ActionListener, MouseListener {
 					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
 					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 				}
-			}else {
+			} else {
 				view.mostrarMensajes("ORDENAMIENTO_FALSE");
 			}
-			
+
+		}
+
+		// BOTON USUARIOS ORDENAR POR ALIAS
+		if (view.getPanel_admin().getPanel_usuarios().getboton_orden_aliasu() == event.getSource()) {
+			if (usuarioDAO.ordenAliasAsc(lista_usuarios)) {
+				view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+
+				// BOTON VER USUARIOS
+				for (int i = 0; i < lista_usuarios.size(); i++) {
+
+					String nombre = lista_usuarios.get(i).getNombre();
+					String correo = lista_usuarios.get(i).getCorreo();
+					String alias = lista_usuarios.get(i).getUsuario();
+					String genero = lista_usuarios.get(i).getGenero();
+					String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+					long cupo = lista_usuarios.get(i).getCupoTarjeta();
+
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+				}
+			} else {
+				view.mostrarMensajes("ORDENAMIENTO_FALSE");
+			}
+
 		}
 		
-		//--------------------------------------------------------------------------
+		// BOTON USUARIOS ORDENAR POR CORREO
+				if (view.getPanel_admin().getPanel_usuarios().getboton_orden_correou() == event.getSource()) {
+					if (usuarioDAO.ordenCorreoAsc(lista_usuarios)) {
+						view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+
+						// BOTON VER USUARIOS
+						for (int i = 0; i < lista_usuarios.size(); i++) {
+
+							String nombre = lista_usuarios.get(i).getNombre();
+							String correo = lista_usuarios.get(i).getCorreo();
+							String alias = lista_usuarios.get(i).getUsuario();
+							String genero = lista_usuarios.get(i).getGenero();
+							String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
+							long cupo = lista_usuarios.get(i).getCupoTarjeta();
+
+							Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+							view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+						}
+					} else {
+						view.mostrarMensajes("ORDENAMIENTO_FALSE");
+					}
+
+				}
+
+		// --------------------------------------------------------------------------
 		// BOTON BUSCAR POR NOMBRE DE TIENDA
 
 		if (view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre() == event.getSource()) {

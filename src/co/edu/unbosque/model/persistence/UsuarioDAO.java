@@ -350,5 +350,33 @@ public class UsuarioDAO {
 				return false;
 			}
 	}
+	public boolean ordenCorreoAsc(ArrayList<Usuario> lista_usuarios) {
+
+		Usuario aux;
+		int k;
+		for (int i = 1; i < lista_usuarios.size(); i++) {
+			aux = lista_usuarios.get(i);
+			k = i - 1;
+			while (k > -1 && aux.getCorreo().compareToIgnoreCase(lista_usuarios.get(k).getCorreo()) < 0) {
+
+				lista_usuarios.remove(k + 1);
+				lista_usuarios.add(k + 1, lista_usuarios.get(k));
+				k = k - 1;
+			}
+
+			lista_usuarios.remove(k + 1);
+			lista_usuarios.add(k + 1, aux);
+			
+		}
+		try {
+			archivo_Usuario.getArchivo_Usuarios().delete();
+			archivo_Usuario.getArchivo_Usuarios().createNewFile();
+			archivo_Usuario.escribirEnArchivo(lista_usuarios);
+			return true;
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return false;
+			}
+	}
 
 }
