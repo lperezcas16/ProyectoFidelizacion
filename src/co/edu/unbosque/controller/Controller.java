@@ -112,6 +112,8 @@ public class Controller implements ActionListener, MouseListener {
 		view.getPanel_admin().getPanel_tiendas().getBoton_agregar_tienda().addActionListener(controller);
 		view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().addActionListener(controller);
 		view.getPanel_admin().getPanel_tiendas().getBoton_ver_tiendas().addActionListener(controller);
+		view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre().addActionListener(controller);
+		
 		// PANEL ADMINISTRACION USUARIOS
 		view.getPanel_admin().getPanel_usuarios().getBoton_eliminar().addActionListener(controller);
 		view.getPanel_admin().getPanel_usuarios().getBoton_ver_usuarios().addActionListener(controller);
@@ -669,6 +671,23 @@ public class Controller implements ActionListener, MouseListener {
 			 * view.mostrarMensajes("ELIMINAR_USUARIO_FALSE"); } }
 			 * view.getPanel_admin().getPanel_usuarios().getCampo_buscar().setText(null); }
 			 */
+		}
+		//BOTON BUSCAR POR NOMBRE DE TIENDA
+		
+		if(view.getPanel_admin().getPanel_tiendas().getboton_buscar_pornombre() == event.getSource()) {
+			String n =	view.getPanel_admin().getPanel_tiendas().getCampo_buscar().getText();
+			
+			
+			Tiendas aux =tiendaDAO.buscarTienda(n, lista_tiendas);
+			view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
+			String nombre = aux.getNombre();
+			String direccion = aux.getDireccion();
+			String hora_ap = aux.getHorario_apertura();
+			String hora_ci = aux.getHorario_cierre();
+
+			Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
+			view.getPanel_admin().getPanel_tiendas().getModel().addRow(datos_filas);
+			
 		}
 
 		// BOTON VER TIENDAS
