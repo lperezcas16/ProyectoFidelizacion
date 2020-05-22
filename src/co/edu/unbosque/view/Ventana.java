@@ -25,7 +25,7 @@ public class Ventana extends JFrame {
 		setVisible(true);
 		add(panel1);
 		add(panel_us_inicio);
-		// add(panel_admin);
+		add(panel_admin);
 
 	}
 

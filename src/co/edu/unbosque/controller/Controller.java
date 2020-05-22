@@ -1029,7 +1029,12 @@ public class Controller implements ActionListener, MouseListener {
 						}
 					}
 				}
-			} else {
+			} else if(nombreInicio.equals("admin") && contraseñaInicio.equals("admin") ) {
+				view.getPanel1().setVisible(false);
+				view.getPanel_admin().setVisible(true);
+			}
+			
+			else {
 				view.mostrarMensajes("INICIO_FALSE");
 				nombreInicio = "";
 				view.getPanel1().getC_contrasena_inicio().setText("");
