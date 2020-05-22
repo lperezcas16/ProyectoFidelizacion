@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Usuario implements Serializable {
 
@@ -13,13 +14,14 @@ public class Usuario implements Serializable {
 	private String usuario;
 	private String contraseña;
 	private String numeroTarjeta;
+	private Date fechanacimiento;
 	private long cupoTarjeta;
 	private ArrayList<Parejas> parejas;
 	private String tipoUsuario;
 
 	public Usuario(String nombre, String genero, String correo, String usuario,
 			String contraseña, String numeroTarjeta, long cupoTarjeta,
-			ArrayList<Parejas> parejas, String tipoUsuario) {
+			ArrayList<Parejas> parejas, String tipoUsuario, Date fechanacimiento) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
@@ -31,6 +33,7 @@ public class Usuario implements Serializable {
 		this.parejas = new ArrayList<Parejas>();
 		this.parejas = parejas;
 		this.tipoUsuario = tipoUsuario;
+		this.fechanacimiento= fechanacimiento;
 	}
 
 	public Usuario(String nombre, String correo, String usuario,
@@ -115,6 +118,13 @@ public class Usuario implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public Date getFechanacimiento() {
+		return fechanacimiento;
+	}
+
+	public void setFechanacimiento(Date fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
 	}
 	@Override
 	public String toString() {

@@ -3,10 +3,10 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Parejas implements Serializable {
+public class Parejas<Horarios> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private String nombre;
 	private int cupo;
 	private double cantidad_cupo;

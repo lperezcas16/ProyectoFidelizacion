@@ -321,8 +321,7 @@ public class Controller implements ActionListener, MouseListener {
 									+ "\n" + formatoImporte.format(cupo_long),
 							"Confirmación", JOptionPane.YES_NO_OPTION);
 					if (resultado == JOptionPane.YES_OPTION) {
-						Usuario nuevo = usuarioDAO.buscarUsuario(nombreInicio,
-								lista_usuarios);
+						
 						for (int i = 0; i < lista_usuarios.size(); i++) {
 							if (lista_usuarios.get(i).getUsuario()
 									.equals(nombreInicio)) {
@@ -1046,7 +1045,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		if (view.getPanel_admin().getPanel_informe().getCombo_eleccion() == event
 				.getSource()) {
-			String aux, aux2;
+			
 			try {
 
 				switch (view.getPanel_admin().getPanel_informe()
@@ -1184,6 +1183,7 @@ public class Controller implements ActionListener, MouseListener {
 	public void registrarUsuario() {
 		ArrayList<Parejas> parejas = new ArrayList<Parejas>();
 		String nombre, correo, usuario, contraseña, genero, numeroTarjeta, tipoUsuario;
+		Date fechanacimiento = null;
 		nombre = correo = usuario = contraseña = genero = numeroTarjeta = tipoUsuario = "";
 
 		long cupoTarjeta;
@@ -1193,6 +1193,7 @@ public class Controller implements ActionListener, MouseListener {
 		numeroTarjeta = solusoft.generarNumeroCuenta(lista_usuarios);
 		cupoTarjeta = 0;
 		tipoUsuario = "Usuario";
+		 
 		contraseña = new String(view.getPanel1().getCampo_contrasena()
 				.getPassword());
 
@@ -1209,11 +1210,11 @@ public class Controller implements ActionListener, MouseListener {
 						lista_usuarios)) {
 					Usuario nuevo = new Usuario(nombre, comprobarGenero(),
 							correo, usuario, contraseña, numeroTarjeta,
-							cupoTarjeta, parejas, tipoUsuario);
+							cupoTarjeta, parejas, tipoUsuario,fechanacimiento);
 
 					usuarioDAO.agregarUsuario(nombre, genero, correo, usuario,
 							contraseña, numeroTarjeta, cupoTarjeta, parejas,
-							tipoUsuario, lista_usuarios);
+							tipoUsuario,fechanacimiento, lista_usuarios);
 					solusoft.enviarCorreo(nuevo);
 					view.mostrarMensajes("USUARIO_TRUE");
 					view.getPanel1().limpiarCampos();
@@ -1471,13 +1472,13 @@ public class Controller implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -1497,7 +1498,7 @@ public class Controller implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
