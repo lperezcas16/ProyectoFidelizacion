@@ -1098,7 +1098,7 @@ public class Controller implements ActionListener, MouseListener {
 							.getTable().getValueAt(seleccion, 3)));
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 					.setEnabled(true);
-		} else {
+		} else {//hola
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 					.setEnabled(false);
 		}
