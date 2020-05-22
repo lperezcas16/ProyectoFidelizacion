@@ -72,8 +72,8 @@ public class PanelAgregarPareja extends JPanel {
 		label_cupo_restante = new JLabel("$0");
 		label_cupo_restante.setBackground(color_azul);
 		label_cupo_restante.setForeground(color_naranja);
-		label_cupo_restante.setFont(new Font("Accidental Presidency", Font.BOLD, 50));
-		label_cupo_restante.setBounds(470, 125, 500, 50);
+		label_cupo_restante.setFont(new Font("Accidental Presidency", Font.BOLD, 40));
+		label_cupo_restante.setBounds(410, 125, 500, 50);
 		add(label_cupo_restante);
 	}
 

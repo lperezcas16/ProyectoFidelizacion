@@ -1,5 +1,6 @@
 package co.edu.unbosque.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -62,6 +63,9 @@ public class PanelVerInfoPareja extends JPanel {
 		model = new DefaultTableModel(nombre_columnas, 0);
 		table = new JTable(model);
 		table.setModel(model);
+
+		Color color_azul = new Color(36, 67, 87);
+		table.setForeground(color_azul);
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
