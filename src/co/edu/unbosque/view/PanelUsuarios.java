@@ -23,7 +23,7 @@ public class PanelUsuarios extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
-	private JButton boton_as_op1, boton_des_op1, boton_as_op2, boton_des_op2,
+	private JButton boton_orden_nombreu, boton_orden_aliasu, boton_orden_correou, boton_orden_nombrep,
 			boton_eliminar, boton_ver_usuarios,ver_parejas,boton_buscar_usuario;
 	private JTextField campo_buscar;
 	private String nombre;
@@ -95,25 +95,25 @@ public class PanelUsuarios extends JPanel {
 				16));
 		add(boton_buscar_usuario);
 
-		boton_as_op1 = new JButton("Ordenar Nombres De Usuarios");
-		boton_as_op1.setBounds(76, 440, 300, 25);
-		boton_as_op1.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(boton_as_op1);
+		boton_orden_nombreu = new JButton("Ordenar Nombres De Usuarios");
+		boton_orden_nombreu.setBounds(76, 440, 300, 25);
+		boton_orden_nombreu.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_orden_nombreu);
 
-		boton_des_op2 = new JButton("Ordenar Alias De Usuarios");
-		boton_des_op2.setBounds(76, 470, 300, 25);
-		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(boton_des_op2);
+		boton_orden_aliasu = new JButton("Ordenar Alias De Usuarios");
+		boton_orden_aliasu.setBounds(76, 470, 300, 25);
+		boton_orden_aliasu.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_orden_aliasu);
 
-		boton_as_op2 = new JButton("Ordenar Usuarios Por Correo");
-		boton_as_op2.setBounds(400, 440, 300, 25);
-		boton_as_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(boton_as_op2);
+		boton_orden_correou = new JButton("Ordenar Usuarios Por Correo");
+		boton_orden_correou.setBounds(400, 440, 300, 25);
+		boton_orden_correou.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_orden_correou);
 
-		boton_des_op2 = new JButton("Ordenar Parejas Por Nombres");
-		boton_des_op2.setBounds(400, 470, 300, 25);
-		boton_des_op2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(boton_des_op2);
+		boton_orden_nombrep = new JButton("Ordenar Parejas Por Nombres");
+		boton_orden_nombrep.setBounds(400, 470, 300, 25);
+		boton_orden_nombrep.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_orden_nombrep);
 
 	}
 
@@ -178,36 +178,36 @@ public class PanelUsuarios extends JPanel {
 	public void setver_parejas(JButton ver_parejas) {
 		this.ver_parejas = ver_parejas;
 	}
-	public JButton getBoton_as_op1() {
-		return boton_as_op1;
+	public JButton getboton_orden_nombreu() {
+		return boton_orden_nombreu;
 	}
 
-	public void setBoton_as_op1(JButton boton_as_op1) {
-		this.boton_as_op1 = boton_as_op1;
+	public void setboton_orden_nombreu(JButton boton_orden_nombreu) {
+		this.boton_orden_nombreu = boton_orden_nombreu;
 	}
 
-	public JButton getBoton_des_op1() {
-		return boton_des_op1;
+	public JButton getboton_orden_aliasu() {
+		return boton_orden_aliasu;
 	}
 
-	public void setBoton_des_op1(JButton boton_des_op1) {
-		this.boton_des_op1 = boton_des_op1;
+	public void setboton_orden_aliasu(JButton boton_orden_aliasu) {
+		this.boton_orden_aliasu = boton_orden_aliasu;
 	}
 
-	public JButton getBoton_as_op2() {
-		return boton_as_op2;
+	public JButton getboton_orden_correou() {
+		return boton_orden_correou;
 	}
 
-	public void setBoton_as_op2(JButton boton_as_op2) {
-		this.boton_as_op2 = boton_as_op2;
+	public void setboton_orden_correou(JButton boton_orden_correou) {
+		this.boton_orden_correou = boton_orden_correou;
 	}
 
-	public JButton getBoton_des_op2() {
-		return boton_des_op2;
+	public JButton getboton_orden_nombrep() {
+		return boton_orden_nombrep;
 	}
 
-	public void setBoton_des_op2(JButton boton_des_op2) {
-		this.boton_des_op2 = boton_des_op2;
+	public void setboton_orden_nombrep(JButton boton_orden_nombrep) {
+		this.boton_orden_nombrep = boton_orden_nombrep;
 	}
 	
 	public JButton getboton_buscar_usuario() {
