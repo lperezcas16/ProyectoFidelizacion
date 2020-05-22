@@ -141,6 +141,19 @@ public class UsuarioDAO {
 
 		return encontrado;
 	}
+	public Usuario buscarNombreUsuario(String nombre, ArrayList<Usuario> lista_usuarios) {
+		Usuario encontrado = null;
+
+		if (!lista_usuarios.isEmpty()) {
+			for (int i = 0; i < lista_usuarios.size(); i++) {
+				if (lista_usuarios.get(i).getNombre().equals(nombre)) {
+					encontrado = lista_usuarios.get(i);
+				}
+			}
+		}
+
+		return encontrado;
+	}
 
 	/**
 	 * Metodo buscarUsuarioCorreo, busca una persona mediante el usuario en el
