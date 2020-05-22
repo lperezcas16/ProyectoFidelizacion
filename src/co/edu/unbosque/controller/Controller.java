@@ -579,9 +579,9 @@ public class Controller implements ActionListener, MouseListener {
 				String alias = lista_usuarios.get(i).getUsuario();
 				String genero = lista_usuarios.get(i).getGenero();
 				String numerotarjeta = lista_usuarios.get(i).getNumeroTarjeta();
-				long cupo =lista_usuarios.get(i).getCupoTarjeta();
+				long cupo = lista_usuarios.get(i).getCupoTarjeta();
 
-				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta,cupo };
+				Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
 				view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
 			}
 
@@ -670,8 +670,7 @@ public class Controller implements ActionListener, MouseListener {
 
 						view.mostrarMensajes("TIENDA_TRUE");
 						// primero borra la info
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
-								.setRowCount(0);
+
 						view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 						// luego la muestra de nuevo
 						lista_tiendas = archivo_tienda.leerArchivo();
@@ -735,8 +734,6 @@ public class Controller implements ActionListener, MouseListener {
 		// ELIMINAR TIENDA
 
 		if (view.getPanel_admin().getPanel_tiendas().getBoton_eliminar() == event.getSource()) {
-			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
-			String t = dp.format(view.getPanel_admin().getPanel_tiendas().getSpinner().getValue());
 
 			if (view.getPanel_admin().getPanel_tiendas().getCombo_tiendas().getSelectedItem() == "Por nombre") {
 
@@ -745,6 +742,21 @@ public class Controller implements ActionListener, MouseListener {
 				} else {
 					if (tiendaDAO.eliminarTienda(view.getPanel_admin().getPanel_tiendas().getCampo_buscar().getText(),
 							lista_tiendas)) {
+						view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
+						// luego la muestra de nuevo
+						lista_tiendas = archivo_tienda.leerArchivo();
+						for (int i = 0; i < lista_tiendas.size(); i++) {
+
+							String nombre = lista_tiendas.get(i).getNombre();
+							String direccion = lista_tiendas.get(i).getDireccion();
+							String hora_ap = lista_tiendas.get(i).getHorario_apertura();
+							String hora_ci = lista_tiendas.get(i).getHorario_cierre();
+
+							Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
+							view.getPanel_admin().getPanel_tiendas().getModel().addRow(datos_filas);
+							//
+
+						}
 
 						view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
 					} else {
@@ -753,23 +765,30 @@ public class Controller implements ActionListener, MouseListener {
 
 				}
 
-			} else if (view.getPanel_admin().getPanel_tiendas().getCombo_tiendas()
-					.getSelectedItem() == "Por horario de apertura") {
+			} else {
+				int indec = view.getPanel_admin().getPanel_tiendas().getTabla().getSelectedRow();
+				// System.out.println(indec);
+				Tiendas tienda = lista_tiendas.get(indec);
+				// System.out.println(tienda.getNombre());
+				tiendaDAO.eliminarTienda(tienda.getNombre(), lista_tiendas);
+				view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
+				view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
+				// luego la muestra de nuevo
+				lista_tiendas = archivo_tienda.leerArchivo();
+				for (int i = 0; i < lista_tiendas.size(); i++) {
 
-				if (tiendaDAO.eliminarTiendaHorarioApertura(t, lista_tiendas)) {
-					view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
-				} else {
-					view.mostrarMensajes("ELIMINAR_TIENDA_FALSE");
-				}
-			} else if (view.getPanel_admin().getPanel_tiendas().getCombo_tiendas()
-					.getSelectedItem() == "Por horario de cierre") {
+					String nombre = lista_tiendas.get(i).getNombre();
+					String direccion = lista_tiendas.get(i).getDireccion();
+					String hora_ap = lista_tiendas.get(i).getHorario_apertura();
+					String hora_ci = lista_tiendas.get(i).getHorario_cierre();
 
-				if (tiendaDAO.eliminarTiendaHorarioCierre(t, lista_tiendas)) {
-					view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
-				} else {
-					view.mostrarMensajes("ELIMINAR_TIENDA_FALSE");
+					Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
+					view.getPanel_admin().getPanel_tiendas().getModel().addRow(datos_filas);
+					//
+
 				}
 			}
+
 			view.getPanel_admin().getPanel_tiendas().getCampo_buscar().setText(null);
 
 		}
@@ -1030,11 +1049,11 @@ public class Controller implements ActionListener, MouseListener {
 						}
 					}
 				}
-			} else if(nombreInicio.equals("admin") && contraseñaInicio.equals("admin") ) {
+			} else if (nombreInicio.equals("admin") && contraseñaInicio.equals("admin")) {
 				view.getPanel1().setVisible(false);
 				view.getPanel_admin().setVisible(true);
 			}
-			
+
 			else {
 				view.mostrarMensajes("INICIO_FALSE");
 				nombreInicio = "";
@@ -1105,7 +1124,7 @@ public class Controller implements ActionListener, MouseListener {
 							.getTable().getValueAt(seleccion, 3)));
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 					.setEnabled(true);
-		} else {//hola
+		} else {// hola
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 					.setEnabled(false);
 		}
