@@ -640,7 +640,21 @@ public class Controller implements ActionListener, MouseListener {
 			}
 			if (view.getPanel_admin().getPanel_usuarios().getCombo_buscar().getSelectedItem().toString()
 					.equalsIgnoreCase("Correo")) {
+				aux=usuarioDAO.buscarCorreo(buscar, lista_usuarios);
+				if(aux==null) {
+					view.mostrarMensajes("BuscarUsuario_False");
+				}else {
+					view.getPanel_admin().getPanel_usuarios().getModel1().setRowCount(0);
+					String nombre = aux.getNombre();
+					String correo = aux.getCorreo();
+					String alias = aux.getUsuario();
+					String genero = aux.getGenero();
+					String numerotarjeta = aux.getNumeroTarjeta();
+					long cupo = aux.getCupoTarjeta();
 
+					Object[] datos_filas = { nombre, alias, correo, genero, numerotarjeta, cupo };
+					view.getPanel_admin().getPanel_usuarios().getModel1().addRow(datos_filas);
+				}
 			}
 
 		}
