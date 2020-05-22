@@ -11,15 +11,17 @@ public class Parejas implements Serializable {
 	private int cupo;
 	private double cantidad_cupo;
 	private String fecha_nacimiento;
+	private int edad;
 	private ArrayList<Horarios> lista_horarios;
 
-	public Parejas(String nombre, int cupo, double cantidad_cupo, String fecha_nacimiento,
+	public Parejas(String nombre, int cupo, double cantidad_cupo, String fecha_nacimiento, int edad,
 			ArrayList<Horarios> lista_horarios) {
 		this.nombre = nombre;
 		this.cupo = cupo;
 		this.cantidad_cupo = cantidad_cupo;
 		this.lista_horarios = lista_horarios;
 		this.fecha_nacimiento = fecha_nacimiento;
+		this.edad = edad;
 	}
 
 	public String getNombre() {
@@ -66,10 +68,19 @@ public class Parejas implements Serializable {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
 	@Override
 	public String toString() {
 		return "Parejas [nombre=" + nombre + ", cupo=" + cupo + ", cantidad_cupo=" + cantidad_cupo
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", lista_horarios=" + lista_horarios + "]";
+				+ ", fecha_nacimiento=" + fecha_nacimiento + ", edad=" + edad + ", lista_horarios=" + lista_horarios
+				+ "]";
 	}
 
 }

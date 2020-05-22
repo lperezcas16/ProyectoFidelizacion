@@ -141,6 +141,7 @@ public class UsuarioDAO {
 
 		return encontrado;
 	}
+
 	public Usuario buscarNombreUsuario(String nombre, ArrayList<Usuario> lista_usuarios) {
 		Usuario encontrado = null;
 
@@ -224,7 +225,7 @@ public class UsuarioDAO {
 	}
 
 	public void agregarParejas(String usuario, String nombre, int cupo, double cantidad_cupo, String fechaNacimiento,
-			ArrayList<Usuario> lista_usuarios) {
+			int edad, ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
 		ArrayList<Horarios> lista_horarios = new ArrayList<Horarios>();
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -235,7 +236,7 @@ public class UsuarioDAO {
 			}
 		}
 
-		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo, fechaNacimiento, lista_horarios);
+		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo, fechaNacimiento, edad, lista_horarios);
 
 		lista_parejas.add(nuevo);
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -248,7 +249,7 @@ public class UsuarioDAO {
 		archivo_Usuario.escribirEnArchivo(lista_usuarios);
 	}
 
-	public boolean  agregarHorariosCompras(String usuario, Tiendas tienda_horarios, String pareja, String fecha,
+	public boolean agregarHorariosCompras(String usuario, Tiendas tienda_horarios, String pareja, String fecha,
 			String hora) {
 		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
 		lista_usuarios = archivo_Usuario.leerArchivo();
@@ -306,24 +307,19 @@ public class UsuarioDAO {
 
 			lista_usuarios.remove(k + 1);
 			lista_usuarios.add(k + 1, aux);
-			
+
 		}
 		try {
-		archivo_Usuario.getArchivo_Usuarios().delete();
-		archivo_Usuario.getArchivo_Usuarios().createNewFile();
-		archivo_Usuario.escribirEnArchivo(lista_usuarios);
-		return true;
+			archivo_Usuario.getArchivo_Usuarios().delete();
+			archivo_Usuario.getArchivo_Usuarios().createNewFile();
+			archivo_Usuario.escribirEnArchivo(lista_usuarios);
+			return true;
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			return false;
 		}
 	}
-	
-	
-	
-	
-	
-	
+
 	public boolean ordenNombreAsc(ArrayList<Usuario> lista_usuarios) {
 
 		Usuario aux;
@@ -340,18 +336,19 @@ public class UsuarioDAO {
 
 			lista_usuarios.remove(k + 1);
 			lista_usuarios.add(k + 1, aux);
-			
+
 		}
 		try {
 			archivo_Usuario.getArchivo_Usuarios().delete();
 			archivo_Usuario.getArchivo_Usuarios().createNewFile();
 			archivo_Usuario.escribirEnArchivo(lista_usuarios);
 			return true;
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				return false;
-			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return false;
+		}
 	}
+
 	public boolean ordenCorreoAsc(ArrayList<Usuario> lista_usuarios) {
 
 		Usuario aux;
@@ -368,17 +365,17 @@ public class UsuarioDAO {
 
 			lista_usuarios.remove(k + 1);
 			lista_usuarios.add(k + 1, aux);
-			
+
 		}
 		try {
 			archivo_Usuario.getArchivo_Usuarios().delete();
 			archivo_Usuario.getArchivo_Usuarios().createNewFile();
 			archivo_Usuario.escribirEnArchivo(lista_usuarios);
 			return true;
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				return false;
-			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return false;
+		}
 	}
 
 }
