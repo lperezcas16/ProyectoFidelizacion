@@ -46,7 +46,7 @@ public class TiendaDAO {
 			ArrayList<Tiendas> lista_tiendas) {
 		Tiendas nuevo = new Tiendas(nombre, direccion, horario_apertura,
 				horario_cierre);
-		if (buscarTienda(nombre, lista_tiendas) == null) {
+		if (buscarTienda(direccion, lista_tiendas) == null) {
 			lista_tiendas.add(nuevo);
 			archivo_Tienda.escribirEnArchivo(lista_tiendas);
 			return true;
@@ -139,19 +139,19 @@ public class TiendaDAO {
 	/**
 	 * Metodo buscarTienda, busca una tienda mediante el nombre en el arraylist.
 	 * 
-	 * @param nombre
+	 * @param direccion
 	 *            el atributo que tendrán el sistema para validar la tienda
 	 * @param lista_tiendas
 	 *            el atributo que tendrán el sistema para llamar el arraylist de
 	 *            tiendas
 	 * @return si es encontrado o no encontrado en el sistema
 	 */
-	public Tiendas buscarTienda(String nombre, ArrayList<Tiendas> lista_tiendas) {
+	public Tiendas buscarTienda(String direccion, ArrayList<Tiendas> lista_tiendas) {
 		Tiendas encontrado = null;
 
 		if (!lista_tiendas.isEmpty()) {
 			for (int i = 0; i < lista_tiendas.size(); i++) {
-				if (lista_tiendas.get(i).getNombre().equals(nombre)) {
+				if (lista_tiendas.get(i).getDireccion().equalsIgnoreCase(direccion)) {
 					encontrado = lista_tiendas.get(i);
 				}
 			}

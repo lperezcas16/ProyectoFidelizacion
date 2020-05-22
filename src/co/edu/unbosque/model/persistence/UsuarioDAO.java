@@ -170,7 +170,7 @@ public class UsuarioDAO {
 
 		if (!lista_usuarios.isEmpty()) {
 			for (int i = 0; i < lista_usuarios.size(); i++) {
-				if (lista_usuarios.get(i).getCorreo().equals(correo)) {
+				if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(correo)) {
 					encontrado = lista_usuarios.get(i);
 				}
 			}
@@ -214,7 +214,7 @@ public class UsuarioDAO {
 		if (!lista_usuarios.isEmpty()) {
 			for (int i = 0; i < lista_usuarios.size(); i++) {
 				if ((lista_usuarios.get(i).getUsuario().equals(usuario)
-						|| lista_usuarios.get(i).getCorreo().equals(usuario))
+						|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario))
 						&& lista_usuarios.get(i).getContraseña().equals(contraseña)) {
 					esta = true;
 				}
@@ -226,21 +226,21 @@ public class UsuarioDAO {
 	public void agregarParejas(String usuario, String nombre, int cupo, double cantidad_cupo, String fechaNacimiento,
 			ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-		ArrayList<Horarios> lista_compras = new ArrayList<Horarios>();
+		ArrayList<Horarios> lista_horarios = new ArrayList<Horarios>();
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if ((lista_usuarios.get(i).getUsuario().equals(usuario)
-					|| lista_usuarios.get(i).getCorreo().equals(usuario))) {
+					|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario))) {
 				lista_parejas = lista_usuarios.get(i).getParejas();
 
 			}
 		}
 
-		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo, fechaNacimiento, lista_usuarios);
+		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo, fechaNacimiento, lista_horarios);
 
 		lista_parejas.add(nuevo);
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if ((lista_usuarios.get(i).getUsuario().equals(usuario)
-					|| lista_usuarios.get(i).getCorreo().equals(usuario))) {
+					|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario))) {
 				lista_usuarios.get(i).setParejas(lista_parejas);
 
 			}
@@ -248,7 +248,7 @@ public class UsuarioDAO {
 		archivo_Usuario.escribirEnArchivo(lista_usuarios);
 	}
 
-	public void agregarHorariosCompras(String usuario, Tiendas tienda_horarios, String pareja, String fecha,
+	public boolean  agregarHorariosCompras(String usuario, Tiendas tienda_horarios, String pareja, String fecha,
 			String hora) {
 		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
 		lista_usuarios = archivo_Usuario.leerArchivo();
@@ -257,7 +257,7 @@ public class UsuarioDAO {
 		Horarios horario = new Horarios(tienda_horarios, fecha, hora);
 		boolean yaEsta = false;
 		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.get(i).getCorreo().equals(usuario)
+			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
 					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
 				listaParejas = lista_usuarios.get(i).getParejas();
 				for (int j = 0; j < listaParejas.size(); j++) {
@@ -272,22 +272,24 @@ public class UsuarioDAO {
 		}
 		if (!yaEsta) {
 			for (int i = 0; i < lista_usuarios.size(); i++) {
-				if (lista_usuarios.get(i).getCorreo().equals(usuario)
+				if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
 						|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
 					listaParejas = lista_usuarios.get(i).getParejas();
 					for (int j = 0; j < listaParejas.size(); j++) {
-						if (listaParejas.get(j).getNombre().equals(pareja)) {
+						if (listaParejas.get(j).getNombre().equalsIgnoreCase(pareja)) {
 							lista_horarios = listaParejas.get(j).getLista_horarios();
 							lista_horarios.add(horario);
 							lista_usuarios.get(i).getParejas().get(j).setLista_horarios(lista_horarios);
 							archivo_Usuario.escribirEnArchivo(lista_usuarios);
+							return true;
 						}
 					}
 				}
 			}
 		}
+		return false;
 	}
-	
+
 	public boolean ordenAliasAsc(ArrayList<Usuario> lista_usuarios) {
 
 		Usuario aux;

@@ -37,7 +37,6 @@ import co.edu.unbosque.view.Ventana;
 import co.edu.unbosque.view.VentanaGraficas;
 
 public class Controller implements ActionListener, MouseListener {
-//hola
 	private Ventana view;
 	private VentanaGraficas view2;
 	private Solusoft solusoft;
@@ -349,9 +348,6 @@ public class Controller implements ActionListener, MouseListener {
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
 				.getBoton_agregar_nueva_pareja() == event.getSource()) {
 			agregarPareja();
-//			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-//			System.out.println(df.format(
-//					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().getCalendario().getDate()));
 		}
 
 		// Boton VER INFORMACION PAREJAS del panel administrar cuenta de usuario
@@ -468,51 +464,87 @@ public class Controller implements ActionListener, MouseListener {
 		// Boton CONFIRMAR SELECCION del panel nueva tienda
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getPnl_nueva_tienda()
 				.getBoton_validar_nueva_tienda() == event.getSource()) {
-			String nombre_tienda = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+			String nombre_tienda = view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
 					.getPnl_nueva_tienda().getCampo_texto_nombre().getText();
-			String direccion_tienda = view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+			String direccion_tienda = view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
 					.getPnl_nueva_tienda().getCampo_texto_direccion().getText();
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-			String hora_a = sdf.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-					.getPnl_nueva_tienda().getSpinner_hora_apertura().getValue());
-			String hora_c = sdf.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+			String hora_a = sdf.format(view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getPnl_nueva_tienda().getSpinner_hora_apertura()
+					.getValue());
+			String hora_c = sdf.format(view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
 					.getPnl_nueva_tienda().getSpinner_hora_cierre().getValue());
 			// Horas validacion
 			SimpleDateFormat sdf2 = new SimpleDateFormat("HHmm");
-			String hora_apertura = sdf2.format(view.getPanel_us_inicio().getPnl_asignar_horarios()
-					.getPnl_seleccionar_tienda().getPnl_nueva_tienda().getSpinner_hora_apertura().getValue());
-			String hora_cierre = sdf2.format(view.getPanel_us_inicio().getPnl_asignar_horarios()
-					.getPnl_seleccionar_tienda().getPnl_nueva_tienda().getSpinner_hora_cierre().getValue());
-
-			if (nombre_tienda.isEmpty() || direccion_tienda.isEmpty()) {
-				view.mostrarMensajes("CAMPOS_FALSE");
-			} else {
+			String hora_apertura = sdf2.format(view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getPnl_nueva_tienda().getSpinner_hora_apertura()
+					.getValue());
+			String hora_cierre = sdf2.format(view.getPanel_us_inicio()
+					.getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+					.getPnl_nueva_tienda().getSpinner_hora_cierre().getValue());
+			Boolean esta = false;
+			for (int i = 0; i < lista_tiendas.size(); i++) {
+				if (lista_tiendas.get(i).getDireccion()
+						.equalsIgnoreCase(direccion_tienda)) {
+					esta = true;
+				}
+			}
+			if (!nombre_tienda.isEmpty() && !direccion_tienda.isEmpty()) {
 				try {
 					comprobarHorarioTienda(hora_apertura, hora_cierre);
-					if (tiendaDAO.agregarTienda(nombre_tienda, direccion_tienda, hora_a, hora_c, lista_tiendas)) {
+
+					if (!esta
+							&& tiendaDAO.agregarTienda(nombre_tienda,
+									direccion_tienda, hora_a, hora_c,
+									lista_tiendas)) {
 						view.mostrarMensajes("TIENDA_TRUE");
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda()
 								.getPnl_nueva_tienda().setVisible(false);
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getTable()
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda().getTable()
 								.setVisible(true);
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
-								.getBoton_agregar_nueva_tienda().setVisible(true);
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda()
+								.getBoton_agregar_nueva_tienda()
+								.setVisible(true);
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda()
 								.getBoton_agregar_tienda().setVisible(true);
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getScroll()
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda().getScroll()
 								.setVisible(true);
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda()
+								.getPnl_nueva_tienda()
+								.getCampo_texto_direccion().setText("");
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda()
+								.getPnl_nueva_tienda().getCampo_texto_nombre()
+								.setText("");
 						// primero borrra
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
+						view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getPnl_seleccionar_tienda().getModel()
 								.setRowCount(0);
 						// luego carga
 						lista_tiendas = archivo_tienda.leerArchivo();
 						for (int i = 0; i < lista_tiendas.size(); i++) {
 							String nombre = lista_tiendas.get(i).getNombre();
-							String direccion = lista_tiendas.get(i).getDireccion();
-							String hora_ap = lista_tiendas.get(i).getHorario_apertura();
-							String hora_ci = lista_tiendas.get(i).getHorario_cierre();
-							Object[] datos_filas = { nombre, direccion, hora_ap, hora_ci };
-							view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
+							String direccion = lista_tiendas.get(i)
+									.getDireccion();
+							String hora_ap = lista_tiendas.get(i)
+									.getHorario_apertura();
+							String hora_ci = lista_tiendas.get(i)
+									.getHorario_cierre();
+							Object[] datos_filas = { nombre, direccion,
+									hora_ap, hora_ci };
+							view.getPanel_us_inicio().getPnl_asignar_horarios()
+									.getPnl_seleccionar_tienda().getModel()
 									.addRow(datos_filas);
 						}
 					} else {
@@ -522,58 +554,95 @@ public class Controller implements ActionListener, MouseListener {
 					view.mostrarMensajes(e.getMessage());
 
 				}
+			} else {
+				view.mostrarMensajes("CAMPOS_FALSE");
 			}
+
 		}
 		// Boton AGREGAR HORARIO del panel asignar horarios de usuario inicio
-		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event.getSource()) {
-			int numElementosPareja = view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
-					.getItemCount();
+				if (view.getPanel_us_inicio().getPnl_asignar_horarios()
+						.getBoton_agregar_horario() == event.getSource()) {
+					int numElementosPareja = view.getPanel_us_inicio()
+							.getPnl_asignar_horarios().getCombobox_parejas()
+							.getItemCount();
 
-			if (numElementosPareja == 0) {
-				JOptionPane.showMessageDialog(null, "Debe agregar a su pareja para poder continuar");
-			} else {
-				String pareja = (String) view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
-						.getSelectedItem();
-				DateFormat formatoHora = new SimpleDateFormat("HH:mm");
-				DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-				Date dateActual = new Date();
-				String horaActual = formatoHora.format(dateActual);
-				String fechaActual = formatoFecha.format(dateActual);
-				String hora = formatoHora
-						.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getSpinner().getValue());
-				String fecha = null;
-				if (view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().getDate() == null) {
-					JOptionPane.showMessageDialog(null, "Elija una fecha");
-				} else {
-
-					fecha = formatoFecha
-							.format(view.getPanel_us_inicio().getPnl_asignar_horarios().getCalendario().getDate());
-					if (fechaActual.compareTo(fecha) > 0) {
-
-						JOptionPane.showMessageDialog(null, "La fecha ya paso idiota");
-					} else if (fechaActual.compareTo(fecha) < 0) {
-						if (hora.compareTo(tienda_horarios.getHorario_apertura()) < 0
-								&& hora.compareTo(tienda_horarios.getHorario_cierre()) > 0) {
-							usuarioDAO.agregarHorariosCompras(nombreInicio, tienda_horarios, pareja, fecha, hora);
+					if (numElementosPareja == 0) {
+						JOptionPane.showMessageDialog(null,
+								"Debe agregar a su pareja para poder continuar");
+					} else {
+						String pareja = (String) view.getPanel_us_inicio()
+								.getPnl_asignar_horarios().getCombobox_parejas()
+								.getSelectedItem();
+						DateFormat formatoHora = new SimpleDateFormat("HH:mm");
+						DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+						Date dateActual = new Date();
+						String horaActual = formatoHora.format(dateActual);
+						String fechaActual = formatoFecha.format(dateActual);
+						String hora = formatoHora.format(view.getPanel_us_inicio()
+								.getPnl_asignar_horarios().getSpinner().getValue());
+						String fecha = null;
+						if (view.getPanel_us_inicio().getPnl_asignar_horarios()
+								.getCalendario().getDate() == null) {
+							JOptionPane.showMessageDialog(null, "Elija una fecha");
 						} else {
-							JOptionPane.showMessageDialog(null, "La tienda no tiene disponibilidad en esa hora");
-						}
-					} else if (fechaActual.compareTo(fecha) == 0) {
-						if (horaActual.compareTo(hora) < 0) {
-							if (hora.compareTo(tienda_horarios.getHorario_apertura()) < 0
-									&& hora.compareTo(tienda_horarios.getHorario_cierre()) > 0) {
-								usuarioDAO.agregarHorariosCompras(nombreInicio, tienda_horarios, pareja, fecha, hora);
-							} else {
-								JOptionPane.showMessageDialog(null, "La tienda no tiene disponibilidad en esa hora");
+
+							fecha = formatoFecha.format(view.getPanel_us_inicio()
+									.getPnl_asignar_horarios().getCalendario()
+									.getDate());
+							if (fechaActual.compareTo(fecha) > 0) {
+
+								JOptionPane.showMessageDialog(null,
+										"La fecha ya paso idiota");
+							} else if (fechaActual.compareTo(fecha) < 0) {
+								if (hora.compareTo(tienda_horarios
+										.getHorario_apertura()) > 0
+										&& hora.compareTo(tienda_horarios
+												.getHorario_cierre()) < 0) {
+									if (usuarioDAO.agregarHorariosCompras(nombreInicio,
+											tienda_horarios, pareja, fecha, hora)) {
+										JOptionPane.showMessageDialog(null,
+												"El horario fue asignado");
+									} else {
+										JOptionPane.showMessageDialog(null,
+												"No se pudo asignar el horario");
+									}
+								} else {
+									JOptionPane
+											.showMessageDialog(null,
+													"La tienda no tiene disponibilidad en esa hora");
+								}
+							} else if (fechaActual.compareTo(fecha) == 0) {
+								if (horaActual.compareTo(hora) < 0) {
+									if (hora.compareTo(tienda_horarios
+											.getHorario_apertura()) > 0
+											&& hora.compareTo(tienda_horarios
+													.getHorario_cierre()) < 0) {
+										if (usuarioDAO.agregarHorariosCompras(
+												nombreInicio, tienda_horarios, pareja,
+												fecha, hora)) {
+											view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setEnabled(false);
+											JOptionPane.showMessageDialog(null,
+													"El horario fue asignado");
+										} else {
+											JOptionPane.showMessageDialog(null,
+													"No se pudo asignar el horario");
+										}
+									} else {
+										JOptionPane
+												.showMessageDialog(null,
+														"La tienda no tiene disponibilidad en esa hora");
+									}
+								} else {
+									JOptionPane.showMessageDialog(null,
+											"La hora ya paso idiota");
+								}
 							}
-						} else {
-							JOptionPane.showMessageDialog(null, "La hora ya paso idiota");
 						}
 					}
-				}
-			}
 
-		}
+				}
+
+
 
 		// ------------------------------------------------------------------------------
 		// ADMINISTRADOR MOSTRAR USUARIOS
@@ -1238,7 +1307,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if (lista_usuarios.get(i).getUsuario().equals(nombre_ingresado)
-					|| lista_usuarios.get(i).getCorreo().equals(nombre_ingresado)) {
+					|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(nombre_ingresado)) {
 				numero_tarjeta = lista_usuarios.get(i).getNumeroTarjeta();
 				nombreInicio = lista_usuarios.get(i).getUsuario();
 				numero_cupo = lista_usuarios.get(i).getCupoTarjeta();
