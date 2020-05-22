@@ -251,4 +251,11 @@ public class PanelSeleccionarTienda extends JPanel {
 		this.icon_boton_regresar = icon_boton_regresar;
 	}
 
+	public void visibilidadComponentes(boolean b) {
+		table.setVisible(b);
+		boton_agregar_nueva_tienda.setVisible(b);
+		boton_agregar_tienda.setVisible(b);
+		scroll.setVisible(b);
+	}
+
 }

@@ -323,5 +323,13 @@ public class PanelAdmCuentas extends JPanel {
 	public void setPnl_adm_cupo(PanelAdmCupo pnl_adm_cupo) {
 		this.pnl_adm_cupo = pnl_adm_cupo;
 	}
-
+	public void visibilidadComponentes(boolean b) {
+		label_cupo.setVisible(b);
+		label_tarjeta.setVisible(b);
+		boton_adm_cuota.setVisible(b);
+		boton_agregar_pareja.setVisible(b);
+		boton_cerrar_sesion.setVisible(b);
+		boton_info_pareja.setVisible(b);
+		boton_ojo_oculto.setVisible(b);
+	}
 }

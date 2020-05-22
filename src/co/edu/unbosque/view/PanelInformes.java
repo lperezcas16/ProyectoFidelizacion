@@ -159,6 +159,14 @@ public class PanelInformes extends JPanel {
 	public void setBoton_generar_pfd(JButton boton_generar_pfd) {
 		this.boton_generar_pfd = boton_generar_pfd;
 	}
-	//
+
+	public void visibilidadComponentes(boolean b) {
+		combo_Fecha.setVisible(b);
+		combo_tienda.setVisible(b);
+		campo_usuario.setVisible(b);
+		combo_hora.setVisible(b);
+		boton_generar_pfd.setVisible(b);
+		boton_vista_previa.setVisible(b);
+	}
 
 }

@@ -216,5 +216,11 @@ public class PanelAsignarHorario extends JPanel {
 	public void setPnl_seleccionar_tienda(PanelSeleccionarTienda pnl_seleccionar_tienda) {
 		this.pnl_seleccionar_tienda = pnl_seleccionar_tienda;
 	}
-
+	public void visibilidadComponentes(boolean b) {
+		combobox_parejas.setVisible(b);
+		boton_agregar_horario.setVisible(b);
+		boton_seleccionar_tienda.setVisible(b);
+		calendario.setVisible(b);
+		spinner.setVisible(b);
+	}
 }
