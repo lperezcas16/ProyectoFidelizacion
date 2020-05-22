@@ -37,7 +37,7 @@ import co.edu.unbosque.view.Ventana;
 import co.edu.unbosque.view.VentanaGraficas;
 
 public class Controller implements ActionListener, MouseListener {
-
+//hola
 	private Ventana view;
 	private VentanaGraficas view2;
 	private Solusoft solusoft;
