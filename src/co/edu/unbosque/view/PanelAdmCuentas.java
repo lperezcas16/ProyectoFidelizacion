@@ -19,14 +19,17 @@ public class PanelAdmCuentas extends JPanel {
 
 	private String nombre;
 	private ImageIcon imagen, imagen_ojo_oculto, imagen_ojo, imagen_boton_agregar, imagen_boton_info, imagen_sesion,
-			imagen_adm_cupo;
-	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion, boton_ojo_oculto, boton_adm_cuota;
+			imagen_adm_cupo, imagen_boton_compra;
+	private JButton boton_agregar_pareja, boton_info_pareja, boton_cerrar_sesion, boton_ojo_oculto, boton_adm_cuota,
+			boton_compra;
 	private JLabel label_tarjeta, label_cupo;
-	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion, icono_adm_cupo;
+	private Icon icono_ojo_oculto, icono_ojo, icono_boton_agregar, icono_boton_info, icono_sesion, icono_adm_cupo,
+			icono_boton_compra;
 
 	private PanelAgregarPareja pnl_agregar_pareja;
 	private PanelVerInfoPareja pnl_ver_info_pareja;
 	private PanelAdmCupo pnl_adm_cupo;
+	private PanelCompras pnl_compras;
 
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
@@ -125,6 +128,22 @@ public class PanelAdmCuentas extends JPanel {
 
 		pnl_adm_cupo.getBoton_regresar().setIcon(pnl_adm_cupo.getIcono_boton_regresar());
 		pnl_adm_cupo.getBoton_validar_cupo().setIcon(pnl_adm_cupo.getIcono_validar_cupo());
+
+		boton_compra = new JButton();
+		boton_compra.setBounds(420, 460, 300, 30);
+		add(boton_compra);
+
+		imagen_boton_compra = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_compra.png"));
+		icono_boton_compra = new ImageIcon(
+				imagen_boton_compra.getImage().getScaledInstance(300, 30, Image.SCALE_SMOOTH));
+
+		pnl_compras = new PanelCompras("/co/edu/unbosque/imagenes/fondo_compras.png");
+		pnl_compras.setBounds(0, 0, 795, 572);
+		add(pnl_compras);
+
+		pnl_compras.getBoton_historial().setIcon(pnl_compras.getIcono_boton_historial());
+		pnl_compras.getBoton_ingresar_compra().setIcon(pnl_compras.getIcono_boton_ingresar_compra());
+		pnl_compras.getBoton_regresar().setIcon(pnl_compras.getIcono_boton_regresar());
 
 	}
 
@@ -323,6 +342,39 @@ public class PanelAdmCuentas extends JPanel {
 	public void setPnl_adm_cupo(PanelAdmCupo pnl_adm_cupo) {
 		this.pnl_adm_cupo = pnl_adm_cupo;
 	}
+
+	public ImageIcon getImagen_boton_compra() {
+		return imagen_boton_compra;
+	}
+
+	public void setImagen_boton_compra(ImageIcon imagen_boton_compra) {
+		this.imagen_boton_compra = imagen_boton_compra;
+	}
+
+	public JButton getBoton_compra() {
+		return boton_compra;
+	}
+
+	public void setBoton_compra(JButton boton_compra) {
+		this.boton_compra = boton_compra;
+	}
+
+	public Icon getIcono_boton_compra() {
+		return icono_boton_compra;
+	}
+
+	public void setIcono_boton_compra(Icon icono_boton_compra) {
+		this.icono_boton_compra = icono_boton_compra;
+	}
+
+	public PanelCompras getPnl_compras() {
+		return pnl_compras;
+	}
+
+	public void setPnl_compras(PanelCompras pnl_compras) {
+		this.pnl_compras = pnl_compras;
+	}
+
 	public void visibilidadComponentes(boolean b) {
 		label_cupo.setVisible(b);
 		label_tarjeta.setVisible(b);
@@ -331,5 +383,6 @@ public class PanelAdmCuentas extends JPanel {
 		boton_cerrar_sesion.setVisible(b);
 		boton_info_pareja.setVisible(b);
 		boton_ojo_oculto.setVisible(b);
+		boton_compra.setVisible(b);
 	}
 }
