@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
@@ -16,12 +19,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.toedter.calendar.JDateChooser;
+
 public class Panel1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextField c_usuario_inicio, campo_usuario, campo_nombre,
-			campo_numCedula, campo_correo;
+	private JTextField c_usuario_inicio, campo_usuario, campo_nombre, campo_numCedula, campo_correo;
 	private JPasswordField c_contrasena_inicio, campo_contrasena;
 	private JButton boton_entrar, boton_registrar;
 	private ButtonGroup grupo;
@@ -29,6 +33,7 @@ public class Panel1 extends JPanel {
 	private ImageIcon imagen, imagen_entrar, imagen_registar;
 	private Icon icono_entrar, icono_registrar;
 	private String nombre;
+	private JDateChooser calendario;
 
 	public Panel1(String nombre) {
 		this.nombre = nombre;
@@ -52,24 +57,20 @@ public class Panel1 extends JPanel {
 		// 1
 		c_usuario_inicio = new JTextField();
 		c_usuario_inicio.setBounds(340, 35, 250, 25);
-		c_usuario_inicio.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		c_usuario_inicio.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(c_usuario_inicio);
 
 		c_contrasena_inicio = new JPasswordField();
 		c_contrasena_inicio.setBounds(340, 100, 250, 25);
-		c_contrasena_inicio.setFont(new Font("Accidental Presidency",
-				Font.BOLD, 16));
+		c_contrasena_inicio.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(c_contrasena_inicio);
 
 		boton_entrar = new JButton();
 		boton_entrar.setBounds(620, 55, 100, 50);
 		add(boton_entrar);
 
-		imagen_entrar = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_entrada.png"));
-		icono_entrar = new ImageIcon(imagen_entrar.getImage()
-				.getScaledInstance(90, 90, Image.SCALE_SMOOTH));
+		imagen_entrar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_entrada.png"));
+		icono_entrar = new ImageIcon(imagen_entrar.getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH));
 		boton_entrar.setHorizontalAlignment(SwingConstants.CENTER);
 		boton_entrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_entrar.setContentAreaFilled(false);
@@ -78,7 +79,7 @@ public class Panel1 extends JPanel {
 
 		// 2
 		campo_nombre = new JTextField();
-		campo_nombre.setBounds(36, 220, 250, 25);
+		campo_nombre.setBounds(36, 210, 250, 25);
 		campo_nombre.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_nombre.setBorder(null);
 		add(campo_nombre);
@@ -95,8 +96,8 @@ public class Panel1 extends JPanel {
 		c2.setForeground(Color.white);
 		c2.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 
-		c1.setBounds(66, 320, 100, 20);
-		c2.setBounds(180, 320, 100, 20);
+		c1.setBounds(66, 300, 100, 20);
+		c2.setBounds(180, 300, 100, 20);
 		grupo.add(c1);
 		grupo.add(c2);
 		add(c1);
@@ -104,21 +105,20 @@ public class Panel1 extends JPanel {
 
 		// 1
 		campo_correo = new JTextField();
-		campo_correo.setBounds(40, 430, 250, 25);
+		campo_correo.setBounds(40, 410, 250, 25);
 		campo_correo.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_correo.setBorder(null);
 		add(campo_correo);
 
 		campo_usuario = new JTextField();
-		campo_usuario.setBounds(420, 220, 250, 25);
+		campo_usuario.setBounds(410, 210, 250, 25);
 		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_usuario.setBorder(null);
 		add(campo_usuario);
 
 		campo_contrasena = new JPasswordField();
-		campo_contrasena.setBounds(420, 330, 250, 25);
-		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		campo_contrasena.setBounds(410, 300, 250, 25);
+		campo_contrasena.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_contrasena.setBorder(null);
 		add(campo_contrasena);
 
@@ -126,15 +126,24 @@ public class Panel1 extends JPanel {
 		boton_registrar.setBounds(320, 490, 150, 50);
 		add(boton_registrar);
 
-		imagen_registar = new ImageIcon(getClass().getResource(
-				"/co/edu/unbosque/imagenes/boton_registrar.png"));
-		icono_registrar = new ImageIcon(imagen_registar.getImage()
-				.getScaledInstance(100, 90, Image.SCALE_SMOOTH));
+		imagen_registar = new ImageIcon(getClass().getResource("/co/edu/unbosque/imagenes/boton_registrar.png"));
+		icono_registrar = new ImageIcon(imagen_registar.getImage().getScaledInstance(100, 90, Image.SCALE_SMOOTH));
 		boton_registrar.setHorizontalAlignment(SwingConstants.CENTER);
 		boton_registrar.setVerticalAlignment(SwingConstants.CENTER);
 		boton_registrar.setContentAreaFilled(false);
 		boton_registrar.setBorderPainted(false);
 		boton_registrar.setIcon(icono_registrar);
+
+		calendario = new JDateChooser("dd-MM-yyyy", "####-##-##", '_');
+		calendario.setBounds(435, 410, 200, 30);
+		calendario.setOpaque(true);
+		calendario.setBackground(Color.WHITE);
+		calendario.setMaxSelectableDate(new Date());
+		calendario.setDateFormatString("dd-MM-yyyy");
+		Calendar fecha = new GregorianCalendar();
+		calendario.setCalendar(fecha);
+		add(calendario);
+
 	}
 
 	public void limpiarCampos() {
@@ -144,7 +153,7 @@ public class Panel1 extends JPanel {
 		campo_nombre.setText("");
 		c_usuario_inicio.setText("");
 		c_contrasena_inicio.setText("");
-	grupo.clearSelection();
+		grupo.clearSelection();
 
 	}
 
@@ -294,6 +303,14 @@ public class Panel1 extends JPanel {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public JDateChooser getCalendario() {
+		return calendario;
+	}
+
+	public void setCalendario(JDateChooser calendario) {
+		this.calendario = calendario;
 	}
 
 }

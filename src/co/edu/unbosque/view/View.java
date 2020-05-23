@@ -155,6 +155,8 @@ public class View extends JFrame {
 			JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
 		} else if (mensaje.equalsIgnoreCase("ORDENAMIENTO_FALSE")) {
 			JOptionPane.showMessageDialog(null, "NO SE LOGRO ORDENAR PROBLEMA CON LA BASE DE DATOS");
+		} else if (mensaje.equalsIgnoreCase("EDAD_USUARIO_FALSE")) {
+			JOptionPane.showMessageDialog(null, "LA FECHA DE NACIMIENTO INGRESADA MUESTRA QUE NO ES MAYOR DE EDAD");
 		}
 
 	}

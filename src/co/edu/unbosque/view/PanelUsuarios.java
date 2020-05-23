@@ -23,8 +23,8 @@ public class PanelUsuarios extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> combo_buscar;
-	private JButton boton_orden_nombreu, boton_orden_aliasu, boton_orden_correou, boton_orden_nombrep,
-			boton_eliminar, boton_ver_usuarios,ver_parejas,boton_buscar_usuario;
+	private JButton boton_orden_nombreu, boton_orden_aliasu, boton_orden_correou, boton_orden_nombrep, boton_eliminar,
+			boton_ver_usuarios, ver_parejas, boton_buscar_usuario;
 	private JTextField campo_buscar;
 	private String nombre;
 	private ImageIcon imagen;
@@ -33,8 +33,7 @@ public class PanelUsuarios extends JPanel {
 	private DefaultTableModel model1, model2;
 	private JTable tabla1, tabla2;
 
-	private String[] cabecera1 = { "Nombre", "Alias", "Correo", "Genero",
-			"Numero de Tarjeta","Cupo" };
+	private String[] cabecera1 = { "Nombre", "Alias", "Correo", "Edad", "Genero", "Numero de Tarjeta", "Cupo" };
 	private String[] cabecera2 = { "Nombre", "Valor cupo" };
 
 	public PanelUsuarios(String nombre) {
@@ -73,26 +72,22 @@ public class PanelUsuarios extends JPanel {
 
 		boton_eliminar = new JButton("Eliminar usuario");
 		boton_eliminar.setBounds(500, 150, 250, 25);
-		boton_eliminar
-				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		boton_eliminar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_eliminar);
-		
+
 		ver_parejas = new JButton("Ver Parejas");
 		ver_parejas.setBounds(490, 280, 250, 25);
-		ver_parejas
-				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		ver_parejas.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(ver_parejas);
 
 		boton_ver_usuarios = new JButton("Ver usuarios");
 		boton_ver_usuarios.setBounds(500, 100, 250, 25);
-		boton_ver_usuarios.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		boton_ver_usuarios.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_ver_usuarios);
-		
+
 		boton_buscar_usuario = new JButton("Buscar usuario");
 		boton_buscar_usuario.setBounds(280, 100, 200, 25);
-		boton_buscar_usuario.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		boton_buscar_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_buscar_usuario);
 
 		boton_orden_nombreu = new JButton("Ordenar Nombres De Usuarios");
@@ -178,6 +173,7 @@ public class PanelUsuarios extends JPanel {
 	public void setver_parejas(JButton ver_parejas) {
 		this.ver_parejas = ver_parejas;
 	}
+
 	public JButton getboton_orden_nombreu() {
 		return boton_orden_nombreu;
 	}
@@ -209,7 +205,7 @@ public class PanelUsuarios extends JPanel {
 	public void setboton_orden_nombrep(JButton boton_orden_nombrep) {
 		this.boton_orden_nombrep = boton_orden_nombrep;
 	}
-	
+
 	public JButton getboton_buscar_usuario() {
 		return boton_buscar_usuario;
 	}
@@ -217,6 +213,7 @@ public class PanelUsuarios extends JPanel {
 	public void setboton_buscar_usuario(JButton boton_buscar_usuario) {
 		this.boton_buscar_usuario = boton_buscar_usuario;
 	}
+
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
 	}
