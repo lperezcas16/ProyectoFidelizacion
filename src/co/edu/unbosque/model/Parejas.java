@@ -12,6 +12,7 @@ public class Parejas implements Serializable {
 	private double cantidad_cupo;
 	private int edad;
 	private ArrayList<Horarios> lista_horarios;
+	
 
 	public Parejas(String nombre, int cupo, double cantidad_cupo, int edad,
 			ArrayList<Horarios> lista_horarios) {

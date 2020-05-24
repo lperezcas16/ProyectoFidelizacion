@@ -3,6 +3,7 @@ package co.edu.unbosque.model.persistence;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.edu.unbosque.model.Compra;
 import co.edu.unbosque.model.Horarios;
 import co.edu.unbosque.model.Parejas;
 import co.edu.unbosque.model.Tiendas;
@@ -61,12 +62,12 @@ public class UsuarioDAO {
 	 */
 	public boolean agregarUsuario(String nombre, String genero, String correo,
 			String usuario, String contraseña, String numeroTarjeta,
-			long cupoTarjeta, ArrayList<Parejas> parejas, String tipoUsuario,
+			long cupoTarjeta, ArrayList<Parejas> parejas,ArrayList<Compra> compras, String tipoUsuario,
 			int edad, ArrayList<Usuario> lista_usuarios) {
 
 		Usuario nuevo = new Usuario(nombre, genero, correo, usuario,
 				contraseña, numeroTarjeta, edad, cupoTarjeta, parejas,
-				tipoUsuario);
+				tipoUsuario, compras);
 
 		if (buscarUsuario(usuario, lista_usuarios) == null) {
 			lista_usuarios.add(nuevo);
@@ -407,5 +408,7 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
-
+public void agregarCompras(){
+	
+}
 }

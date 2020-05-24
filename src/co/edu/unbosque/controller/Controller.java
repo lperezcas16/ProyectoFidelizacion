@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.Compra;
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.CupoExcepcion;
 import co.edu.unbosque.model.EdadExcepcion;
@@ -264,7 +265,9 @@ public class Controller implements ActionListener, MouseListener {
 
 		// Boton SELECCIONAR TIENDA del panel asignar horarios de usuario inicio
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_seleccionar_tienda() == event.getSource()) {
+			
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().setVisible(true);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().visibilidadComponentes(true);
 			view.getPanel_us_inicio().getPnl_asignar_horarios().visibilidadComponentes(false);
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setEnabled(false);
 			SimpleDateFormat dp = new SimpleDateFormat("HH:mm");
@@ -282,6 +285,7 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_asignar_horarios().visibilidadComponentes(true);
 			view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_agregar_tienda()
 					.setEnabled(false);
+			view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario().setEnabled(true);
 		}
 		// Boton REGRESAR del panel seleccionar tienda
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getBoton_regresar() == event
@@ -1004,6 +1008,7 @@ public class Controller implements ActionListener, MouseListener {
 
 	public void registrarUsuario() {
 		ArrayList<Parejas> parejas = new ArrayList<Parejas>();
+		ArrayList<Compra> compras = new ArrayList<Compra>();
 		String nombre, correo, usuario, contraseña, genero, numeroTarjeta, tipoUsuario;
 		Date fechanacimiento = null;
 		int edad = 0;
@@ -1032,9 +1037,9 @@ public class Controller implements ActionListener, MouseListener {
 
 					if (edad >= 18) {
 						Usuario nuevo = new Usuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta, edad,
-								cupoTarjeta, parejas, tipoUsuario);
+								cupoTarjeta, parejas, tipoUsuario, compras);
 						usuarioDAO.agregarUsuario(nombre, genero, correo, usuario, contraseña, numeroTarjeta,
-								cupoTarjeta, parejas, tipoUsuario, edad, lista_usuarios);
+								cupoTarjeta, parejas, compras, tipoUsuario, edad, lista_usuarios);
 						solusoft.enviarCorreo(nuevo);
 						view.mostrarMensajes("USUARIO_TRUE");
 						view.getPanel1().limpiarCampos();

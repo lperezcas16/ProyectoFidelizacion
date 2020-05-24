@@ -18,9 +18,11 @@ public class Usuario implements Serializable {
 	private long cupoTarjeta;
 	private ArrayList<Parejas> parejas;
 	private String tipoUsuario;
+	private ArrayList<Compra> lista_compras;
 	public Usuario(String nombre, String genero, String correo, String usuario,
 			String contraseña, String numeroTarjeta, int edad,
-			long cupoTarjeta, ArrayList<Parejas> parejas, String tipoUsuario) {
+			long cupoTarjeta, ArrayList<Parejas> parejas, String tipoUsuario,
+			ArrayList<Compra> lista_compras) {
 		this.nombre = nombre;
 		this.genero = genero;
 		this.correo = correo;
@@ -31,14 +33,7 @@ public class Usuario implements Serializable {
 		this.cupoTarjeta = cupoTarjeta;
 		this.parejas = parejas;
 		this.tipoUsuario = tipoUsuario;
-	}
-	@Override
-	public String toString() {
-		return "Usuario [nombre=" + nombre + ", genero=" + genero + ", correo="
-				+ correo + ", usuario=" + usuario + ", contraseña="
-				+ contraseña + ", numeroTarjeta=" + numeroTarjeta + ", edad="
-				+ edad + ", cupoTarjeta=" + cupoTarjeta + ", parejas="
-				+ parejas + ", tipoUsuario=" + tipoUsuario + "]";
+		this.lista_compras = lista_compras;
 	}
 	public String getNombre() {
 		return nombre;
@@ -100,9 +95,23 @@ public class Usuario implements Serializable {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	public ArrayList<Compra> getLista_compras() {
+		return lista_compras;
+	}
+	public void setLista_compras(ArrayList<Compra> lista_compras) {
+		this.lista_compras = lista_compras;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", genero=" + genero + ", correo="
+				+ correo + ", usuario=" + usuario + ", contraseña="
+				+ contraseña + ", numeroTarjeta=" + numeroTarjeta + ", edad="
+				+ edad + ", cupoTarjeta=" + cupoTarjeta + ", parejas="
+				+ parejas + ", tipoUsuario=" + tipoUsuario + ", lista_compras="
+				+ lista_compras + "]";
+	}
 
 }
