@@ -245,7 +245,7 @@ public class UsuarioDAO {
 	}
 
 	public void agregarParejas(String usuario, String nombre, int cupo,
-			double cantidad_cupo, int edad, ArrayList<Usuario> lista_usuarios) {
+			double cantidad_cupo_asignado, double cantidad_cupo_restante,int edad, ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
 		ArrayList<Horarios> lista_horarios = new ArrayList<Horarios>();
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -256,7 +256,7 @@ public class UsuarioDAO {
 			}
 		}
 
-		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo, edad,
+		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo_asignado,cantidad_cupo_asignado, edad,
 				lista_horarios);
 
 		lista_parejas.add(nuevo);

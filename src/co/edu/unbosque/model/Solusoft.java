@@ -3,6 +3,8 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 import java.util.Properties;
 
+
+
 //import javax.activation.DataHandler;
 //import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
@@ -17,11 +19,10 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class Solusoft {
-
-	public Solusoft() {
-
+	private String usuario_inicio;
+	public Solusoft(String usuario_Inicio) {
+		usuario_inicio = usuario_Inicio;
 	}
-
 	public String generarNumeroCuenta(ArrayList<Usuario> lista_usuarios) {
 		int M = 10000000;
 		int N = 99999999;
@@ -126,6 +127,12 @@ public class Solusoft {
 			e.printStackTrace();
 		}
 
+	}
+	public String getUsuario_inicio() {
+		return usuario_inicio;
+	}
+	public void setUsuario_inicio(String usuario_inicio) {
+		this.usuario_inicio = usuario_inicio;
 	}
 
 }

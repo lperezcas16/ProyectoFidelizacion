@@ -49,13 +49,12 @@ public class Controller implements ActionListener, MouseListener {
 	private ArrayList<Usuario> lista_usuarios;
 	private Tiendas tienda_horarios;
 	private String numeros = "[0-9]+";
-	String nombreInicio = "";
 	private int valorCupo = 0;
 	private double valorVariable = 0.0;
 
 	public Controller() throws IOException {
 		super();
-		solusoft = new Solusoft();
+		solusoft = new Solusoft(null);
 		view = new View(this);
 		view2 = new VentanaGraficas();
 		archivo_Usuario = new ArchivoUsuario();
@@ -89,6 +88,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		// OJO del panel administrar cuenta de usuario inicio
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto() == event.getSource()) {
+			String nombreInicio = solusoft.getUsuario_inicio();
 			if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto().getIcon()
 					.equals(view.getPanel_us_inicio().getPnl_adm_cuentas().getIcono_ojo_oculto())) {
 				view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_ojo_oculto()
@@ -124,13 +124,14 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().setVisible(false);
 			view.getPanel1().setVisible(true);
 			view.getPanel_admin().setVisible(false);
-			nombreInicio = null;
+			solusoft.setUsuario_inicio(null);
 			valorCupo = 0;
 			valorVariable = 0.0;
 		}
 
 		// Boton ADMINISTRAR CUPO del panel administrar cuenta de usuario inicio
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_adm_cuota() == event.getSource()) {
+			String nombreInicio = solusoft.getUsuario_inicio();
 			// Si el cupo es 0
 			long cupo = 0;
 			for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -159,6 +160,7 @@ public class Controller implements ActionListener, MouseListener {
 		// Boton CONFIRMAR del panel administrar cupo
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getBoton_validar_cupo() == event
 				.getSource()) {
+			String nombreInicio = solusoft.getUsuario_inicio();
 			try {
 				String cupo = view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_adm_cupo().getCampo_texto_cupo()
 						.getText();
@@ -209,6 +211,7 @@ public class Controller implements ActionListener, MouseListener {
 
 		// Boton AGREGAR PAREJA del panel administrar cuenta de usuario inicio
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getBoton_agregar_pareja() == event.getSource()) {
+			String nombreInicio = solusoft.getUsuario_inicio();
 			if (usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getCupoTarjeta() != 0) {
 				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja().setVisible(true);
 				view.getPanel_us_inicio().getPnl_adm_cuentas().visibilidadComponentes(false);
@@ -226,6 +229,51 @@ public class Controller implements ActionListener, MouseListener {
 			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ver_historial().setVisible(false);
 
 		}
+		// PANEL COMPRAS
+				// Boton VER HISTORIAL del panel compras
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+						.getBoton_historial() == event.getSource()) {
+		verHistorialCompras();
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ver_historial().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ingresar_compra().visibilidadComponentes(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ingresar_compra().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ver_historial().visibilidadComponentes(true);
+				}
+
+				// Boton INGRESAR COMPRA del panel compras
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+						.getBoton_ingresar_compra() == event.getSource()) {
+
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ingresar_compra().setVisible(true);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ver_historial().visibilidadComponentes(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ver_historial().setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.getPnl_ingresar_compra().visibilidadComponentes(true);
+				}
+				// PANEL INGRESAR COMPRA
+				// Boton AGREGAR COMPRA del panel ingresar compra
+				if(view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra().getBoton_agregar_compra()== event.getSource()){
+					agregarCompras();
+				}
+				// Boton REGRESAR del panel compras
+				if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+						.getBoton_regresar() == event.getSource()) {
+
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.visibilidadComponentes(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+							.setVisible(false);
+					view.getPanel_us_inicio().getPnl_adm_cuentas()
+							.visibilidadComponentes(true);
+
+				}
 
 		// PANEL AGREGAR PAREJA
 
@@ -383,6 +431,7 @@ public class Controller implements ActionListener, MouseListener {
 		}
 		// Boton AGREGAR HORARIO del panel asignar horarios de usuario inicio
 		if (view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario() == event.getSource()) {
+			String nombreInicio = solusoft.getUsuario_inicio();
 			int numElementosPareja = view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
 					.getItemCount();
 
@@ -565,7 +614,7 @@ public class Controller implements ActionListener, MouseListener {
 					for (int i = 0; i < aux.getParejas().size(); i++) {
 
 						String nombre = aux.getParejas().get(i).getNombre();
-						double cupo = aux.getParejas().get(i).getCantidad_cupo();
+						double cupo = aux.getParejas().get(i).getCantidad_cupo_asignado();
 						NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 						Object[] datos_filas = { nombre, formatoImporte.format(cupo) };
 						view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
@@ -928,39 +977,10 @@ public class Controller implements ActionListener, MouseListener {
 				
 					
 				}
-		// PANEL COMPRAS boton ver historial
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getBoton_historial() == event.getSource()) {
-
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ver_historial().setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra()
-					.visibilidadComponentes(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ver_historial()
-					.visibilidadComponentes(true);
-		}
-
-		// Panel COMPRAS boton ingresar compra
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getBoton_ingresar_compra() == event
-				.getSource()) {
-
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra().setVisible(true);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ver_historial()
-					.visibilidadComponentes(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ver_historial().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra()
-					.visibilidadComponentes(true);
-		}
-
-		// Panel COMPRAS boton regresar
-		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getBoton_regresar() == event.getSource()) {
-
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().visibilidadComponentes(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().setVisible(false);
-			view.getPanel_us_inicio().getPnl_adm_cuentas().visibilidadComponentes(true);
-
-		}
 
 	}
+
+	
 
 	public void asignarTablaTiendas() {
 		view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel().setRowCount(0);
@@ -981,7 +1001,7 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void asignarTablaParejas() {
-
+		String nombreInicio = solusoft.getUsuario_inicio();
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getModel().setRowCount(0);
 		lista_usuarios = archivo_Usuario.leerArchivo();
 
@@ -990,7 +1010,7 @@ public class Controller implements ActionListener, MouseListener {
 				String nombre = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getNombre();
 				int cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getCupo();
 				double cantidad_cupo = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
-						.getCantidad_cupo();
+						.getCantidad_cupo_asignado();
 				int edad = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getEdad();
 				NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 
@@ -1064,6 +1084,7 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void agregarPareja() {
+		String nombreInicio = solusoft.getUsuario_inicio();
 		boolean yaEsta = false;
 		String nombrePareja = view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_agregar_pareja()
 				.getCampo_texto_nombre().getText();
@@ -1102,7 +1123,7 @@ public class Controller implements ActionListener, MouseListener {
 						if (!yaEsta) {
 							if (edad >= 18) {
 
-								usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, cantidad_cupo, edad,
+								usuarioDAO.agregarParejas(nombreInicio, nombrePareja, cupoI, cantidad_cupo,cantidad_cupo, edad,
 										lista_usuarios);
 
 								edad = 0;
@@ -1184,7 +1205,8 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void ingresoSistema() {
-		nombreInicio = view.getPanel1().getC_usuario_inicio().getText();
+		
+		String nombreInicio = view.getPanel1().getC_usuario_inicio().getText();
 		String contraseñaInicio = new String(view.getPanel1().getC_contrasena_inicio().getPassword());
 
 		if (nombreInicio.isEmpty() || contraseñaInicio.isEmpty()) {
@@ -1195,6 +1217,7 @@ public class Controller implements ActionListener, MouseListener {
 				view.getPanel1().setVisible(false);
 				view.getPanel_us_inicio().setVisible(true);
 				agregarInfoUsuario(nombreInicio);
+				solusoft=new Solusoft(nombreInicio);
 				for (int i = 0; i < lista_usuarios.size(); i++) {
 					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
 							|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(nombreInicio)) {
@@ -1222,7 +1245,7 @@ public class Controller implements ActionListener, MouseListener {
 	}
 
 	public void agregarInfoUsuario(String nombre_ingresado) {
-
+		String nombreInicio = solusoft.getUsuario_inicio();
 		String numero_tarjeta = "";
 		long numero_cupo = 0;
 
@@ -1250,7 +1273,7 @@ public class Controller implements ActionListener, MouseListener {
 			for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
 
 				valorVariable = (valorVariable - usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas()
-						.get(i).getCantidad_cupo());
+						.get(i).getCantidad_cupo_asignado());
 			}
 		} else {
 			valorVariable = valorCupo;
@@ -1502,5 +1525,13 @@ public class Controller implements ActionListener, MouseListener {
 		}
 		return valorEdad;
 	}
+	public void verHistorialCompras() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	public void agregarCompras() {
+		// TODO Auto-generated method stub
+		
+	}
 }
