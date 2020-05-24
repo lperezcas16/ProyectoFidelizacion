@@ -3,8 +3,8 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+//import javax.activation.DataHandler;
+//import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -91,13 +91,14 @@ public class Solusoft {
 			BodyPart texto = new MimeBodyPart();
 			texto.setText(mensaje);
 			// CONSTRUIMOS EL ADJUNTO
-			BodyPart adjunto = new MimeBodyPart();
-			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
-			adjunto.setFileName("CONTACTO");
+//			BodyPart adjunto = new MimeBodyPart();
+//			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
+//			adjunto.setFileName("CONTACTO");
+			
 			// Una MultiParte para agrupar texto e imagen.
 			MimeMultipart multiParte = new MimeMultipart();
 			multiParte.addBodyPart(texto);
-			multiParte.addBodyPart(adjunto);
+//			multiParte.addBodyPart(adjunto);
 
 			// CONSTRUIMOS EL CORREO
 			MimeMessage mensajesesion = new MimeMessage(sesion);
@@ -108,7 +109,7 @@ public class Solusoft {
 			// INDICAMOS EL ASUNTO
 			mensajesesion.setSubject(asunto);
 			// INDICAMOS EL CUERPO DEL CORREO
-			mensajesesion.setContent(multiParte);
+//			mensajesesion.setContent(multiParte);
 			// CREAMOS INSTANCIA TRANSPORT ENCARGADA DEL ENVIO DEL CORREO
 			Transport t = sesion.getTransport("smtp");
 			t.connect(correoremitente, pasremitente);

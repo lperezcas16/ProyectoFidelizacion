@@ -274,4 +274,12 @@ public class PanelTiendas extends JPanel {
 		this.tabla = tabla;
 	}
 
+	public JButton getBoton_buscar_pornombre() {
+		return boton_buscar_pornombre;
+	}
+
+	public void setBoton_buscar_pornombre(JButton boton_buscar_pornombre) {
+		this.boton_buscar_pornombre = boton_buscar_pornombre;
+	}
+
 }

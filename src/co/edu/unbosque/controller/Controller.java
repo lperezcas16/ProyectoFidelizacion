@@ -881,58 +881,53 @@ public class Controller implements ActionListener, MouseListener {
 		}
 
 		// PANEL DE ADMINISTRADOR GENERADOR DEL INFORME
+				if (view.getPanel_admin().getPanel_informe().getCombo_estadistica() == event.getSource()) {
 
-		if (view.getPanel_admin().getPanel_informe().getCombo_eleccion() == event.getSource()) {
+					try {
 
-			try {
+						switch (view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedIndex()) {
 
-				switch (view.getPanel_admin().getPanel_informe().getCombo_eleccion().getSelectedIndex()) {
+						case 0:
+							
+							view.getPanel_admin().getPanel_informe().setVisible(false);
+							view.getPanel_admin().getPanel_informe().visibilidadComponentes(false);
+							
+							break;
 
-				case 0:
-					view.getPanel_admin().getPanel_informe().setVisible(false);
-					view.getPanel_admin().getPanel_informe().visibilidadComponentes(false);
-					break;
+						case 1:
+							view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+							break;
+						case 2:
 
-				// leer la lista de fechas registradas
-				case 1:
+							view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+							break;
+						case 3:
+							view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
+							view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
+							break;
+						}
 
-					view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
-
-					// leer la lista de horarios según la fecha
-					switch (view.getPanel_admin().getPanel_informe().getCombo_Fecha().getSelectedIndex()) {
-
+					} catch (Exception e) {
+						System.out.println("Error al cargar  todo ");
 					}
-					break;
-				case 2:
-
-					view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
-					break;
-				case 3:
-					view.getPanel_admin().getPanel_informe().getCampo_usuario().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getCombo_Fecha().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCombo_hora().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getCombo_tienda().setVisible(false);
-					view.getPanel_admin().getPanel_informe().getBoton_generar_pfd().setVisible(true);
-					view.getPanel_admin().getPanel_informe().getBoton_vista_previa().setVisible(true);
-					break;
+					//
 				}
 
-			} catch (Exception e) {
-				System.out.println("Error al cargar  todo ");
-			}
-			//
-		}
-
+				// cerar sesion administrador
+				if(view.getPanel_admin().getPanel_info().getBoton_cerrar()== event.getSource()) {
+					
+					view.getPanel_us_inicio().setVisible(false);
+					view.getPanel1().setVisible(true);
+					view.getPanel_admin().setVisible(false);
+					view.getPanel1().limpiarCampos();
+				
+					
+				}
 		// PANEL COMPRAS boton ver historial
 		if (view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getBoton_historial() == event.getSource()) {
 

@@ -1,5 +1,6 @@
 package co.edu.unbosque.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -7,6 +8,7 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,12 +20,11 @@ public class PanelInformes extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private ImageIcon imagen;
-	private JTextField campo_usuario;
-	private JComboBox<String> combo_Fecha, combo_hora, combo_eleccion,
-			combo_tienda;
+	private JTextField campo_usuario,campo_tienda;
+	private JComboBox<String>  combo_eleccion, combo_estadistica;
+	private JLabel etiqueta;
 	private JButton boton_generar_pfd, boton_vista_previa;
 
-	// public PanelGraficos panel_graficas;
 
 	public PanelInformes(String nombre) {
 		this.nombre = nombre;
@@ -44,51 +45,45 @@ public class PanelInformes extends JPanel {
 	public void inicializarComponentes() {
 
 		combo_eleccion = new JComboBox<String>();
-		combo_eleccion
-				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		combo_eleccion.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		combo_eleccion.setBounds(350, 270, 110, 45);
 		combo_eleccion.addItem("Selecciona");
-		combo_eleccion.addItem("Fecha");
 		combo_eleccion.addItem("Tienda");
 		combo_eleccion.addItem("Usuario");
 		add(combo_eleccion);
+		combo_eleccion.setVisible(false);
 
-		combo_Fecha = new JComboBox<String>();
-		combo_Fecha.setBounds(250, 360, 90, 45);
-		combo_Fecha.addItem("Fecha");
-		combo_Fecha.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		add(combo_Fecha);
-		combo_Fecha.setVisible(false);
-
-		combo_hora = new JComboBox<String>();
-		combo_hora.setBounds(450, 360, 90, 45);
-		combo_hora.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		combo_hora.addItem("Hora");
-		add(combo_hora);
-		combo_hora.setVisible(false);
-
-		combo_tienda = new JComboBox<String>();
-		combo_tienda.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		combo_tienda.setBounds(360, 360, 90, 45);
-		combo_tienda.addItem("Tienda");
-		add(combo_tienda);
-		combo_tienda.setVisible(false);
+		etiqueta = new JLabel("Introducir nombre del usuario");
+		etiqueta.setForeground(Color.white);
+		etiqueta.setBounds(290,270,250,45);
+		etiqueta.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(etiqueta);
+		
+		
 
 		campo_usuario = new JTextField();
 		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		campo_usuario.setBounds(310, 360, 200, 45);
+		campo_usuario.setBounds(310, 330, 200, 40);
 		add(campo_usuario);
-		campo_usuario.setVisible(false);
+	
 
+		combo_estadistica = new JComboBox<String>();
+		combo_estadistica.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		combo_estadistica.setBounds(350, 390, 110, 45);
+		combo_estadistica.addItem("Selecciona");
+		combo_estadistica.addItem("Media");
+		combo_estadistica.addItem("Moda");
+		combo_estadistica.addItem("Mediana");
+		add(combo_estadistica);
+		
 		boton_generar_pfd = new JButton("Generar informe");
-		boton_generar_pfd.setBounds(150, 450, 200, 45);
-		boton_generar_pfd.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		boton_generar_pfd.setBounds(150, 460, 200, 45);
+		boton_generar_pfd.setFont(new Font("Accidental Presidency", Font.BOLD,16));
 		add(boton_generar_pfd);
 		boton_generar_pfd.setVisible(false);
 
 		boton_vista_previa = new JButton("Vista previa del informe");
-		boton_vista_previa.setBounds(420, 450, 300, 45);
+		boton_vista_previa.setBounds(420, 460, 300, 45);
 		boton_vista_previa.setFont(new Font("Accidental Presidency", Font.BOLD,
 				16));
 		add(boton_vista_previa);
@@ -104,21 +99,7 @@ public class PanelInformes extends JPanel {
 		this.campo_usuario = campo_usuario;
 	}
 
-	public JComboBox<String> getCombo_Fecha() {
-		return combo_Fecha;
-	}
-
-	public void setCombo_Fecha(JComboBox<String> combo_Fecha) {
-		this.combo_Fecha = combo_Fecha;
-	}
-
-	public JComboBox<String> getCombo_hora() {
-		return combo_hora;
-	}
-
-	public void setCombo_hora(JComboBox<String> combo_hora) {
-		this.combo_hora = combo_hora;
-	}
+	
 
 	public JComboBox<String> getCombo_eleccion() {
 		return combo_eleccion;
@@ -128,13 +109,7 @@ public class PanelInformes extends JPanel {
 		this.combo_eleccion = combo_eleccion;
 	}
 
-	public JComboBox<String> getCombo_tienda() {
-		return combo_tienda;
-	}
 
-	public void setCombo_tienda(JComboBox<String> combo_tienda) {
-		this.combo_tienda = combo_tienda;
-	}
 
 	public JButton getBoton() {
 		return boton_generar_pfd;
@@ -159,14 +134,31 @@ public class PanelInformes extends JPanel {
 	public void setBoton_generar_pfd(JButton boton_generar_pfd) {
 		this.boton_generar_pfd = boton_generar_pfd;
 	}
+	
+
+	public JTextField getCampo_tienda() {
+		return campo_tienda;
+	}
+
+	public void setCampo_tienda(JTextField campo_tienda) {
+		this.campo_tienda = campo_tienda;
+	}
+
+	
+	public JComboBox<String> getCombo_estadistica() {
+		return combo_estadistica;
+	}
+
+	public void setCombo_estadistica(JComboBox<String> combo_estadistica) {
+		this.combo_estadistica = combo_estadistica;
+	}
+	
 
 	public void visibilidadComponentes(boolean b) {
-		combo_Fecha.setVisible(b);
-		combo_tienda.setVisible(b);
-		campo_usuario.setVisible(b);
-		combo_hora.setVisible(b);
+	
 		boton_generar_pfd.setVisible(b);
 		boton_vista_previa.setVisible(b);
 	}
 
+	
 }

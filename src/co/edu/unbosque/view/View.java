@@ -56,15 +56,15 @@ public class View extends JFrame {
 		// LISTENERS PANEL VER INFO PAREJA
 		getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja().getBoton_regresar()
 				.addActionListener(controller);
+		// LISTENERS PANEL INFORMACION
+		getPanel_admin().getPanel_info().getBoton_cerrar().addActionListener(controller);
+	
 		// LISTENERS PANEL INFORME
 		getPanel_admin().getPanel_informe().getCombo_eleccion().addActionListener(controller);
-		getPanel_admin().getPanel_informe().getCombo_Fecha().addActionListener(controller);
-		getPanel_admin().getPanel_informe().getCombo_hora().addActionListener(controller);
-		getPanel_admin().getPanel_informe().getCombo_tienda().addActionListener(controller);
 		getPanel_admin().getPanel_informe().getCampo_usuario().addActionListener(controller);
 		getPanel_admin().getPanel_informe().getBoton().addActionListener(controller);
 		getPanel_admin().getPanel_informe().getBoton_vista_previa().addActionListener(controller);
-
+		getPanel_admin().getPanel_informe().getCombo_estadistica().addActionListener(controller);
 		// LISTENERS PANEL TIENDA
 		getPanel_admin().getPanel_tiendas().getBoton_eliminar().addActionListener(controller);
 		getPanel_admin().getPanel_tiendas().getBoton_agregar_tienda().addActionListener(controller);
