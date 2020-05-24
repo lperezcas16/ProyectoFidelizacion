@@ -593,18 +593,17 @@ public class Controller implements ActionListener, MouseListener {
 
 		// BOTON ADMINISTRADOR VER PAREJAS
 		if (view.getPanel_admin().getPanel_usuarios().getver_parejas() == event.getSource()) {
-			// primero borra la tabla
 			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
-			if (n >= 0) {
-				Usuario aux = lista_usuarios.get(n);
-				view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+			int numero_filas = view.getPanel_admin().getPanel_usuarios().getTabla1().getRowCount();
 
-				// mostrar todos los usuarios
-				if (!aux.getParejas().isEmpty()) {
-					for (int i = 0; i < aux.getParejas().size(); i++) {
+			if (numero_filas == 1) {
+				String alias = view.getPanel_admin().getPanel_usuarios().getTabla1().getValueAt(0, 1).toString();
+				if (!usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().isEmpty()) {
+					for (int i = 0; i < usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().size(); i++) {
 
-						String nombre = aux.getParejas().get(i).getNombre();
-						double cupo = aux.getParejas().get(i).getCantidad_cupo_asignado();
+						String nombre = usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().get(i).getNombre();
+						double cupo = usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().get(i)
+								.getCantidad_cupo_asignado();
 						NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 						Object[] datos_filas = { nombre, formatoImporte.format(cupo) };
 						view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
@@ -613,18 +612,43 @@ public class Controller implements ActionListener, MouseListener {
 				} else {
 					JOptionPane.showMessageDialog(null, "ACTUALMENTE EL USUARIO NO TIENE REGISTRADO PAREJAS",
 							"Información", JOptionPane.INFORMATION_MESSAGE);
+					view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+				}
+			} else {
+				if (n >= 0) {
+					Usuario aux = lista_usuarios.get(n);
+					view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+
+					// mostrar todos los usuarios
+					if (!usuarioDAO.buscarUsuario(aux.getUsuario(), lista_usuarios).getParejas().isEmpty()) {
+						for (int i = 0; i < aux.getParejas().size(); i++) {
+
+							String nombre = aux.getParejas().get(i).getNombre();
+							double cupo = aux.getParejas().get(i).getCantidad_cupo_asignado();
+							NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+							Object[] datos_filas = { nombre, formatoImporte.format(cupo) };
+							view.getPanel_admin().getPanel_usuarios().getModel2().addRow(datos_filas);
+
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "ACTUALMENTE EL USUARIO NO TIENE REGISTRADO PAREJAS",
+								"Información", JOptionPane.INFORMATION_MESSAGE);
+						view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
+					}
+				} else if (n == -1) {
+					JOptionPane.showMessageDialog(null, "PORFAVOR SELECCIONAR PRIMERO UN USUARIO", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 
-			} else if (n == -1) {
-				JOptionPane.showMessageDialog(null, "PORFAVOR SELECCIONAR PRIMERO UN USUARIO", "Error",
-						JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
 
 		// BOTON ADMINISTRADOR ELIMINAR USUARIOS
 
-		if (view.getPanel_admin().getPanel_usuarios().getBoton_eliminar() == event.getSource()) {
+		if (view.getPanel_admin().getPanel_usuarios().getBoton_eliminar() == event.getSource())
+
+		{
 
 			int n = view.getPanel_admin().getPanel_usuarios().getTabla1().getSelectedRow();
 
