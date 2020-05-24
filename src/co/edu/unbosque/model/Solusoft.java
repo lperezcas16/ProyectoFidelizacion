@@ -3,8 +3,6 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
-
 //import javax.activation.DataHandler;
 //import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
@@ -20,9 +18,13 @@ import javax.mail.internet.MimeMultipart;
 
 public class Solusoft {
 	private String usuario_inicio;
+	private int valorCupo;
+	private double valorVariable;
+
 	public Solusoft(String usuario_Inicio) {
 		usuario_inicio = usuario_Inicio;
 	}
+
 	public String generarNumeroCuenta(ArrayList<Usuario> lista_usuarios) {
 		int M = 10000000;
 		int N = 99999999;
@@ -84,7 +86,7 @@ public class Solusoft {
 			String pasremitente = "proyectocorte3";
 			String asunto = "SOLUSOFT GRACIAS POR REGISTRARTE";
 			String mensaje = "Gracias por confiar en nosotros " + nuevo.getNombre()
-					+ " ahora puedes empezar a disfrutar de nuestros servicios: " +"\n" + "usuario: "
+					+ " ahora puedes empezar a disfrutar de nuestros servicios: " + "\n" + "usuario: "
 					+ nuevo.getUsuario() + "\nContraseña: " + nuevo.getContraseña() + "\nTarjeta de credito numero: "
 					+ nuevo.getNumeroTarjeta();
 
@@ -95,7 +97,7 @@ public class Solusoft {
 //			BodyPart adjunto = new MimeBodyPart();
 //			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
 //			adjunto.setFileName("CONTACTO");
-			
+
 			// Una MultiParte para agrupar texto e imagen.
 			MimeMultipart multiParte = new MimeMultipart();
 			multiParte.addBodyPart(texto);
@@ -128,11 +130,37 @@ public class Solusoft {
 		}
 
 	}
+
+	public void valorCupo(int valorCupo) {
+		this.valorCupo = valorCupo;
+	}
+
+	public void valorVariable(double valorVariable) {
+		this.valorVariable = valorVariable;
+	}
+
 	public String getUsuario_inicio() {
 		return usuario_inicio;
 	}
+
 	public void setUsuario_inicio(String usuario_inicio) {
 		this.usuario_inicio = usuario_inicio;
+	}
+
+	public int getValorCupo() {
+		return valorCupo;
+	}
+
+	public void setValorCupo(int valorCupo) {
+		this.valorCupo = valorCupo;
+	}
+
+	public double getValorVariable() {
+		return valorVariable;
+	}
+
+	public void setValorVariable(double valorVariable) {
+		this.valorVariable = valorVariable;
 	}
 
 }
