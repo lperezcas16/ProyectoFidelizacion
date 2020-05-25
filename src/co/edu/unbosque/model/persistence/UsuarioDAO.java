@@ -62,8 +62,9 @@ public class UsuarioDAO {
 	 */
 	public boolean agregarUsuario(String nombre, String genero, String correo,
 			String usuario, String contraseña, String numeroTarjeta,
-			long cupoTarjeta, ArrayList<Parejas> parejas,ArrayList<Compra> compras, String tipoUsuario,
-			int edad, ArrayList<Usuario> lista_usuarios) {
+			long cupoTarjeta, ArrayList<Parejas> parejas,
+			ArrayList<Compra> compras, String tipoUsuario, int edad,
+			ArrayList<Usuario> lista_usuarios) {
 
 		Usuario nuevo = new Usuario(nombre, genero, correo, usuario,
 				contraseña, numeroTarjeta, edad, cupoTarjeta, parejas,
@@ -245,7 +246,8 @@ public class UsuarioDAO {
 	}
 
 	public void agregarParejas(String usuario, String nombre, int cupo,
-			double cantidad_cupo_asignado, double cantidad_cupo_restante,int edad, ArrayList<Usuario> lista_usuarios) {
+			double cantidad_cupo_asignado, double cantidad_cupo_restante,
+			int edad, ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
 		ArrayList<Horarios> lista_horarios = new ArrayList<Horarios>();
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -256,8 +258,8 @@ public class UsuarioDAO {
 			}
 		}
 
-		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo_asignado,cantidad_cupo_asignado, edad,
-				lista_horarios);
+		Parejas nuevo = new Parejas(nombre, cupo, cantidad_cupo_asignado,
+				cantidad_cupo_asignado, edad, lista_horarios);
 
 		lista_parejas.add(nuevo);
 		for (int i = 0; i < lista_usuarios.size(); i++) {
@@ -408,37 +410,36 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
+
 	public void agregarCompras(String usuario, String pareja, String tienda,
 			double valorCompra) {
 		Compra compra = new Compra(pareja, tienda, valorCompra);
 		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
 		lista_usuarios = archivo_Usuario.leerArchivo();
+		ArrayList<Compra> lista_compras = new ArrayList<Compra>();
 		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-		ArrayList<Compra> lista_compras =new ArrayList<Compra>();
 		for (int i = 0; i < lista_usuarios.size(); i++) {
 			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
 					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
 				lista_parejas = lista_usuarios.get(i).getParejas();
-				for (int j = 0; j < lista_parejas.size(); j++) {
-				}
-			}
-		}
-		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
-					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
-				lista_parejas = lista_usuarios.get(i).getParejas();
-				for (int j = 0; j < lista_parejas.size(); j++) {
-					if (lista_parejas.get(j).getNombre()
-							.equalsIgnoreCase(pareja)) {
-//						lista_compras = lista_parejas.get(j)
-//								.getLista_horarios();
-//						lista_compras.add(compra);
-//						lista_usuarios.get(i).getParejas().get(j)
-//								.setLista_horarios(lista_compras);
-						archivo_Usuario.escribirEnArchivo(lista_usuarios);
+				for (int j = 0; j <lista_parejas.size(); j++) {
+					if(lista_parejas.get(j).getNombre().equals(pareja)){
+						double cupoRestante=lista_parejas.get(j).getCantidad_cupo_restante();
+						double nuevoCupo= cupoRestante-valorCompra;
+						lista_usuarios.get(i).getParejas().get(j).setCantidad_cupo_restante(nuevoCupo);
 					}
 				}
 			}
 		}
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
+					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
+				lista_compras = lista_usuarios.get(i).getLista_compras();
+				lista_compras.add(compra);
+				lista_usuarios.get(i).setLista_compras(lista_compras);
+			}
+		}
+		archivo_Usuario.escribirEnArchivo(lista_usuarios);
 	}
+	
 }

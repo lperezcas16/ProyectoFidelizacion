@@ -18,7 +18,7 @@ public class PanelVerHistorial extends JPanel {
 	private JScrollPane scroll;
 	private DefaultTableModel model;
 	private String[] nombre_columnas = { "Pareja", "Tienda",
-			"Total", "Cupo Restante de la Pareja" };
+			"Valor de compra"};
 
 	public PanelVerHistorial() {
 		Color color_azul = new Color(36, 67, 87);

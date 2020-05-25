@@ -28,7 +28,7 @@ public class PanelVerInfoPareja extends JPanel {
 	private JScrollPane scroll;
 	private DefaultTableModel model;
 	private String[] nombre_columnas = { "Nombre o Alias", "Edad", "Porcentaje del Cupo",
-			"Cantidad Específica" };
+			"Monto asignado" , "Monto restante"};
 
 	public PanelVerInfoPareja(String nombre) {
 		this.nombre = nombre;
