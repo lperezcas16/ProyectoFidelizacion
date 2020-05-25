@@ -66,7 +66,7 @@ public class PanelInformes extends JPanel {
 		combo_estadistica.addItem("Selecciona");
 		combo_estadistica.addItem("Edad");
 		combo_estadistica.addItem("Total");
-		combo_estadistica.addItem("Mediana");
+	
 		add(combo_estadistica);
 		
 		boton_generar_pfd = new JButton("Generar informe");
