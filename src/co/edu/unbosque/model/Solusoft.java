@@ -16,7 +16,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class Solusoft {
+import net.sf.jasperreports.engine.JRDataSource;
+
+public class Solusoft  {
+	
 	private String usuario_inicio;
 	private int valorCupo;
 	private double valorVariable;

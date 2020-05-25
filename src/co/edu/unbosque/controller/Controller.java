@@ -1,17 +1,22 @@
 package co.edu.unbosque.controller;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,13 +40,27 @@ import co.edu.unbosque.model.persistence.ArchivoTienda;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.TiendaDAO;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
+import co.edu.unbosque.view.Informe;
 import co.edu.unbosque.view.VentanaGraficas;
 import co.edu.unbosque.view.View;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRField;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
-public class Controller implements ActionListener, MouseListener {
+public class Controller implements ActionListener, MouseListener{
 	private View view;
 	private VentanaGraficas view2;
+	private Informe informe;
 	private Solusoft solusoft;
+	
 	private Estadisticas estadisticas;
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
@@ -56,6 +75,7 @@ public class Controller implements ActionListener, MouseListener {
 		solusoft = new Solusoft(null);
 		view = new View(this);
 		view2 = new VentanaGraficas();
+		informe = new Informe(this);
 		archivo_Usuario = new ArchivoUsuario();
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
 		lista_usuarios = new ArrayList<Usuario>();
@@ -69,6 +89,7 @@ public class Controller implements ActionListener, MouseListener {
 
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void actionPerformed(ActionEvent event) {
 		// ACCION INGRESAR AL SISTEMA
 		if (view.getPanel1().getBoton_entrar() == event.getSource()) {
@@ -1194,70 +1215,100 @@ public class Controller implements ActionListener, MouseListener {
 
 		}
 
-		// PANEL VISTA PREVIA DE LAS GRÁFICAS
-
-		if (view.getPanel_admin().getPanel_informe().getBoton_vista_previa()== event.getSource()) {    
-			double r1, r2, r3, r4, r5, r6;
-			boolean info = true;
+		// informe por usuario 
+		if(view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedItem().equals("Por usuario")
+				&&(view.getPanel_admin().getPanel_informe().getBoton_vista_previa()== event.getSource()) ){
 			
-		try {
-			if (info) {
-				if(view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedItem().equals("Total")) {
-					view.mostrarMensajes("NUMERO DE INSCRITOS: "
-							+ String.valueOf(estadisticas.numInscritos(lista_usuarios, "Total")) 
-					+ "\n" + usuarioDAO.verUsuarios(lista_usuarios));
-				}
-				
-			}else {
-				
-			r1 = estadisticas.porcentajeRango(lista_usuarios, 
-					(String) view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[0];
-			System.out.println(r1);
-	
-			r2 = estadisticas.porcentajeRango(lista_usuarios,
-					(String)  view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[1];
-			System.out.println(r2);
-			r3 = estadisticas.porcentajeRango(lista_usuarios,
-					(String)  view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[2];
-			r4 = estadisticas.porcentajeRango(lista_usuarios,
-					(String)  view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[3];
-			r5 = estadisticas.porcentajeRango(lista_usuarios,
-					(String)  view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[4];
-			r6 = estadisticas.porcentajeRango(lista_usuarios,
-					(String) view.getPanel_admin()
-					.getPanel_informe().getCombo_estadistica()
-					.getSelectedItem())[5];
-			view2.agregarGraficos(view2.graficoEdad(r1, r2, r3, r4, r5, r6));
+			String nombre = view.getPanel_admin().getPanel_informe().getCampo_usuario().getText();
 			
-				System.out.println("funciona");
-			view2.setVisible(true);
-			}
-		}catch(Exception e) {
-			System.out.println("exception");
+			
+			
+			informe.getPanel_informe_usuarios().setVisible(false);
+			informe.setVisible(true);
+			informe.getInforme_usuario_pareja().setVisible(true);
+			
+			
 		}
 		
-		}
+		// panel informe por tiendas 
+		if(view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedItem().equals("Tiendas")
+				&&(view.getPanel_admin().getPanel_informe().getBoton_vista_previa()== event.getSource()) ){
 			
+				informe.getPanel_informe_usuarios().getModel2().setRowCount(0);
+		
+				for (int i = 0; i < lista_tiendas.size(); i++) {
 
+					String nombre = lista_tiendas.get(i).getNombre();
+					String direccion = lista_tiendas.get(i)
+							.getDireccion();
+					String hora_ap = lista_tiendas.get(i)
+							.getHorario_apertura();
+					String hora_ci = lista_tiendas.get(i)
+							.getHorario_cierre();
+
+					Object[] datos_filas = { nombre, direccion,
+							hora_ap, hora_ci };
+					informe.getPanel_informe_usuarios().getModel2().addRow(datos_filas);
+					
+				}
+				informe.getInforme_usuario_pareja().setVisible(false);
+				informe.setVisible(true);
+				informe.getPanel_informe_usuarios().getScroll2().setVisible(true);
+				informe.getPanel_informe_usuarios().getEtiqueta_tienda().setVisible(true);
+				informe.getPanel_informe().getEtiqueta_usuario().setVisible(false);
+				informe.getPanel_informe_usuarios().getScroll1().setVisible(false);
+				informe.getPanel_informe_usuarios().setVisible(true);
+				
+			}
+			
+		
+		
+		// PANEL VISTA PREVIA DE LAS informe usuarios 
+		if(view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedItem().equals("Todos los usuarios")
+				&&(view.getPanel_admin().getPanel_informe().getBoton_vista_previa()== event.getSource()) ){
+			informe.getPanel_informe_usuarios().getModel1().setRowCount(0);
+			for (int i = 0; i < lista_usuarios.size(); i++) {
+							String nombre = lista_usuarios.get(i).getNombre();
+							String correo = lista_usuarios.get(i).getCorreo();
+							String alias = lista_usuarios.get(i).getUsuario();
+							String genero = lista_usuarios.get(i).getGenero();
+							String numerotarjeta = lista_usuarios.get(i)
+									.getNumeroTarjeta();
+							long cupo = lista_usuarios.get(i).getCupoTarjeta();
+							int edad = lista_usuarios.get(i).getEdad();
+							NumberFormat formatoImporte = NumberFormat
+									.getCurrencyInstance(new Locale("en", "US"));
+
+							Object[] datos_filas = { nombre, alias, correo, edad,
+									genero, numerotarjeta, formatoImporte.format(cupo) };
+							informe.getPanel_informe().getModel1().addRow(datos_filas);
+							
+						}
+					informe.getInforme_usuario_pareja().setVisible(false);
+					informe.setVisible(true);
+					informe.getPanel_informe_usuarios().getScroll1().setVisible(true);
+					informe.getPanel_informe().setVisible(true);
+					informe.getPanel_informe_usuarios().getEtiqueta_usuario().setVisible(true);
+					informe.getPanel_informe_usuarios().getEtiqueta_tienda().setVisible(false);
+					informe.getPanel_informe_usuarios().getScroll2().setVisible(false);
+					}
+				
+			
+						
+		
+		
+		
+			
+ // MOSTRAR EN USUARIO EN EL INFORME
+		
 		// PANEL DE ADMINISTRADOR GENERADOR DEL INFORME
-		if (view.getPanel_admin().getPanel_informe().getCombo_estadistica() == event
-				.getSource()) {
+		if (view.getPanel_admin().getPanel_informe().getCombo_estadistica() == event.getSource()) {
 
 			try {
 
 				switch (view.getPanel_admin().getPanel_informe()
 						.getCombo_estadistica().getSelectedIndex()) {
-
+// "Seleccionar"
 				case 0:
 
 					view.getPanel_admin().getPanel_informe().setVisible(false);
@@ -1265,24 +1316,27 @@ public class Controller implements ActionListener, MouseListener {
 							.visibilidadComponentes(false);
 
 					break;
-
+// "Edad"
 				case 1:
 					view.getPanel_admin().getPanel_informe().getCampo_usuario()
-							.setVisible(true);
+							.setVisible(false);
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_generar_pfd().setVisible(true);
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_vista_previa().setVisible(true);
+					
 					break;
+//"Todos los usuarios"
 				case 2:
 
 					view.getPanel_admin().getPanel_informe().getCampo_usuario()
-							.setVisible(true);
+							.setVisible(false);
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_generar_pfd().setVisible(true);
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_vista_previa().setVisible(true);
 					break;
+//"Por usuario"	
 				case 3:
 					view.getPanel_admin().getPanel_informe().getCampo_usuario()
 							.setVisible(true);
@@ -1290,6 +1344,16 @@ public class Controller implements ActionListener, MouseListener {
 							.getBoton_generar_pfd().setVisible(true);
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_vista_previa().setVisible(true);
+					break;
+//	"Por tienda"
+				case 4:
+					view.getPanel_admin().getPanel_informe().getCampo_usuario()
+					.setVisible(false);
+			view.getPanel_admin().getPanel_informe()
+					.getBoton_generar_pfd().setVisible(true);
+			view.getPanel_admin().getPanel_informe()
+					.getBoton_vista_previa().setVisible(true);
+					
 					break;
 				}
 
@@ -2121,4 +2185,9 @@ public class Controller implements ActionListener, MouseListener {
 			}
 		}
 	}
+
+	
+	
+
+
 }

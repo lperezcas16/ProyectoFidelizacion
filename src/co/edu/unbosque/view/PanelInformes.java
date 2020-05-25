@@ -56,16 +56,19 @@ public class PanelInformes extends JPanel {
 
 		campo_usuario = new JTextField();
 		campo_usuario.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		campo_usuario.setBounds(310, 330, 200, 40);
+		campo_usuario.setBounds(315, 390, 210, 45);
+		campo_usuario.setVisible(false);
 		add(campo_usuario);
 	
 
 		combo_estadistica = new JComboBox<String>();
 		combo_estadistica.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		combo_estadistica.setBounds(350, 390, 110, 45);
+		combo_estadistica.setBounds(320, 330, 200, 40);
 		combo_estadistica.addItem("Selecciona");
 		combo_estadistica.addItem("Edad");
-		combo_estadistica.addItem("Total");
+		combo_estadistica.addItem("Todos los usuarios");
+		combo_estadistica.addItem("Por usuario");
+		combo_estadistica.addItem("Tiendas");
 	
 		add(combo_estadistica);
 		
@@ -75,7 +78,7 @@ public class PanelInformes extends JPanel {
 		add(boton_generar_pfd);
 		boton_generar_pfd.setVisible(false);
 
-		boton_vista_previa = new JButton("Vista previa de gráficas");
+		boton_vista_previa = new JButton("Vista previa");
 		boton_vista_previa.setBounds(420, 460, 300, 45);
 		boton_vista_previa.setFont(new Font("Accidental Presidency", Font.BOLD,
 				16));

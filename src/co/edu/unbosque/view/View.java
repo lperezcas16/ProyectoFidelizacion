@@ -14,6 +14,7 @@ public class View extends JFrame {
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
 	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
 	private PanelAdminInicio panel_admin = new PanelAdminInicio();
+	private Informe informe = new Informe(null);
 
 	public View(Controller controller) {
 
@@ -28,6 +29,7 @@ public class View extends JFrame {
 		add(panel1);
 		add(panel_us_inicio);
 		add(panel_admin);
+		
 		actionListener(controller);
 	}
 
@@ -138,6 +140,8 @@ public class View extends JFrame {
 		getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
 				.getPnl_ingresar_compra().getBoton_agregar_compra()
 				.addActionListener(controller);
+		
+		
 	}
 
 	public void mostrarMensajes(String mensaje) {
