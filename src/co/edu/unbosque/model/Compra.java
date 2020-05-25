@@ -1,36 +1,37 @@
 package co.edu.unbosque.model;
 
 public class Compra {
-	private Parejas cliente;
-	private Tiendas tienda;
-	private String valorCompra;
-	public Compra(Parejas cliente, Tiendas tienda, String valorCompra) {
-		this.cliente = cliente;
+	private String pareja;
+	private String tienda;
+	private double valorCompra;
+	
+	public Compra(String pareja, String tienda, double valorCompra) {
+		this.pareja = pareja;
 		this.tienda = tienda;
+		this.valorCompra = valorCompra;
+	}
+	public String getPareja() {
+		return pareja;
+	}
+	public void setPareja(String pareja) {
+		this.pareja = pareja;
+	}
+	public String getTienda() {
+		return tienda;
+	}
+	public void setTienda(String tienda) {
+		this.tienda = tienda;
+	}
+	public double getValorCompra() {
+		return valorCompra;
+	}
+	public void setValorCompra(double valorCompra) {
 		this.valorCompra = valorCompra;
 	}
 	@Override
 	public String toString() {
-		return "Compra [cliente=" + cliente + ", tienda=" + tienda + ", valor="
-				+ valorCompra + "]";
-	}
-	public Parejas getCliente() {
-		return cliente;
-	}
-	public void setCliente(Parejas cliente) {
-		this.cliente = cliente;
-	}
-	public Tiendas getTienda() {
-		return tienda;
-	}
-	public void setTienda(Tiendas tienda) {
-		this.tienda = tienda;
-	}
-	public String getValor() {
-		return valorCompra;
-	}
-	public void setValor(String valor) {
-		this.valorCompra = valor;
+		return "Compra [pareja=" + pareja + ", tienda=" + tienda
+				+ ", valorCompra=" + valorCompra + "]";
 	}
 
 }

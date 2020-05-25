@@ -408,7 +408,37 @@ public class UsuarioDAO {
 			return false;
 		}
 	}
-public void agregarCompras(){
-	
-}
+	public void agregarCompras(String usuario, String pareja, String tienda,
+			double valorCompra) {
+		Compra compra = new Compra(pareja, tienda, valorCompra);
+		ArrayList<Usuario> lista_usuarios = new ArrayList<Usuario>();
+		lista_usuarios = archivo_Usuario.leerArchivo();
+		ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+		ArrayList<Compra> lista_compras =new ArrayList<Compra>();
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
+					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
+				lista_parejas = lista_usuarios.get(i).getParejas();
+				for (int j = 0; j < lista_parejas.size(); j++) {
+				}
+			}
+		}
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getCorreo().equalsIgnoreCase(usuario)
+					|| lista_usuarios.get(i).getUsuario().equals(usuario)) {
+				lista_parejas = lista_usuarios.get(i).getParejas();
+				for (int j = 0; j < lista_parejas.size(); j++) {
+					if (lista_parejas.get(j).getNombre()
+							.equalsIgnoreCase(pareja)) {
+//						lista_compras = lista_parejas.get(j)
+//								.getLista_horarios();
+//						lista_compras.add(compra);
+//						lista_usuarios.get(i).getParejas().get(j)
+//								.setLista_horarios(lista_compras);
+						archivo_Usuario.escribirEnArchivo(lista_usuarios);
+					}
+				}
+			}
+		}
+	}
 }

@@ -393,6 +393,24 @@ public class Controller implements ActionListener, MouseListener {
 								.getPnl_nueva_tienda().getCampo_texto_direccion().setText("");
 						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda()
 								.getPnl_nueva_tienda().getCampo_texto_nombre().setText("");
+						view.getPanel_us_inicio().getPnl_adm_cuentas()
+						.getPnl_compras().getPnl_ingresar_compra()
+						.getCombobox_tiendas().removeAllItems();
+				for (int i = 0; i < lista_tiendas.size(); i++) {
+					view.getPanel_us_inicio()
+							.getPnl_adm_cuentas()
+							.getPnl_compras()
+							.getPnl_ingresar_compra()
+							.getCombobox_tiendas()
+							.addItem(
+									lista_tiendas
+											.get(i)
+											.getNombre()
+											.concat(" - "
+													+ lista_tiendas
+															.get(i)
+															.getDireccion()));
+				}
 						// primero borrra
 						view.getPanel_us_inicio().getPnl_asignar_horarios().getPnl_seleccionar_tienda().getModel()
 								.setRowCount(0);
@@ -1168,15 +1186,46 @@ public class Controller implements ActionListener, MouseListener {
 								view.getPanel_us_inicio().getPnl_adm_cuentas().visibilidadComponentes(true);
 
 								for (int i = 0; i < lista_usuarios.size(); i++) {
-									if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
-											|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
+									if (lista_usuarios.get(i).getUsuario()
+											.equals(nombreInicio)
+											|| lista_usuarios.get(i)
+													.getCorreo()
+													.equals(nombreInicio)) {
 										ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-										lista_parejas = lista_usuarios.get(i).getParejas();
-										view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
+										lista_parejas = lista_usuarios.get(i)
+												.getParejas();
+										view.getPanel_us_inicio()
+												.getPnl_asignar_horarios()
+												.getCombobox_parejas()
 												.removeAllItems();
-										for (int k = 0; k < lista_parejas.size(); k++) {
-											view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
-													.addItem(lista_usuarios.get(i).getParejas().get(k).getNombre());
+										view.getPanel_us_inicio()
+												.getPnl_adm_cuentas()
+												.getPnl_compras()
+												.getPnl_ingresar_compra()
+												.getCombobox_parejas()
+												.removeAllItems();
+										for (int k = 0; k < lista_parejas
+												.size(); k++) {
+											view.getPanel_us_inicio()
+													.getPnl_asignar_horarios()
+													.getCombobox_parejas()
+													.addItem(
+															lista_usuarios
+																	.get(i)
+																	.getParejas()
+																	.get(k)
+																	.getNombre());
+											view.getPanel_us_inicio()
+													.getPnl_adm_cuentas()
+													.getPnl_compras()
+													.getPnl_ingresar_compra()
+													.getCombobox_parejas()
+													.addItem(
+															lista_usuarios
+																	.get(i)
+																	.getParejas()
+																	.get(k)
+																	.getNombre());
 										}
 									}
 								}
@@ -1231,19 +1280,52 @@ public class Controller implements ActionListener, MouseListener {
 				view.getPanel_us_inicio().setVisible(true);
 				agregarInfoUsuario(nombreInicio);
 				solusoft = new Solusoft(nombreInicio);
-				for (int i = 0; i < lista_usuarios.size(); i++) {
-					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
-							|| lista_usuarios.get(i).getCorreo().equalsIgnoreCase(nombreInicio)) {
-						nombreInicio = lista_usuarios.get(i).getUsuario();
-						ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
-						lista_parejas = lista_usuarios.get(i).getParejas();
-						view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas().removeAllItems();
-						for (int k = 0; k < lista_parejas.size(); k++) {
-							view.getPanel_us_inicio().getPnl_asignar_horarios().getCombobox_parejas()
-									.addItem(lista_usuarios.get(i).getParejas().get(k).getNombre());
-						}
-					}
+				view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras()
+				.getPnl_ingresar_compra().getCombobox_tiendas()
+				.removeAllItems();
+		for (int i = 0; i < lista_tiendas.size(); i++) {
+			view.getPanel_us_inicio()
+					.getPnl_adm_cuentas()
+					.getPnl_compras()
+					.getPnl_ingresar_compra()
+					.getCombobox_tiendas()
+					.addItem(
+							lista_tiendas
+									.get(i)
+									.getNombre()
+									.concat(" - "
+											+ lista_tiendas.get(i)
+													.getDireccion()));
+		}
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+					|| lista_usuarios.get(i).getCorreo()
+							.equals(nombreInicio)) {
+				ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+				lista_parejas = lista_usuarios.get(i).getParejas();
+				view.getPanel_us_inicio().getPnl_asignar_horarios()
+						.getCombobox_parejas().removeAllItems();
+				view.getPanel_us_inicio().getPnl_adm_cuentas()
+						.getPnl_compras().getPnl_ingresar_compra()
+						.getCombobox_parejas().removeAllItems();
+				for (int k = 0; k < lista_parejas.size(); k++) {
+					view.getPanel_us_inicio()
+							.getPnl_asignar_horarios()
+							.getCombobox_parejas()
+							.addItem(
+									lista_usuarios.get(i).getParejas()
+											.get(k).getNombre());
+					view.getPanel_us_inicio()
+							.getPnl_adm_cuentas()
+							.getPnl_compras()
+							.getPnl_ingresar_compra()
+							.getCombobox_parejas()
+							.addItem(
+									lista_usuarios.get(i).getParejas()
+											.get(k).getNombre());
 				}
+			}
+		}
 			} else if (nombreInicio.equals("admin") && contraseñaInicio.equals("admin")) {
 				view.getPanel1().setVisible(false);
 				view.getPanel_admin().setVisible(true);
@@ -1543,13 +1625,104 @@ public class Controller implements ActionListener, MouseListener {
 		return valorEdad;
 	}
 
-	public void verHistorialCompras() {
-		// TODO Auto-generated method stub
-
+	public void agregarCompras() {
+		String nombreInicio = solusoft.getUsuario_inicio();
+		int numElementosPareja = view.getPanel_us_inicio().getPnl_adm_cuentas()
+				.getPnl_compras().getPnl_ingresar_compra()
+				.getCombobox_parejas().getItemCount();
+		int numElementosTienda = view.getPanel_us_inicio().getPnl_adm_cuentas()
+				.getPnl_compras().getPnl_ingresar_compra()
+				.getCombobox_tiendas().getItemCount();
+		if (numElementosPareja != 0) {
+			if (numElementosTienda != 0) {
+				String pareja = (String) view.getPanel_us_inicio()
+						.getPnl_adm_cuentas().getPnl_compras()
+						.getPnl_ingresar_compra().getCombobox_parejas()
+						.getSelectedItem();
+				String tienda = (String) view.getPanel_us_inicio()
+						.getPnl_adm_cuentas().getPnl_compras()
+						.getPnl_ingresar_compra().getCombobox_tiendas()
+						.getSelectedItem();
+				String valor_compra = view.getPanel_us_inicio()
+						.getPnl_adm_cuentas().getPnl_compras()
+						.getPnl_ingresar_compra().getCampo_texto_dinero()
+						.getText();
+				if (!valor_compra.isEmpty()) {
+					try {
+						double cupoDisponible = 0;
+						ArrayList<Parejas> lista_parejas = new ArrayList<Parejas>();
+						double valorCompra = Double.parseDouble(valor_compra);
+						for (int i = 0; i < lista_usuarios.size(); i++) {
+							if (lista_usuarios.get(i).getUsuario()
+									.equals(nombreInicio)) {
+								lista_parejas = lista_usuarios.get(i)
+										.getParejas();
+								for (int j = 0; j < lista_parejas.size(); j++) {
+									if (lista_parejas.get(j).getNombre()
+											.equals(pareja)) {
+										cupoDisponible = lista_parejas.get(j)
+												.getCantidad_cupo_restante();
+									}
+								}
+							}
+						}
+						if (valorCompra > 0 && valorCompra < cupoDisponible) {
+							usuarioDAO.agregarCompras(nombreInicio,pareja,tienda,valorCompra );
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Su pareja no cuenta con el cupo.");
+						}
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(null,
+								"El monto de compra no es valido");
+					}
+				}
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"Debe agregar una tienda para continuar");
+			}
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"Debe agregar una pareja para continuar");
+		}
 	}
 
-	public void agregarCompras() {
-		// TODO Auto-generated method stub
+	public void asignarTablaCompras() {
+		String nombreInicio = solusoft.getUsuario_inicio();
+		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_ver_info_pareja()
+				.getModel().setRowCount(0);
+		lista_usuarios = archivo_Usuario.leerArchivo();
 
+		if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+				.getParejas().isEmpty()) {
+			for (int i = 0; i < usuarioDAO
+					.buscarUsuario(nombreInicio, lista_usuarios).getParejas()
+					.size(); i++) {
+				String nombre = usuarioDAO
+						.buscarUsuario(nombreInicio, lista_usuarios)
+						.getParejas().get(i).getNombre();
+				int cupo = usuarioDAO
+						.buscarUsuario(nombreInicio, lista_usuarios)
+						.getParejas().get(i).getCupo();
+				double cantidad_cupo = usuarioDAO
+						.buscarUsuario(nombreInicio, lista_usuarios)
+						.getParejas().get(i).getCantidad_cupo_asignado();
+				int edad = usuarioDAO
+						.buscarUsuario(nombreInicio, lista_usuarios)
+						.getParejas().get(i).getEdad();
+				NumberFormat formatoImporte = NumberFormat
+						.getCurrencyInstance(new Locale("en", "US"));
+
+				Object[] datos_filas = { nombre, edad, cupo,
+						formatoImporte.format(cantidad_cupo) };
+				view.getPanel_us_inicio().getPnl_adm_cuentas()
+						.getPnl_ver_info_pareja().getModel()
+						.addRow(datos_filas);
+			}
+		}
+
+	}
+	public void verHistorialCompras(){
+		
 	}
 }
