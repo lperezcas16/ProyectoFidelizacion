@@ -72,8 +72,7 @@ public class View extends JFrame {
 				.addActionListener(controller);
 
 		// LISTENERS PANEL INFORME
-		getPanel_admin().getPanel_informe().getCombo_eleccion()
-				.addActionListener(controller);
+		
 		getPanel_admin().getPanel_informe().getCampo_usuario()
 				.addActionListener(controller);
 		getPanel_admin().getPanel_informe().getBoton()

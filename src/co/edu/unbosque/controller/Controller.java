@@ -21,6 +21,7 @@ import co.edu.unbosque.model.Compra;
 import co.edu.unbosque.model.ContraseñaExcepcion;
 import co.edu.unbosque.model.CupoExcepcion;
 import co.edu.unbosque.model.EdadExcepcion;
+import co.edu.unbosque.model.Estadisticas;
 import co.edu.unbosque.model.GeneroExcepcion;
 import co.edu.unbosque.model.HorarioExcepcion;
 import co.edu.unbosque.model.MailExcepcion;
@@ -41,6 +42,7 @@ public class Controller implements ActionListener, MouseListener {
 	private View view;
 	private VentanaGraficas view2;
 	private Solusoft solusoft;
+	private Estadisticas estadisticas;
 	private ArchivoUsuario archivo_Usuario;
 	private UsuarioDAO usuarioDAO;
 	private TiendaDAO tiendaDAO;
@@ -1194,10 +1196,58 @@ public class Controller implements ActionListener, MouseListener {
 
 		// PANEL VISTA PREVIA DE LAS GRÁFICAS
 
-		if (view.getPanel_admin().getPanel_informe().getBoton_vista_previa() == event
-				.getSource()) {
+		if (view.getPanel_admin().getPanel_informe().getBoton_vista_previa()== event.getSource()) {    
+			double r1, r2, r3, r4, r5, r6;
+			boolean info = true;
+			
+		try {
+			if (info) {
+				if(view.getPanel_admin().getPanel_informe().getCombo_estadistica().getSelectedItem().equals("Total")) {
+					view.mostrarMensajes("NUMERO DE INSCRITOS: "
+							+ String.valueOf(estadisticas.numInscritos(lista_usuarios, "Total")) 
+					+ "\n" + usuarioDAO.verUsuarios(lista_usuarios));
+				}
+				
+			}else {
+				
+			r1 = estadisticas.porcentajeRango(lista_usuarios, 
+					(String) view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[0];
+			System.out.println(r1);
+	
+			r2 = estadisticas.porcentajeRango(lista_usuarios,
+					(String)  view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[1];
+			System.out.println(r2);
+			r3 = estadisticas.porcentajeRango(lista_usuarios,
+					(String)  view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[2];
+			r4 = estadisticas.porcentajeRango(lista_usuarios,
+					(String)  view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[3];
+			r5 = estadisticas.porcentajeRango(lista_usuarios,
+					(String)  view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[4];
+			r6 = estadisticas.porcentajeRango(lista_usuarios,
+					(String) view.getPanel_admin()
+					.getPanel_informe().getCombo_estadistica()
+					.getSelectedItem())[5];
+			view2.agregarGraficos(view2.graficoEdad(r1, r2, r3, r4, r5, r6));
+			
+				System.out.println("funciona");
 			view2.setVisible(true);
+			}
+		}catch(Exception e) {
+			System.out.println("exception");
 		}
+		
+		}
+			
 
 		// PANEL DE ADMINISTRADOR GENERADOR DEL INFORME
 		if (view.getPanel_admin().getPanel_informe().getCombo_estadistica() == event
