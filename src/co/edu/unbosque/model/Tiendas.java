@@ -2,20 +2,30 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 
-/**
- *
- */
 public class Tiendas implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1633332112137572466L;
 	private String nombre;
 	private String direccion;
 	private String horario_apertura;
 	private String horario_cierre;
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	 * 
+	 * @param nombre           Hace referencia al nombre de la tienda. nombre !=
+	 *                         null, nombre != "".
+	 * @param direccion        Hace referencia a la direccion que tiene la tienda.
+	 *                         direccion != null, direccion != "".
+	 * @param horario_apertura Hace referencia a la hora de apertura de la tienda.
+	 *                         horario_apertura != null, horario_apertura != "".
+	 * @param horario_cierre   Hace referencia a la hora de cierre de la tienda.
+	 *                         horario_cierre != null, horario_cierre != "".
+	 */
 	public Tiendas(String nombre, String direccion, String horario_apertura, String horario_cierre) {
 
 		this.nombre = nombre;

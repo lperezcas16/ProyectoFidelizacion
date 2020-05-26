@@ -20,6 +20,37 @@ public class Usuario implements Serializable {
 	private String tipoUsuario;
 	private ArrayList<Compra> lista_compras;
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	 * 
+	 * @param nombre        Es el nombre del usuario. nombre != null, nombre != "".
+	 * @param genero        Es el genero del usuario ingresado al registrarse.
+	 *                      genero != null, genero != "".
+	 * @param correo        Es el correo ingresado por el usuario al registrarse.
+	 *                      correo != null, correo != "".
+	 * @param usuario       Es el usuario o alias ingresado en el registro. usuario
+	 *                      != null, usuario != "".
+	 * @param contraseña    Es la contraseña ingresada por el usuario en el
+	 *                      registro. contraseña != null, contraseña != "".
+	 * @param numeroTarjeta Es el numero de la tarjeta de credito asignada a cada
+	 *                      usuario. numeroTarjeta != null, numeroTarjeta != "".
+	 * @param edad          Es la edad calculada a partir de la fecha de nacimiento
+	 *                      ingresada por el usuario. edad != null, edad != "".
+	 * @param cupoTarjeta   Es el cupo de la tarjeta de credito agregado y escogido
+	 *                      por el usuario. cupoTarjeta != null, cupoTarjeta != "".
+	 * @param parejas       Es la lista de las parejas que cada usuario contiene y
+	 *                      agrega. parejas != null, parejas != "";
+	 * @param tipoUsuario   Este atributo diferencia a los usuarios del
+	 *                      administrador para que de esa manera se pueda acceder a
+	 *                      la interfaz grafica generada para cada uno. tipoUsuario
+	 *                      != null, tipoUsuario != "".
+	 * @param lista_compras Es la lista de todas las compras agregadas por el
+	 *                      usuario. lista_compras != null, lista_compras != "".
+	 */
 	public Usuario(String nombre, String genero, String correo, String usuario, String contraseña, String numeroTarjeta,
 			int edad, long cupoTarjeta, ArrayList<Parejas> parejas, String tipoUsuario,
 			ArrayList<Compra> lista_compras) {

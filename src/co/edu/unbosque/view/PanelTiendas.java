@@ -27,13 +27,12 @@ public class PanelTiendas extends JPanel {
 	private JTextField campo_buscar, campo_nombre, campo_direccion;
 	private ImageIcon imagen;
 	private String nombre;
-	private JButton boton_eliminar, boton_agregar_tienda, boton_buscar,boton_buscar_pornombre,
-			boton_ver_tiendas;
+	private JButton boton_eliminar, boton_agregar_tienda, boton_buscar, boton_buscar_pornombre, boton_ver_tiendas,
+			boton_ordenar;
 	private JSpinner spinner, spinner_apertura, spinner_cierre;
 	private JScrollPane scroll1;
 
-	private String[] cabecera = { "Nombre", "Dirección", "Horario apertura",
-			"Horario cierre" };
+	private String[] cabecera = { "Nombre", "Dirección", "Horario apertura", "Horario cierre" };
 	private DefaultTableModel model;
 	private JTable tabla;
 
@@ -71,19 +70,21 @@ public class PanelTiendas extends JPanel {
 
 		boton_ver_tiendas = new JButton("Ver tiendas");
 		boton_ver_tiendas.setBounds(570, 150, 200, 30);
-		boton_ver_tiendas.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		boton_ver_tiendas.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_ver_tiendas);
-		
+
+		boton_ordenar = new JButton("Ordenar por Nombre");
+		boton_ordenar.setBounds(570, 400, 200, 30);
+		boton_ordenar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		add(boton_ordenar);
+
 		boton_buscar_pornombre = new JButton("Buscar Tienda");
 		boton_buscar_pornombre.setBounds(400, 150, 150, 30);
-		boton_buscar_pornombre.setFont(new Font("Accidental Presidency", Font.BOLD,
-				16));
+		boton_buscar_pornombre.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_buscar_pornombre);
 
 		boton_eliminar = new JButton("Eliminar");
-		boton_eliminar
-				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		boton_eliminar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		boton_eliminar.setBounds(570, 200, 200, 25);
 		add(boton_eliminar);
 
@@ -103,33 +104,29 @@ public class PanelTiendas extends JPanel {
 		campo_nombre = new JTextField();
 		campo_nombre.setBounds(36, 450, 200, 25);
 		campo_nombre.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
-		
+
 		add(campo_nombre);
 
 		campo_direccion = new JTextField();
-		campo_direccion
-				.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
+		campo_direccion.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		campo_direccion.setBounds(36, 500, 200, 25);
 		add(campo_direccion);
 
 		spinner_apertura = new JSpinner();
 		spinner_apertura.setModel(new SpinnerDateModel());
-		spinner_apertura.setEditor(new JSpinner.DateEditor(spinner_apertura,
-				"HH:mm"));
+		spinner_apertura.setEditor(new JSpinner.DateEditor(spinner_apertura, "HH:mm"));
 		spinner_apertura.setBounds(340, 470, 80, 30);
 		add(spinner_apertura);
 
 		spinner_cierre = new JSpinner();
 		spinner_cierre.setModel(new SpinnerDateModel());
-		spinner_cierre.setEditor(new JSpinner.DateEditor(spinner_cierre,
-				"HH:mm"));
+		spinner_cierre.setEditor(new JSpinner.DateEditor(spinner_cierre, "HH:mm"));
 		spinner_cierre.setBounds(480, 470, 80, 30);
 		add(spinner_cierre);
 
 		boton_agregar_tienda = new JButton("Agregar");
 		boton_agregar_tienda.setBounds(590, 470, 100, 30);
-		boton_agregar_tienda.setFont(new Font("Accidental Presidency",
-				Font.BOLD, 16));
+		boton_agregar_tienda.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		add(boton_agregar_tienda);
 
 	}
@@ -167,7 +164,6 @@ public class PanelTiendas extends JPanel {
 		this.combo_tiendas = combo_tiendas;
 	}
 
-	
 	public JTextField getCampo_buscar() {
 		return campo_buscar;
 	}
@@ -192,8 +188,6 @@ public class PanelTiendas extends JPanel {
 		this.campo_direccion = campo_direccion;
 	}
 
-	
-	
 	public JButton getboton_buscar_pornombre() {
 		return boton_buscar_pornombre;
 	}
@@ -201,7 +195,7 @@ public class PanelTiendas extends JPanel {
 	public void setboton_buscar_pornombre(JButton boton_buscar_pornombre) {
 		this.boton_buscar_pornombre = boton_buscar_pornombre;
 	}
-	
+
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
 	}
@@ -280,6 +274,50 @@ public class PanelTiendas extends JPanel {
 
 	public void setBoton_buscar_pornombre(JButton boton_buscar_pornombre) {
 		this.boton_buscar_pornombre = boton_buscar_pornombre;
+	}
+
+	public ImageIcon getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(ImageIcon imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public JButton getBoton_ordenar() {
+		return boton_ordenar;
+	}
+
+	public void setBoton_ordenar(JButton boton_ordenar) {
+		this.boton_ordenar = boton_ordenar;
+	}
+
+	public JScrollPane getScroll1() {
+		return scroll1;
+	}
+
+	public void setScroll1(JScrollPane scroll1) {
+		this.scroll1 = scroll1;
+	}
+
+	public String[] getCabecera() {
+		return cabecera;
+	}
+
+	public void setCabecera(String[] cabecera) {
+		this.cabecera = cabecera;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

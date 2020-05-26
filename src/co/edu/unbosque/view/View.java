@@ -36,176 +36,136 @@ public class View extends JFrame {
 
 	public void mostrarMensajes(String mensaje) {
 
-		NumberFormat formatoImporte = NumberFormat
-				.getCurrencyInstance(new Locale("en", "US"));
+		NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
 		if (mensaje.equalsIgnoreCase("USUARIO_TRUE")) {
-			JOptionPane.showMessageDialog(null,
-					"REGISTRO EXITOSO! REVISE SU CORREO");
+			JOptionPane.showMessageDialog(null, "REGISTRO EXITOSO! REVISE SU CORREO");
 		} else if (mensaje.equalsIgnoreCase("USUARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL USUARIO O CORREO INGRESADO YA EXISTE", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "EL USUARIO O CORREO INGRESADO YA EXISTE", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("TIENDA_TRUE")) {
-			JOptionPane.showMessageDialog(null,
-					"LA TIENDA SE AGREGO CORRECTAMENTE");
+			JOptionPane.showMessageDialog(null, "LA TIENDA SE AGREGO CORRECTAMENTE");
 		} else if (mensaje.equalsIgnoreCase("TIENDA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"LA DIRECCION DE LA TIENDA YA SE ENCUENTRA REGISTRADA",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "LA DIRECCION DE LA TIENDA YA SE ENCUENTRA REGISTRADA", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CAMPOS_FALSE")) {
-			JOptionPane.showMessageDialog(null, "DEBE LLENAR TODOS LOS CAMPOS",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "DEBE LLENAR TODOS LOS CAMPOS", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("NOMBRE_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL NOMBRE NO DEBE CONTENER NUMEROS", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "EL NOMBRE NO DEBE CONTENER NUMEROS", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CONTRASEÑA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"LA CONTRASEÑA DEBE TENER MAS DE 8 CARACTERES", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "LA CONTRASEÑA DEBE TENER MAS DE 8 CARACTERES", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CORREO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL CORREO INGRESADO NO ES VALIDO,  INGRESELO NUEVAMENTE",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "EL CORREO INGRESADO NO ES VALIDO,  INGRESELO NUEVAMENTE", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("HORARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"LOS HORARIOS DEFINIDOS NO SON VALIDOS", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "LOS HORARIOS DEFINIDOS NO SON VALIDOS", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"NO SE PUEDE ELIMINAR LA TIENDA", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "NO SE PUEDE ELIMINAR LA TIENDA", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_TRUE")) {
 			JOptionPane.showMessageDialog(null, "SE ELIMINÓ CORRECTAMENTE");
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_TIENDA_VACIO")) {
-			JOptionPane.showMessageDialog(null,
-					"INTRODUZCA INFORMACION PARA INICIAR LA BUSQUEDA",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
-		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_VACIO")) {
-			JOptionPane.showMessageDialog(null, "CAMPO VACIO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "INTRODUZCA INFORMACION PARA INICIAR LA BUSQUEDA", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_VACIO")) {
+			JOptionPane.showMessageDialog(null, "CAMPO VACIO", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR USUARIO",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR USUARIO", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELIMINAR_USUARIO_TRUE")) {
-			JOptionPane.showMessageDialog(null,
-					"SE PUDO ELIMINAR USUARIO CORRECTAMENTE");
+			JOptionPane.showMessageDialog(null, "SE PUDO ELIMINAR USUARIO CORRECTAMENTE");
 		} else if (mensaje.equalsIgnoreCase("GENERO_FALSE")) {
-			JOptionPane.showMessageDialog(null, "SELECCIONE SU GENERO",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "SELECCIONE SU GENERO", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("INICIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"SU USUARIO Y SU CONTRASEÑA NO COINCIDEN", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "SU USUARIO Y SU CONTRASEÑA NO COINCIDEN", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CUPO_FALSE")) {
-			JOptionPane.showMessageDialog(null, "SU CUPO YA FUE ESTABLECIDO",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "SU CUPO YA FUE ESTABLECIDO", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("VALOR_CUPO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL FORMATO INGRESADO PARA EL CUPO NO ES CORRECTO",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "EL FORMATO INGRESADO PARA EL CUPO NO ES CORRECTO", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CUPO ES CERO")) {
-			JOptionPane.showMessageDialog(null,
-					"ES NECESARIO PRIMERO ASIGNAR UN VALOR AL CUPO",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ES NECESARIO PRIMERO ASIGNAR UN VALOR AL CUPO", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("EDAD_FALSE")) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"LA FECHA DE NACIMIENTO INGRESADA MUESTRA QUE SU PAREJA NO ES MAYOR DE EDAD",
-							"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
-		} else if (mensaje.equalsIgnoreCase("CampoBuscarUsuario_False")) {
 			JOptionPane.showMessageDialog(null,
-					"SELECCIONE UNA OPCION DE BUSQUEDA", "SOLUSOFT",
+					"LA FECHA DE NACIMIENTO INGRESADA MUESTRA QUE SU PAREJA NO ES MAYOR DE EDAD", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("CampoBuscarUsuario_False")) {
+			JOptionPane.showMessageDialog(null, "SELECCIONE UNA OPCION DE BUSQUEDA", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("BuscarUsuario_False")) {
-			JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ORDENAMIENTO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"NO SE LOGRO ORDENAR PROBLEMA CON LA BASE DE DATOS",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
-		} else if (mensaje.equalsIgnoreCase("EDAD_USUARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"LA FECHA DE NACIMIENTO INGRESADA MUESTRA "
-							+ "QUE NO ES MAYOR DE EDAD", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "NO SE LOGRO ORDENAR PROBLEMA CON LA BASE DE DATOS", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("EDAD_USUARIO_FALSE")) {
+			JOptionPane.showMessageDialog(null, "LA FECHA DE NACIMIENTO INGRESADA MUESTRA " + "QUE NO ES MAYOR DE EDAD",
+					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("PAREJA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"DEBE AGREGAR A SU PAREJA PARA CONTINUAR", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "DEBE AGREGAR A SU PAREJA PARA CONTINUAR", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("FECHA_FALSE")) {
-			JOptionPane.showMessageDialog(null, "DEBE ELEGIR UNA FECHA",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "DEBE ELEGIR UNA FECHA", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("FECHA_PASADA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"LA FECHA SELECCIONADA YA PASO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "LA FECHA SELECCIONADA YA PASO", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("HORARIO_TRUE")) {
 			JOptionPane.showMessageDialog(null, "EL HORARIO FUE ASIGNADO");
 		} else if (mensaje.equalsIgnoreCase("HORARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"NO SE PUEDE ASIGNAR EL HORARIO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "NO SE PUEDE ASIGNAR EL HORARIO", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("DISPONIBILIDAD_FALSE")) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"LA TIENDA NO TIENE DISPONIBILIDAD EN EL HORARIO SELECCIONADO",
-							"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
-		} else if (mensaje.equalsIgnoreCase("HORA_PASADA_FALSE")) {
-			JOptionPane.showMessageDialog(null, "LA HORA SELECCIONADA YA PASO",
+			JOptionPane.showMessageDialog(null, "LA TIENDA NO TIENE DISPONIBILIDAD EN EL HORARIO SELECCIONADO",
 					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("HORA_PASADA_FALSE")) {
+			JOptionPane.showMessageDialog(null, "LA HORA SELECCIONADA YA PASO", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("INFORMACION_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"POR FAVOR INGRESE LA INFORMACION SOLICITADA", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "POR FAVOR INGRESE LA INFORMACION SOLICITADA", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("REGISTRO_PAREJAS_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"ACTUALMENTE EL USUARIO NO TIENE REGISTRADO PAREJAS",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ACTUALMENTE EL USUARIO NO TIENE REGISTRADO PAREJAS", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELEGIR_USUARIO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"PORFAVOR SELECCIONAR PRIMERO UN USUARIO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "PORFAVOR SELECCIONAR PRIMERO UN USUARIO", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("ELEGIR_TIENDA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"POR FAVOR PRIMERO SELECCIONE UNA TIENDA", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "POR FAVOR PRIMERO SELECCIONE UNA TIENDA", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("NOMBRE_PAREJA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"YA SE HA REGISTRADO UNA PAREJA CON EL MISMO NOMBRE",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "YA SE HA REGISTRADO UNA PAREJA CON EL MISMO NOMBRE", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("PORCENTAJE_CUPO_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL PORCENTAJE INGRESADO DEBE ESTAR ENTRE EL 0% Y EL 100%",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "EL PORCENTAJE INGRESADO DEBE ESTAR ENTRE EL 0% Y EL 100%", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("COMPRA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL VALOR DE LA COMPRA SUPERA EL CUPO DISPONIBLE",
-					"SOLUSOFT", JOptionPane.WARNING_MESSAGE);
-		} else if (mensaje.equalsIgnoreCase("COMPRA_TRUE")) {
-			JOptionPane.showMessageDialog(null,
-					"SU COMPRA HA SIDO TRAMITADA CON EXITO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "EL VALOR DE LA COMPRA SUPERA EL CUPO DISPONIBLE", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("COMPRA_TRUE")) {
-			JOptionPane.showMessageDialog(null,
-					"SU COMPRA HA SIDO TRAMITADA CON EXITO");
+			JOptionPane.showMessageDialog(null, "SU COMPRA HA SIDO TRAMITADA CON EXITO", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("COMPRA_TRUE")) {
+			JOptionPane.showMessageDialog(null, "SU COMPRA HA SIDO TRAMITADA CON EXITO");
 		} else if (mensaje.equalsIgnoreCase("VALOR_COMPRA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"EL MONTO DE COMPRA NO ES VALIDO", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "EL MONTO DE COMPRA NO ES VALIDO", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("SELECCION_TIENDA_FALSE")) {
-			JOptionPane.showMessageDialog(null,
-					"DEBE REGISTRAR UNA TIENDA PARA CONTINUAR", "SOLUSOFT",
+			JOptionPane.showMessageDialog(null, "DEBE REGISTRAR UNA TIENDA PARA CONTINUAR", "SOLUSOFT",
 					JOptionPane.WARNING_MESSAGE);
 		} else if (mensaje.equalsIgnoreCase("CONFIRMACION_CANTIDAD_CUPO")) {
 
 		} else if (mensaje.equalsIgnoreCase("CONFIRMACION_CUPO_PAREJAS")) {
 			JOptionPane.showMessageDialog(null,
-					"El monto asignado a " + nombrePareja + " es " + "\n"
-							+ formatoImporte.format(cantidad_cupo),
+					"El monto asignado a " + nombrePareja + " es " + "\n" + formatoImporte.format(cantidad_cupo),
 					"Información", JOptionPane.INFORMATION_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("TIENDA_BUSCAR_FALSE")) {
+			JOptionPane.showMessageDialog(null, "LA TIENDA NO EXISTE", "SOLUSOFT", JOptionPane.WARNING_MESSAGE);
+		} else if (mensaje.equalsIgnoreCase("ORDENAMIENTO_TIENDAS_FALSE")) {
+			JOptionPane.showMessageDialog(null, "NO SE LOGRO ORDENAR PROBLEMA CON LA BASE DE DATOS", "SOLUSOFT",
+					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
