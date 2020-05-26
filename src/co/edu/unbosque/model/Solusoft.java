@@ -118,7 +118,6 @@ public class Solusoft {
 			Transport t = sesion.getTransport("smtp");
 			t.connect(correoremitente, pasremitente);
 			t.sendMessage(mensajesesion, mensajesesion.getAllRecipients());
-			t.sendMessage(mensajesesion, mensajesesion.getRecipients(Message.RecipientType.TO));
 			t.close();
 
 		} catch (AddressException e) {
