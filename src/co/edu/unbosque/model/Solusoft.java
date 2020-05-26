@@ -72,7 +72,7 @@ public class Solusoft {
 
 		try {
 
-			// rellenamos la variable propieties
+			// creamos y rellenamos la variable propieties
 			Properties prop = new Properties();
 
 			prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -102,7 +102,7 @@ public class Solusoft {
 			// Una MultiParte para agrupar texto e imagen.
 			MimeMultipart multiParte = new MimeMultipart();
 			multiParte.addBodyPart(texto);
-			// multiParte.addBodyPart(adjunto);
+			multiParte.addBodyPart(adjunto);
 
 			// CONSTRUIMOS EL CORREO
 			MimeMessage mensajesesion = new MimeMessage(sesion);
