@@ -1270,10 +1270,21 @@ public class Controller implements ActionListener, MouseListener {
 						numerotarjeta, formatoImporte.format(cupo) };
 				informe.getPanel_informe().getModel1().addRow(datos_filas);
 			}
-			view2.generarGrafico("Grafica por edad de todos los usuarios",
+			view2=new VentanaGraficas();
+			view2.generarGraficoBarras("Grafico genero", "Genero", "Cantidad",
 					estadisticas
-							.generarDatosGraficoEdadUsuarios(lista_usuarios));
+							.generarDatosGraficoGeneroUsuarios(lista_usuarios));
 			view2.setVisible(true);
+			informe.getInforme_usuario_pareja().setVisible(false);
+			informe.setVisible(true);
+			informe.getPanel_informe_usuarios().getScroll1().setVisible(true);
+			informe.getPanel_informe().setVisible(true);
+			informe.getPanel_informe_usuarios().getEtiqueta_usuario()
+					.setVisible(true);
+			informe.getPanel_informe_usuarios().getEtiqueta_tienda()
+					.setVisible(false);
+			informe.getPanel_informe_usuarios().getScroll2().setVisible(false);
+
 		}
 		if (view.getPanel_admin().getPanel_informe().getCombo_estadistica()
 				.getSelectedItem().equals("Todos los usuarios")
@@ -1300,22 +1311,15 @@ public class Controller implements ActionListener, MouseListener {
 			String ruta = view2.fileChooserGuardar().toString();
 			if (!ruta.isEmpty() && !(ruta == null)) {
 				JFreeChart chart = view2
-						.generarGrafico(
-								"Grafica de edades de todos los usuarios",
+						.generarGraficoBarras(
+								"Grafico genero",
+								"Genero",
+								"Cantidad",
 								estadisticas
-										.generarDatosGraficoEdadUsuarios(lista_usuarios));
-				estadisticas.generarPDFEdadesUsuarios(lista_usuarios, chart,
-						ruta, informe.getPanel_informe_usuarios().getTabla1());
+										.generarDatosGraficoGeneroUsuarios(lista_usuarios));
+				estadisticas.generarPDFUsuarios(lista_usuarios, chart, ruta,
+						informe.getPanel_informe_usuarios().getTabla1());
 			}
-			informe.getInforme_usuario_pareja().setVisible(false);
-			informe.setVisible(true);
-			informe.getPanel_informe_usuarios().getScroll1().setVisible(true);
-			informe.getPanel_informe().setVisible(true);
-			informe.getPanel_informe_usuarios().getEtiqueta_usuario()
-					.setVisible(true);
-			informe.getPanel_informe_usuarios().getEtiqueta_tienda()
-					.setVisible(false);
-			informe.getPanel_informe_usuarios().getScroll2().setVisible(false);
 
 		}
 		// PANEL VISTA PREVIA DE LAS informe de edad
@@ -1340,10 +1344,21 @@ public class Controller implements ActionListener, MouseListener {
 						numerotarjeta, formatoImporte.format(cupo) };
 				informe.getPanel_informe().getModel1().addRow(datos_filas);
 			}
-			view2.generarGrafico("Grafica por edad de todos los usuarios",
+			view2= new VentanaGraficas();
+			view2.generarGraficoTorta("Grafica por edad de todos los usuarios",
 					estadisticas
 							.generarDatosGraficoEdadUsuarios(lista_usuarios));
 			view2.setVisible(true);
+			informe.getInforme_usuario_pareja().setVisible(false);
+			informe.setVisible(true);
+			informe.getPanel_informe_usuarios().getScroll1().setVisible(true);
+			informe.getPanel_informe().setVisible(true);
+			informe.getPanel_informe_usuarios().getEtiqueta_usuario()
+					.setVisible(true);
+			informe.getPanel_informe_usuarios().getEtiqueta_tienda()
+					.setVisible(false);
+			informe.getPanel_informe_usuarios().getScroll2().setVisible(false);
+
 		}
 		if (view.getPanel_admin().getPanel_informe().getCombo_estadistica()
 				.getSelectedItem().equals("Edad")
@@ -1370,22 +1385,13 @@ public class Controller implements ActionListener, MouseListener {
 			String ruta = view2.fileChooserGuardar().toString();
 			if (!ruta.isEmpty() && !(ruta == null)) {
 				JFreeChart chart = view2
-						.generarGrafico(
+						.generarGraficoTorta(
 								"Grafica de edades de todos los usuarios",
 								estadisticas
 										.generarDatosGraficoEdadUsuarios(lista_usuarios));
 				estadisticas.generarPDFEdadesUsuarios(lista_usuarios, chart,
 						ruta, informe.getPanel_informe_usuarios().getTabla1());
 			}
-			informe.getInforme_usuario_pareja().setVisible(false);
-			informe.setVisible(true);
-			informe.getPanel_informe_usuarios().getScroll1().setVisible(true);
-			informe.getPanel_informe().setVisible(true);
-			informe.getPanel_informe_usuarios().getEtiqueta_usuario()
-					.setVisible(true);
-			informe.getPanel_informe_usuarios().getEtiqueta_tienda()
-					.setVisible(false);
-			informe.getPanel_informe_usuarios().getScroll2().setVisible(false);
 
 		}
 
@@ -1566,6 +1572,7 @@ public class Controller implements ActionListener, MouseListener {
 								usuario, contraseña, numeroTarjeta,
 								cupoTarjeta, parejas, compras, tipoUsuario,
 								edad, lista_usuarios);
+						lista_usuarios = archivo_Usuario.leerArchivo();
 						solusoft.enviarCorreo(nuevo);
 						view.mostrarMensajes("USUARIO_TRUE");
 						view.getPanel1().limpiarCampos();
@@ -1856,6 +1863,7 @@ public class Controller implements ActionListener, MouseListener {
 				view.getPanel1().getC_contrasena_inicio().setText("");
 			}
 		}
+		lista_usuarios = archivo_Usuario.leerArchivo();
 	}
 
 	public void agregarInfoUsuario(String nombre_ingresado) {

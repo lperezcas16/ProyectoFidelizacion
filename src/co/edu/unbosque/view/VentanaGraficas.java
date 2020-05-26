@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class VentanaGraficas extends JDialog {
@@ -133,9 +135,17 @@ public class VentanaGraficas extends JDialog {
 //
 //}
 
-	public JFreeChart generarGrafico(String titulo,DefaultPieDataset data) {
+	public JFreeChart generarGraficoTorta(String titulo,DefaultPieDataset data) {
 		JFreeChart chart = ChartFactory.createPieChart(titulo, data, true,
 				true, true);
+		ChartPanel panel_Grafico = new ChartPanel(chart);
+		panel_Grafico.setBounds(0, 0, 694, 471);
+		panel_Grafico.setVisible(true);
+		getContentPane().add(panel_Grafico);
+		return chart; 
+	}
+	public JFreeChart generarGraficoBarras(String titulo,String ejeX,String ejeY,DefaultCategoryDataset data) {
+		JFreeChart chart = ChartFactory.createBarChart3D(titulo,ejeX,ejeY, data,PlotOrientation.VERTICAL,true,true,true);
 		ChartPanel panel_Grafico = new ChartPanel(chart);
 		panel_Grafico.setBounds(0, 0, 694, 471);
 		panel_Grafico.setVisible(true);

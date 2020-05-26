@@ -15,12 +15,15 @@ import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Header;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -223,8 +226,26 @@ public class Estadisticas {
 		return data;
 	}
 
-	public void generarPDF(String titulo, String informacion,
-			String mensajeFinal, JFreeChart chart, String salida, JTable jTable) {
+	public DefaultCategoryDataset generarDatosGraficoGeneroUsuarios(
+			ArrayList<Usuario> lista_usuarios) {
+		DefaultCategoryDataset data = new DefaultCategoryDataset();
+		int cantidadMujeres = 0;
+		int cantidadHombres = 0;
+		for (int i = 0; i < lista_usuarios.size(); i++) {
+			if (lista_usuarios.get(i).getGenero().equals("Mujer")) {
+				cantidadMujeres++;
+			} else {
+				cantidadHombres++;
+			}
+		}
+		data.setValue(cantidadMujeres, "MUJERES", "");
+		data.setValue(cantidadHombres, "HOMBRES", "");
+
+		return data;
+	}
+
+	public void generarPDF(String tituloInicio, String titulo_grafico,
+			String informacion, JFreeChart chart, String salida, JTable jTable) {
 		try {
 			String rutaDeAlmacenamiento = salida;
 			ChartRenderingInfo info = new ChartRenderingInfo(
@@ -233,10 +254,9 @@ public class Estadisticas {
 
 			ChartUtilities.saveChartAsJPEG(file, chart, 600, 600, info);
 			Document document = new Document(PageSize.A4, 40, 40, 30, 30);
-			PdfWriter.getInstance(document, new FileOutputStream(salida
-					+ ".pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(
+					rutaDeAlmacenamiento + ".pdf"));
 			PdfPTable table = new PdfPTable(jTable.getColumnCount());
-
 			PdfPCell columnHeader;
 			for (int column = 0; column < jTable.getColumnCount(); column++) {
 				columnHeader = new PdfPCell(new Phrase(
@@ -250,16 +270,22 @@ public class Estadisticas {
 					table.addCell(jTable.getValueAt(row, column).toString());
 				}
 			}
-
 			document.open();
-			document.add(getTitulo(titulo));
+			document.add(getTitulo(tituloInicio));
+			document.add(Chunk.NEWLINE);
+			document.add(Chunk.NEWLINE);
 			document.add(table);
+			document.add(Chunk.NEWLINE);
+			document.add(Chunk.NEWLINE);
 			Image imagen = Image.getInstance(".\\data\\grafico.jpeg");
 			imagen.scaleAbsolute(400, 400);
 			imagen.setAlignment(Element.ALIGN_CENTER);
+			document.add(getTitulo(titulo_grafico));
 			document.add(imagen);
+			document.add(Chunk.NEWLINE);
 			document.add(getInformacion(informacion));
-			document.add(getMensajeFinal(mensajeFinal));
+			document.addAuthor("Solusoft");
+			document.addCreator("Solusoft");
 			document.close();
 		} catch (Exception e) {
 			System.out.println("error" + e);
@@ -271,7 +297,8 @@ public class Estadisticas {
 		Chunk c = new Chunk();
 		p.setAlignment(Element.ALIGN_CENTER);
 		c.append(texto);
-		Font fuente = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+		Font fuente = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD,
+				BaseColor.BLUE);
 		c.setFont(fuente);
 		p.add(c);
 		return p;
@@ -288,27 +315,21 @@ public class Estadisticas {
 		return p;
 	}
 
-	private Paragraph getMensajeFinal(String texto) {
-		Paragraph p = new Paragraph();
-		Chunk c = new Chunk();
-		p.setAlignment(Element.ALIGN_JUSTIFIED);
-		c.append(texto);
-		Font fuente = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.ITALIC);
-		c.setFont(fuente);
-		p.add(c);
-		return p;
-	}
-
 	public void generarPDFEdadesUsuarios(ArrayList<Usuario> lista_usuarios,
-			JFreeChart chart, String fileChooserGuardar,JTable jtable) {
-		String mensajeFinal = "Solusoft";
+			JFreeChart chart, String fileChooserGuardar, JTable jtable) {
 		String informacion = "\n"
 				+ "Las estadisticas de los usuarios que se encuentran registrados son las siguientes: "
 				+ "\n" + "Media: " + calcularMedia(lista_usuarios) + "\n"
 				+ "Moda: " + calcularModa(lista_usuarios) + "\n" + "Mediana: "
 				+ calcularMediana(lista_usuarios);
-		generarPDF("Estadisticas de la edad de los usuarios", informacion,
-				mensajeFinal, chart, fileChooserGuardar, jtable);
+		generarPDF("Estadisticas de la edad de los usuarios", "Estadisticas", informacion,
+				chart, fileChooserGuardar, jtable);
+	}
+
+	public void generarPDFUsuarios(ArrayList<Usuario> lista_usuarios,
+			JFreeChart chart, String fileChooserGuardar, JTable jtable) {
+		generarPDF("Reporte de usuarios", "Grafico de genero", "", chart,
+				fileChooserGuardar, jtable);
 	}
 
 	private int calcularModa(ArrayList<Usuario> lista_usuarios) {
@@ -364,4 +385,5 @@ public class Estadisticas {
 		media = sumaEdades / lista_edad.size();
 		return media;
 	}
+	
 }
