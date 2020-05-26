@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Tiendas;
-import co.edu.unbosque.model.Usuario;
-import jdk.nashorn.internal.runtime.ListAdapter;
 
 public class TiendaDAO {
 	private ArchivoTienda archivo_Tienda;
@@ -234,56 +232,39 @@ public class TiendaDAO {
 		return encontrado;
 	}
 
-	public void ordenarTiendaNombre(ArrayList<Tiendas> tiendas) {
-		quicksort(tiendas, 0, tiendas.size() - 1);
+	
 
-	}
+	public void ordenTiendasAsc(ArrayList<Tiendas> tiendas) {
 
-	public ArrayList<Tiendas> quicksort(ArrayList<Tiendas> tiendas, int izq, int der) {
-
-		if (izq >= der) {
-			return tiendas;
-		} else {
-
-			int i = izq;
-			int j = der;
-
-			if (izq != der) {
-
-				int pivote;
-				String aux;
-				pivote = izq;
-
-				while (izq != der) {
-
-					while (tiendas.get(j).getNombre().compareToIgnoreCase(tiendas.get(pivote).getNombre()) >= 0
-							&& (izq < der)) {
-						der--;
-					}
-					while (tiendas.get(i).getNombre().compareToIgnoreCase(tiendas.get(pivote).getNombre()) < 0
-							&& (izq < der)) {
-						izq++;
-					}
-
-					if (der != izq) {
-						aux = tiendas.get(der).getNombre();
-						tiendas.get(der).setNombre(tiendas.get(izq).getNombre());
-						tiendas.get(izq).setNombre(aux);
-						
-					}
+		Tiendas aux, menor;
+		for (int i = 0; i < tiendas.size(); i++) {
+			menor = tiendas.get(i);
+			int pos = i;
+			// Selecciona el menor
+			for (int j = i + 1; j < tiendas.size(); j++) {
+				if (tiendas.get(j).getNombre().compareToIgnoreCase(menor.getNombre()) < 0) {
+					menor = tiendas.get(j);
+					pos = j;
 				}
-
-				if (izq == der) {
-					quicksort(tiendas, i, i - 1);
-					quicksort(tiendas, izq + 1, der);
-				}
-			} else {
-				return tiendas;
 			}
+			// intercambia
+			aux = tiendas.get(i);
+			tiendas.remove(i);
+			tiendas.add(i, menor);
+			tiendas.remove(pos);
+			tiendas.add(pos, aux);
+			// array.get(pos)=temp;
+			try {
+				archivo_Tienda.getArchivo_Tienda().delete();
+				archivo_Tienda.getArchivo_Tienda().createNewFile();
+				archivo_Tienda.escribirEnArchivo(tiendas);
+				
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				
+			}
+			
 		}
-
-		return tiendas;
-
 	}
 
 }

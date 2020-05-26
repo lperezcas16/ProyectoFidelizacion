@@ -984,7 +984,7 @@ public class Controller implements ActionListener, MouseListener {
 		// Boton ordenar por nombre del Panel Tiendas del Administrador
 		if (view.getPanel_admin().getPanel_tiendas().getBoton_ordenar() == event.getSource()) {
 
-			tiendaDAO.ordenarTiendaNombre(lista_tiendas);
+			tiendaDAO.ordenTiendasAsc(lista_tiendas);
 			view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
 			for (int i = 0; i < lista_tiendas.size(); i++) {
 
