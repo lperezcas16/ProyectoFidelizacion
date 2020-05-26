@@ -14,12 +14,8 @@ public class PanelUsuarioInicio extends JPanel {
 	private PanelAdmCuentas pnl_adm_cuentas = new PanelAdmCuentas("/co/edu/unbosque/imagenes/fondo usuario 1.png");
 	private PanelAsignarHorario pnl_asignar_horarios = new PanelAsignarHorario(
 			"/co/edu/unbosque/imagenes/fondo_horario.png");
-	private PanelVerHorarios pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
 	private PanelInfoSolusoft pnl_info_solusoft = new PanelInfoSolusoft(
 			"/co/edu/unbosque/imagenes/fondo_info_solusoft.png");
-
-	// https://www.discoduroderoer.es/como-crear-pestanas-con-la-clase-jtabbedpane-en-java/
-	// https://www.adictosaltrabajo.com/2008/12/01/javamail/
 
 	public PanelUsuarioInicio() {
 
@@ -33,7 +29,6 @@ public class PanelUsuarioInicio extends JPanel {
 		pestañas = new JTabbedPane();
 		pestañas.addTab("Administrar Cuenta", pnl_adm_cuentas);
 		pestañas.addTab("Asignar Horarios", pnl_asignar_horarios);
-//		pestañas.addTab("Ver Horarios", pnl_ver_horarios);
 		pestañas.addTab("Info. Solusoft", pnl_info_solusoft);
 		add(pestañas);
 		Color colorNaranja = new Color(255, 145, 77);
@@ -41,7 +36,6 @@ public class PanelUsuarioInicio extends JPanel {
 
 		pnl_adm_cuentas.setBounds(0, 0, 790, 590);
 		pnl_asignar_horarios.setBounds(0, 0, 790, 590);
-		pnl_ver_horarios.setBounds(0, 0, 790, 590);
 
 		pnl_adm_cuentas.getBoton_ojo_oculto().setIcon(pnl_adm_cuentas.getIcono_ojo_oculto());
 		pnl_adm_cuentas.getBoton_agregar_pareja().setIcon(pnl_adm_cuentas.getIcono_boton_agregar());
@@ -71,14 +65,6 @@ public class PanelUsuarioInicio extends JPanel {
 
 	public void setPnl_asignar_horarios(PanelAsignarHorario pnl_asignar_horarios) {
 		this.pnl_asignar_horarios = pnl_asignar_horarios;
-	}
-
-	public PanelVerHorarios getPnl_ver_horarios() {
-		return pnl_ver_horarios;
-	}
-
-	public void setPnl_ver_horarios(PanelVerHorarios pnl_ver_horarios) {
-		this.pnl_ver_horarios = pnl_ver_horarios;
 	}
 
 	public void setPestañas(JTabbedPane pestañas) {

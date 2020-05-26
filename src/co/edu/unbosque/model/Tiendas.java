@@ -7,7 +7,6 @@ import java.io.Serializable;
  */
 public class Tiendas implements Serializable {
 
-	
 	/**
 	 * 
 	 */
@@ -17,8 +16,7 @@ public class Tiendas implements Serializable {
 	private String horario_apertura;
 	private String horario_cierre;
 
-	public Tiendas(String nombre, String direccion, String horario_apertura,
-			String horario_cierre) {
+	public Tiendas(String nombre, String direccion, String horario_apertura, String horario_cierre) {
 
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -61,11 +59,8 @@ public class Tiendas implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Nombre= " + nombre + " Direccion= " + direccion
-				+ " Horario  de apertura= " + horario_apertura
-				+ " Horario de cierre= " + horario_cierre ;
+		return "Nombre= " + nombre + " Direccion= " + direccion + " Horario  de apertura= " + horario_apertura
+				+ " Horario de cierre= " + horario_cierre;
 	}
-
-
 
 }

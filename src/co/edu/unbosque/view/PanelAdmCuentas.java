@@ -374,6 +374,8 @@ public class PanelAdmCuentas extends JPanel {
 	public void setPnl_compras(PanelCompras pnl_compras) {
 		this.pnl_compras = pnl_compras;
 	}
+	
+	
 
 	public void visibilidadComponentes(boolean b) {
 		label_cupo.setVisible(b);
