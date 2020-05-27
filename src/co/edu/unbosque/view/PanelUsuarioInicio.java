@@ -67,7 +67,8 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo devuelve el valor del JTabbedPane. <b>post</b>Se fija un nuevo
 	 * valor al atributo.<br>
 	 * 
-	 *@return pestañas Este parametro representa el valor del JTabbedPane. si no hay retorna null
+	 * @return pestañas Este parametro representa el valor del JTabbedPane. si no
+	 *         hay retorna null
 	 */
 	public JTabbedPane getPestañas() {
 		return pestañas;
@@ -78,7 +79,7 @@ public class PanelUsuarioInicio extends JPanel {
 	 * nuevo valor al atributo.<br>
 	 * 
 	 * @return pnl_adm_cuentas Este parametro representa el valor del
-	 *                        PanelAdmCuentas. si no hay retorna null
+	 *         PanelAdmCuentas. si no hay retorna null
 	 */
 	public PanelAdmCuentas getPnl_adm_cuentas() {
 		return pnl_adm_cuentas;
@@ -88,7 +89,7 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo establece el valor del PanelAdmCuentas <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 *@param pnl_adm_cuentas Este parametro representa el nuevo valor que va a
+	 * @param pnl_adm_cuentas Este parametro representa el nuevo valor que va a
 	 *                        tener el PanelAdmCuentas.!=" "
 	 */
 	public void setPnl_adm_cuentas(PanelAdmCuentas pnl_adm_cuentas) {
@@ -99,8 +100,8 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo devuelve el valor del PanelAsignarHorario. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 *@return pnl_asignar_horarios Este parametro representa el valor del
-	 *                             PanelAsignarHorario. si no hay retorna null
+	 * @return pnl_asignar_horarios Este parametro representa el valor del
+	 *         PanelAsignarHorario. si no hay retorna null
 	 */
 	public PanelAsignarHorario getPnl_asignar_horarios() {
 		return pnl_asignar_horarios;
@@ -132,8 +133,8 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo devuelve el valor del PanelInfoSolusoft. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 *@return pnl_info_solusoft Este parametro representa el valor del
-	 *                          PanelInfoSolusoft si no hay retorna null
+	 * @return pnl_info_solusoft Este parametro representa el valor del
+	 *         PanelInfoSolusoft si no hay retorna null
 	 */
 	public PanelInfoSolusoft getPnl_info_solusoft() {
 		return pnl_info_solusoft;
@@ -154,8 +155,8 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo devuelve el valor del PanelVerHorarios. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 *@return getPnl_ver_horarios Este parametro representa el valor del
-	 *                            PanelVerHorarios. si no hay retorna null
+	 * @return getPnl_ver_horarios Este parametro representa el valor del
+	 *         PanelVerHorarios. si no hay retorna null
 	 */
 	public PanelVerHorarios getPnl_ver_horarios() {
 		return pnl_ver_horarios;
@@ -165,8 +166,8 @@ public class PanelUsuarioInicio extends JPanel {
 	 * Este metodo establece el valor del PanelVerHorarios <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param pnl_info_solusoft Este parametro representa el nuevo valor que va a
-	 *                          tener el PanelVerHorarios.!= ""
+	 * @param pnl_ver_horarios Este parametro representa el nuevo valor que va a
+	 *                         tener el PanelVerHorarios.!= ""
 	 */
 	public void setPnl_ver_horarios(PanelVerHorarios pnl_ver_horarios) {
 		this.pnl_ver_horarios = pnl_ver_horarios;
