@@ -245,12 +245,13 @@ public class PanelVerInfoPareja extends JPanel {
 	public JScrollPane getScroll() {
 		return scroll;
 	}
+
 	/**
 	 * Este metodo establece el valor del scroll <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param scroll Este parametro representa el nuevo valor
-	 *                 que va a tener el scroll.!= ""
+	 * @param scroll Este parametro representa el nuevo valor que va a tener el
+	 *               scroll.!= ""
 	 */
 	public void setScroll(JScrollPane scroll) {
 		this.scroll = scroll;
