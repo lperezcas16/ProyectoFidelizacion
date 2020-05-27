@@ -36,6 +36,15 @@ public class PanelTiendas extends JPanel {
 	private DefaultTableModel model;
 	private JTable tabla;
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos asi como el método de crear tabla . De esta manera el objecto es creado
+	 *  con un valor inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se hace visible el panel cuando es llamado por la ventana.<br>
+	
+	 * @param nombre se permite agregar un String al panel cuando es inicializado en ventana
+	 * y esto sirve para agregar la imagen de fondo desde la carptea imagenes  != "".
+	 */
 	public PanelTiendas(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
@@ -44,7 +53,16 @@ public class PanelTiendas extends JPanel {
 		setVisible(false);
 
 	}
-
+	/**
+	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
+	 * atributos y objectos que asignan el fondo al panel 
+	 * . De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
@@ -53,7 +71,13 @@ public class PanelTiendas extends JPanel {
 		super.paint(g);
 
 	}
-
+	/**
+	 * Este es el metodo inicializarComponente el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto del panel  que lo contiene .
+	 * <b>post</b>se hacen visibles los componentes del panel.<br>
+	 */
 	public void inicializarComponentes() {
 		combo_tiendas = new JComboBox<String>();
 		combo_tiendas.addItem("Selecciona");
@@ -87,12 +111,6 @@ public class PanelTiendas extends JPanel {
 		boton_eliminar.setFont(new Font("Accidental Presidency", Font.BOLD, 16));
 		boton_eliminar.setBounds(570, 200, 200, 25);
 		add(boton_eliminar);
-
-		// boton_buscar = new JButton("Buscar");
-		// boton_buscar.setBounds(670,200,90,25);
-		// boton_buscar.setFont(new Font("Accidental Presidency", Font.BOLD,
-		// 16));
-		// add(boton_buscar);
 
 		spinner = new JSpinner();
 		spinner.setModel(new SpinnerDateModel());
@@ -130,7 +148,13 @@ public class PanelTiendas extends JPanel {
 		add(boton_agregar_tienda);
 
 	}
-
+	/**
+	 * Este es el metodo crearTable el cual se inicianilizan las tablas 
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto del panel   que lo contiene .
+	 *  <b>post</b>Se crea a tabla en el panel<br>
+	 */
 	public void crearTabla() {
 
 		tabla = new JTable();
@@ -156,168 +180,386 @@ public class PanelTiendas extends JPanel {
 		add(scroll1);
 	}
 
+	/**
+	 * Este metodo devuelve el valor del JComboBox<String>. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param combo_tiendas Este parametro representa el  valor del JComboBox<String>.!= ""
+	 */
 	public JComboBox<String> getCombo_tiendas() {
 		return combo_tiendas;
 	}
-
+	/**
+	 * Este metodo establece el valor del JComboBox<String> <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param combo_tiendas Este parametro representa el nuevo valor
+	 *                 que va a tener el JComboBox<String>.!= ""
+	 */
 	public void setCombo_tiendas(JComboBox<String> combo_tiendas) {
 		this.combo_tiendas = combo_tiendas;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_buscar Este parametro representa el  valor del JTextField.!= ""
+	 */
 	public JTextField getCampo_buscar() {
 		return campo_buscar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_buscar Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField.!= ""
+	 */
 	public void setCampo_buscar(JTextField campo_buscar) {
 		this.campo_buscar = campo_buscar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_nombre Este parametro representa el  valor del JTextField.!= ""
+	 */
 	public JTextField getCampo_nombre() {
 		return campo_nombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_nombre Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField.!= ""
+	 */
 	public void setCampo_nombre(JTextField campo_nombre) {
 		this.campo_nombre = campo_nombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_direccion Este parametro representa el  valor del JTextField.!= ""
+	 */
 	public JTextField getCampo_direccion() {
 		return campo_direccion;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param campo_direccioncampo_direccion Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField.!= ""
+	 */
 	public void setCampo_direccion(JTextField campo_direccion) {
 		this.campo_direccion = campo_direccion;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar_pornombre Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getboton_buscar_pornombre() {
 		return boton_buscar_pornombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar_pornombre Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setboton_buscar_pornombre(JButton boton_buscar_pornombre) {
 		this.boton_buscar_pornombre = boton_buscar_pornombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_eliminar Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_eliminar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setBoton_eliminar(JButton boton_eliminar) {
 		this.boton_eliminar = boton_eliminar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner Este parametro representa el  valor del JSpinner.!= ""
+	 */
 	public JSpinner getSpinner() {
 		return spinner;
 	}
-
+	/**
+	 * Este metodo establece el valor del JSpinner <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner Este parametro representa el nuevo valor
+	 *                 que va a tener el JSpinner.!= ""
+	 */
 	public void setSpinner(JSpinner spinner) {
 		this.spinner = spinner;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner_apertura Este parametro representa el  valor del JSpinner.!= ""
+	 */
 	public JSpinner getSpinner_apertura() {
 		return spinner_apertura;
 	}
-
+	/**
+	 * Este metodo establece el valor del JSpinner <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner_apertura Este parametro representa el nuevo valor
+	 *                 que va a tener el JSpinner.!= ""
+	 */
 	public void setSpinner_apertura(JSpinner spinner_apertura) {
 		this.spinner_apertura = spinner_apertura;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner_cierre Este parametro representa el  valor del JSpinner.!= ""
+	 */
 	public JSpinner getSpinner_cierre() {
 		return spinner_cierre;
 	}
-
+	/**
+	 * Este metodo establece el valor del JSpinner <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner_cierre Este parametro representa el nuevo valor
+	 *                 que va a tener el JSpinner.!= ""
+	 */
 	public void setSpinner_cierre(JSpinner spinner_cierre) {
 		this.spinner_cierre = spinner_cierre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_agregar_tienda Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getBoton_agregar_tienda() {
 		return boton_agregar_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_agregar_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setBoton_agregar_tienda(JButton boton_agregar_tienda) {
 		this.boton_agregar_tienda = boton_agregar_tienda;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model Este parametro representa el  valor del DefaultTableModel.!= ""
+	 */
 	public DefaultTableModel getModel() {
 		return model;
 	}
-
+	/**
+	 * Este metodo establece el valor del DefaultTableModel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model Este parametro representa el nuevo valor
+	 *                 que va a tener el DefaultTableModel.!= ""
+	 */
 	public void setModel(DefaultTableModel model) {
 		this.model = model;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getBoton_buscar() {
 		return boton_buscar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setBoton_buscar(JButton boton_buscar) {
 		this.boton_buscar = boton_buscar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ver_tiendas Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getBoton_ver_tiendas() {
 		return boton_ver_tiendas;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ver_tiendas Este parametro representa el nuevo JButton
+	 *                 que va a tener el String.!= ""
+	 */
 	public void setBoton_ver_tiendas(JButton boton_ver_tiendas) {
 		this.boton_ver_tiendas = boton_ver_tiendas;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTable. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla Este parametro representa el  valor del JTable.!= ""
+	 */
 	public JTable getTabla() {
 		return tabla;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTable <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla Este parametro representa el nuevo valor
+	 *                 que va a tener el JTable.!= ""
+	 */
 	public void setTabla(JTable tabla) {
 		this.tabla = tabla;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar_pornombre Este parametro representa el  valor del JButton.!= ""
+	 */
 	public JButton getBoton_buscar_pornombre() {
 		return boton_buscar_pornombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_buscar_pornombre Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setBoton_buscar_pornombre(JButton boton_buscar_pornombre) {
 		this.boton_buscar_pornombre = boton_buscar_pornombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el  valor del ImageIcon.!= ""
+	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon.!= ""
+	 */
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el  valor del String.!= ""
+	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del String <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor
+	 *                 que va a tener el String.!= ""
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ordenar Este parametro representa el  valor del JButton.!= ""
+	 * */
 	public JButton getBoton_ordenar() {
 		return boton_ordenar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ordenar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton.!= ""
+	 */
 	public void setBoton_ordenar(JButton boton_ordenar) {
 		this.boton_ordenar = boton_ordenar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JScrollPane. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll1 Este parametro representa el  valor del JScrollPane.!= ""
+	 */
 	public JScrollPane getScroll1() {
 		return scroll1;
 	}
-
+	/**
+	 * Este metodo establece el valor del JScrollPane <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll1 Este parametro representa el nuevo valor
+	 *                 que va a tener el JScrollPane.!= ""
+	 */
 	public void setScroll1(JScrollPane scroll1) {
 		this.scroll1 = scroll1;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del String[]. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param cabecera Este parametro representa el  valor del String[].!= ""
+	 */
 	public String[] getCabecera() {
 		return cabecera;
 	}
-
+	/**
+	 * Este metodo establece el valor del String[] <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param cabecera Este parametro representa el nuevo valor
+	 *                 que va a tener el String[].!= ""
+	 */
 	public void setCabecera(String[] cabecera) {
 		this.cabecera = cabecera;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 }

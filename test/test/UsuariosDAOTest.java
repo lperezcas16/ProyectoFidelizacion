@@ -5,12 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import junit.framework.TestCase;
 import co.edu.unbosque.model.Compra;
 import co.edu.unbosque.model.Parejas;
 import co.edu.unbosque.model.Usuario;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
-import junit.framework.TestCase;
 
 public class UsuariosDAOTest extends TestCase {
 
@@ -35,10 +35,12 @@ public class UsuariosDAOTest extends TestCase {
 		usuarios = new UsuarioDAO(archivo_usuarios);
 		lista_parejas = new ArrayList<Parejas>();
 		lista_compras = new ArrayList<Compra>();
-		usuario1 = new Usuario("Juan", "Hombre", "correo", "juan", "12345678", "1253745328735672385632", 19, 0,
-				lista_parejas, "Usuario", lista_compras);
-		usuario2 = new Usuario("Pitufo", "Hombre", "correo", "papaPitufo", "agseyrvgrf", "125374534386585632", 25, 0,
-				lista_parejas, "Usuario", lista_compras);
+		usuario1 = new Usuario("Juan", "Hombre", "correo", "juan", "12345678",
+				"1253745328735672385632", 19, 0, lista_parejas, "Usuario",
+				lista_compras);
+		usuario2 = new Usuario("Pitufo", "Hombre", "correo", "papaPitufo",
+				"agseyrvgrf", "125374534386585632", 25, 0, lista_parejas,
+				"Usuario", lista_compras);
 		lista_usuarios.add(usuario1);
 		lista_usuarios.add(usuario2);
 		archivo_usuarios.escribirEnArchivo(lista_usuarios);
@@ -47,15 +49,18 @@ public class UsuariosDAOTest extends TestCase {
 	public void testUsuarioDAO() throws FileNotFoundException {
 		setupEscenario();
 
-		assertEquals("La cantidad de usuarios debe ser 2", 2, lista_usuarios.size());
+		assertEquals("La cantidad de usuarios debe ser 2", 2,
+				lista_usuarios.size());
 	}
 
 	public void testAgregarUsuario() throws FileNotFoundException {
 		setupEscenario();
-		usuarios.agregarUsuario("Ana", "Mujer", "correo", "ana", "098765432", "12356247581745392107", 0, lista_parejas,
-				lista_compras, "Usuario", 22, lista_usuarios);
+		usuarios.agregarUsuario("Ana", "Mujer", "correo", "ana", "098765432",
+				"12356247581745392107", 0, lista_parejas, lista_compras,
+				"Usuario", 22, lista_usuarios);
 
-		assertEquals("La cantidad de usuarios debe ser 3", 3, lista_usuarios.size());
+		assertEquals("La cantidad de usuarios debe ser 3", 3,
+				lista_usuarios.size());
 
 	}
 
@@ -63,13 +68,16 @@ public class UsuariosDAOTest extends TestCase {
 
 		setupEscenario();
 
-		assertEquals("Juan", usuarios.buscarUsuario(usuario1.getUsuario(), lista_usuarios).getNombre());
+		assertEquals("Juan",
+				usuarios.buscarUsuario(usuario1.getUsuario(), lista_usuarios)
+						.getNombre());
 	}
 
 	public void testEliminarUsuario() throws FileNotFoundException {
 		setupEscenario();
 		usuarios.eliminarUsuario(usuario1.getUsuario(), lista_usuarios);
-		assertEquals("La cantidad de jugadores debe ser 1", 1, lista_usuarios.size());
+		assertEquals("La cantidad de jugadores debe ser 1", 1,
+				lista_usuarios.size());
 	}
 
 	public void testExistenciaArchivo() throws FileNotFoundException {
@@ -81,8 +89,9 @@ public class UsuariosDAOTest extends TestCase {
 		setupEscenario();
 		file.delete();
 		file.createNewFile();
-		usuarios.agregarUsuario("Ana", "Mujer", "correo", "ana", "098765432", "12356247581745392107", 0, lista_parejas,
-				lista_compras, "Usuario", 22, lista_usuarios);
+		usuarios.agregarUsuario("Ana", "Mujer", "correo", "ana", "098765432",
+				"12356247581745392107", 0, lista_parejas, lista_compras,
+				"Usuario", 22, lista_usuarios);
 		boolean vacio = true;
 		if (file.length() != 0) {
 			vacio = false;

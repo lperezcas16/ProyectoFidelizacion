@@ -19,14 +19,31 @@ public class PanelCompras extends JPanel {
 	private Icon icono_boton_historial, icono_boton_ingresar_compra, icono_boton_regresar;
 	private PanelIngresarCompra pnl_ingresar_compra;
 	private PanelVerHistorial pnl_ver_historial;
-
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public PanelCompras(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
 		inicializarComponentes();
 		setVisible(false);
 	}
-
+	/**
+	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
+	 * atributos y objectos que asignan el fondo al panel 
+	 * . De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
@@ -35,7 +52,13 @@ public class PanelCompras extends JPanel {
 		super.paint(g);
 
 	}
-
+	/**
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * <b>post</b>se hacen visibles los componentes del panel.<br>
+	 */
 	public void inicializarComponentes() {
 		boton_historial = new JButton();
 		boton_historial.setBounds(80, 100, 300, 30);
@@ -74,115 +97,273 @@ public class PanelCompras extends JPanel {
 		add(pnl_ver_historial);
 
 	}
-
+	/**
+	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el  valor del String. != "".
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Este metodo establece el valor del String <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor
+	 *                 que va a tener el String != "".
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el  valor del ImageIcon. != "".
+	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}
 
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del ImageIcon. != "".
+	 */
 	public ImageIcon getImagen_boton_historial() {
 		return imagen_boton_historial;
 	}
 
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_historial Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_historial(ImageIcon imagen_boton_historial) {
 		this.imagen_boton_historial = imagen_boton_historial;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del ImageIcon. != "".
+	 */
 	public ImageIcon getImagen_boton_ingresar_compra() {
 		return imagen_boton_ingresar_compra;
 	}
 
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_ingresar_compra(ImageIcon imagen_boton_ingresar_compra) {
 		this.imagen_boton_ingresar_compra = imagen_boton_ingresar_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public JButton getBoton_historial() {
 		return boton_historial;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setBoton_historial(JButton boton_historial) {
 		this.boton_historial = boton_historial;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public JButton getBoton_ingresar_compra() {
 		return boton_ingresar_compra;
 	}
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 
 	public void setBoton_ingresar_compra(JButton boton_ingresar_compra) {
 		this.boton_ingresar_compra = boton_ingresar_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public Icon getIcono_boton_historial() {
 		return icono_boton_historial;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setIcono_boton_historial(Icon icono_boton_historial) {
 		this.icono_boton_historial = icono_boton_historial;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public Icon getIcono_boton_ingresar_compra() {
 		return icono_boton_ingresar_compra;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setIcono_boton_ingresar_compra(Icon icono_boton_ingresar_compra) {
 		this.icono_boton_ingresar_compra = icono_boton_ingresar_compra;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public ImageIcon getImagen_boton_regresar() {
 		return imagen_boton_regresar;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setImagen_boton_regresar(ImageIcon imagen_boton_regresar) {
 		this.imagen_boton_regresar = imagen_boton_regresar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public JButton getBoton_regresar() {
 		return boton_regresar;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setBoton_regresar(JButton boton_regresar) {
 		this.boton_regresar = boton_regresar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public Icon getIcono_boton_regresar() {
 		return icono_boton_regresar;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setIcono_boton_regresar(Icon icono_boton_regresar) {
 		this.icono_boton_regresar = icono_boton_regresar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public PanelIngresarCompra getPnl_ingresar_compra() {
 		return pnl_ingresar_compra;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setPnl_ingresar_compra(PanelIngresarCompra pnl_ingresar_compra) {
 		this.pnl_ingresar_compra = pnl_ingresar_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 */
 	public PanelVerHistorial getPnl_ver_historial() {
 		return pnl_ver_historial;
 	}
 
+	/**
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor
+	 *                 que va a tener el JTextField != "".
+	 */
 	public void setPnl_ver_historial(PanelVerHistorial pnl_ver_historial) {
 		this.pnl_ver_historial = pnl_ver_historial;
 	}
-
+	/**
+	 * Este es el metodo visibilidadComponentes el cual permite que 
+	 * los campos sean visibles cuaando el método es llamado
+	 * objeto.<b>post</b> quedan vacios los campos del panel .<br>
+	 * @param b booleano que resive si son visibles o no los componentes seleccinados 
+	 */
 	public void visibilidadComponentes(boolean b) {
 		boton_historial.setVisible(b);
 		boton_ingresar_compra.setVisible(b);

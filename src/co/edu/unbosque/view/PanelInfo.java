@@ -9,20 +9,41 @@ import javax.swing.*;
 
 public class PanelInfo extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private ImageIcon imagen;
 
 	private JLabel label_nombre, label_genero, label_correo,label_usuario, label_tipo;
 	private JButton boton_cerrar;
 	
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
 	
+	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public PanelInfo(String nombre) {
 		this.nombre=nombre;
 		setLayout(null);
 		inicializarComponentes();
 		setVisible(false);
 	}
+	/**
+	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
+	 * atributos y objectos que asignan el fondo al panel 
+	 * . De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
 	
+	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
@@ -31,7 +52,13 @@ public class PanelInfo extends JPanel {
 		super.paint(g);
 
 	}
-	
+	/**
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * <b>post</b>se hacen visibles los componentes del panel.<br>
+	 */
 	public void inicializarComponentes() {
 		
 		Color color_azul = new Color(36,67,87);
@@ -77,11 +104,22 @@ public class PanelInfo extends JPanel {
 		boton_cerrar.setFont(new Font("Accidental Presidency", Font.BOLD, 25));
 		add(boton_cerrar);
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cerrar Este parametro representa el  valor del JButton. != "".
+	 */
 	public JButton getBoton_cerrar() {
 		return boton_cerrar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cerrar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_cerrar(JButton boton_cerrar) {
 		this.boton_cerrar = boton_cerrar;
 	}

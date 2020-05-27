@@ -37,7 +37,15 @@ public class PanelInformeUsuario extends JPanel {
 	private JButton boton_imprimir, boton_cancelar;
 	private ImageIcon imagen_imprimir;
 	private Icon icono_imprimir;
-
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public PanelInformeUsuario(String nombre) {
 
 		this.nombre = nombre;
@@ -47,7 +55,16 @@ public class PanelInformeUsuario extends JPanel {
 		setVisible(false);
 		setBounds(0, 0, 900, 650);
 	}
-
+	/**
+	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
+	 * atributos y objectos que asignan el fondo al panel 
+	 * . De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
@@ -56,7 +73,13 @@ public class PanelInformeUsuario extends JPanel {
 		super.paint(g);
 
 	}
-
+	/**
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * <b>post</b>se hacen visibles los componentes del panel.<br>
+	 */
 	public void inicializarComponentes() {
 
 		etiqueta_usuario = new JLabel("Usuarios");
@@ -88,16 +111,14 @@ public class PanelInformeUsuario extends JPanel {
 		boton_imprimir.setIcon(icono_imprimir);
 		add(boton_imprimir);
 
-		// etiqueta_parejas = new JLabel("Parejas");
-		// etiqueta_parejas.setBackground(Color.green);
-		// etiqueta_parejas.setBounds(36, 280, 130, 100);
-		// etiqueta_parejas.setFont(new Font("Accidental Presidency", Font.BOLD,
-		// 16));
-		// add(etiqueta_parejas);
-		//
-
 	}
-
+	/**
+	 * Este es el metodo crearTablas el cual se inicianilizan las tablas 
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto del panel   que lo contiene .
+	 * 
+	 */
 	public void crearTablas() {
 		tabla1 = new JTable();
 		model1 = new DefaultTableModel(cabecera1, 0);
@@ -146,83 +167,193 @@ public class PanelInformeUsuario extends JPanel {
 		add(scroll1);
 
 	}
-
+	/**
+	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model1 Este parametro representa el  valor del DefaultTableModel. != "".
+	 */
 	public DefaultTableModel getModel1() {
 		return model1;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JScrollPane. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll1 Este parametro representa el  valor del JScrollPane. != "".
+	 */
 	public JScrollPane getScroll1() {
 		return scroll1;
 	}
-
+	/**
+	 * Este metodo establece el valor del JScrollPane <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll1 Este parametro representa el nuevo valor
+	 *                 que va a tener el JScrollPane != "".
+	 */
 	public void setScroll1(JScrollPane scroll1) {
 		this.scroll1 = scroll1;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JScrollPane. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll2 Este parametro representa el  valor del JScrollPane. != "".
+	 */
 	public JScrollPane getScroll2() {
 		return scroll2;
 	}
-
+	/**
+	 * Este metodo establece el valor del JScrollPane <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param scroll2 Este parametro representa el nuevo valor
+	 *                 que va a tener el JScrollPane != "".
+	 */
 	public void setScroll2(JScrollPane scroll2) {
 		this.scroll2 = scroll2;
 	}
-
+	/**
+	 * Este metodo establece el valor del DefaultTableModel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model2 Este parametro representa el nuevo valor
+	 *                 que va a tener el DefaultTableModel != "".
+	 */
 	public void setModel1(DefaultTableModel model1) {
 		this.model1 = model1;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model2 Este parametro representa el  valor del DefaultTableModel. != "".
+	 */
 	public DefaultTableModel getModel2() {
 		return model2;
 	}
-
+	/**
+	 * Este metodo establece el valor del DefaultTableModel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param model2 Este parametro representa el nuevo valor
+	 *                 que va a tener el DefaultTableModel != "".
+	 */
 	public void setModel2(DefaultTableModel model2) {
 		this.model2 = model2;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTable. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla1 Este parametro representa el  valor del JTable. != "".
+	 */
 	public JTable getTabla1() {
 		return tabla1;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTable <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla1 Este parametro representa el nuevo valor
+	 *                 que va a tener el JTable != "".
+	 */
 	public void setTabla1(JTable tabla1) {
 		this.tabla1 = tabla1;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JTable. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla2 Este parametro representa el  valor del JTable. != "".
+	 */
 	public JTable getTabla2() {
 		return tabla2;
 	}
-
+	/**
+	 * Este metodo establece el valor del JTable <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param tabla2 Este parametro representa el nuevo valor
+	 *                 que va a tener el JTable != "".
+	 */
 	public void setTabla2(JTable tabla2) {
 		this.tabla2 = tabla2;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JLabel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param etiqueta_tienda Este parametro representa el  valor del JLabel. != "".
+	 */
 	public JLabel getEtiqueta_tienda() {
 		return etiqueta_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param etiqueta_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el JLabel != "".
+	 */
 	public void setEtiqueta_tienda(JLabel etiqueta_tienda) {
 		this.etiqueta_tienda = etiqueta_tienda;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_imprimir Este parametro representa el  valor del JButton. != "".
+	 */
 	public JButton getBoton_imprimir() {
 		return boton_imprimir;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_imprimir Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_imprimir(JButton boton_imprimir) {
 		this.boton_imprimir = boton_imprimir;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cancelar Este parametro representa el  valor del JButton. != "".
+	 */
 	public JButton getBoton_cancelar() {
 		return boton_cancelar;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cancelar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_cancelar(JButton boton_cancelar) {
 		this.boton_cancelar = boton_cancelar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JLabel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param etiqueta_usuario Este parametro representa el  valor del JLabel. != "".
+	 */
 	public JLabel getEtiqueta_usuario() {
 		return etiqueta_usuario;
 	}
-
+	/**
+	 * Este metodo establece el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param etiqueta_usuario Este parametro representa el nuevo valor
+	 *                 que va a tener el JLabel != "".
+	 */
 	public void setEtiqueta_usuario(JLabel etiqueta_usuario) {
 		this.etiqueta_usuario = etiqueta_usuario;
 	}

@@ -19,6 +19,14 @@ public class PanelAdminInicio extends JPanel {
 	private PanelUsuarios panel_usuarios = new PanelUsuarios("/co/edu/unbosque/imagenes/fondo_usuario.png");
 	private PanelTiendas panel_tiendas = new PanelTiendas("/co/edu/unbosque/imagenes/fondo_tiendas.png");
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de
+	 * los atributos, forma de organización del JPanel , inicializacion de los componentes
+	 *  y objectos. así como la visibilidad De esta manera el objecto es creado con un
+	 * valorinicial. Este método se llama automaticamente cuando se crea el
+	 * objeto.<b>post</b> Se debe generar el panel  propuesta, creación de los
+	 * arraylist y los action listeners.<br>
+	 */
 	public PanelAdminInicio() {
 
 		setLayout(new BorderLayout());

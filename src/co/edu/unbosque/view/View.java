@@ -18,6 +18,14 @@ public class View extends JFrame {
 	private String nombrePareja;
 	private int cantidad_cupo;
 
+	
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de
+	 * los atributos, objetos y forma de organización del JFrame.
+	 *  De esta manera el objecto es creado con un
+	 * valor inicial. Este método se llama automaticamente cuando se crea el
+	 * objeto.<b>post</b> se genera la ventana con el panel seleccionado .<br>
+	 */
 	public View() {
 
 		setLayout(null);
@@ -34,6 +42,15 @@ public class View extends JFrame {
 
 	}
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	 * 
+	 * @param mensaje Es el mensaje que se recibe del controlador y con este se muestra el JOption deseado != "".
+	 * */
 	public void mostrarMensajes(String mensaje) {
 
 		NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
@@ -169,54 +186,113 @@ public class View extends JFrame {
 		}
 	}
 
+	/**
+	 * Este metodo devuelve el valor del Panel1. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 */
 	public Panel1 getPanel1() {
 		return panel1;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel1. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 */
 	public void setPanel1(Panel1 panel1) {
 		this.panel1 = panel1;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel_us_inicio Este parametro representa el nuevo valor del panel.
+	 */
 	public PanelUsuarioInicio getPanel_us_inicio() {
 		return panel_us_inicio;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel_us_inicio Este parametro representa el nuevo valor del panel.
+	 */
 	public void setPanel_us_inicio(PanelUsuarioInicio panel_us_inicio) {
 		this.panel_us_inicio = panel_us_inicio;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel_admin Este parametro representa el nuevo valor del panel.
+	 */
 	public PanelAdminInicio getPanel_admin() {
 		return panel_admin;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param panel_admin Este parametro representa el nuevo valor del panel.
+	 */
 	public void setPanel_admin(PanelAdminInicio panel_admin) {
 		this.panel_admin = panel_admin;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	
+	/**
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param informe Este parametro representa el nuevo valor del panel.
+	 */
 	public Informe getInforme() {
 		return informe;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param informe Este parametro representa el nuevo valor del panel.
+	 */
 	public void setInforme(Informe informe) {
 		this.informe = informe;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombrePareja Este parametro representa el nuevo valor del panel.
+	 */
 	public String getNombrePareja() {
 		return nombrePareja;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombrePareja Este parametro representa el nuevo valor del panel.
+	 */
 	public void setNombrePareja(String nombrePareja) {
 		this.nombrePareja = nombrePareja;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param cantidad_cupo Este parametro representa el nuevo valor del panel.
+	 */
 	public int getCantidad_cupo() {
 		return cantidad_cupo;
 	}
-
+	/**
+	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param cantidad_cupo Este parametro representa el nuevo valor del panel.
+	 */
 	public void setCantidad_cupo(int cantidad_cupo) {
 		this.cantidad_cupo = cantidad_cupo;
 	}

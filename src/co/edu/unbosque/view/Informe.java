@@ -15,6 +15,7 @@ public class Informe extends JFrame {
 	private PanelInformeUsuario panel_informe_usuarios = new PanelInformeUsuario("/co/edu/unbosque/imagenes/reporte.png");
 	private InformeUsuariosParejas informe_usuario_pareja = new InformeUsuariosParejas("/co/edu/unbosque/imagenes/reporte.png");
 	
+	
 	public Informe(Controller controller) {
 		
 		setLayout(null);
