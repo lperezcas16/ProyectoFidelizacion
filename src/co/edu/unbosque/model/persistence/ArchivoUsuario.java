@@ -23,8 +23,8 @@ public class ArchivoUsuario {
 	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la
 	 * validación de que el archivo existe o no existe.<br>
 	 */
-	public ArchivoUsuario() {
-		archivo_Usuarios = new File(".\\data\\Base de Datos Usuarios.dat");
+	public ArchivoUsuario(File archivo) {
+		this.archivo_Usuarios = archivo;
 		if (!archivo_Usuarios.exists()) {
 			try {
 				archivo_Usuarios.createNewFile();
