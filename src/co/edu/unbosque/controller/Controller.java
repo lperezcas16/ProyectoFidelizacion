@@ -1504,6 +1504,12 @@ public class Controller implements ActionListener, MouseListener {
 			view.mostrarMensajes("CAMPOS_FALSE");
 		} else {
 			if (usuarioDAO.comprobarUsuario(nombreInicio, contraseñaInicio, lista_usuarios)) {
+				for (int i = 0; i < lista_usuarios.size(); i++) {
+					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
+							|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
+						nombreInicio=lista_usuarios.get(i).getUsuario();
+					}
+				}
 				view.getPanel1().limpiarCampos();
 				view.getPanel1().setVisible(false);
 				view.getPanel_us_inicio().setVisible(true);
