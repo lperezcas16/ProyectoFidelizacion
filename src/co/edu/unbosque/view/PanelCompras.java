@@ -1,3 +1,4 @@
+
 package co.edu.unbosque.view;
 
 import java.awt.Dimension;
@@ -24,7 +25,8 @@ public class PanelCompras extends JPanel {
 	 * atributos y objectos. De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
-	 * de generar un nuevo horario.<br>
+	 * de
+	 *  generar un nuevo horario.<br>
 	
 	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
 	 */

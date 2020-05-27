@@ -36,6 +36,7 @@ public class PanelAgregarPareja extends JPanel {
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
 	 * de generar un nuevo horario.<br>
 	
+	
 	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
 	 */
 	public PanelAgregarPareja(String nombre) {

@@ -296,6 +296,7 @@ public class Estadisticas {
 	 * 
 	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
 
+
 	 */
 	private double calcularMedia(ArrayList<Usuario> lista_usuarios) {
 		int sumaEdades = 0;

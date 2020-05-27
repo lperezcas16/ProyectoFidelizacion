@@ -20,6 +20,7 @@ public class PanelAdminInicio extends JPanel {
 	private PanelTiendas panel_tiendas = new PanelTiendas("/co/edu/unbosque/imagenes/fondo_tiendas.png");
 
 	/**
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de
 	 * los atributos, forma de organización del JPanel , inicializacion de los componentes
 	 *  y objectos. así como la visibilidad De esta manera el objecto es creado con un
