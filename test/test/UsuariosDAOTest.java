@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import junit.framework.TestCase;
 import co.edu.unbosque.model.Compra;
 import co.edu.unbosque.model.Parejas;
+import co.edu.unbosque.model.Tiendas;
 import co.edu.unbosque.model.Usuario;
 import co.edu.unbosque.model.persistence.ArchivoUsuario;
 import co.edu.unbosque.model.persistence.UsuarioDAO;
 
 public class UsuariosDAOTest extends TestCase {
 
-	File file = new File(".\\dataTest\\baseDatosTest.out");
+	File file = new File(".\\dataTest\\baseDatosUsuariosTest.out");
 	UsuarioDAO usuarios;
 	ArchivoUsuario archivo_usuarios;
 	ArrayList<Usuario> lista_usuarios;
@@ -38,7 +39,7 @@ public class UsuariosDAOTest extends TestCase {
 		usuario1 = new Usuario("Juan", "Hombre", "correo", "juan", "12345678",
 				"1253745328735672385632", 19, 0, lista_parejas, "Usuario",
 				lista_compras);
-		usuario2 = new Usuario("Pitufo", "Hombre", "correo", "papaPitufo",
+		usuario2 = new Usuario("Pablo", "Hombre", "correo", "CorreoPablo",
 				"agseyrvgrf", "125374534386585632", 25, 0, lista_parejas,
 				"Usuario", lista_compras);
 		lista_usuarios.add(usuario1);
@@ -59,8 +60,9 @@ public class UsuariosDAOTest extends TestCase {
 				"12356247581745392107", 0, lista_parejas, lista_compras,
 				"Usuario", 22, lista_usuarios);
 
-		assertEquals("La cantidad de usuarios debe ser 3", 3,
-				lista_usuarios.size());
+		assertEquals(
+				"Se agrega otro usuario y la cantidad de usuarios debe ser 3",
+				3, lista_usuarios.size());
 
 	}
 
@@ -68,7 +70,7 @@ public class UsuariosDAOTest extends TestCase {
 
 		setupEscenario();
 
-		assertEquals("Juan",
+		assertEquals("Se encuentra al usuario con nombre Juan", "Juan",
 				usuarios.buscarUsuario(usuario1.getUsuario(), lista_usuarios)
 						.getNombre());
 	}
@@ -82,7 +84,7 @@ public class UsuariosDAOTest extends TestCase {
 
 	public void testExistenciaArchivo() throws FileNotFoundException {
 		setupEscenario();
-		assertTrue(file.exists());
+		assertTrue("El archivo existe", file.exists());
 	}
 
 	public void testEscribirArchivo() throws IOException {
@@ -92,34 +94,60 @@ public class UsuariosDAOTest extends TestCase {
 		usuarios.agregarUsuario("Ana", "Mujer", "correo", "ana", "098765432",
 				"12356247581745392107", 0, lista_parejas, lista_compras,
 				"Usuario", 22, lista_usuarios);
-		boolean vacio = true;
+		boolean vacio = false;
 		if (file.length() != 0) {
-			vacio = false;
+			vacio = true;
 		}
-		assertEquals(true, file.canWrite());
-		assertEquals(false, vacio);
+		assertEquals("El programa puede escribir en el archivo", true,
+				file.canWrite());
+		assertEquals("El archivo no esta vacio", true, vacio);
 	}
 
 	public void testLeerArchivo() throws IOException {
 		setupEscenario();
-		assertEquals(true, file.canRead());
-
+		assertEquals("El programa puede leer el archivo", true, file.canRead());
 	}
 
 	public void testComprobarUsuario() throws FileNotFoundException {
 		setupEscenario();
-
+		assertTrue(
+				"El programa puede encontrar el usuario",
+				usuarios.comprobarUsuario(usuario1.getUsuario(),
+						usuario1.getContraseña(), lista_usuarios));
 	}
 
-	public void testAgregarPareja() {
-
+	public void testAgregarPareja() throws FileNotFoundException {
+		setupEscenario();
+		usuarios.agregarParejas(usuario2.getUsuario(), "Pareja1", 0, 0, 0, 19,
+				lista_usuarios);
+		assertEquals(
+				"El programa puede verificar que el usuario 2 tiene 1 pareja",
+				1, lista_usuarios.get(1).getParejas().size());
 	}
 
-	public void testAgregarCompra() {
-
+	public void testAgregarCompra() throws FileNotFoundException {
+		setupEscenario();
+		usuarios.agregarParejas(usuario1.getUsuario(), "Pareja", 0, 500, 500,
+				19, lista_usuarios);
+		usuarios.agregarCompras(usuario1.getUsuario(), usuario1.getParejas()
+				.get(0).getNombre(), "Tiendita", 200);
+		lista_usuarios = archivo_usuarios.leerArchivo();
+		assertEquals(
+				"El programa puede verificar que el usuario realizo una compra y se le descontaron 200 a la pareja",
+				300.0, lista_usuarios.get(0).getParejas().get(0)
+						.getCantidad_cupo_restante());
 	}
 
-	public void testAgregarHorarioCompra() {
+	public void testAgregarHorarioCompra() throws FileNotFoundException {
+		setupEscenario();
+		Tiendas tienda = new Tiendas("Tiendita", "Cra 3", "08:00", "16:00");
+		usuarios.agregarParejas(usuario2.getUsuario(), "Pareja", 0, 500, 500,
+				19, lista_usuarios);
+		assertTrue(
+				"El programa verifica que se haya podido agregar el horario de compra",
+				usuarios.agregarHorariosCompras(usuario2.getUsuario(), tienda,
+						usuario2.getParejas().get(0).getNombre(), "26-08-2020",
+						"10:00"));
 
 	}
 }
