@@ -30,7 +30,15 @@ public class PanelAdmCuentas extends JPanel {
 	private PanelVerInfoPareja pnl_ver_info_pareja;
 	private PanelAdmCupo pnl_adm_cupo;
 	private PanelCompras pnl_compras;
-
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public PanelAdmCuentas(String nombre) {
 		this.nombre = nombre;
 		setLayout(null);
@@ -38,7 +46,16 @@ public class PanelAdmCuentas extends JPanel {
 		setVisible(true);
 
 	}
-
+	/**
+	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
+	 * atributos y objectos que asignan el fondo al panel 
+	 * . De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
 		imagen = new ImageIcon(getClass().getResource(nombre));
@@ -47,7 +64,14 @@ public class PanelAdmCuentas extends JPanel {
 		super.paint(g);
 
 	}
-
+	
+	/**
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * <b>post</b>se hacen visibles los componentes del panel.<br>
+	 */
 	public void inicializarComponentes() {
 
 		Color color_azul = new Color(36, 67, 87);
@@ -147,235 +171,546 @@ public class PanelAdmCuentas extends JPanel {
 
 	}
 
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_agregar_pareja Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_agregar_pareja() {
 		return boton_agregar_pareja;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_agregar_pareja Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_agregar_pareja(JButton boton_agregar_pareja) {
 		this.boton_agregar_pareja = boton_agregar_pareja;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_info_pareja Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_info_pareja() {
 		return boton_info_pareja;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_info_pareja Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_info_pareja(JButton boton_info_pareja) {
 		this.boton_info_pareja = boton_info_pareja;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/**
+	 * Este metodo devuelve el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param label_tarjeta Este parametro representa el  valor del JLabel!= ""
+	 */
 	public JLabel getLabel_tarjeta() {
 		return label_tarjeta;
 	}
-
+	/**
+	 * Este metodo establece el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param label_tarjeta Este parametro representa el nuevo valor
+	 *                 que va a tener el JLabel != "".
+	 */
 	public void setLabel_tarjeta(JLabel label_tarjeta) {
 		this.label_tarjeta = label_tarjeta;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param label_cupo Este parametro representa el  valor del JLabel!= ""
+	 */
 	public JLabel getLabel_cupo() {
 		return label_cupo;
 	}
-
+	/**
+	 * Este metodo establece el valor del JLabel <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param label_cupo Este parametro representa el nuevo valor
+	 *                 que va a tener el JLabel != "".
+	 */
 	public void setLabel_cupo(JLabel label_cupo) {
 		this.label_cupo = label_cupo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_ojo_oculto Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_ojo_oculto() {
 		return imagen_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_ojo_oculto Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_ojo_oculto(ImageIcon imagen_ojo_oculto) {
 		this.imagen_ojo_oculto = imagen_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_ojo Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_ojo() {
 		return imagen_ojo;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_ojo Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_ojo(ImageIcon imagen_ojo) {
 		this.imagen_ojo = imagen_ojo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_ojo_oculto Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_ojo_oculto() {
 		return icono_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_ojo_oculto Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_ojo_oculto(Icon icono_ojo_oculto) {
 		this.icono_ojo_oculto = icono_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_ojo Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_ojo() {
 		return icono_ojo;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_ojo Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_ojo(Icon icono_ojo) {
 		this.icono_ojo = icono_ojo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ojo_oculto Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_ojo_oculto() {
 		return boton_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_ojo_oculto Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_ojo_oculto(JButton boton_ojo_oculto) {
 		this.boton_ojo_oculto = boton_ojo_oculto;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_agregar Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_boton_agregar() {
 		return imagen_boton_agregar;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_agregar Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_agregar(ImageIcon imagen_boton_agregar) {
 		this.imagen_boton_agregar = imagen_boton_agregar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_info Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_boton_info() {
 		return imagen_boton_info;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_info Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_info(ImageIcon imagen_boton_info) {
 		this.imagen_boton_info = imagen_boton_info;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_agregar_compra Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_boton_agregar() {
 		return icono_boton_agregar;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_agregar_compra Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_boton_agregar(Icon icono_boton_agregar) {
 		this.icono_boton_agregar = icono_boton_agregar;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_info Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_boton_info() {
 		return icono_boton_info;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_info Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_boton_info(Icon icono_boton_info) {
 		this.icono_boton_info = icono_boton_info;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelAgregarPareja <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_agregar_pareja Este parametro representa el  valor del PanelAgregarPareja!= ""
+	 */
 	public PanelAgregarPareja getPnl_agregar_pareja() {
 		return pnl_agregar_pareja;
 	}
-
+	/**
+	 * Este metodo establece el valor del PanelAgregarPareja <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_agregar_pareja Este parametro representa el nuevo valor
+	 *                 que va a tener el PanelAgregarPareja != "".
+	 */
 	public void setPnl_agregar_pareja(PanelAgregarPareja pnl_agregar_pareja) {
 		this.pnl_agregar_pareja = pnl_agregar_pareja;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del String <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el  valor del String!= ""
+	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del String <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor
+	 *                 que va a tener el String != "".
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelVerInfoPareja <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_ver_info_pareja Este parametro representa el  valor del PanelVerInfoPareja!= ""
+	 */
 	public PanelVerInfoPareja getPnl_ver_info_pareja() {
 		return pnl_ver_info_pareja;
 	}
-
+	/**
+	 * Este metodo establece el valor del PanelVerInfoPareja <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_ver_info_pareja Este parametro representa el nuevo valor
+	 *                 que va a tener el PanelVerInfoPareja != "".
+	 */
 	public void setPnl_ver_info_pareja(PanelVerInfoPareja pnl_ver_info_pareja) {
 		this.pnl_ver_info_pareja = pnl_ver_info_pareja;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cerrar_sesion Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_cerrar_sesion() {
 		return boton_cerrar_sesion;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_cerrar_sesion Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_cerrar_sesion(JButton boton_cerrar_sesion) {
 		this.boton_cerrar_sesion = boton_cerrar_sesion;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_sesion Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_sesion() {
 		return imagen_sesion;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_sesion Este parametro representa el nuevo ImageIcon
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setImagen_sesion(ImageIcon imagen_sesion) {
 		this.imagen_sesion = imagen_sesion;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_sesion Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_sesion() {
 		return icono_sesion;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_sesion Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_sesion(Icon icono_sesion) {
 		this.icono_sesion = icono_sesion;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_adm_cuota Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_adm_cuota() {
 		return boton_adm_cuota;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_adm_cuota Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_adm_cuota(JButton boton_adm_cuota) {
 		this.boton_adm_cuota = boton_adm_cuota;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_adm_cupo Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_adm_cupo() {
 		return imagen_adm_cupo;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_adm_cupo Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_adm_cupo(ImageIcon imagen_adm_cupo) {
 		this.imagen_adm_cupo = imagen_adm_cupo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_adm_cupo Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_adm_cupo() {
 		return icono_adm_cupo;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_adm_cupo Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_adm_cupo(Icon icono_adm_cupo) {
 		this.icono_adm_cupo = icono_adm_cupo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelAdmCupo <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_adm_cupo Este parametro representa el  valor del PanelAdmCupo!= ""
+	 */
 	public PanelAdmCupo getPnl_adm_cupo() {
 		return pnl_adm_cupo;
 	}
-
+	/**
+	 * Este metodo establece el valor del PanelAdmCupo <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_adm_cupo Este parametro representa el nuevo valor
+	 *                 que va a tener el PanelAdmCupo != "".
+	 */
 	public void setPnl_adm_cupo(PanelAdmCupo pnl_adm_cupo) {
 		this.pnl_adm_cupo = pnl_adm_cupo;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_compra Este parametro representa el  valor del ImageIcon!= ""
+	 */
 	public ImageIcon getImagen_boton_compra() {
 		return imagen_boton_compra;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_agregar_compra Este parametro representa el nuevo valor
+	 *imagen_boton_compraque va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_compra(ImageIcon imagen_boton_compra) {
 		this.imagen_boton_compra = imagen_boton_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_compra Este parametro representa el  valor del JButton!= ""
+	 */
 	public JButton getBoton_compra() {
 		return boton_compra;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_compra Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_compra(JButton boton_compra) {
 		this.boton_compra = boton_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_compra Este parametro representa el  valor del Icon!= ""
+	 */
 	public Icon getIcono_boton_compra() {
 		return icono_boton_compra;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icono_boton_compra Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcono_boton_compra(Icon icono_boton_compra) {
 		this.icono_boton_compra = icono_boton_compra;
 	}
-
+	/**
+	 * Este metodo devuelve el valor del PanelCompras <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_compras Este parametro representa el  valor del PanelCompras!= ""
+	 */
 	public PanelCompras getPnl_compras() {
 		return pnl_compras;
 	}
-
+	/**
+	 * Este metodo establece el valor del PanelCompras <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_compras Este parametro representa el nuevo valor
+	 *                 que va a tener el PanelCompras != "".
+	 */
 	public void setPnl_compras(PanelCompras pnl_compras) {
 		this.pnl_compras = pnl_compras;
 	}
 	
-	
+	/**
+	 * Este es el metodo visibilidadComponentes el cual permite que 
+	 * los campos sean visibles cuaando el método es llamado
+	 * objeto.<b>post</b> quedan vacios los campos del panel .<br>
+	 * @param b booleano que resive si son visibles o no los componentes seleccinados 
+	 */
 
 	public void visibilidadComponentes(boolean b) {
 		label_cupo.setVisible(b);

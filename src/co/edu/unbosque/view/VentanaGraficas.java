@@ -25,6 +25,13 @@ public class VentanaGraficas extends JDialog {
 	public JPanel panel, panel2, panelAux;
 	public JScrollPane scrollPane;
 
+	/**
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos y objectos. De esta manera el objecto es creado con un valor
+	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	 */
 	public VentanaGraficas(){
 		
 		setSize(1000, 500);
@@ -38,7 +45,13 @@ public class VentanaGraficas extends JDialog {
 	
 	
 	
-	
+	/**
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
+	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
+	 *   y se agrega el panel 
+	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  
+	 * <b>post</b>se hacen visibles los componentes del la ventana y se le agregan los paneles .<br>
+	 */
 	public void inicializarComponentes(){
 		panel= new JPanel();
 	
@@ -52,6 +65,13 @@ public class VentanaGraficas extends JDialog {
 		getContentPane().add(scrollPane);
 	}
 	
+	/**
+	 * Este es el metodo agregarGrafico el cual se ponen los gráficos en el panel 
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	
+	 * @param panel  se agregar el panel != "".
+	 */
 	public void agregarGraficos(ChartPanel panel){
 		this.panel.add(panel);
 	
@@ -60,81 +80,17 @@ public class VentanaGraficas extends JDialog {
 		
 		scrollPane.setViewportView(panelAux);
 	}
+
+
+	/**
+	 * Este es el metodo generarGraficoTorta el cual se ponen los gráficos en el panel 
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
 	
-
-	
-	public ChartPanel graficoEdad(double r1, double r2, double r3, double r4, double r5, double r6){
-		panel.removeAll();
-		DefaultPieDataset datos= new DefaultPieDataset();
-		JFreeChart grafica;
-		ChartPanel panelGrafica;
-		
-		datos.setValue("RANGO 1", r1);
-		datos.setValue("RANGO 2", r2);
-		datos.setValue("RANGO 3", r3);
-		datos.setValue("RANGO 4", r4);
-		datos.setValue("RANGO 5", r5);
-		datos.setValue("RANGO 6", r6);
-		
-		grafica =  ChartFactory.createPieChart("Rangos", datos, rootPaneCheckingEnabled, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
-//		grafica= ChartFactory.createPieChart("RANGOS", datos);
-		panelGrafica= new ChartPanel(grafica);
-		panel.add(panelGrafica);
-		return panelGrafica;
-	}
-
-//	public VentanaGraficas() throws IOException {
-//
-//		setTitle("Grafica 3D");
-//		setSize(800, 600);
-//		setLocationRelativeTo(null);
-//		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-//		setResizable(false);
-//		inicializarComponentes();
-//		setVisible(false);
-//
-//	}
-//
-//	private void inicializarComponentes() throws IOException {
-//		panel = new JPanel();
-//		getContentPane().add(panel);
-//
-//		// Fuente de Datos
-//		DefaultPieDataset defaultpiedataset = new DefaultPieDataset();
-//		defaultpiedataset.setValue("algo1", new Double(500));
-//		defaultpiedataset.setValue("algo2", new Double(11));
-//		defaultpiedataset.setValue("algo3", new Double(19.5));
-//		defaultpiedataset.setValue("algo4", new Double(30.5));
-//		defaultpiedataset.setValue("algo5", new Double(2.0));
-//
-//		// Creando el Grafico
-//		JFreeChart chart = ChartFactory.createPieChart3D("Gráfica",defaultpiedataset, true, true, false);
-//		PiePlot3D pieplot3d = (PiePlot3D) chart.getPlot();
-//		pieplot3d.setDepthFactor(0.5);
-//		pieplot3d.setStartAngle(290D);
-//		pieplot3d.setDirection(Rotation.CLOCKWISE);
-//		pieplot3d.setForegroundAlpha(0.5F);
-//
-//		// Mostrar Grafico
-//		ChartPanel chartPanel = new ChartPanel(chart);
-//		panel.add(chartPanel);
-//
-//		ChartUtilities.saveChartAsJPEG(new File(".\\data\\grafico.jpg"), chart,
-//				500, 500);
-//
-//	}
-//
-//	public JPanel getPanel() {
-//		return panel;
-//	}
-//
-//	public void setPanel(JPanel panel) {
-//		this.panel = panel;
-//	}
-//	
-//
-//}
-
+	 * @param titulo se le pone un titulo al gráfico de tortas  != "".
+	 * 
+	 * @param data Se le asignan los datos que van a estar en el gráfico != "".
+	 */
 	public JFreeChart generarGraficoTorta(String titulo,DefaultPieDataset data) {
 		JFreeChart chart = ChartFactory.createPieChart(titulo, data, true,
 				true, true);
@@ -144,6 +100,18 @@ public class VentanaGraficas extends JDialog {
 		getContentPane().add(panel_Grafico);
 		return chart; 
 	}
+	/**
+	 * Este es el metodo generarGraficoBarras el cual se ponen los gráficos en el panel 
+	 * <b>post</b>Se llama al método y se le asignan los datos para mostrar la gráfica con ellos .<br>
+	
+	 * @param titulo se le pone un titulo al gráfico de tortas  != "".
+	 * 
+	 * @param data Se le asignan los datos que van a estar en el gráfico != "".
+	 * 
+	 * @param ejeX Se le asigna la coordenada en el eje x al diagrama != "".
+	 * 
+	 * @param ejeY Se le asigna una coordenada del eje y al diagrama != "".
+	 */
 	public JFreeChart generarGraficoBarras(String titulo,String ejeX,String ejeY,DefaultCategoryDataset data) {
 		JFreeChart chart = ChartFactory.createBarChart3D(titulo,ejeX,ejeY, data,PlotOrientation.VERTICAL,true,true,true);
 		ChartPanel panel_Grafico = new ChartPanel(chart);
@@ -152,6 +120,12 @@ public class VentanaGraficas extends JDialog {
 		getContentPane().add(panel_Grafico);
 		return chart; 
 	}
+	
+	/**
+	 * Este es el metodo fileChooseGuardar el cual se guarda el archivo en pdf es la dirección establecida por el usuario 
+	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
+	 * de generar un nuevo horario.<br>
+	 * */
 	public String fileChooserGuardar() {
 		JFileChooser direccion = new JFileChooser();
 		if(direccion.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){

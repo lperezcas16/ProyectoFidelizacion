@@ -126,188 +126,279 @@ public class PanelAsignarHorario extends JPanel {
 
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del JComboBox<Object>. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param combobox_parejas Este parametro representa el  valor del JComboBox<Object>. != "".
 	 */
 	public JComboBox<Object> getCombobox_parejas() {
 		return combobox_parejas;
 	}
-
+	/**
+	 * Este metodo establece el valor del JComboBox<Object> <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param combobox_parejas Este parametro representa el nuevo valor
+	 *                 que va a tener el JComboBox<Object> != "".
+	 */
 	public void setCombobox_parejas(JComboBox<Object> combobox_parejas) {
 		this.combobox_parejas = combobox_parejas;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del JDateChooser. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param calendario Este parametro representa el  valor del JDateChooser. != "".
 	 */
 	public JDateChooser getCalendario() {
 		return calendario;
 	}
-
+	/**
+	 * Este metodo establece el valor del JDateChooser <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param calendario Este parametro representa el nuevo valor
+	 *                 que va a tener el JDateChooser != "".
+	 */
 	public void setCalendario(JDateChooser calendario) {
 		this.calendario = calendario;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param boton_agregar Este parametro representa el  valor del JButton. != "".
 	 */
 
 	public JButton getBoton_agregar_horario() {
 		return boton_agregar_horario;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_agregar Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_agregar_horario(JButton boton_agregar) {
 		this.boton_agregar_horario = boton_agregar;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param nombre Este parametro representa el  valor del String. != "".
 	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Este metodo establece el valor del String <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor
+	 *                 que va a tener el String != "".
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param imagen Este parametro representa el  valor del ImageIcon. != "".
 	 */
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del Color. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param color_azul Este parametro representa el  valor del Color. != "".
 	 */
 	public Color getColor_azul() {
 		return color_azul;
 	}
-
+	/**
+	 * Este metodo establece el valor del Color <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param color_azul Este parametro representa el nuevo valor
+	 *                 que va a tener el Color != "".
+	 */
 	public void setColor_azul(Color color_azul) {
 		this.color_azul = color_azul;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del Color. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param color_naranja Este parametro representa el  valor del Color. != "".
 	 */
 	public Color getColor_naranja() {
 		return color_naranja;
 	}
-
+	/**
+	 * Este metodo establece el valor del Color <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param color_naranja Este parametro representa el nuevo valor
+	 *                 que va a tener el Color != "".
+	 */
 	public void setColor_naranja(Color color_naranja) {
 		this.color_naranja = color_naranja;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param imagen_boton Este parametro representa el  valor del ImageIcon. != "".
 	 */
 	public ImageIcon getImagen_boton() {
 		return imagen_boton;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton(ImageIcon imagen_boton) {
 		this.imagen_boton = imagen_boton;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del Icon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param icon_boton Este parametro representa el  valor del Icon. != "".
 	 */
 	public Icon getIcon_boton() {
 		return icon_boton;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icon_boton Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcon_boton(Icon icon_boton) {
 		this.icon_boton = icon_boton;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param boton_seleccionar_tienda Este parametro representa el  valor del JButton. != "".
 	 */
 	public JButton getBoton_seleccionar_tienda() {
 		return boton_seleccionar_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del JButton <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param boton_seleccionar_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el JButton != "".
+	 */
 	public void setBoton_seleccionar_tienda(JButton boton_seleccionar_tienda) {
 		this.boton_seleccionar_tienda = boton_seleccionar_tienda;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param imagen_boton_tienda Este parametro representa el  valor del ImageIcon. != "".
 	 */
 	public ImageIcon getImagen_boton_tienda() {
 		return imagen_boton_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del ImageIcon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param imagen_boton_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el ImageIcon != "".
+	 */
 	public void setImagen_boton_tienda(ImageIcon imagen_boton_tienda) {
 		this.imagen_boton_tienda = imagen_boton_tienda;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del Icon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param icon_boton_tienda Este parametro representa el  valor del Icon. != "".
 	 */
 	public Icon getIcon_boton_tienda() {
 		return icon_boton_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del Icon <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param icon_boton_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el Icon != "".
+	 */
 	public void setIcon_boton_tienda(Icon icon_boton_tienda) {
 		this.icon_boton_tienda = icon_boton_tienda;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param spinner Este parametro representa el  valor del JSpinner. != "".
 	 */
 	public JSpinner getSpinner() {
 		return spinner;
 	}
-
+	/**
+	 * Este metodo establece el valor del JSpinner <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param spinner Este parametro representa el nuevo valor
+	 *                 que va a tener el JSpinner != "".
+	 */
 	public void setSpinner(JSpinner spinner) {
 		this.spinner = spinner;
 	}
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
+	 * Este metodo devuelve el valor del PanelSeleccionarTienda. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @param pnl_seleccionar_tienda Este parametro representa el  valor del PanelSeleccionarTienda. != "".
 	 */
 	public PanelSeleccionarTienda getPnl_seleccionar_tienda() {
 		return pnl_seleccionar_tienda;
 	}
-
+	/**
+	 * Este metodo establece el valor del PanelSeleccionarTienda <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param pnl_seleccionar_tienda Este parametro representa el nuevo valor
+	 *                 que va a tener el PanelSeleccionarTienda != "".
+	 */
 	public void setPnl_seleccionar_tienda(PanelSeleccionarTienda pnl_seleccionar_tienda) {
 		this.pnl_seleccionar_tienda = pnl_seleccionar_tienda;
 	}
+	
+	/**
+	 * Este es el metodo visibilidadComponentes el cual permite que 
+	 * los campos sean visibles cuaando el método es llamado
+	 * objeto.<b>post</b> quedan vacios los campos del panel .<br>
+	 * @param b booleano que resive si son visibles o no los componentes seleccinados 
+	 */
 	public void visibilidadComponentes(boolean b) {
 		combobox_parejas.setVisible(b);
 		boton_agregar_horario.setVisible(b);
