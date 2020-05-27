@@ -1508,17 +1508,9 @@ public class Controller implements ActionListener, MouseListener {
 					view.getPanel_admin().getPanel_informe()
 							.getBoton_vista_previa().setVisible(true);
 					break;
-				// "Por usuario"
-				case 3:
-					view.getPanel_admin().getPanel_informe().getCampo_usuario()
-							.setVisible(true);
-					view.getPanel_admin().getPanel_informe()
-							.getBoton_generar_pfd().setVisible(true);
-					view.getPanel_admin().getPanel_informe()
-							.getBoton_vista_previa().setVisible(true);
-					break;
+			
 				// "Por tienda"
-				case 4:
+				case 3:
 					view.getPanel_admin().getPanel_informe().getCampo_usuario()
 							.setVisible(false);
 					view.getPanel_admin().getPanel_informe()

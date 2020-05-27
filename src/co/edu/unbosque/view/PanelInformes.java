@@ -67,7 +67,7 @@ public class PanelInformes extends JPanel {
 		combo_estadistica.addItem("Selecciona");
 		combo_estadistica.addItem("Edad");
 		combo_estadistica.addItem("Todos los usuarios");
-		combo_estadistica.addItem("Por usuario");
+
 		combo_estadistica.addItem("Tiendas");
 	
 		add(combo_estadistica);
