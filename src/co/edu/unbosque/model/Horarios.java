@@ -34,31 +34,78 @@ public class Horarios implements Serializable {
 		return tienda;
 	}
 
+	/**
+	 * Este metodo establece los valores de un objeto tienda. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
+	 * 
+	 * @param tienda Este parametro representa el nuevo valor en formato tienda del
+	 *               atributo. tienda != null, tienda != "".
+	 */
 	public void setTienda(Tiendas tienda) {
 		this.tienda = tienda;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo fecha. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna la fecha en formato de cadena de caracteres.
+	 */
 	public String getFecha() {
 		return fecha;
 	}
 
+	/**
+	 * Este metodo establece el valor de la fecha. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param fecha Este parametro representa el nuevo valor en formato de cadena de
+	 *              caracteres que va a tener la fecha. fecha != null, fecha != "".
+	 */
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo hora. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna la hora en formato de cadena de caracteres.
+	 */
 	public String getHora() {
 		return hora;
 	}
 
+	/**
+	 * Este metodo establece el valor de la hora. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param hora Este parametro representa el nuevo valor en formato de cadena de
+	 *             caracteres que va a tener la hora. hora != null, hora != "".
+	 */
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
 
+	/**
+	 * Este metodo devuelve la representacion del objecto en una cadena de
+	 * caracteres.
+	 */
 	@Override
 	public String toString() {
 		return "Tienda=" + tienda + " Fecha= " + fecha + " Hora= " + hora;
 	}
 
+	/**
+	 * Este metodo compara los horarios para que no hayan dos parejas con el mismo
+	 * horario.<b>post</b>Se validaria que en el momento de crear un nuevo horario
+	 * no se cruce con otro anteriormente establecido con otra pareja.
+	 * 
+	 * @param t Este parametro representa los horarios que ya estan registrados en
+	 *          el sistema.
+	 * @return Se retorna verdadero si ya existe el horario en el sistema y false si
+	 *         es lo opuesto.
+	 */
 	public boolean compara(Horarios t) {
 		boolean iguales = false;
 		if (this.tienda.getNombre().equals(t.tienda.getNombre())

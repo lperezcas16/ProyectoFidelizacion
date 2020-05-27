@@ -75,7 +75,8 @@ public class Parejas implements Serializable {
 	 * al atributo.<br>
 	 * 
 	 * @param nombre Este parametro representa el nuevo valor en formato de cadena
-	 *               de caracteres que va a tener el nombre.
+	 *               de caracteres que va a tener el nombre. nombre != null, nombre
+	 *               != "".
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -96,7 +97,7 @@ public class Parejas implements Serializable {
 	 * atributo.<br>
 	 * 
 	 * @param cupo Este parametro representa el nuevo valor en formato entero que va
-	 *             a tener el cupo.
+	 *             a tener el cupo. cupo != null, cupo != "".
 	 */
 	public void setCupo(int cupo) {
 		this.cupo = cupo;
@@ -118,6 +119,8 @@ public class Parejas implements Serializable {
 	 * 
 	 * @param cantidad_cupo_asignado Este parametro representa el nuevo valor en
 	 *                               formato double que va a tener el cupo asignado.
+	 *                               cantidad_cupo_asignado != null,
+	 *                               cantidad_cupo_asignado != "".
 	 */
 	public void setCantidad_cupo_asignado(double cantidad_cupo_asignado) {
 		this.cantidad_cupo_asignado = cantidad_cupo_asignado;
@@ -139,6 +142,8 @@ public class Parejas implements Serializable {
 	 * 
 	 * @param cantidad_cupo_restante Este parametro representa el nuevo valor en
 	 *                               formato double que va a tener el cupo restante.
+	 *                               cantidad_cupo_restante != null,
+	 *                               cantidad_cupo_restante != "".
 	 */
 	public void setCantidad_cupo_restante(double cantidad_cupo_restante) {
 		this.cantidad_cupo_restante = cantidad_cupo_restante;
@@ -159,7 +164,7 @@ public class Parejas implements Serializable {
 	 * al atributo.<br>
 	 * 
 	 * @param edad Este parametro representa el nuevo valor en formato entero que va
-	 *             a tener la edad.
+	 *             a tener la edad. edad != null, edad != "".
 	 */
 	public void setEdad(int edad) {
 		this.edad = edad;
@@ -181,11 +186,16 @@ public class Parejas implements Serializable {
 	 * 
 	 * @param lista_horarios Este parametro representa el nuevo valor en formato de
 	 *                       arraylist que va a tener la lista de horarios.
+	 *                       lista_horarios != null, lista_horarios != "".
 	 */
 	public void setLista_horarios(ArrayList<Horarios> lista_horarios) {
 		this.lista_horarios = lista_horarios;
 	}
 
+	/**
+	 * Este metodo devuelve la representacion del objecto en una cadena de
+	 * caracteres.
+	 */
 	@Override
 	public String toString() {
 		return "Parejas [nombre=" + nombre + ", cupo=" + cupo + ", cantidad_cupo_asignado=" + cantidad_cupo_asignado

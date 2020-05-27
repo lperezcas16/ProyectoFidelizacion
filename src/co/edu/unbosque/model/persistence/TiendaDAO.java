@@ -27,13 +27,15 @@ public class TiendaDAO {
 	 * realizar el registro <br>
 	 * 
 	 * @param nombre           el atributo que tendrán el sistema para ingresar el
-	 *                         nombre
+	 *                         nombre. nombre != null, nombre != "".
 	 * @param direccion        el atributo que tendrán el sistema para ingresar la
-	 *                         direccion
+	 *                         direccion. direccion != null, direccion != "".
 	 * @param horario_apertura el atributo que tendrán el sistema para ingresar el
-	 *                         horario de apertura
+	 *                         horario de apertura. horario_apertura != null,
+	 *                         horario_apertura != "".
 	 * @param horario_cierre   el atributo que tentra el sistema para ingresar el
-	 *                         horario de cierre
+	 *                         horario de cierre. horario_cierre != null,
+	 *                         horario_cierre != "".
 	 * 
 	 * @return Boolean true si se agrego la tienda, false si no se agrego la tienda
 	 */
@@ -53,9 +55,10 @@ public class TiendaDAO {
 	 * Metodo EliminarTienda , eliminala tienda mediante elnonbre registrado y el
 	 * arraylist de la clase tienda
 	 * 
-	 * @param nombre        el atributo que tendrá el sistema para validar la tienda
+	 * @param nombre        el atributo que tendrá el sistema para validar la
+	 *                      tienda. nombre != null, nombre != "".
 	 * @param lista_tiendas el atributo que tendrá el sistema para llamar el
-	 *                      arraylist
+	 *                      arraylist. lista_tiendas != null, lista_tiendas != "".
 	 * @return si es puedo realizar la eliminación true o no se pudo realizar false
 	 */
 	public boolean eliminarTienda(String nombre, ArrayList<Tiendas> lista_tiendas) {
@@ -77,9 +80,11 @@ public class TiendaDAO {
 	 * de apertura registrado y el arraylist de la clase tienda
 	 * 
 	 * @param horario_apertura el atributo que tendrá el sistema para validar la
-	 *                         tienda
+	 *                         tienda. horario_apertura != null, horario_apertura !=
+	 *                         "".
 	 * @param lista_tiendas    el atributo que tendrá el sistema para llamar el
-	 *                         arraylist
+	 *                         arraylist. lista_tiendas != null, lista_tiendas !=
+	 *                         "".
 	 * @return si es puedo realizar la eliminación true o no se pudo realizar false
 	 */
 	public boolean eliminarTiendaHorarioApertura(String horario_apertura, ArrayList<Tiendas> lista_tiendas) {
@@ -104,9 +109,9 @@ public class TiendaDAO {
 	 * de cierre registrado y el arraylist de la clase tienda
 	 * 
 	 * @param horario_cierre el atributo que tendrá el sistema para validar la
-	 *                       tienda
+	 *                       tienda. horario_cierre != null, horario_cierre != "".
 	 * @param lista_tiendas  el atributo que tendrá el sistema para llamar el
-	 *                       arraylist
+	 *                       arraylist. lista_tiendas != null, lista_tiendas != "".
 	 * @return si es puedo realizar la eliminación true o no se pudo realizar false
 	 */
 	public boolean eliminarTiendaHorarioCierre(String horario_cierre, ArrayList<Tiendas> lista_tiendas) {
@@ -130,9 +135,10 @@ public class TiendaDAO {
 	 * Metodo buscarTienda, busca una tienda mediante el nombre en el arraylist.
 	 * 
 	 * @param direccion     el atributo que tendrán el sistema para validar la
-	 *                      tienda
+	 *                      tienda. direccion != null, direccion != "".
 	 * @param lista_tiendas el atributo que tendrán el sistema para llamar el
-	 *                      arraylist de tiendas
+	 *                      arraylist de tiendas. lista_tiendas != null,
+	 *                      lista_tiendas != "".
 	 * @return si es encontrado o no encontrado en el sistema
 	 */
 	public Tiendas buscarTienda(String direccion, ArrayList<Tiendas> lista_tiendas) {
@@ -154,9 +160,11 @@ public class TiendaDAO {
 	 * arraylist.
 	 * 
 	 * @param horario_apertura el atributo que tendrán el sistema para validar la
-	 *                         tienda
+	 *                         tienda. horario_apertura != null, horario_apertura !=
+	 *                         "".
 	 * @param lista_tiendas    el atributo que tendrán el sistema para llamar el
-	 *                         arraylist de tiendas
+	 *                         arraylist de tiendas. lista_tiendas != null,
+	 *                         lista_tiendas != "".
 	 * @return si es encontrado o no encontrado en el sistema
 	 */
 	public Tiendas buscarPorHorarioApertura(String horario_apertura, ArrayList<Tiendas> lista_tiendas) {
@@ -177,9 +185,10 @@ public class TiendaDAO {
 	 * arraylist.
 	 * 
 	 * @param horario_cierre el atributo que tendrán el sistema para validar la
-	 *                       tienda
+	 *                       tienda. horario_cierre != null, horario_cierre != "".
 	 * @param lista_tiendas  el atributo que tendrán el sistema para llamar el
-	 *                       arraylist de tiendas
+	 *                       arraylist de tiendas. lista_tiendas != null,
+	 *                       lista_tiendas != "".
 	 * @return si es encontrado o no encontrado en el sistema
 	 */
 	public Tiendas buscarPorHorarioCierre(String horario_cierre, ArrayList<Tiendas> lista_tiendas) {
@@ -199,7 +208,7 @@ public class TiendaDAO {
 	 * Metodo para poder ver las tiendas registradas en el sistema
 	 * 
 	 * @param lista_tiendas Lista de la cual se obtendra la informacion de las
-	 *                      tiendas
+	 *                      tiendas. lista_tiendas != null, lista_tiendas != "".
 	 * @return texto Cadena de texto con la informacion obtenida
 	 */
 	public String verTiendas(ArrayList<Tiendas> lista_tiendas) {
@@ -214,9 +223,10 @@ public class TiendaDAO {
 	 * Metodo para poder ver una persona registrada en el sistema mediante nombre
 	 * 
 	 * @param nombre        el atributo que tendrán el sistema para validar el
-	 *                      nombre
+	 *                      nombre. nombre != null, nombre != "".
 	 * @param lista_tiendas el atributo que tendrán el sistema para llamar el
-	 *                      arraylist tiendas
+	 *                      arraylist tiendas. lista_tiendas != null, lista_tiendas
+	 *                      != "".
 	 * @return texto cadena de texto con la informacion de la tienda
 	 */
 	public Tiendas verUnaTienda(String nombre, ArrayList<Tiendas> lista_tiendas) {
@@ -232,6 +242,14 @@ public class TiendaDAO {
 		return encontrado;
 	}
 
+	/**
+	 * Metodo para poder ordenar ascendentemente la lista de tiendas. <b>pre</b>Debe
+	 * de estar inscrito por lo menos dos tiendas para poder compararlas.<br>
+	 * 
+	 * @param tiendas Este parametro hace referencia a la lista de todas las tiendas
+	 *                inscritas hasta el momento junto con toda su informacion.
+	 *                tiendas != null, tiendas != "".
+	 */
 	public void ordenTiendasAsc(ArrayList<Tiendas> tiendas) {
 
 		Tiendas aux, menor;

@@ -32,30 +32,76 @@ public class Compra implements Serializable {
 		this.valorCompra = valorCompra;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo nombre de la pareja. <b>post</b>Se
+	 * devuelve el valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el nombre de la pareja en formato de cadena de caracteres.
+	 */
 	public String getPareja() {
 		return pareja;
 	}
 
+	/**
+	 * Este metodo establece el valor del nombre de la pareja. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
+	 * 
+	 * @param pareja Este parametro representa el nuevo valor en formato de cadena
+	 *               de caracteres que va a tener el nombre de la pareja. pareja !=
+	 *               null, pareja != "".
+	 */
 	public void setPareja(String pareja) {
 		this.pareja = pareja;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo del nombre de la tienda.
+	 * <b>post</b>Se devuelve el valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el nombre de la tienda en formato de cadena de caracteres.
+	 */
 	public String getTienda() {
 		return tienda;
 	}
 
+	/**
+	 * Este metodo establece el valor del nombre de la tienda. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
+	 * 
+	 * @param tienda Este parametro representa el nuevo valor en formato de cadena
+	 *               de caracteres que va a tener el nombre de la tienda. tienda !=
+	 *               null, tienda != "".
+	 */
 	public void setTienda(String tienda) {
 		this.tienda = tienda;
 	}
 
+	/**
+	 * Este metodo devuelve el valor de la compra. <b>post</b>Se devuelve el valor
+	 * guardado en el atributo.<br>
+	 * 
+	 * @return Retorna la cantidad total de la compra en formato de double.
+	 */
 	public double getValorCompra() {
 		return valorCompra;
 	}
 
+	/**
+	 * Este metodo establece el valor total de la compra. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
+	 * 
+	 * @param valorCompra Este parametro representa el nuevo valor en formato double
+	 *                    que va a tener el valor de la compra. valorCompra != null,
+	 *                    valorCompra != "".
+	 */
 	public void setValorCompra(double valorCompra) {
 		this.valorCompra = valorCompra;
 	}
 
+	/**
+	 * Este metodo devuelve la representacion del objecto en una cadena de
+	 * caracteres.
+	 */
 	@Override
 	public String toString() {
 		return "Compra [pareja=" + pareja + ", tienda=" + tienda + ", valorCompra=" + valorCompra + "]";

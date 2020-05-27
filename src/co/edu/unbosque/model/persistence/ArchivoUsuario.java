@@ -20,8 +20,8 @@ public class ArchivoUsuario {
 
 	/**
 	 * Este es el constructor de la clase Archivo el cual tiene la funcion de
-	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la
-	 * validación de que el archivo existe o no existe.<br>
+	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la validación
+	 * de que el archivo existe o no existe.<br>
 	 */
 	public ArchivoUsuario(File archivo) {
 		this.archivo_Usuarios = archivo;
@@ -29,8 +29,7 @@ public class ArchivoUsuario {
 			try {
 				archivo_Usuarios.createNewFile();
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage(),
-						"Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
 				e.printStackTrace();
 			}
 		}
@@ -38,19 +37,17 @@ public class ArchivoUsuario {
 	}
 
 	/**
-	 * Este metodo tiene la funcion de escribir el archivo mediante los
-	 * parametros de la clase usuario .
+	 * Este metodo tiene la funcion de escribir el archivo mediante los parametros
+	 * de la clase usuario .
 	 * 
-	 * @param persona
-	 *            el atributo que tendrán el sistema para ingresar el arraylist
-	 *            de la clase usuario != null, persona != “ “
+	 * @param persona el atributo que tendrán el sistema para ingresar el arraylist
+	 *                de la clase usuario != null, persona != “ “
 	 * 
 	 */
 	public void escribirEnArchivo(ArrayList<Usuario> lista_usuarios) {
 
 		try {
-			salida = new ObjectOutputStream(new FileOutputStream(
-					archivo_Usuarios));
+			salida = new ObjectOutputStream(new FileOutputStream(archivo_Usuarios));
 			salida.writeObject(lista_usuarios);
 			salida.close();
 
@@ -66,8 +63,8 @@ public class ArchivoUsuario {
 	 * Este metodo tiene la funcion de leer el archivo mediante el arraylist de
 	 * usuario
 	 * 
-	 * @return El valor de retorno seria el arraylist que contiene los atributos
-	 *         de la clase usuario
+	 * @return El valor de retorno seria el arraylist que contiene los atributos de
+	 *         la clase usuario
 	 *
 	 */
 	@SuppressWarnings("unchecked")
@@ -77,8 +74,7 @@ public class ArchivoUsuario {
 		if (archivo_Usuarios.length() != 0) {
 			try {
 
-				entrada = new ObjectInputStream(new FileInputStream(
-						archivo_Usuarios));
+				entrada = new ObjectInputStream(new FileInputStream(archivo_Usuarios));
 				listaUsuarios = (ArrayList<Usuario>) entrada.readObject();
 
 			} catch (FileNotFoundException e) {
@@ -92,26 +88,24 @@ public class ArchivoUsuario {
 		return listaUsuarios;
 	}
 
-	public ObjectInputStream getEntrada() {
-		return entrada;
-	}
-
-	public void setEntrada(ObjectInputStream entrada) {
-		this.entrada = entrada;
-	}
-
-	public ObjectOutputStream getSalida() {
-		return salida;
-	}
-
-	public void setSalida(ObjectOutputStream salida) {
-		this.salida = salida;
-	}
-
+	/**
+	 * Este metodo devuelve en formato file el atributo archivo
+	 * usuario.<b>post</b>Se devuelve el valor guardado en el atributo.
+	 * 
+	 * @return Retorna los datos guardados en el archivo correspondiente a los
+	 *         usuarios inscritos.
+	 */
 	public File getArchivo_Usuarios() {
 		return archivo_Usuarios;
 	}
 
+	/**
+	 * Este metodo establece los datos pertenecientes al archivo de los usuarios.
+	 * <b>post</b>Se fija un nuevo valor al atributo.<br>
+	 * 
+	 * @param archivo_Tienda Este parametro representa el valor que tomara el
+	 *                       archivo de los usuarios.
+	 */
 	public void setArchivo_Usuarios(File archivo_Usuarios) {
 		this.archivo_Usuarios = archivo_Usuarios;
 	}

@@ -35,38 +35,99 @@ public class Tiendas implements Serializable {
 
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo nombre. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el nombre en formato de cadena de caracteres.
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Este metodo establece el valor del nombre. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor en formato de cadena
+	 *               de caracteres que va a tener el nombre. nombre != null, nombre
+	 *               != "".
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Este metodo establece el valor de la direccion. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
+	 * 
+	 * @return Retorna la direccion en formato de cadena de caracteres.
+	 */
 	public String getDireccion() {
 		return direccion;
 	}
 
+	/**
+	 * Este metodo establece el valor de la direccion. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
+	 * 
+	 * @param direccion Este parametro representa el nuevo valor en formato de
+	 *                  cadena de caracteres que va a tener la direccion. direccion
+	 *                  != null, direccion != ""
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * Este metodo establece el horario de apertura de la tienda. <b>post</b>Se fija
+	 * un nuevo valor al atributo.<br>
+	 * 
+	 * @return Retorna el horario de apertura en formato en cadena de caracteres.
+	 */
 	public String getHorario_apertura() {
 		return horario_apertura;
 	}
 
+	/**
+	 * Este metodo establece el horario de apertura de la tienda. <b>post</b>Se fija
+	 * un nuevo valor al atributo.<br>
+	 * 
+	 * @param horario_apertura Este parametro representa el nuevo valor en formato
+	 *                         de cadena de caracteres que va a tener el horario de
+	 *                         apertura. horario_apertura != null, horario_apertura
+	 *                         != "".
+	 */
 	public void setHorario_apertura(String horario_apertura) {
 		this.horario_apertura = horario_apertura;
 	}
 
+	/**
+	 * Este metodo establece el horario de cierre de la tienda. <b>post</b>Se fija
+	 * un nuevo valor al atributo.<br>
+	 * 
+	 * @return Retorna el horario de cierre en formato de cadena de caracteres.
+	 */
 	public String getHorario_cierre() {
 		return horario_cierre;
 	}
 
+	/**
+	 * Este metodo establece el horario de cierre de la tienda. <b>post</b>Se fija
+	 * un nuevo valor al atributo.<br>
+	 * 
+	 * @param horario_cierre Este parametro representa el nuevo valor en formato de
+	 *                       cadena de caracteres que va a tener el horario de
+	 *                       cierre. horario_cierre != null, horario_cierre != "".
+	 */
 	public void setHorario_cierre(String horario_cierre) {
 		this.horario_cierre = horario_cierre;
 	}
 
+	/**
+	 * Este metodo devuelve la representacion del objecto en una cadena de
+	 * caracteres.
+	 */
 	@Override
 	public String toString() {
 		return "Nombre= " + nombre + " Direccion= " + direccion + " Horario  de apertura= " + horario_apertura

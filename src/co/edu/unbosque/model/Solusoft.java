@@ -137,6 +137,7 @@ public class Solusoft {
 	 * 
 	 * @param nuevo Este parametro es el nuevo usuario registrado, el cual contiene
 	 *              toda la informacion como nombre, correo, alias, entre otros.
+	 *              nuevo != null, nuevo != "".
 	 */
 	public void enviarCorreo(Usuario nuevo) {
 
@@ -394,34 +395,100 @@ public class Solusoft {
 		}
 	}
 
+	/**
+	 * Este metodo se llama para darle un valor al atributo cada vez que un usuario
+	 * inicia sesion. Esto quiere decir que esta valor cambia frente al usuario y a
+	 * // * las acciones hecha por este.<b>post</b>Se asigna un valor al atributo en
+	 * una instancia inicial.<br>
+	 * 
+	 * @param valorCupo Este parametro hace referencia al valor cuantitiativo que
+	 *                  tiene el cupo en una instancia inicial. valorCupo != null,
+	 *                  valorCupo != "".
+	 */
 	public void valorCupo(int valorCupo) {
 		this.valorCupo = valorCupo;
 	}
 
+	/**
+	 * Este metodo se llama para darle un valor al atributo cada vez que un usuario
+	 * inicia sesion. Esta variable hace referencia al cupo restante que tiene el
+	 * usuario, al ir reduciendose cada vez que agrega una nueva
+	 * pareja.<b>post</b>Se asigna un valor al atributo en una instancia
+	 * inicial.<br>
+	 * 
+	 * @param valorVariable Este parametro hace referencia al cupo restante que
+	 *                      tiene el usuario. valorVariable != null, valorVariable
+	 *                      != "".
+	 */
 	public void valorVariable(double valorVariable) {
 		this.valorVariable = valorVariable;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo correspondiente al alias del
+	 * usuario que acabó de ingresar al sistema. <b>post</b>Se devuelve el valor
+	 * guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el usuario o alias en formato de cadena de caracteres.
+	 */
 	public String getUsuario_inicio() {
 		return usuario_inicio;
 	}
 
+	/**
+	 * Este metodo establece el valor del atributo correspondiente al alias del
+	 * usuario que acabó de ingresar al sistema. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param usuario_inicio Este parametro representa el nuevo valor en formato de
+	 *                       cadena de caracteres que va a tener el alias del
+	 *                       usuario. usuario_inicio != null, usuario_inicio != "".
+	 */
 	public void setUsuario_inicio(String usuario_inicio) {
 		this.usuario_inicio = usuario_inicio;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del cupo. <b>post</b>Se devuelve el valor
+	 * guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el valor del cupo disponible en formato entero.
+	 */
 	public int getValorCupo() {
 		return valorCupo;
 	}
 
+	/**
+	 * Este metodo establece el valor del cupo. <b>post</b>Se fija un nuevo valor al
+	 * atributo.<br>
+	 * 
+	 * @param valorCupo Este parametro representa el nuevo valor en formato entero
+	 *                  que va a tener el cupo del usuario que acabo de ingresar en
+	 *                  su cuenta. valorCupo != null, valorCupo != "".
+	 */
 	public void setValorCupo(int valorCupo) {
 		this.valorCupo = valorCupo;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del cupo restante. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el cupo restante en formato de cadena de caracteres.
+	 */
 	public double getValorVariable() {
 		return valorVariable;
 	}
 
+	/**
+	 * Este metodo establece el valor del cupo restante del usuario. <b>post</b>Se
+	 * fija un nuevo valor al atributo.<br>
+	 * 
+	 * @param valorVariable Este parametro representa el nuevo valor en formato
+	 *                      double que va a tener el cupo restante del que acabo de
+	 *                      ingresar en su cuenta. valorVariable != null,
+	 *                      valorVariable != "".
+	 */
 	public void setValorVariable(double valorVariable) {
 		this.valorVariable = valorVariable;
 	}

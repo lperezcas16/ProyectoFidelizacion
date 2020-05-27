@@ -88,26 +88,24 @@ public class ArchivoTienda {
 		return listaTiendas;
 	}
 
-	public ObjectInputStream getEntrada() {
-		return entrada;
-	}
-
-	public void setEntrada(ObjectInputStream entrada) {
-		this.entrada = entrada;
-	}
-
-	public ObjectOutputStream getSalida() {
-		return salida;
-	}
-
-	public void setSalida(ObjectOutputStream salida) {
-		this.salida = salida;
-	}
-
+	/**
+	 * Este metodo devuelve en formato file el atributo archivo tienda.<b>post</b>Se
+	 * devuelve el valor guardado en el atributo.
+	 * 
+	 * @return Retorna los datos guardados en el archivo correspondiente a las
+	 *         tiendas.
+	 */
 	public File getArchivo_Tienda() {
 		return archivo_Tienda;
 	}
 
+	/**
+	 * Este metodo establece los datos pertenecientes al archivo de las tiendas.
+	 * <b>post</b>Se fija un nuevo valor al atributo.<br>
+	 * 
+	 * @param archivo_Tienda Este parametro representa el valor que tomara el
+	 *                       archivo de las tiendas.
+	 */
 	public void setArchivo_Tienda(File archivo_Tienda) {
 		this.archivo_Tienda = archivo_Tienda;
 	}
