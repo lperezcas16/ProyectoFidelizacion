@@ -22,6 +22,9 @@ public class ArchivoUsuario {
 	 * Este es el constructor de la clase Archivo el cual tiene la funcion de
 	 * verificar la existencia del archivo. <b>post</b> Se debe hacer la validación
 	 * de que el archivo existe o no existe.<br>
+	 * 
+	 * @param archivo El parametro corresponde al archivo del usuario. archivo !=
+	 *                null, archivo != "".
 	 */
 	public ArchivoUsuario(File archivo) {
 		this.archivo_Usuarios = archivo;
@@ -40,10 +43,11 @@ public class ArchivoUsuario {
 	 * Este metodo tiene la funcion de escribir el archivo mediante los parametros
 	 * de la clase usuario .
 	 * 
-	 * @param persona el atributo que tendrán el sistema para ingresar el arraylist
-	 *                de la clase usuario != null, persona != “ “
+	 * @param lista_usuarios El atributo que tendrán el sistema para ingresar el
+	 *                       arraylist de la clase usuario != null, persona != “ “
 	 * 
 	 */
+
 	public void escribirEnArchivo(ArrayList<Usuario> lista_usuarios) {
 
 		try {
@@ -103,8 +107,8 @@ public class ArchivoUsuario {
 	 * Este metodo establece los datos pertenecientes al archivo de los usuarios.
 	 * <b>post</b>Se fija un nuevo valor al atributo.<br>
 	 * 
-	 * @param archivo_Tienda Este parametro representa el valor que tomara el
-	 *                       archivo de los usuarios.
+	 * @param archivo_Usuarios Este parametro representa el valor que tomara el
+	 *                         archivo de los usuarios.
 	 */
 	public void setArchivo_Usuarios(File archivo_Usuarios) {
 		this.archivo_Usuarios = archivo_Usuarios;

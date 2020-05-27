@@ -70,7 +70,7 @@ public class Controller implements ActionListener, MouseListener {
 		view = new View();
 		file = new File(".\\data\\Base de Datos Usuarios.dat");
 		estadisticas = new Estadisticas();
-		informe = new Informe(this);
+		informe = new Informe();
 		archivo_Usuario = new ArchivoUsuario(file);
 		usuarioDAO = new UsuarioDAO(archivo_Usuario);
 		lista_usuarios = new ArrayList<Usuario>();
@@ -1779,9 +1779,9 @@ public class Controller implements ActionListener, MouseListener {
 	 * 
 	 * @param c Este parametro corresponde a la contraseña ingresada por el usuario
 	 *          que debe de analizarse para ver si se efectua la excepcion.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas a la contraseña donde tiene que tener por
-	 *                          lo menos 8 caracteres.
+	 * @throws ContraseñaExcepcion Esta excepcion corresponde a las limitaciones
+	 *                             impuestas a la contraseña donde tiene que tener
+	 *                             por lo menos 8 caracteres.
 	 */
 	public void comprobarContraseña(String c) throws ContraseñaExcepcion {
 		if (c.length() < 8) {
@@ -1799,10 +1799,10 @@ public class Controller implements ActionListener, MouseListener {
 	 * 
 	 * @param m Este parametro corresponde a la correo ingresada por el usuario que
 	 *          debe de analizarse para ver si se efectua la excepcion.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas al correo para poder validar si existe y
-	 *                          de esa manera se enviaria un correo de validación y
-	 *                          de registro exitoso.
+	 * @throws MailExcepcion Esta excepcion corresponde a las limitaciones impuestas
+	 *                       al correo para poder validar si existe y de esa manera
+	 *                       se enviaria un correo de validación y de registro
+	 *                       exitoso.
 	 */
 	public void comprobarCorreo(String correo) throws MailExcepcion {
 		// Patrón para validar el email
@@ -1824,9 +1824,9 @@ public class Controller implements ActionListener, MouseListener {
 	 * GeneroExcepcion en el paquete co.edu.unbosque.model<br>
 	 * 
 	 * @param g Este parametro corresponde al genero seleccionado por el usuario.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas al genero, donde se debe se elegir el
-	 *                          genero, ya sea mujer u hombre, o saltaria el error.
+	 * @throws GeneroExcepcion Esta excepcion corresponde a las limitaciones
+	 *                         impuestas al genero, donde se debe se elegir el
+	 *                         genero, ya sea mujer u hombre, o saltaria el error.
 	 */
 	public String comprobarGenero() throws GeneroExcepcion {
 
@@ -1850,9 +1850,8 @@ public class Controller implements ActionListener, MouseListener {
 	 * 
 	 * @param c Este parametro corresponde a la cantidad que tiene actualmente el
 	 *          usuario ingresado en su cupo.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas al cupo, el cual debe de ser cero, o
-	 *                          saltaria el error.
+	 * @throws CupoExcepcion Esta excepcion corresponde a las limitaciones impuestas
+	 *                       al cupo, el cual debe de ser cero, o saltaria el error.
 	 */
 	public void comprobarCupo(long c) throws CupoExcepcion {
 
@@ -1869,9 +1868,9 @@ public class Controller implements ActionListener, MouseListener {
 	 * 
 	 * @param c Este parametro corresponde a la cantidad correspondiente al cupo
 	 *          ingresado por el usuario.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas al cupo, el cual debe contener unicamente
-	 *                          números.
+	 * @throws ValorCupoExcepcion Esta excepcion corresponde a las limitaciones
+	 *                            impuestas al cupo, el cual debe contener
+	 *                            unicamente números.
 	 */
 	public void comprobarValorCupo(String c) throws ValorCupoExcepcion {
 		String numeros = "[0-9]+";
@@ -1888,9 +1887,8 @@ public class Controller implements ActionListener, MouseListener {
 	 * 
 	 * @param n Este parametro corresponde a la fecha ingresada por el usuario por
 	 *          medio de un jcalendar.
-	 * @throws HorarioExcepcion Esta excepcion corresponde a las limitaciones
-	 *                          impuestas a la edad, la cual debe de ser mayor o
-	 *                          igual a 18.
+	 * @throws EdadExcepcion Esta excepcion corresponde a las limitaciones impuestas
+	 *                       a la edad, la cual debe de ser mayor o igual a 18.
 	 */
 	public int comprobarEdad(Date n) throws EdadExcepcion {
 		int valorEdad = 0;
@@ -2087,6 +2085,8 @@ public class Controller implements ActionListener, MouseListener {
 				.addActionListener(controller);
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getPnl_compras().getPnl_ingresar_compra()
 				.getBoton_agregar_compra().addActionListener(controller);
+		// INFORMES
+		informe.getPanel_informe().getBoton_imprimir().addActionListener(controller);
 
 	}
 

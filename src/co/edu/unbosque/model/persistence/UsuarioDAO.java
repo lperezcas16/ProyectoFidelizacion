@@ -53,10 +53,15 @@ public class UsuarioDAO {
 	 *                       de usuario. tipoUsuario != null, tipoUsuario != "".
 	 * @param lista_usuarios el atributo que tendrán el sistema para llamar el
 	 *                       arraylist usuario. lista_usuarios != null,
+	 * @param compras        el atributo que tendra el sistema para llamar el
+	 *                       arraylist compras. compras != null, compras != "".
 	 *                       lista_usuarios != "".
-	 * @return Boolean true si se agrego el usuario, false si no se agrego el
+	 * @param edad           el atributo que tendra el sistema para ingresar la
+	 *                       edad. edad != null, edad != "":
+	 * @return boolean true si se agrego el usuario, false si no se agrego el
 	 *         usuario
 	 */
+
 	public boolean agregarUsuario(String nombre, String genero, String correo, String usuario, String contraseña,
 			String numeroTarjeta, long cupoTarjeta, ArrayList<Parejas> parejas, ArrayList<Compra> compras,
 			String tipoUsuario, int edad, ArrayList<Usuario> lista_usuarios) {

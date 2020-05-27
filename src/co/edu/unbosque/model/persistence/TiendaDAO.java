@@ -33,11 +33,13 @@ public class TiendaDAO {
 	 * @param horario_apertura el atributo que tendrán el sistema para ingresar el
 	 *                         horario de apertura. horario_apertura != null,
 	 *                         horario_apertura != "".
-	 * @param horario_cierre   el atributo que tentra el sistema para ingresar el
+	 * @param horario_cierre   el atributo que tendra el sistema para ingresar el
 	 *                         horario de cierre. horario_cierre != null,
 	 *                         horario_cierre != "".
+	 * @param lista_tiendas    el atributo que tendra el sistema con la lista de las
+	 *                         tiendas. lista_tiendas != null, lista_tiendas != "".
 	 * 
-	 * @return Boolean true si se agrego la tienda, false si no se agrego la tienda
+	 * @return boolean true si se agrego la tienda, false si no se agrego la tienda
 	 */
 	public boolean agregarTienda(String nombre, String direccion, String horario_apertura, String horario_cierre,
 			ArrayList<Tiendas> lista_tiendas) {

@@ -14,17 +14,16 @@ public class View extends JFrame {
 	private Panel1 panel1 = new Panel1("/co/edu/unbosque/imagenes/fondo1.png");
 	private PanelUsuarioInicio panel_us_inicio = new PanelUsuarioInicio();
 	private PanelAdminInicio panel_admin = new PanelAdminInicio();
-	private Informe informe = new Informe(null);
+	private Informe informe = new Informe();
 	private String nombrePareja;
 	private int cantidad_cupo;
 
-	
 	/**
-	 * Este es el metodo constructor el cual se le asigna la inicialización de
-	 * los atributos, objetos y forma de organización del JFrame.
-	 *  De esta manera el objecto es creado con un
-	 * valor inicial. Este método se llama automaticamente cuando se crea el
-	 * objeto.<b>post</b> se genera la ventana con el panel seleccionado .<br>
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos, objetos y forma de organización del JFrame. De esta manera el
+	 * objecto es creado con un valor inicial. Este método se llama automaticamente
+	 * cuando se crea el objeto.<b>post</b> se genera la ventana con el panel
+	 * seleccionado .<br>
 	 */
 	public View() {
 
@@ -49,8 +48,9 @@ public class View extends JFrame {
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
 	 * de generar un nuevo horario.<br>
 	 * 
-	 * @param mensaje Es el mensaje que se recibe del controlador y con este se muestra el JOption deseado != "".
-	 * */
+	 * @param mensaje Es el mensaje que se recibe del controlador y con este se
+	 *                muestra el JOption deseado != "".
+	 */
 	public void mostrarMensajes(String mensaje) {
 
 		NumberFormat formatoImporte = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
@@ -195,6 +195,7 @@ public class View extends JFrame {
 	public Panel1 getPanel1() {
 		return panel1;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel1. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
@@ -206,14 +207,15 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
 	 * @param panel_us_inicio Este parametro representa el nuevo valor del panel.
 	 */
 	public PanelUsuarioInicio getPanel_us_inicio() {
 		return panel_us_inicio;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
@@ -223,15 +225,17 @@ public class View extends JFrame {
 	public void setPanel_us_inicio(PanelUsuarioInicio panel_us_inicio) {
 		this.panel_us_inicio = panel_us_inicio;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
 	 * @param panel_admin Este parametro representa el nuevo valor del panel.
 	 */
 	public PanelAdminInicio getPanel_admin() {
 		return panel_admin;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
@@ -241,16 +245,17 @@ public class View extends JFrame {
 	public void setPanel_admin(PanelAdminInicio panel_admin) {
 		this.panel_admin = panel_admin;
 	}
-	
+
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
 	 * @param informe Este parametro representa el nuevo valor del panel.
 	 */
 	public Informe getInforme() {
 		return informe;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
@@ -260,15 +265,17 @@ public class View extends JFrame {
 	public void setInforme(Informe informe) {
 		this.informe = informe;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
 	 * @param nombrePareja Este parametro representa el nuevo valor del panel.
 	 */
 	public String getNombrePareja() {
 		return nombrePareja;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
@@ -278,15 +285,17 @@ public class View extends JFrame {
 	public void setNombrePareja(String nombrePareja) {
 		this.nombrePareja = nombrePareja;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
 	 * @param cantidad_cupo Este parametro representa el nuevo valor del panel.
 	 */
 	public int getCantidad_cupo() {
 		return cantidad_cupo;
 	}
+
 	/**
 	 * Este metodo establece el valor del Panel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
