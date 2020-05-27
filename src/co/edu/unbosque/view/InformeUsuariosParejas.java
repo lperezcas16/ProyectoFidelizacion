@@ -27,7 +27,7 @@ public class InformeUsuariosParejas extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JButton boton_imprimir, boton_cancelar;
+	private JButton boton_imprimir;
 	private ImageIcon imagen_imprimir;
 	private Icon icono_imprimir;
 

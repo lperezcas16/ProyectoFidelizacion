@@ -8,6 +8,7 @@ import co.edu.unbosque.controller.Controller;
 
 public class Informe extends JFrame {
 
+	
 	private static final long serialVersionUID = 1L;
 	private PanelInformeUsuario panel_informe_usuarios = new PanelInformeUsuario(
 			"/co/edu/unbosque/imagenes/reporte.png");

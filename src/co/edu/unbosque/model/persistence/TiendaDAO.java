@@ -77,61 +77,8 @@ public class TiendaDAO {
 		}
 	}
 
-	/**
-	 * Metodo EliminarTiendaHorarioApertura , eliminala tienda mediante el horario
-	 * de apertura registrado y el arraylist de la clase tienda
-	 * 
-	 * @param horario_apertura el atributo que tendrá el sistema para validar la
-	 *                         tienda. horario_apertura != null, horario_apertura !=
-	 *                         "".
-	 * @param lista_tiendas    el atributo que tendrá el sistema para llamar el
-	 *                         arraylist. lista_tiendas != null, lista_tiendas !=
-	 *                         "".
-	 * @return si es puedo realizar la eliminación true o no se pudo realizar false
-	 */
-	public boolean eliminarTiendaHorarioApertura(String horario_apertura, ArrayList<Tiendas> lista_tiendas) {
-		try {
 
-			Tiendas e = buscarPorHorarioApertura(horario_apertura, lista_tiendas);
-			lista_tiendas.remove(e);
-			archivo_Tienda.getArchivo_Tienda().delete();
-			archivo_Tienda.getArchivo_Tienda().createNewFile();
-			archivo_Tienda.escribirEnArchivo(lista_tiendas);
-			return true;
-
-		} catch (IOException e1) {
-			System.out.println("error: ");
-			e1.printStackTrace();
-			return false;
-		}
-	}
-
-	/**
-	 * Metodo EliminarTiendaHorarioApertura , eliminala tienda mediante el horario
-	 * de cierre registrado y el arraylist de la clase tienda
-	 * 
-	 * @param horario_cierre el atributo que tendrá el sistema para validar la
-	 *                       tienda. horario_cierre != null, horario_cierre != "".
-	 * @param lista_tiendas  el atributo que tendrá el sistema para llamar el
-	 *                       arraylist. lista_tiendas != null, lista_tiendas != "".
-	 * @return si es puedo realizar la eliminación true o no se pudo realizar false
-	 */
-	public boolean eliminarTiendaHorarioCierre(String horario_cierre, ArrayList<Tiendas> lista_tiendas) {
-		try {
-
-			Tiendas e = buscarPorHorarioCierre(horario_cierre, lista_tiendas);
-			lista_tiendas.remove(e);
-			archivo_Tienda.getArchivo_Tienda().delete();
-			archivo_Tienda.getArchivo_Tienda().createNewFile();
-			archivo_Tienda.escribirEnArchivo(lista_tiendas);
-			return true;
-
-		} catch (IOException e1) {
-			System.out.println("error: ");
-			e1.printStackTrace();
-			return false;
-		}
-	}
+	
 
 	/**
 	 * Metodo buscarTienda, busca una tienda mediante el nombre en el arraylist.
@@ -157,54 +104,8 @@ public class TiendaDAO {
 		return encontrado;
 	}
 
-	/**
-	 * Metodo buscarTienda, busca una tienda mediante el horario de apertura en el
-	 * arraylist.
-	 * 
-	 * @param horario_apertura el atributo que tendrán el sistema para validar la
-	 *                         tienda. horario_apertura != null, horario_apertura !=
-	 *                         "".
-	 * @param lista_tiendas    el atributo que tendrán el sistema para llamar el
-	 *                         arraylist de tiendas. lista_tiendas != null,
-	 *                         lista_tiendas != "".
-	 * @return si es encontrado o no encontrado en el sistema
-	 */
-	public Tiendas buscarPorHorarioApertura(String horario_apertura, ArrayList<Tiendas> lista_tiendas) {
-		Tiendas encontrado = null;
-		if (!lista_tiendas.isEmpty()) {
-			for (int i = 0; i < lista_tiendas.size(); i++) {
-				if (lista_tiendas.get(i).getHorario_apertura().equals(horario_apertura)) {
-					encontrado = lista_tiendas.get(i);
-				}
-			}
-		}
-		return encontrado;
+	
 
-	}
-
-	/**
-	 * Metodo buscarTienda, busca una tienda mediante el horario de cierre en el
-	 * arraylist.
-	 * 
-	 * @param horario_cierre el atributo que tendrán el sistema para validar la
-	 *                       tienda. horario_cierre != null, horario_cierre != "".
-	 * @param lista_tiendas  el atributo que tendrán el sistema para llamar el
-	 *                       arraylist de tiendas. lista_tiendas != null,
-	 *                       lista_tiendas != "".
-	 * @return si es encontrado o no encontrado en el sistema
-	 */
-	public Tiendas buscarPorHorarioCierre(String horario_cierre, ArrayList<Tiendas> lista_tiendas) {
-		Tiendas encontrado = null;
-		if (!lista_tiendas.isEmpty()) {
-			for (int i = 0; i < lista_tiendas.size(); i++) {
-				if (lista_tiendas.get(i).getHorario_cierre().equals(horario_cierre)) {
-					encontrado = lista_tiendas.get(i);
-				}
-			}
-		}
-		return encontrado;
-
-	}
 
 	/**
 	 * Metodo para poder ver las tiendas registradas en el sistema
@@ -221,28 +122,7 @@ public class TiendaDAO {
 		return texto;
 	}
 
-	/**
-	 * Metodo para poder ver una persona registrada en el sistema mediante nombre
-	 * 
-	 * @param nombre        el atributo que tendrán el sistema para validar el
-	 *                      nombre. nombre != null, nombre != "".
-	 * @param lista_tiendas el atributo que tendrán el sistema para llamar el
-	 *                      arraylist tiendas. lista_tiendas != null, lista_tiendas
-	 *                      != "".
-	 * @return texto cadena de texto con la informacion de la tienda
-	 */
-	public Tiendas verUnaTienda(String nombre, ArrayList<Tiendas> lista_tiendas) {
-		Tiendas encontrado = null;
-		if (!lista_tiendas.isEmpty()) {
-			for (int i = 0; i < lista_tiendas.size(); i++) {
-				if (lista_tiendas.get(i).getNombre() == nombre) {
-					encontrado = lista_tiendas.get(i);
-				}
-			}
-		}
 
-		return encontrado;
-	}
 
 	/**
 	 * Metodo para poder ordenar ascendentemente la lista de tiendas. <b>pre</b>Debe
