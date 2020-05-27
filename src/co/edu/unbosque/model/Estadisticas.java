@@ -69,8 +69,7 @@ public class Estadisticas {
 			if (veces <= c) {
 				veces = c;
 				if (c > 1 && c < numeros.length) {
-					if (acumulado.size() == 0
-							|| (conteoMayor > 0 && conteoMayor == c)) {
+					if (acumulado.size() == 0 || (conteoMayor > 0 && conteoMayor == c)) {
 						conteoMayor = c;
 						acumulado.add(j);
 					} else if (conteoMayor < c) {
@@ -127,24 +126,19 @@ public class Estadisticas {
 		double aux6 = 0;
 		for (int i = 0; i < usuarios.size(); i++) {
 			if (usuarios.get(i).getNombre().equals(filtro)) {
-				if (usuarios.get(i).getEdad() >= 18
-						&& usuarios.get(i).getEdad() <= 25) {
+				if (usuarios.get(i).getEdad() >= 18 && usuarios.get(i).getEdad() <= 25) {
 					aux++;
 				}
-				if (usuarios.get(i).getEdad() >= 26
-						&& usuarios.get(i).getEdad() <= 29) {
+				if (usuarios.get(i).getEdad() >= 26 && usuarios.get(i).getEdad() <= 29) {
 					aux2++;
 				}
-				if (usuarios.get(i).getEdad() >= 30
-						&& usuarios.get(i).getEdad() <= 37) {
+				if (usuarios.get(i).getEdad() >= 30 && usuarios.get(i).getEdad() <= 37) {
 					aux3++;
 				}
-				if (usuarios.get(i).getEdad() >= 38
-						&& usuarios.get(i).getEdad() <= 49) {
+				if (usuarios.get(i).getEdad() >= 38 && usuarios.get(i).getEdad() <= 49) {
 					aux4++;
 				}
-				if (usuarios.get(i).getEdad() >= 50
-						&& usuarios.get(i).getEdad() <= 66) {
+				if (usuarios.get(i).getEdad() >= 50 && usuarios.get(i).getEdad() <= 66) {
 					aux5++;
 				}
 				if (usuarios.get(i).getEdad() >= 67) {
@@ -152,24 +146,19 @@ public class Estadisticas {
 				}
 			} else {
 				if (filtro.equals("TOTAL")) {
-					if (usuarios.get(i).getEdad() >= 18
-							&& usuarios.get(i).getEdad() <= 25) {
+					if (usuarios.get(i).getEdad() >= 18 && usuarios.get(i).getEdad() <= 25) {
 						aux++;
 					}
-					if (usuarios.get(i).getEdad() >= 26
-							&& usuarios.get(i).getEdad() <= 29) {
+					if (usuarios.get(i).getEdad() >= 26 && usuarios.get(i).getEdad() <= 29) {
 						aux2++;
 					}
-					if (usuarios.get(i).getEdad() >= 30
-							&& usuarios.get(i).getEdad() <= 37) {
+					if (usuarios.get(i).getEdad() >= 30 && usuarios.get(i).getEdad() <= 37) {
 						aux3++;
 					}
-					if (usuarios.get(i).getEdad() >= 38
-							&& usuarios.get(i).getEdad() <= 49) {
+					if (usuarios.get(i).getEdad() >= 38 && usuarios.get(i).getEdad() <= 49) {
 						aux4++;
 					}
-					if (usuarios.get(i).getEdad() >= 50
-							&& usuarios.get(i).getEdad() <= 66) {
+					if (usuarios.get(i).getEdad() >= 50 && usuarios.get(i).getEdad() <= 66) {
 						aux5++;
 					}
 					if (usuarios.get(i).getEdad() >= 67) {
@@ -189,8 +178,7 @@ public class Estadisticas {
 		return porRan;
 	}
 
-	public DefaultPieDataset generarDatosGraficoEdadUsuarios(
-			ArrayList<Usuario> lista_usuarios) {
+	public DefaultPieDataset generarDatosGraficoEdadUsuarios(ArrayList<Usuario> lista_usuarios) {
 		DefaultPieDataset data = new DefaultPieDataset();
 
 		ArrayList<Integer> lista_edad = new ArrayList<Integer>();
@@ -206,8 +194,7 @@ public class Estadisticas {
 		lista_datos.clear();
 		lista_datos.addAll(hasSet);
 		for (int i = 0; i < lista_datos.size(); i++) {
-			numElementosDato.add(i,
-					Collections.frequency(lista_edad, lista_datos.get(i)));
+			numElementosDato.add(i, Collections.frequency(lista_edad, lista_datos.get(i)));
 
 		}
 		int[][] matriz = new int[lista_datos.size()][2];
@@ -226,8 +213,7 @@ public class Estadisticas {
 		return data;
 	}
 
-	public DefaultCategoryDataset generarDatosGraficoGeneroUsuarios(
-			ArrayList<Usuario> lista_usuarios) {
+	public DefaultCategoryDataset generarDatosGraficoGeneroUsuarios(ArrayList<Usuario> lista_usuarios) {
 		DefaultCategoryDataset data = new DefaultCategoryDataset();
 		int cantidadMujeres = 0;
 		int cantidadHombres = 0;
@@ -244,23 +230,20 @@ public class Estadisticas {
 		return data;
 	}
 
-	public void generarPDF(String tituloInicio, String titulo_grafico,
-			String informacion, JFreeChart chart, String salida, JTable jTable) {
+	public void generarPDF(String tituloInicio, String titulo_grafico, String informacion, JFreeChart chart,
+			String salida, JTable jTable) {
 		try {
 			String rutaDeAlmacenamiento = salida;
-			ChartRenderingInfo info = new ChartRenderingInfo(
-					new StandardEntityCollection());
+			ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
 			File file = new File(".\\data\\grafico.jpeg");
 
 			ChartUtilities.saveChartAsJPEG(file, chart, 600, 600, info);
 			Document document = new Document(PageSize.A4, 40, 40, 30, 30);
-			PdfWriter.getInstance(document, new FileOutputStream(
-					rutaDeAlmacenamiento + ".pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(rutaDeAlmacenamiento + ".pdf"));
 			PdfPTable table = new PdfPTable(jTable.getColumnCount());
 			PdfPCell columnHeader;
 			for (int column = 0; column < jTable.getColumnCount(); column++) {
-				columnHeader = new PdfPCell(new Phrase(
-						jTable.getColumnName(column)));
+				columnHeader = new PdfPCell(new Phrase(jTable.getColumnName(column)));
 				columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(columnHeader);
 			}
@@ -297,8 +280,7 @@ public class Estadisticas {
 		Chunk c = new Chunk();
 		p.setAlignment(Element.ALIGN_CENTER);
 		c.append(texto);
-		Font fuente = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD,
-				BaseColor.BLUE);
+		Font fuente = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD, BaseColor.BLUE);
 		c.setFont(fuente);
 		p.add(c);
 		return p;
@@ -315,21 +297,19 @@ public class Estadisticas {
 		return p;
 	}
 
-	public void generarPDFEdadesUsuarios(ArrayList<Usuario> lista_usuarios,
-			JFreeChart chart, String fileChooserGuardar, JTable jtable) {
+	public void generarPDFEdadesUsuarios(ArrayList<Usuario> lista_usuarios, JFreeChart chart, String fileChooserGuardar,
+			JTable jtable) {
 		String informacion = "\n"
-				+ "Las estadisticas de los usuarios que se encuentran registrados son las siguientes: "
-				+ "\n" + "Media: " + calcularMedia(lista_usuarios) + "\n"
-				+ "Moda: " + calcularModa(lista_usuarios) + "\n" + "Mediana: "
-				+ calcularMediana(lista_usuarios);
-		generarPDF("Estadisticas de la edad de los usuarios", "Estadisticas", informacion,
-				chart, fileChooserGuardar, jtable);
+				+ "Las estadisticas de los usuarios que se encuentran registrados son las siguientes: " + "\n"
+				+ "Media: " + calcularMedia(lista_usuarios) + "\n" + "Moda: " + calcularModa(lista_usuarios) + "\n"
+				+ "Mediana: " + calcularMediana(lista_usuarios);
+		generarPDF("Estadisticas de la edad de los usuarios", "Estadisticas", informacion, chart, fileChooserGuardar,
+				jtable);
 	}
 
-	public void generarPDFUsuarios(ArrayList<Usuario> lista_usuarios,
-			JFreeChart chart, String fileChooserGuardar, JTable jtable) {
-		generarPDF("Reporte de usuarios", "Grafico de genero", "", chart,
-				fileChooserGuardar, jtable);
+	public void generarPDFUsuarios(ArrayList<Usuario> lista_usuarios, JFreeChart chart, String fileChooserGuardar,
+			JTable jtable) {
+		generarPDF("Reporte de usuarios", "Grafico de genero", "", chart, fileChooserGuardar, jtable);
 	}
 
 	private int calcularModa(ArrayList<Usuario> lista_usuarios) {
@@ -363,8 +343,7 @@ public class Estadisticas {
 			lista_edad.add(i, lista_usuarios.get(i).getEdad());
 		}
 		if (lista_edad.size() % 2 == 0) {
-			int suma = lista_edad.get(lista_edad.size() / 2)
-					+ lista_edad.get((lista_edad.size() / 2) - 1);
+			int suma = lista_edad.get(lista_edad.size() / 2) + lista_edad.get((lista_edad.size() / 2) - 1);
 			mediana = (double) (suma / 2);
 		} else {
 			mediana = Double.valueOf(lista_edad.get(lista_edad.size() / 2));
@@ -385,5 +364,5 @@ public class Estadisticas {
 		media = sumaEdades / lista_edad.size();
 		return media;
 	}
-	
+
 }

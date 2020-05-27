@@ -232,8 +232,6 @@ public class TiendaDAO {
 		return encontrado;
 	}
 
-	
-
 	public void ordenTiendasAsc(ArrayList<Tiendas> tiendas) {
 
 		Tiendas aux, menor;
@@ -258,12 +256,12 @@ public class TiendaDAO {
 				archivo_Tienda.getArchivo_Tienda().delete();
 				archivo_Tienda.getArchivo_Tienda().createNewFile();
 				archivo_Tienda.escribirEnArchivo(tiendas);
-				
+
 			} catch (IOException e1) {
 				e1.printStackTrace();
-				
+
 			}
-			
+
 		}
 	}
 

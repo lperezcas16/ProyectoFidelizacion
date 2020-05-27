@@ -60,56 +60,130 @@ public class Parejas implements Serializable {
 		this.lista_horarios = lista_horarios;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo nombre. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el nombre en formato de cadena de caracteres.
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Este metodo establece el valor del nombre. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param nombre Este parametro representa el nuevo valor en formato de cadena
+	 *               de caracteres que va a tener el nombre.
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo cupo. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el cupo en formato de entero.
+	 */
 	public int getCupo() {
 		return cupo;
 	}
 
+	/**
+	 * Este metodo establece el valor del cupo. <b>post</b>Se fija un nuevo valor al
+	 * atributo.<br>
+	 * 
+	 * @param cupo Este parametro representa el nuevo valor en formato entero que va
+	 *             a tener el cupo.
+	 */
 	public void setCupo(int cupo) {
 		this.cupo = cupo;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo correspondiente a la cantidad del
+	 * cupo asignado. <b>post</b>Se devuelve el valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el cupo asignado en formato de double.
+	 */
 	public double getCantidad_cupo_asignado() {
 		return cantidad_cupo_asignado;
 	}
 
+	/**
+	 * Este metodo establece el valor del nombre. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param cantidad_cupo_asignado Este parametro representa el nuevo valor en
+	 *                               formato double que va a tener el cupo asignado.
+	 */
 	public void setCantidad_cupo_asignado(double cantidad_cupo_asignado) {
 		this.cantidad_cupo_asignado = cantidad_cupo_asignado;
 	}
 
+	/**
+	 * Este metodo devuelve el valor correspondiente al cupo restante. <b>post</b>Se
+	 * devuelve el valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna el cupo restante en formato de double.
+	 */
 	public double getCantidad_cupo_restante() {
 		return cantidad_cupo_restante;
 	}
 
+	/**
+	 * Este metodo establece el valor del cupo restante. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
+	 * 
+	 * @param cantidad_cupo_restante Este parametro representa el nuevo valor en
+	 *                               formato double que va a tener el cupo restante.
+	 */
 	public void setCantidad_cupo_restante(double cantidad_cupo_restante) {
 		this.cantidad_cupo_restante = cantidad_cupo_restante;
 	}
 
+	/**
+	 * Este metodo devuelve el valor del atributo edad. <b>post</b>Se devuelve el
+	 * valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna la edad en formato de entero.
+	 */
 	public int getEdad() {
 		return edad;
 	}
 
+	/**
+	 * Este metodo establece el valor de la edad. <b>post</b>Se fija un nuevo valor
+	 * al atributo.<br>
+	 * 
+	 * @param edad Este parametro representa el nuevo valor en formato entero que va
+	 *             a tener la edad.
+	 */
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 
+	/**
+	 * Este metodo devuelve todos los valores guardados en la lista de horarios.
+	 * <b>post</b>Se devuelve el valor guardado en el atributo.<br>
+	 * 
+	 * @return Retorna la lista de horarios en formato de arraylist.
+	 */
 	public ArrayList<Horarios> getLista_horarios() {
 		return lista_horarios;
 	}
 
+	/**
+	 * Este metodo establece todos los valores guardados en la lista de horarios.
+	 * <b>post</b>Se fija un nuevo valor al atributo.<br>
+	 * 
+	 * @param lista_horarios Este parametro representa el nuevo valor en formato de
+	 *                       arraylist que va a tener la lista de horarios.
+	 */
 	public void setLista_horarios(ArrayList<Horarios> lista_horarios) {
 		this.lista_horarios = lista_horarios;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
