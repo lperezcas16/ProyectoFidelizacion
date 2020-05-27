@@ -140,7 +140,7 @@ public class TiendaDAO {
 
 		if (!lista_tiendas.isEmpty()) {
 			for (int i = 0; i < lista_tiendas.size(); i++) {
-				if (lista_tiendas.get(i).getDireccion().equalsIgnoreCase(direccion)) {
+				if (lista_tiendas.get(i).getNombre().equalsIgnoreCase(direccion)) {
 					encontrado = lista_tiendas.get(i);
 				}
 			}
