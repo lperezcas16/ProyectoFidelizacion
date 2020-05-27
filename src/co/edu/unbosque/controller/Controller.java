@@ -68,7 +68,6 @@ public class Controller implements ActionListener, MouseListener {
 		super();
 		solusoft = new Solusoft(null);
 		view = new View();
-		view2 = new VentanaGraficas();
 		file = new File(".\\data\\Base de Datos Usuarios.dat");
 		estadisticas = new Estadisticas();
 		informe = new Informe(this);
@@ -493,10 +492,38 @@ public class Controller implements ActionListener, MouseListener {
 						if (hora.compareTo(tienda_horarios.getHorario_apertura()) > 0
 								&& hora.compareTo(tienda_horarios.getHorario_cierre()) < 0) {
 							if (usuarioDAO.agregarHorariosCompras(nombreInicio, tienda_horarios, pareja, fecha, hora)) {
+
 								view.mostrarMensajes("HORARIO_TRUE");
 								solusoft.enviarCorreoHorario(usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios),
 										fechaActual, horaActual, pareja, tienda_horarios.getNombre(),
 										usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getGenero());
+
+								view.getPanel_us_inicio().getPnl_ver_horarios().getModel().setRowCount(0);
+								lista_usuarios = archivo_Usuario.leerArchivo();
+								for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas()
+										.size(); i++) {
+									if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+											.getLista_horarios().isEmpty()) {
+										for (int j = 0; j < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+												.getParejas().get(i).getLista_horarios().size(); j++) {
+											String tienda = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+													.getParejas().get(i).getLista_horarios().get(j).getTienda()
+													.getNombre();
+											String fecha1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+													.getParejas().get(i).getLista_horarios().get(j).getFecha();
+											String hora1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+													.getParejas().get(i).getLista_horarios().get(j).getHora();
+											String pareja1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+													.getParejas().get(i).getNombre();
+
+											Object[] datos_filas = { tienda, fecha1, hora1, pareja1 };
+											view.getPanel_us_inicio().getPnl_ver_horarios().getModel()
+													.addRow(datos_filas);
+
+										}
+									}
+								}
+
 							} else {
 								view.mostrarMensajes("HORARIO_FALSE");
 							}
@@ -509,12 +536,40 @@ public class Controller implements ActionListener, MouseListener {
 									&& hora.compareTo(tienda_horarios.getHorario_cierre()) < 0) {
 								if (usuarioDAO.agregarHorariosCompras(nombreInicio, tienda_horarios, pareja, fecha,
 										hora)) {
+
 									view.getPanel_us_inicio().getPnl_asignar_horarios().getBoton_agregar_horario()
 											.setEnabled(false);
 									view.mostrarMensajes("HORARIO_TRUE");
 									solusoft.enviarCorreoHorario(usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios),
 											fechaActual, horaActual, pareja, tienda_horarios.getNombre(),
 											usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getGenero());
+
+									view.getPanel_us_inicio().getPnl_ver_horarios().getModel().setRowCount(0);
+									lista_usuarios = archivo_Usuario.leerArchivo();
+									for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+											.getParejas().size(); i++) {
+										if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+												.getLista_horarios().isEmpty()) {
+											for (int j = 0; j < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+													.getParejas().get(i).getLista_horarios().size(); j++) {
+												String tienda = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+														.getParejas().get(i).getLista_horarios().get(j).getTienda()
+														.getNombre();
+												String fecha1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+														.getParejas().get(i).getLista_horarios().get(j).getFecha();
+												String hora1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+														.getParejas().get(i).getLista_horarios().get(j).getHora();
+												String pareja1 = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios)
+														.getParejas().get(i).getNombre();
+
+												Object[] datos_filas = { tienda, fecha1, hora1, pareja1 };
+												view.getPanel_us_inicio().getPnl_ver_horarios().getModel()
+														.addRow(datos_filas);
+
+											}
+										}
+									}
+
 								} else {
 									view.mostrarMensajes("HORARIO_FALSE");
 								}
@@ -646,7 +701,7 @@ public class Controller implements ActionListener, MouseListener {
 			if (numero_filas == 1) {
 				view.getPanel_admin().getPanel_usuarios().getModel2().setRowCount(0);
 				String alias = view.getPanel_admin().getPanel_usuarios().getTabla1().getValueAt(0, 1).toString();
-				
+
 				if (!usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().isEmpty()) {
 					for (int i = 0; i < usuarioDAO.buscarUsuario(alias, lista_usuarios).getParejas().size(); i++) {
 
@@ -937,7 +992,7 @@ public class Controller implements ActionListener, MouseListener {
 							lista_tiendas)) {
 						view.mostrarMensajes("ELIMINAR_TIENDA_TRUE");
 						view.getPanel_admin().getPanel_tiendas().getModel().setRowCount(0);
-						
+
 						// luego la muestra de nuevo
 						lista_tiendas = archivo_tienda.leerArchivo();
 						for (int i = 0; i < lista_tiendas.size(); i++) {
@@ -1507,7 +1562,7 @@ public class Controller implements ActionListener, MouseListener {
 				for (int i = 0; i < lista_usuarios.size(); i++) {
 					if (lista_usuarios.get(i).getUsuario().equals(nombreInicio)
 							|| lista_usuarios.get(i).getCorreo().equals(nombreInicio)) {
-						nombreInicio=lista_usuarios.get(i).getUsuario();
+						nombreInicio = lista_usuarios.get(i).getUsuario();
 					}
 				}
 				view.getPanel1().limpiarCampos();
@@ -1604,6 +1659,27 @@ public class Controller implements ActionListener, MouseListener {
 				.setText(formatoImporte.format(solusoft.getValorVariable()));
 		view.getPanel_us_inicio().getPnl_adm_cuentas().getLabel_cupo()
 				.setText(formatoImporte.format(solusoft.getValorVariable()));
+
+		for (int i = 0; i < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().size(); i++) {
+			if (!usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i).getLista_horarios()
+					.isEmpty()) {
+				for (int j = 0; j < usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+						.getLista_horarios().size(); j++) {
+					String tienda = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+							.getLista_horarios().get(j).getTienda().getNombre();
+					String fecha = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+							.getLista_horarios().get(j).getFecha();
+					String hora = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+							.getLista_horarios().get(j).getHora();
+					String pareja = usuarioDAO.buscarUsuario(nombreInicio, lista_usuarios).getParejas().get(i)
+							.getNombre();
+
+					Object[] datos_filas = { tienda, fecha, hora, pareja };
+					view.getPanel_us_inicio().getPnl_ver_horarios().getModel().addRow(datos_filas);
+
+				}
+			}
+		}
 
 	}
 
