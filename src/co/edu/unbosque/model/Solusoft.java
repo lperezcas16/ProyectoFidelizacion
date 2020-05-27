@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+//import javax.activation.DataHandler;
+//import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -168,7 +168,7 @@ public class Solusoft {
 			texto.setText(mensaje);
 			// CONSTRUIMOS EL ADJUNTO
 			BodyPart adjunto = new MimeBodyPart();
-			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
+//			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
 			adjunto.setFileName("CONTACTO");
 
 			// Una MultiParte para agrupar texto e imagen.
@@ -264,7 +264,7 @@ public class Solusoft {
 			texto.setText(mensaje);
 			// CONSTRUIMOS EL ADJUNTO
 			BodyPart adjunto = new MimeBodyPart();
-			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
+//			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
 			adjunto.setFileName("CONTACTO");
 
 			// Una MultiParte para agrupar texto e imagen.
@@ -362,7 +362,7 @@ public class Solusoft {
 			texto.setText(mensaje);
 			// CONSTRUIMOS EL ADJUNTO
 			BodyPart adjunto = new MimeBodyPart();
-			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
+//			adjunto.setDataHandler(new DataHandler(new FileDataSource("./src/co/edu/unbosque/imagenes/correo.jpg")));
 			adjunto.setFileName("CONTACTO");
 
 			// Una MultiParte para agrupar texto e imagen.

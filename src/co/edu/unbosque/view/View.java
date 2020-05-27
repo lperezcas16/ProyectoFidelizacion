@@ -190,7 +190,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del Panel1. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 *@return panel1 Este parametro representa el nuevo valor del panel.
 	 */
 	public Panel1 getPanel1() {
 		return panel1;
@@ -210,7 +210,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel_us_inicio Este parametro representa el nuevo valor del panel.
+	 *@return panel_us_inicio Este parametro representa el nuevo valor del panel.
 	 */
 	public PanelUsuarioInicio getPanel_us_inicio() {
 		return panel_us_inicio;
@@ -230,7 +230,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel_admin Este parametro representa el nuevo valor del panel.
+	 *@return panel_admin Este parametro representa el nuevo valor del panel.
 	 */
 	public PanelAdminInicio getPanel_admin() {
 		return panel_admin;
@@ -250,7 +250,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param informe Este parametro representa el nuevo valor del panel.
+	 *@return informe Este parametro representa el nuevo valor del panel.
 	 */
 	public Informe getInforme() {
 		return informe;
@@ -270,7 +270,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param nombrePareja Este parametro representa el nuevo valor del panel.
+	 *@return nombrePareja Este parametro representa el nuevo valor del panel.
 	 */
 	public String getNombrePareja() {
 		return nombrePareja;
@@ -290,7 +290,7 @@ public class View extends JFrame {
 	 * Este metodo devuelve el valor del PanelUsuarioInicio. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param cantidad_cupo Este parametro representa el nuevo valor del panel.
+	 *@return cantidad_cupo Este parametro representa el nuevo valor del panel.
 	 */
 	public int getCantidad_cupo() {
 		return cantidad_cupo;

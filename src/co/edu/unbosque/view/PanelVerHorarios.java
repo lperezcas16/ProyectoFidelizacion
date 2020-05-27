@@ -97,7 +97,7 @@ public class PanelVerHorarios extends JPanel {
 	 * Este metodo devuelve el valor del table. <b>post</b>Se fija un nuevo valor al
 	 * atributo.<br>
 	 * 
-	 * @param table Este parametro representa el valor del table.!= ""
+	 *@return table Este parametro representa el valor del table. si no hay retorna null
 	 */
 	public JTable getTable() {
 		return table;
@@ -118,7 +118,7 @@ public class PanelVerHorarios extends JPanel {
 	 * Este metodo devuelve el valor del scroll. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param scroll Este parametro representa el valor del scroll.!= ""
+	 *@return scroll Este parametro representa el valor del scroll si no hay retorna null
 	 */
 	public JScrollPane getScroll() {
 		return scroll;
@@ -139,7 +139,7 @@ public class PanelVerHorarios extends JPanel {
 	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param model Este parametro representa el valor del DefaultTableModel.!= ""
+	 *@return model Este parametro representa el valor del DefaultTableModel. si no hay retorna null
 	 */
 	public DefaultTableModel getModel() {
 		return model;
@@ -160,7 +160,7 @@ public class PanelVerHorarios extends JPanel {
 	 * Este metodo devuelve el valor del String[]. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre_columnas Este parametro representa el valor del String[].!= ""
+	 *@return nombre_columnas Este parametro representa el valor del String[]. si no hay retorna null
 	 */
 	public String[] getNombre_columnas() {
 		return nombre_columnas;

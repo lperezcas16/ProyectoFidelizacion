@@ -112,6 +112,7 @@ public class VentanaGraficas extends JDialog {
 	 * @param ejeX Se le asigna la coordenada en el eje x al diagrama != "".
 	 * 
 	 * @param ejeY Se le asigna una coordenada del eje y al diagrama != "".
+	 * @return chart la grafica , si no hay retorna null
 	 */
 	public JFreeChart generarGraficoBarras(String titulo,String ejeX,String ejeY,DefaultCategoryDataset data) {
 		JFreeChart chart = ChartFactory.createBarChart3D(titulo,ejeX,ejeY, data,PlotOrientation.VERTICAL,true,true,true);
@@ -126,6 +127,7 @@ public class VentanaGraficas extends JDialog {
 	 * Este es el metodo fileChooseGuardar el cual se guarda el archivo en pdf es la dirección establecida por el usuario 
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
 	 * de generar un nuevo horario.<br>
+	 * @return " " vacio 
 	 * */
 	public String fileChooserGuardar() {
 		JFileChooser direccion = new JFileChooser();

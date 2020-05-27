@@ -34,7 +34,7 @@ public class PanelInfoSolusoft extends JPanel {
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
 	 * de generar un nuevo horario.<br>
-	
+	 
 	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
 	 */
 	public void paint(Graphics g) {

@@ -184,7 +184,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JComboBox<String>. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param combo_tiendas Este parametro representa el  valor del JComboBox<String>.!= ""
+	 *@return combo_tiendas Este parametro representa el  valor del JComboBox<String>. si no hay retorna null
 	 */
 	public JComboBox<String> getCombo_tiendas() {
 		return combo_tiendas;
@@ -203,7 +203,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param campo_buscar Este parametro representa el  valor del JTextField.!= ""
+	 *@return campo_buscar Este parametro representa el  valor del JTextField. si no hay retorna null
 	 */
 	public JTextField getCampo_buscar() {
 		return campo_buscar;
@@ -222,7 +222,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param campo_nombre Este parametro representa el  valor del JTextField.!= ""
+	 *@return campo_nombre Este parametro representa el  valor del JTextField. si no hay retorna null
 	 */
 	public JTextField getCampo_nombre() {
 		return campo_nombre;
@@ -241,7 +241,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param campo_direccion Este parametro representa el  valor del JTextField.!= ""
+	 *@return campo_direccion Este parametro representa el  valor del JTextField. si no hay retorna null
 	 */
 	public JTextField getCampo_direccion() {
 		return campo_direccion;
@@ -260,7 +260,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_buscar_pornombre Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_buscar_pornombre Este parametro representa el  valor del JButton. si no hay retorna null
 	 */
 	public JButton getboton_buscar_pornombre() {
 		return boton_buscar_pornombre;
@@ -279,7 +279,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_eliminar Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_eliminar Este parametro representa el  valor del JButton. si no hay retorna null
 	 */
 	public JButton getBoton_eliminar() {
 		return boton_eliminar;
@@ -298,7 +298,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param spinner Este parametro representa el  valor del JSpinner.!= ""
+	 *@return spinner Este parametro representa el  valor del JSpinner. si no hay retorna null
 	 */
 	public JSpinner getSpinner() {
 		return spinner;
@@ -317,7 +317,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param spinner_apertura Este parametro representa el  valor del JSpinner.!= ""
+	 *@return spinner_apertura Este parametro representa el  valor del JSpinner. si no hay retorna null
 	 */
 	public JSpinner getSpinner_apertura() {
 		return spinner_apertura;
@@ -336,7 +336,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param spinner_cierre Este parametro representa el  valor del JSpinner.!= ""
+	 *@return spinner_cierre Este parametro representa el  valor del JSpinner. si no hay retorna null
 	 */
 	public JSpinner getSpinner_cierre() {
 		return spinner_cierre;
@@ -355,7 +355,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_agregar_tienda Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_agregar_tienda Este parametro representa el  valor del JButton. si no hay retorna null
 	 */
 	public JButton getBoton_agregar_tienda() {
 		return boton_agregar_tienda;
@@ -374,7 +374,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param model Este parametro representa el  valor del DefaultTableModel.!= ""
+	 *@return model Este parametro representa el  valor del DefaultTableModel. si no hay retorna null
 	 */
 	public DefaultTableModel getModel() {
 		return model;
@@ -393,7 +393,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_buscar Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_buscar Este parametro representa el  valor del JButton. si no hay retorna null
 	 */
 	public JButton getBoton_buscar() {
 		return boton_buscar;
@@ -412,7 +412,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_ver_tiendas Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_ver_tiendas Este parametro representa el  valor del JButton si no hay retorna null
 	 */
 	public JButton getBoton_ver_tiendas() {
 		return boton_ver_tiendas;
@@ -431,7 +431,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JTable. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param tabla Este parametro representa el  valor del JTable.!= ""
+	 *@return tabla Este parametro representa el  valor del JTable. si no hay retorna null
 	 */
 	public JTable getTabla() {
 		return tabla;
@@ -450,7 +450,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_buscar_pornombre Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_buscar_pornombre Este parametro representa el  valor del JButton si no hay retorna null
 	 */
 	public JButton getBoton_buscar_pornombre() {
 		return boton_buscar_pornombre;
@@ -469,7 +469,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param imagen Este parametro representa el  valor del ImageIcon.!= ""
+	 *@return imagen Este parametro representa el  valor del ImageIcon. si no hay retorna null
 	 */
 	public ImageIcon getImagen() {
 		return imagen;
@@ -488,7 +488,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el  valor del String.!= ""
+	 *@return nombre Este parametro representa el  valor del String. si no hay retorna null
 	 */
 	public String getNombre() {
 		return nombre;
@@ -507,7 +507,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_ordenar Este parametro representa el  valor del JButton.!= ""
+	 *@return boton_ordenar Este parametro representa el  valor del JButton si no hay retorna null
 	 * */
 	public JButton getBoton_ordenar() {
 		return boton_ordenar;
@@ -526,7 +526,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del JScrollPane. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param scroll1 Este parametro representa el  valor del JScrollPane.!= ""
+	 *@return scroll1 Este parametro representa el  valor del JScrollPane. si no hay retorna null
 	 */
 	public JScrollPane getScroll1() {
 		return scroll1;
@@ -545,7 +545,7 @@ public class PanelTiendas extends JPanel {
 	 * Este metodo devuelve el valor del String[]. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param cabecera Este parametro representa el  valor del String[].!= ""
+	 *@return cabecera Este parametro representa el  valor del String[]. si no hay retorna null
 	 */
 	public String[] getCabecera() {
 		return cabecera;

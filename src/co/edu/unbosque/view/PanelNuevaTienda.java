@@ -110,7 +110,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param  campo_texto_nombre; Este parametro representa el  valor del JTextField. != "".
+	 *@return  campo_texto_nombre; Este parametro representa el  valor del JTextField.  si no hay retorna null
 	 */
 	public JTextField getCampo_texto_nombre() {
 		return campo_texto_nombre;
@@ -129,7 +129,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param campo_texto_direccion Este parametro representa el  valor del JTextField. != "".
+	 *@return campo_texto_direccion Este parametro representa el  valor del JTextField.  si no hay retorna null
 	 */
 	public JTextField getCampo_texto_direccion() {
 		return campo_texto_direccion;
@@ -148,7 +148,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param spinner_hora_apertura Este parametro representa el  valor del JSpinner. != "".
+	 *@return spinner_hora_apertura Este parametro representa el  valor del JSpinner.  si no hay retorna null
 	 */
 	public JSpinner getSpinner_hora_apertura() {
 		return spinner_hora_apertura;
@@ -167,7 +167,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JSpinner. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param spinner_hora_cierre Este parametro representa el  valor del JSpinner. != "".
+	 * @return spinner_hora_cierre Este parametro representa el  valor del JSpinner. si no hay retorna null
 	 */
 	public JSpinner getSpinner_hora_cierre() {
 		return spinner_hora_cierre;
@@ -186,7 +186,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_validar_nueva_tienda Este parametro representa el  valor del JButton. != "".
+	 *@return boton_validar_nueva_tienda Este parametro representa el  valor del JButton.  si no hay retorna null
 	 */
 	public JButton getBoton_validar_nueva_tienda() {
 		return boton_validar_nueva_tienda;
@@ -207,7 +207,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param imagen Este parametro representa el  valor del ImageIcon. != "".
+	 *@return imagen Este parametro representa el  valor del ImageIcon.  si no hay retorna null
 	 */
 	public ImageIcon getImagen() {
 		return imagen;
@@ -226,8 +226,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param imagen_boton_añadir Este parametro representa el  valor del ImageIcon. != "".
-	 */
+	 *@return imagen_boton_añadir Este parametro representa el  valor del ImageIcon si no hay retorna null
 	public ImageIcon getImagen_boton_añadir() {
 		return imagen_boton_añadir;
 	}
@@ -245,7 +244,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del Icon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param icono_boton_añadir Este parametro representa el  valor del Icon. != "".
+	 *@return icono_boton_añadir Este parametro representa el  valor del Icon.  si no hay retorna null
 	 */
 	public Icon getIcono_boton_añadir() {
 		return icono_boton_añadir;
@@ -264,7 +263,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el  valor del String. != "".
+	 *@return nombre Este parametro representa el  valor del String.  si no hay retorna null
 	 */
 	public String getNombre() {
 		return nombre;
@@ -283,7 +282,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_regresar Este parametro representa el  valor del JButton. != "".
+	 *@return boton_regresar Este parametro representa el  valor del JButton.  si no hay retorna null
 	 */
 	public JButton getBoton_regresar() {
 		return boton_regresar;
@@ -302,7 +301,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param imagen_boton_regresar Este parametro representa el  valor del ImageIcon. != "".
+	 *@return imagen_boton_regresar Este parametro representa el  valor del ImageIcon.  si no hay retorna null
 	 */
 	public ImageIcon getImagen_boton_regresar() {
 		return imagen_boton_regresar;
@@ -321,7 +320,7 @@ public class PanelNuevaTienda extends JPanel {
 	 * Este metodo devuelve el valor del Icon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param icono_boton_regresar Este parametro representa el  valor del Icon. != "".
+	 *@return icono_boton_regresar Este parametro representa el  valor del Icon.  si no hay retorna null
 	 */
 	public Icon getIcono_boton_regresar() {
 		return icono_boton_regresar;

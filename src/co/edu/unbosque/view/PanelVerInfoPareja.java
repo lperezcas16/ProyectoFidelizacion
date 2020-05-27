@@ -121,7 +121,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del String. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el  valor del String.!= ""
+	 *@return nombre Este parametro representa el  valor del String. si no hay retorna null
 	 */
 	public String getNombre() {
 		return nombre;
@@ -140,8 +140,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param imagen Este parametro representa el  valor del ImageIcon.!= ""
-	 */
+	 *@return imagen Este parametro representa el  valor del ImageIcon. si no hay retorna null
 	public ImageIcon getImagen() {
 		return imagen;
 	}
@@ -161,8 +160,8 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_regresar Este parametro representa el  
-	 * 				valor del JButton.!= ""
+	 *@return boton_regresar Este parametro representa el  
+	 * 				valor del JButton. si no hay retorna null
 	 */
 	public JButton getBoton_regresar() {
 		return boton_regresar;
@@ -181,7 +180,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del ImageIcon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField.
+	 *@return c_usuario_inicio Este parametro representa el  valor del JTextField. si no hay retorna null
 	 */
 	public ImageIcon getImagen_boton_regresar() {
 		return imagen_boton_regresar;
@@ -201,8 +200,8 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del Icon. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa 
-	 * el  valor del Icon.!= ""
+	 *@return c_usuario_inicio Este parametro representa 
+	 * el  valor del Icon. si no hay retorna null
 	 */
 	public Icon getIcono_boton_regresar() {
 		return icono_boton_regresar;
@@ -221,7 +220,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del table. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param table Este parametro representa el  valor del table.!= ""
+	 *@return table Este parametro representa el  valor del table. si no hay retorna null
 	 */
 	public JTable getTable() {
 		return table;
@@ -240,7 +239,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del scroll. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param scroll Este parametro representa el  valor del scroll.!= ""
+	 *@return scroll Este parametro representa el  valor del scroll. si no hay retorna null
 	 */
 	public JScrollPane getScroll() {
 		return scroll;
@@ -260,7 +259,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param model Este parametro representa el  valor del DefaultTableModel.!= ""
+	 *@return model Este parametro representa el  valor del DefaultTableModel. si no hay retorna null
 	 */
 	public DefaultTableModel getModel() {
 		return model;
@@ -279,7 +278,7 @@ public class PanelVerInfoPareja extends JPanel {
 	 * Este metodo devuelve el valor del String[]. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre_columnas Este parametro representa el  valor del String[].!= ""
+	 *@return nombre_columnas Este parametro representa el  valor del String[] si no hay retorna null
 	 */
 	public String[] getNombre_columnas() {
 		return nombre_columnas;

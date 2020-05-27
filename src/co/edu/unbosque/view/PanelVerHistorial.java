@@ -72,7 +72,7 @@ public class PanelVerHistorial extends JPanel {
 	 * Este metodo devuelve el valor del JTable. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param table Este parametro representa el  valor del JTable.!= ""
+	 *@return table Este parametro representa el  valor del JTable si no hay retorna null
 	 */
 	public JTable getTable() {
 		return table;
@@ -91,7 +91,7 @@ public class PanelVerHistorial extends JPanel {
 	 * Este metodo devuelve el valor del JScrollPane. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param scroll Este parametro representa el  valor del JScrollPane.!= ""
+	 *@return scroll Este parametro representa el  valor del JScrollPane. si no hay retorna null
 	 */
 	public JScrollPane getScroll() {
 		return scroll;
@@ -112,7 +112,7 @@ public class PanelVerHistorial extends JPanel {
 	 * Este metodo devuelve el valor del DefaultTableModel. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param model Este parametro representa el  valor del DefaultTableModel.!= ""
+	 *@return model Este parametro representa el  valor del DefaultTableModel. si no hay retorna null
 	 */
 	public DefaultTableModel getModel() {
 		return model;
