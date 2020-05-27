@@ -70,6 +70,7 @@ public class Panel1 extends JPanel {
 		super.paint(g);
 
 	}
+	
 	/**
 	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
 	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
