@@ -41,8 +41,9 @@ public class Panel1 extends JPanel {
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
 	 * de generar un nuevo horario.<br>
-	
-	 * @param nombre  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 * 
+	 * @param nombre se agregar una imagen al fondo del panel con las respectivas
+	 *               propiedades != "".
 	 */
 	public Panel1(String nombre) {
 		this.nombre = nombre;
@@ -54,13 +55,13 @@ public class Panel1 extends JPanel {
 
 	/**
 	 * Este es el metodo Gráfico el cual se le asigna la inicialización de los
-	 * atributos y objectos que asignan el fondo al panel 
-	 * . De esta manera el objecto es creado con un valor
-	 * inicial. Este método se llama automaticamente cuando se crea el objeto en la ventana .
-	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora
-	 * de generar un nuevo horario.<br>
-	
-	 * @param g  se agregar una imagen al fondo del panel con las respectivas propiedades != "".
+	 * atributos y objectos que asignan el fondo al panel . De esta manera el
+	 * objecto es creado con un valor inicial. Este método se llama automaticamente
+	 * cuando se crea el objeto en la ventana . <b>post</b>Se debe llamar el metodo
+	 * y dar un valor a los parametros a la hora de generar un nuevo horario.<br>
+	 * 
+	 * @param g se agregar una imagen al fondo del panel con las respectivas
+	 *          propiedades != "".
 	 */
 	public void paint(Graphics g) {
 		Dimension tamano = getSize();
@@ -70,12 +71,12 @@ public class Panel1 extends JPanel {
 		super.paint(g);
 
 	}
-	
+
 	/**
-	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
-	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
-	 *   y se agrega el panel 
-	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los
+	 * componentes De esta manera cada componente se crea con una ubicacion, u se le
+	 * agregar una imagen si es el caso y se agrega el panel Este método se llama
+	 * automaticamente cuando se crea el objeto de la ventana que lo contiene .
 	 * <b>post</b>se hacen visibles los componentes del panel.<br>
 	 */
 	public void inicializarComponentes() {
@@ -171,10 +172,11 @@ public class Panel1 extends JPanel {
 		add(calendario);
 
 	}
+
 	/**
-	 * Este es el metodo limpiarCampos el cual se dejan todos los
-	 *  campos vacios en el panel1 cuando es llamado 
-	 * objeto.<b>post</b> quedan vacios los campos del panel .<br>
+	 * Este es el metodo limpiarCampos el cual se dejan todos los campos vacios en
+	 * el panel1 cuando es llamado objeto.<b>post</b> quedan vacios los campos del
+	 * panel .<br>
 	 */
 
 	public void limpiarCampos() {
@@ -187,95 +189,98 @@ public class Panel1 extends JPanel {
 		grupo.clearSelection();
 
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el  valor del JTextField. != "".
+	 * @return Retorna el atributo en formato de JTextField.
 	 */
 	public JTextField getC_usuario_inicio() {
 		return c_usuario_inicio;
 	}
-	
+
 	/**
-	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del JTextField <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c_usuario_inicio Este parametro representa el nuevo valor
-	 *                 que va a tener el JTextField != "".
+	 * @param c_usuario_inicio Este parametro representa el nuevo valor que va a
+	 *                         tener el JTextField != "".
 	 */
 	public void setC_usuario_inicio(JTextField c_usuario_inicio) {
 		this.c_usuario_inicio = c_usuario_inicio;
 	}
 
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_usuario Este parametro representa 
-	 * el  valor del JTextField. != "".
+	 * @return Retorna el atributo en formato de JTextField.
 	 */
 	public JTextField getCampo_usuario() {
 		return campo_usuario;
 	}
 
 	/**
-	 * Este metodo establece el valor del campo_usuario <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del campo_usuario <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_usuario Este parametro representa el nuevo valor 
-	 *                que va a tener el usuario. != "".
+	 * @param campo_usuario Este parametro representa el nuevo valor que va a tener
+	 *                      el usuario. != "".
 	 */
 	public void setCampo_usuario(JTextField campo_usuario) {
 		this.campo_usuario = campo_usuario;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_nombre Este parametro
-	 *  representa el nuevo valor del JTextField. != "".
+	 * @return Retorna el atributo en formato de JTextField.
 	 */
 	public JTextField getCampo_nombre() {
 		return campo_nombre;
 	}
-	
+
 	/**
-	 * Este metodo establece el valor del campo_nombre. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del campo_nombre. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_nombre Este parametro representa el nuevo valor
-	 *                 que va a tener el nombre. != "".
+	 * @param campo_nombre Este parametro representa el nuevo valor que va a tener
+	 *                     el nombre. != "".
 	 */
 
 	public void setCampo_nombre(JTextField campo_nombre) {
 		this.campo_nombre = campo_nombre;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_numCedula Este parametro representa el nuevo valor del JTextField. != "".
+	 * @return Retorna el atributo en formato de JTextField.
 	 */
 	public JTextField getCampo_numCedula() {
 		return campo_numCedula;
 	}
 
 	/**
-	 * Este metodo establece el valor del numero de cédula. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del numero de cédula. <b>post</b>Se fija un
+	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el nuevo valor en formato de cadena
-	 *                 que va a tener el número de cédula. != "".
+	 * @param campo_numCedula Este parametro representa el nuevo valor que va a
+	 *                        tener el campo de texto del numero de la cedula.
+	 *                        campo_numCedula != null, campo_numCedula != "".
 	 */
 	public void setCampo_numCedula(JTextField campo_numCedula) {
 		this.campo_numCedula = campo_numCedula;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_correo Este parametro representa el nuevo valor del JTextField. != "".
+	 * @return Retorna el atributo en formato de JTextField.
 	 */
 	public JTextField getCampo_correo() {
 		return campo_correo;
@@ -285,57 +290,60 @@ public class Panel1 extends JPanel {
 	 * Este metodo establece el valor del correo. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param c_campo_correo Este parametro representa el nuevo valor 
-	 *                 que va a tener el correo. != "".
+	 * @param campo_correo Este parametro representa el nuevo valor que va a tener
+	 *                     el correo. != "".
 	 */
 	public void setCampo_correo(JTextField campo_correo) {
 		this.campo_correo = campo_correo;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JPasswordField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JPasswordField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c_contrasena_inicio Este parametro representa el nuevo valor del JPasswordField. != "".
+	 * @return Retorna el atributo en formato de JPasswordField.
 	 */
 	public JPasswordField getC_contrasena_inicio() {
 		return c_contrasena_inicio;
 	}
 
 	/**
-	 * Este metodo establece el valor del la contraseña. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del la contraseña. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c_contraseña_inicio Este parametro representa el nuevo valor 
-	 * que va a tener la contraseña. != "".
+	 * @param c_contrasena_inicio Este parametro representa el nuevo valor que va a
+	 *                            tener la contraseña. != "".
 	 */
 	public void setC_contrasena_inicio(JPasswordField c_contrasena_inicio) {
 		this.c_contrasena_inicio = c_contrasena_inicio;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JPasswordField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JPasswordField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_contrasena Este parametro representa el nuevo valor del JPasswordField. != "".
+	 * @return Retorna el atributo en formato de JPasswordField.
 	 */
 	public JPasswordField getCampo_contrasena() {
 		return campo_contrasena;
 	}
 
 	/**
-	 * Este metodo establece el valor del la contraseña. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del la contraseña. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param campo_contraseña Este parametro representa el nuevo valor
-	 * que va a tener la contraseña. != "".
+	 * @param campo_contrasena Este parametro representa el nuevo valor que va a
+	 *                         tener la contraseña. != "".
 	 */
 	public void setCampo_contrasena(JPasswordField campo_contrasena) {
 		this.campo_contrasena = campo_contrasena;
 	}
+
 	/**
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_entrar Este parametro representa el nuevo valor del JButton. != "".
+	 * @return Retorna el atributo en formato de JButton.
 	 */
 	public JButton getBoton_entrar() {
 		return boton_entrar;
@@ -345,124 +353,134 @@ public class Panel1 extends JPanel {
 	 * Este metodo establece el valor del nombre. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_entrar Este parametro representa el nuevo valor 
-	 * que va a tener el boton entrar . != "".
+	 * @param boton_entrar Este parametro representa el nuevo valor que va a tener
+	 *                     el boton entrar . != "".
 	 */
 	public void setBoton_entrar(JButton boton_entrar) {
 		this.boton_entrar = boton_entrar;
 	}
+
 	/**
 	 * Este metodo devuelve el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_registrar Este parametro representa el nuevo valor del JButton. != "".
+	 * @return Retorna el atributo en formato de JButton.
 	 */
 	public JButton getBoton_registrar() {
 		return boton_registrar;
 	}
+
 	/**
 	 * Este metodo establece el valor del JButton. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param boton_registrar Este parametro representa el nuevo valor 
-	 * que va a tener el JButton. != "".
+	 * @param boton_registrar Este parametro representa el nuevo valor que va a
+	 *                        tener el JButton. != "".
 	 */
 	public void setBoton_registrar(JButton boton_registrar) {
 		this.boton_registrar = boton_registrar;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del ButtonGroup. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del ButtonGroup. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param grupo Este parametro representa el nuevo valor del ButtonGroup.!= ""
+	 * @return Retorna el atributo en formato de ButtonGroup.
 	 */
 	public ButtonGroup getGrupo() {
 		return grupo;
 	}
+
 	/**
-	 * Este metodo establece el valor del ButtonGroup. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del ButtonGroup. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param grupo Este parametro representa el nuevo valor 
-	 * 				que va a tener el ButtonGroup. != "".
+	 * @param grupo Este parametro representa el nuevo valor que va a tener el
+	 *              ButtonGroup. != "".
 	 */
 	public void setGrupo(ButtonGroup grupo) {
 		this.grupo = grupo;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c1 Este parametro representa el nuevo valor del JRadioButton.
+	 * @return Retorna el atributo en formato de JRadioButton.
 	 */
 	public JRadioButton getC1() {
 		return c1;
 	}
+
 	/**
-	 * Este metodo establece el valor del JRadioButton. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del JRadioButton. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c1 Este parametro representa el nuevo valor 
-	 * 				que va a tener el JRadioButton. != "".
+	 * @param c1 Este parametro representa el nuevo valor que va a tener el
+	 *           JRadioButton. != "".
 	 */
 	public void setC1(JRadioButton c1) {
 		this.c1 = c1;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c2 Este parametro representa el nuevo valor del JRadioButton.
+	 * @return Retorna el atributo en formato de JRadioButton.
 	 */
 	public JRadioButton getC2() {
 		return c2;
 	}
+
 	/**
-	 * Este metodo establece el valor del JRadioButton. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del JRadioButton. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param c2 Este parametro representa el nuevo valor 
-	 * 				que va a tener el JRadioButton. != "".
+	 * @param c2 Este parametro representa el nuevo valor que va a tener el
+	 *           JRadioButton. != "".
 	 */
 	public void setC2(JRadioButton c2) {
 		this.c2 = c2;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el nuevo valor del String y generar la imagen de fondo .
+	 * @return Retorna el atributo en formato de cadena de caracteres.
 	 */
 	public String getNombre() {
 		return nombre;
 	}
+
 	/**
 	 * Este metodo establece el valor del String. <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param nombre Este parametro representa el nuevo valor 
-	 * 				que va a tener el String. != "".
+	 * @param nombre Este parametro representa el nuevo valor que va a tener el
+	 *               String. != "".
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	
 	/**
-	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTextField. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param calendario Este parametro representa el nuevo valor del JDateChooser.
+	 * @return Retorna el atributo en formato de JDateChooser.
 	 */
 	public JDateChooser getCalendario() {
 		return calendario;
 	}
+
 	/**
-	 * Este metodo establece el valor del JDateChooser. <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del JDateChooser. <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param calendario Este parametro representa el nuevo valor 
-	 * 				que va a tener el JDateChooser. != "".
+	 * @param calendario Este parametro representa el nuevo valor que va a tener el
+	 *                   JDateChooser. != "".
 	 */
 	public void setCalendario(JDateChooser calendario) {
 		this.calendario = calendario;

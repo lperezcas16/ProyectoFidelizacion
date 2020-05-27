@@ -34,15 +34,15 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class Estadisticas {
 
-	
 	/**
-	 * Este metodo  genera la gráfica con los dato obtenidos del controlador 
-	 *  <b>post</b> se genéra el gráfico con los datos recibidos  <br>
+	 * Este metodo genera la gráfica con los dato obtenidos del controlador
+	 * <b>post</b> se genéra el gráfico con los datos recibidos <br>
 	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca en la lista  para luego
-	 * buscar su edad   != "".
+	 * @param lista_usuarios Este parametro representa el usuario que se busca en la
+	 *                       lista para luego buscar su edad != "".
+	 * @return Retorna los datos de una grafica de torta.
 	 */
-	
+
 	public DefaultPieDataset generarDatosGraficoEdadUsuarios(ArrayList<Usuario> lista_usuarios) {
 		DefaultPieDataset data = new DefaultPieDataset();
 
@@ -79,11 +79,12 @@ public class Estadisticas {
 	}
 
 	/**
-	 * Este metodo  genera la gráfica con los dato obtenidos del controlador 
-	 *  <b>post</b> se genéra el gráfico con los datos recibidos  <br>
+	 * Este metodo genera la gráfica con los dato obtenidos del controlador
+	 * <b>post</b> se genéra el gráfico con los datos recibidos <br>
 	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca en la lista  para luego
-	 * 						buscar su genero   != "".
+	 * @param lista_usuarios Este parametro representa el usuario que se busca en la
+	 *                       lista para luego buscar su genero != "".
+	 * @return Retorna los datos de una grafica de torta.
 	 */
 	public DefaultCategoryDataset generarDatosGraficoGeneroUsuarios(ArrayList<Usuario> lista_usuarios) {
 		DefaultCategoryDataset data = new DefaultCategoryDataset();
@@ -103,20 +104,28 @@ public class Estadisticas {
 	}
 
 	/**
-	 * Este metodo  genera el pdf de las tablas y los gráficos generados anteriormente
-	 *  <b>post</b> se genéra el gráfico con los datos recibidos  <br>
+	 * Este metodo genera el pdf de las tablas y los gráficos generados
+	 * anteriormente <b>post</b> se genéra el gráfico con los datos recibidos <br>
 	 * 
-	 * @param tituloInicio Este parametro representa el titulo que se  le asigna al pdf   != "".
+	 * @param tituloInicio   Este parametro representa el titulo que se le asigna al
+	 *                       pdf != "".
 	 * 
-	 *  @param titulo_grafico Este parametro representa el titulo que se pone al gráfico   != "".
+	 * @param titulo_grafico Este parametro representa el titulo que se pone al
+	 *                       gráfico != "".
 	 * 
-	 *  @param informacion Este parametro representa la informacion que contiene el pdf != "".
-	 *  
-	 * *@param chart Este parametro representa la gráfica que se visualiza en el pdf != "".
+	 * @param informacion    Este parametro representa la informacion que contiene
+	 *                       el pdf != "".
 	 * 
-	 * @param salida Este parametro representa la salida de los datos para el pdf   != "".
+	 *                       *@param chart Este parametro representa la gráfica que
+	 *                       se visualiza en el pdf != "".
 	 * 
-	 * @param jTable Este parametro representa las tablas que se agregan al pdf  != "".
+	 * @param salida         Este parametro representa la salida de los datos para
+	 *                       el pdf != "".
+	 * 
+	 * @param jTable         Este parametro representa las tablas que se agregan al
+	 *                       pdf != "".
+	 * @param chart          Este parametro representa los datos del grafico. chart
+	 *                       != null, chart != "".
 	 * 
 	 * 
 	 * 
@@ -167,10 +176,12 @@ public class Estadisticas {
 	}
 
 	/**
-	 * Este metodo  genera el titulo con los dato obtenidos del controlador 
-	 *  <b>post</b> se genéra el titulo con los datos recibidos  <br>
+	 * Este metodo genera el titulo con los dato obtenidos del controlador
+	 * <b>post</b> se genéra el titulo con los datos recibidos <br>
 	 * 
-	 * @param texto Este parametro representa el texto que se va a poner en pdf  != "".
+	 * @param texto Este parametro representa el texto que se va a poner en pdf !=
+	 *              "".
+	 * @return Retorna un tipo de fuente tamaño y alineación.
 	 */
 	private Paragraph getTitulo(String texto) {
 		Paragraph p = new Paragraph();
@@ -182,11 +193,14 @@ public class Estadisticas {
 		p.add(c);
 		return p;
 	}
+
 	/**
-	 * Este metodo  genera el text con los dato obtenidos del controlador 
-	 *  <b>post</b> se genéran los datos según la especificaciones <br>
+	 * Este metodo genera el text con los dato obtenidos del controlador <b>post</b>
+	 * se genéran los datos según la especificaciones <br>
 	 * 
-	 * @param texto Este parametro representa el texto que se va a poner en pdf  != "".
+	 * @param texto Este parametro representa el texto que se va a poner en pdf !=
+	 *              "".
+	 * @return Retorna un tipo de fuente tamaño y alineación.
 	 */
 	private Paragraph getInformacion(String texto) {
 		Paragraph p = new Paragraph();
@@ -198,18 +212,23 @@ public class Estadisticas {
 		p.add(c);
 		return p;
 	}
+
 	/**
-	 * Este metodo  genera el pdf con las edades  obtenidas
-	 *  <b>post</b> se genéra el pdf que contiene la gráfica de las edades y se abre un filechooser para 
-	 *  guardar el documento pdf <br>
+	 * Este metodo genera el pdf con las edades obtenidas <b>post</b> se genéra el
+	 * pdf que contiene la gráfica de las edades y se abre un filechooser para
+	 * guardar el documento pdf <br>
 	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
+	 * @param lista_usuarios     Este parametro representa el usuario que se busca
+	 *                           != "".
 	 * 
-	 * @param chart Este parametro representa la gráfica a poner en pdf  != "".
+	 * @param chart              Este parametro representa la gráfica a poner en pdf
+	 *                           != "".
 	 * 
-	 * @param fileChooserGuardar Este parametro representa el archivo que se guardará pdf  != "".
+	 * @param fileChooserGuardar Este parametro representa el archivo que se
+	 *                           guardará pdf != "".
 	 * 
-	 *  @param jtable Este parametro representa la tabla que se va a poner en pdf  != "".
+	 * @param jtable             Este parametro representa la tabla que se va a
+	 *                           poner en pdf != "".
 	 */
 	public void generarPDFEdadesUsuarios(ArrayList<Usuario> lista_usuarios, JFreeChart chart, String fileChooserGuardar,
 			JTable jtable) {
@@ -222,28 +241,35 @@ public class Estadisticas {
 	}
 
 	/**
-	 * Este metodo  genera el pdf con los usuarios  obtenidas
-	 *  <b>post</b> se genéra el pdf que contiene la gráfica de los  usuarios  y se abre un filechooser para 
-	 *  guardar el documento pdf <br>
+	 * Este metodo genera el pdf con los usuarios obtenidas <b>post</b> se genéra el
+	 * pdf que contiene la gráfica de los usuarios y se abre un filechooser para
+	 * guardar el documento pdf <br>
 	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
+	 * @param lista_usuarios     Este parametro representa el usuario que se busca
+	 *                           != "".
 	 * 
-	 * @param chart Este parametro representa la gráfica a poner en pdf  != "".
+	 * @param chart              Este parametro representa la gráfica a poner en pdf
+	 *                           != "".
 	 * 
-	 * @param fileChooserGuardar Este parametro representa el archivo que se guardará pdf  != "".
+	 * @param fileChooserGuardar Este parametro representa el archivo que se
+	 *                           guardará pdf != "".
 	 * 
-	 *  @param jtable Este parametro representa la tabla que se va a poner en pdf  != "".
+	 * @param jtable             Este parametro representa la tabla que se va a
+	 *                           poner en pdf != "".
 	 */
 	public void generarPDFUsuarios(ArrayList<Usuario> lista_usuarios, JFreeChart chart, String fileChooserGuardar,
 			JTable jtable) {
 		generarPDF("Reporte de usuarios", "Grafico de genero", "", chart, fileChooserGuardar, jtable);
 	}
-	/**
-	 * Este metodo  genera uncalculo de las edades de los usuarios para buscar la moda
-	 *  <b>post</b> Se en cuentra la moda de la edad de todos los usuarios  <br>
-	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
 
+	/**
+	 * Este metodo genera uncalculo de las edades de los usuarios para buscar la
+	 * moda <b>post</b> Se en cuentra la moda de la edad de todos los usuarios <br>
+	 * 
+	 * @param lista_usuarios Este parametro representa el usuario que se busca !=
+	 *                       "".
+	 * @return Retorna el valor en formato de entero de la moda.
+	 * 
 	 */
 	private int calcularModa(ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Integer> lista_edad = new ArrayList<Integer>();
@@ -268,12 +294,16 @@ public class Estadisticas {
 
 		return moda;
 	}
-	/**
-	 * Este metodo  genera uncalculo de las edades de los usuarios para buscar la mediana
-	 *  <b>post</b> Se en cuentra la mediana de la edad de todos los usuarios  <br>
-	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
 
+	/**
+	 * Este metodo genera uncalculo de las edades de los usuarios para buscar la
+	 * mediana <b>post</b> Se en cuentra la mediana de la edad de todos los usuarios
+	 * <br>
+	 * 
+	 * @param lista_usuarios Este parametro representa el usuario que se busca !=
+	 *                       "".
+	 * @return Retorna el valor de la mediana en formato double.
+	 * 
 	 */
 	private Double calcularMediana(ArrayList<Usuario> lista_usuarios) {
 		ArrayList<Integer> lista_edad = new ArrayList<Integer>();
@@ -291,12 +321,15 @@ public class Estadisticas {
 	}
 
 	/**
-	 * Este metodo  genera uncalculo de las edades de los usuarios para buscar la media
-	 *  <b>post</b> Se en cuentra la media de la edad de todos los usuarios  <br>
+	 * Este metodo genera uncalculo de las edades de los usuarios para buscar la
+	 * media <b>post</b> Se en cuentra la media de la edad de todos los usuarios
+	 * <br>
 	 * 
-	 * @param lista_usuarios Este parametro representa el usuario que se busca  != "".
-
-
+	 * @param lista_usuarios Este parametro representa el usuario que se busca !=
+	 *                       "".
+	 * @return Retorna el valor de la media en formato de double.
+	 * 
+	 * 
 	 */
 	private double calcularMedia(ArrayList<Usuario> lista_usuarios) {
 		int sumaEdades = 0;

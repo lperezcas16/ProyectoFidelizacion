@@ -21,12 +21,12 @@ public class PanelAdminInicio extends JPanel {
 
 	/**
 	 * 
-	 * Este es el metodo constructor el cual se le asigna la inicialización de
-	 * los atributos, forma de organización del JPanel , inicializacion de los componentes
-	 *  y objectos. así como la visibilidad De esta manera el objecto es creado con un
-	 * valorinicial. Este método se llama automaticamente cuando se crea el
-	 * objeto.<b>post</b> Se debe generar el panel  propuesta, creación de los
-	 * arraylist y los action listeners.<br>
+	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * atributos, forma de organización del JPanel , inicializacion de los
+	 * componentes y objectos. así como la visibilidad De esta manera el objecto es
+	 * creado con un valorinicial. Este método se llama automaticamente cuando se
+	 * crea el objeto.<b>post</b> Se debe generar el panel propuesta, creación de
+	 * los arraylist y los action listeners.<br>
 	 */
 	public PanelAdminInicio() {
 
@@ -36,12 +36,11 @@ public class PanelAdminInicio extends JPanel {
 		setVisible(false);
 	}
 
-	
 	/**
-	 * Este es el metodo inicializarComponentes el cual se inicianilizan los componentes
-	 *  De esta manera cada componente se crea con una ubicacion, u se le agregar una imagen si es el caso
-	 *   y se agrega el panel 
-	 *  Este método se llama automaticamente cuando se crea el objeto de la ventana  que lo contiene .
+	 * Este es el metodo inicializarComponentes el cual se inicianilizan los
+	 * componentes De esta manera cada componente se crea con una ubicacion, u se le
+	 * agregar una imagen si es el caso y se agrega el panel Este método se llama
+	 * automaticamente cuando se crea el objeto de la ventana que lo contiene .
 	 * <b>post</b>se hacen visibles los componentes del panel.<br>
 	 */
 	public void inicializarComponentes() {
@@ -64,97 +63,107 @@ public class PanelAdminInicio extends JPanel {
 		add(pestanas);
 
 	}
+
 	/**
-	 * Este metodo devuelve el valor del JTabbedPane <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del JTabbedPane <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param pestanas Este parametro representa el  valor del JTabbedPane!= ""
+	 * @return Retorna el atributo en formato de JTabbedPane.
 	 */
 	public JTabbedPane getPestanas() {
 		return pestanas;
 	}
+
 	/**
-	 * Este metodo establece el valor del JTabbedPane <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del JTabbedPane <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param pestanas Este parametro representa el nuevo valor
-	 *                 que va a tener el JTabbedPane != "".
+	 * @param pestanas Este parametro representa el nuevo valor que va a tener el
+	 *                 JTabbedPane != "".
 	 */
 	public void setPestanas(JTabbedPane pestanas) {
 		this.pestanas = pestanas;
 	}
+
 	/**
 	 * Este metodo devuelve el valor del PanelInfo <b>post</b>Se fija un nuevo valor
 	 * al atributo.<br>
 	 * 
-	 * @param panel_info Este parametro representa el  valor del PanelInfo!= ""
+	 * @return Retorna el atributo en formato de PanelInfo.
 	 */
 	public PanelInfo getPanel_info() {
 		return panel_info;
 	}
+
 	/**
-	 * Este metodo establece el valor del PanelInfo <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del PanelInfo <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_info Este parametro representa el nuevo valor
-	 *                 que va a tener el PanelInfo != "".
+	 * @param panel_info Este parametro representa el nuevo valor que va a tener el
+	 *                   PanelInfo != "".
 	 */
 	public void setPanel_info(PanelInfo panel_info) {
 		this.panel_info = panel_info;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelInformes <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelInformes <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_informe Este parametro representa el  valor del PanelInformes!= ""
+	 * @return Retorna el atributo en formato de PanelInforme.
 	 */
 	public PanelInformes getPanel_informe() {
 		return panel_informe;
 	}
+
 	/**
-	 * Este metodo establece el valor del PanelInformes <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del PanelInformes <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_informe Este parametro representa el nuevo valor
-	 *                 que va a tener el PanelInformes != "".
+	 * @param panel_informe Este parametro representa el nuevo valor que va a tener
+	 *                      el PanelInformes != "".
 	 */
 	public void setPanel_informe(PanelInformes panel_informe) {
 		this.panel_informe = panel_informe;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelUsuarios <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelUsuarios <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_usuarios Este parametro representa el  valor del PanelUsuarios!= ""
+	 * @return Retorna el atributo en formato de PanelUsuarios.
 	 */
 	public PanelUsuarios getPanel_usuarios() {
 		return panel_usuarios;
 	}
+
 	/**
-	 * Este metodo establece el valor del PanelUsuarios <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del PanelUsuarios <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_usuarios Este parametro representa el nuevo valor
-	 *                 que va a tener el PanelUsuarios != "".
+	 * @param panel_usuarios Este parametro representa el nuevo valor que va a tener
+	 *                       el PanelUsuarios != "".
 	 */
 	public void setPanel_usuarios(PanelUsuarios panel_usuarios) {
 		this.panel_usuarios = panel_usuarios;
 	}
+
 	/**
-	 * Este metodo devuelve el valor del PanelTiendas <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo devuelve el valor del PanelTiendas <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_tiendas Este parametro representa el  valor del PanelTiendas!= ""
+	 * @return Retorna el atributo en formato de PanelTiendas.
 	 */
 	public PanelTiendas getPanel_tiendas() {
 		return panel_tiendas;
 	}
+
 	/**
-	 * Este metodo establece el valor del PanelTiendas <b>post</b>Se fija un nuevo valor
-	 * al atributo.<br>
+	 * Este metodo establece el valor del PanelTiendas <b>post</b>Se fija un nuevo
+	 * valor al atributo.<br>
 	 * 
-	 * @param panel_tiendas Este parametro representa el nuevo valor
-	 *                 que va a tener el PanelTiendas != "".
+	 * @param panel_tiendas Este parametro representa el nuevo valor que va a tener
+	 *                      el PanelTiendas != "".
 	 */
 	public void setPanel_tiendas(PanelTiendas panel_tiendas) {
 		this.panel_tiendas = panel_tiendas;

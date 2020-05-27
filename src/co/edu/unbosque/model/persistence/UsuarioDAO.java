@@ -233,7 +233,8 @@ public class UsuarioDAO {
 	 *                       != null, contraseña != "".
 	 * @param lista_usuarios Es el arraylist donde estan guardados todos los
 	 *                       usuarios. lista_usuarios != null, lista_usuarios != "".
-	 * @return
+	 * @return Si se comprueba que el usuario si esta registrado en el sistema se
+	 *         devuelve verdadero.
 	 */
 	public boolean comprobarUsuario(String usuario, String contraseña, ArrayList<Usuario> lista_usuarios) {
 		boolean esta = false;

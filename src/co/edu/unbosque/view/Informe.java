@@ -40,7 +40,7 @@ public class Informe extends JFrame {
 	 * Este metodo devuelve el valor del PanelInformeUsuario. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @return Retorna el atributo en formato de PanelInformeUsuario.
 	 */
 	public PanelInformeUsuario getPanel_informe() {
 		return panel_informe_usuarios;
@@ -50,7 +50,8 @@ public class Informe extends JFrame {
 	 * Este metodo establece el valor del PanelInformeUsuario. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @param panel_informe_usuarios Este parametro representa el nuevo valor del
+	 *                               panel.
 	 */
 	public void setPanel_informe(PanelInformeUsuario panel_informe_usuarios) {
 		this.panel_informe_usuarios = panel_informe_usuarios;
@@ -60,7 +61,8 @@ public class Informe extends JFrame {
 	 * Este metodo devuelve el valor del PanelInformeUsuario. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @return Retorna el atributo en formato de PanelInformeUsuario.
+	 * 
 	 */
 	public PanelInformeUsuario getPanel_informe_usuarios() {
 		return panel_informe_usuarios;
@@ -70,7 +72,8 @@ public class Informe extends JFrame {
 	 * Este metodo establece el valor del PanelInformeUsuario. <b>post</b>Se fija un
 	 * nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @param panel_informe_usuarios Este parametro representa el nuevo valor del
+	 *                               panel.
 	 */
 	public void setPanel_informe_usuarios(PanelInformeUsuario panel_informe_usuarios) {
 		this.panel_informe_usuarios = panel_informe_usuarios;
@@ -80,7 +83,7 @@ public class Informe extends JFrame {
 	 * Este metodo devuelve el valor del InformeUsuariosParejas. <b>post</b>Se fija
 	 * un nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @return Retorna el atributo en formato de InformeUsuariosParejas.
 	 */
 	public InformeUsuariosParejas getInforme_usuario_pareja() {
 		return informe_usuario_pareja;
@@ -90,7 +93,8 @@ public class Informe extends JFrame {
 	 * Este metodo establece el valor del InformeUsuariosParejas. <b>post</b>Se fija
 	 * un nuevo valor al atributo.<br>
 	 * 
-	 * @param panel1 Este parametro representa el nuevo valor del panel.
+	 * @param informe_usuario_pareja Este parametro representa el nuevo valor del
+	 *                               panel.
 	 */
 	public void setInforme_usuario_pareja(InformeUsuariosParejas informe_usuario_pareja) {
 		this.informe_usuario_pareja = informe_usuario_pareja;

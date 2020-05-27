@@ -63,6 +63,8 @@ public class Controller implements ActionListener, MouseListener {
 	 * valorinicial. Este método se llama automaticamente cuando se crea el
 	 * objeto.<b>post</b> Se debe generar la ventana propuesta, creación de los
 	 * arraylist y los action listeners.<br>
+	 * @throws IOException Esta excepcion corresponde a las excepciones en la
+	 * entrada y salida de datos.
 	 */
 	public Controller() throws IOException {
 		super();
@@ -1797,8 +1799,8 @@ public class Controller implements ActionListener, MouseListener {
 	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
 	 * MailExcepcion en el paquete co.edu.unbosque.model<br>
 	 * 
-	 * @param m Este parametro corresponde a la correo ingresada por el usuario que
-	 *          debe de analizarse para ver si se efectua la excepcion.
+	 * @param correo Este parametro corresponde a la correo ingresada por el usuario
+	 *               que debe de analizarse para ver si se efectua la excepcion.
 	 * @throws MailExcepcion Esta excepcion corresponde a las limitaciones impuestas
 	 *                       al correo para poder validar si existe y de esa manera
 	 *                       se enviaria un correo de validación y de registro
@@ -1823,10 +1825,10 @@ public class Controller implements ActionListener, MouseListener {
 	 * excepcion <b>pre</b> Es necesario que anteriormente se haya creado la clase
 	 * GeneroExcepcion en el paquete co.edu.unbosque.model<br>
 	 * 
-	 * @param g Este parametro corresponde al genero seleccionado por el usuario.
 	 * @throws GeneroExcepcion Esta excepcion corresponde a las limitaciones
 	 *                         impuestas al genero, donde se debe se elegir el
 	 *                         genero, ya sea mujer u hombre, o saltaria el error.
+	 * @return Retorna el valor del genero en formato de cadena de caracteres.
 	 */
 	public String comprobarGenero() throws GeneroExcepcion {
 
@@ -1889,6 +1891,7 @@ public class Controller implements ActionListener, MouseListener {
 	 *          medio de un jcalendar.
 	 * @throws EdadExcepcion Esta excepcion corresponde a las limitaciones impuestas
 	 *                       a la edad, la cual debe de ser mayor o igual a 18.
+	 * @return retorna el valor de la edad en formato de entero.
 	 */
 	public int comprobarEdad(Date n) throws EdadExcepcion {
 		int valorEdad = 0;
