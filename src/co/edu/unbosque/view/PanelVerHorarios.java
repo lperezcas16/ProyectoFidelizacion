@@ -32,6 +32,7 @@ public class PanelVerHorarios extends JPanel {
 	 * 
 	 * @param nombre se permite agregar un String al panel cuando es inicializado en
 	 *               ventana y esto sirve para agregar la imagen de fondo desde la
+	 *   
 	 *               carptea imagenes != "".
 	 */
 	public PanelVerHorarios(String nombre) {

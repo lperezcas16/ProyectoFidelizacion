@@ -13,6 +13,8 @@ public class PanelInfoSolusoft extends JPanel {
 	private ImageIcon imagen;
 
 	/**
+	 * 
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectos. De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.

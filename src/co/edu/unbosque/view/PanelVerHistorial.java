@@ -129,6 +129,7 @@ public class PanelVerHistorial extends JPanel {
 	}
 
 	/**
+	 * 
 	 * Este es el metodo visibilidadComponentes el cual se dejan todos los
 	 *  campos vacios en el panel1 cuando es llamado 
 	 * objeto.<b>post</b> quedan vacios los campos del panel .<br>

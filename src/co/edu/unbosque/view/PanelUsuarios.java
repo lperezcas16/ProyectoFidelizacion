@@ -37,7 +37,8 @@ public class PanelUsuarios extends JPanel {
 	private String[] cabecera2 = { "Nombre", "Valor cupo" };
 
 	/**
-	 * Este es el metodo constructor el cual se le asigna la inicialización de los
+	 * Este 
+	 * es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectos. De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.
 	 * <b>post</b>Se debe llamar el metodo y dar un valor a los parametros a la hora

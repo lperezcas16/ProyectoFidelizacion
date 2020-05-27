@@ -34,6 +34,7 @@ public class PanelSeleccionarTienda extends JPanel {
 	private PanelNuevaTienda pnl_nueva_tienda;
 
 	/**
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectosy . De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.

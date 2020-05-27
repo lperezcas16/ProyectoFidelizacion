@@ -19,6 +19,7 @@ public class PanelUsuarioInicio extends JPanel {
 	private PanelVerHorarios pnl_ver_horarios = new PanelVerHorarios("/co/edu/unbosque/imagenes/fondo_ver_horario.png");
 
 	/**
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectos . De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.

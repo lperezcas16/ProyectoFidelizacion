@@ -20,7 +20,9 @@ public class PanelIngresarCompra extends JPanel {
 	private JTextField campo_texto_dinero;
 	private JButton boton_agregar_compra;
 	private Icon icono_boton_agregar_compra;
-	/**
+	/**   
+	 * 
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectos. De esta manera el objecto es creado con un valor
 	 * inicial. Este método se llama automaticamente cuando se crea el objeto.

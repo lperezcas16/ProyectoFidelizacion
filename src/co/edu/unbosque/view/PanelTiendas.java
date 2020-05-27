@@ -37,6 +37,7 @@ public class PanelTiendas extends JPanel {
 	private JTable tabla;
 
 	/**
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos y objectos asi como el método de crear tabla . De esta manera el objecto es creado
 	 *  con un valor inicial. Este método se llama automaticamente cuando se crea el objeto.

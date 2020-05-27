@@ -19,6 +19,7 @@ public class View extends JFrame {
 	private int cantidad_cupo;
 
 	/**
+	 * 
 	 * Este es el metodo constructor el cual se le asigna la inicialización de los
 	 * atributos, objetos y forma de organización del JFrame. De esta manera el
 	 * objecto es creado con un valor inicial. Este método se llama automaticamente
